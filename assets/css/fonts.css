@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'DINNextRoundedLTProRegular';
+    src: url('../fonts/dinnextroundedltpro-regular.eot');
+    src: url('../fonts/dinnextroundedltpro-regular.eot') format('embedded-opentype'),
+         url('../fonts/dinnextroundedltpro-regular.woff') format('woff'),
+         url('../fonts/dinnextroundedltpro-regular.ttf') format('truetype'),
+         url('../fonts/dinnextroundedltpro-regular.svg#DINNextRoundedLTProRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'DINNextRoundedLTProMedium';
+    src: url('../fonts/dinnextroundedltpro-medium.eot');
+    src: url('../fonts/dinnextroundedltpro-medium.eot') format('embedded-opentype'),
+         url('../fonts/dinnextroundedltpro-medium.woff') format('woff'),
+         url('../fonts/dinnextroundedltpro-medium.ttf') format('truetype'),
+         url('../fonts/dinnextroundedltpro-medium.svg#DINNextRoundedLTProMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'MetaSerifBookRegular';
+    src: url('../fonts/metaserif-book.eot');
+    src: url('../fonts/metaserif-book.eot') format('embedded-opentype'),
+         url('../fonts/metaserif-book.woff') format('woff'),
+         url('../fonts/metaserif-book.ttf') format('truetype'),
+         url('../fonts/metaserif-book.svg#MetaSerifBookRegular') format('svg');
+}

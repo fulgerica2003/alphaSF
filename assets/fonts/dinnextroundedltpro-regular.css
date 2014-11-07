@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'DINNextRoundedLTProRegular';
+    src: url('dinnextroundedltpro-regular.eot');
+    src: url('dinnextroundedltpro-regular.eot') format('embedded-opentype'),
+         url('dinnextroundedltpro-regular.woff') format('woff'),
+         url('dinnextroundedltpro-regular.ttf') format('truetype'),
+         url('dinnextroundedltpro-regular.svg#DINNextRoundedLTProRegular') format('svg');
+}
