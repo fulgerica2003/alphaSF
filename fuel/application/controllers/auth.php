@@ -139,7 +139,8 @@
 				'name' => 'new',
 				'id'   => 'new',
 				'type' => 'password',
-				'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
+				'pattern' => '^.{'.$this->data['min_passregister()
+				_length'].'}.*$',
 				);
 				$this->data['new_password_confirm'] = array(
 				'name' => 'new_confirm',
@@ -519,6 +520,7 @@
 			$this->form_validation->set_rules('password_confirm', $this->lang->line('register_user_validation_password_confirm_label'), 'required');
 			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'xss_clean');
 			$this->form_validation->set_rules('country', $this->lang->line('register_user_validation_country_label'), 'xss_clean');
+			$this->form_validation->set_rules('word', 'Captcha', 'trim|callback_check_captcha|required' );
 			
 			if ($this->form_validation->run() == true)
 			{
@@ -595,6 +597,15 @@
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('country'),
 				);
+				
+				$this->data['word'] = array(
+				'name'  => 'word',
+				'id'    => 'word',
+				'type'  => 'text',
+				'value' => '',
+				);
+				
+				$this->data['image']= $this->_create_captcha();
 				
 				$this->_render_page('auth/register', $this->data);
 			}
@@ -895,6 +906,36 @@
 			$view_html = $this->load->view($view, $this->viewdata, $render);
 			
 			if (!$render) return $view_html;
+		}
+		
+		private function _create_captcha()
+		{
+			// we will first load the helper. We will not be using autoload because we only need it here
+			$this->load->helper('captcha');
+			// we will set all the variables needed to create the captcha image
+			$options = array('img_path'=>'./assets/captcha/','img_url'=>'http://localhost/smith/assets/captcha/','img_width'=>'150','img_height'=>'40','expiration'=>7200,
+			'word_length' => 4, 'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
+			//now we will create the c	aptcha by using the helper function create_captcha()
+			$cap = create_captcha($options);
+			// we will store the image html code in a variable
+			$image = $cap['image'];
+			// ...and store the captcha word in a session
+			$this->session->set_userdata('captchaword', $cap['word']);
+			// we will return the image html code
+			return $image;
+		}
+		
+		public function check_captcha($string)
+		{
+		if($string==$this->session->userdata('captchaword'))
+		{
+			return TRUE;
+		}
+		else
+		{
+			$this->form_validation->set_message('check_captcha', 'Wrong captcha code');
+			return FALSE;
+		}
 		}
 		
 	}
