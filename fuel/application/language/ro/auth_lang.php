@@ -70,6 +70,29 @@ $lang['create_user_validation_company_label']          = 'Companie';
 $lang['create_user_validation_password_label']         = 'Parola';
 $lang['create_user_validation_password_confirm_label'] = 'Confirmarea parolei';
 
+// Register User
+$lang['register_user_heading']                           = 'Inregistrare utilizator';
+$lang['register_user_subheading']                        = 'Va rugam sa completati informatiile de mai jos.';
+$lang['register_user_fname_label']                       = 'Prenume:';
+$lang['register_user_lname_label']                       = 'Nume:';
+//$lang['register_user_company_label']                     = 'Companie:';
+$lang['register_user_email_label']                       = 'Email:';
+$lang['register_user_phone_label']                       = 'Telefon:';
+$lang['register_user_password_label']                    = 'Parola:';
+$lang['register_user_password_confirm_label']            = 'Confirma parola:';
+$lang['register_user_birth_date']						 = 'Data nasterii';
+$lang['register_user_country']							 = 'Tara de resedinta';
+$lang['register_user_submit_btn']                        = 'Inregistrare';
+$lang['register_user_validation_fname_label']            = 'Prenume';
+$lang['register_user_validation_lname_label']            = 'Nume';
+$lang['register_user_validation_email_label']            = 'Adresa email';
+$lang['register_user_validation_phone1_label']           = 'Prima parte a numarului de telefon';
+$lang['register_user_validation_phone2_label']           = 'A doua parte a numarului de telefon';
+$lang['register_user_validation_phone3_label']           = 'A treia parte a numarului de telefon';
+$lang['register_user_validation_company_label']          = 'Companie';
+$lang['register_user_validation_password_label']         = 'Parola';
+$lang['register_user_validation_password_confirm_label'] = 'Confirmarea parolei';
+
 // Edit User
 $lang['edit_user_heading']                           = 'Editeaza date utilizator';
 $lang['edit_user_subheading']                        = 'Va rugam sa introduceri informatiile utilizatorului de mai jos.';

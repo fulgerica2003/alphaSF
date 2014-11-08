@@ -10,7 +10,7 @@
       </p>
 
       <p>
-            <label for="new_password"><?php echo sprintf(lang('change_password_new_password_label'), $min_password_length);?></label> <br />
+            <label for="new_password"><?php echo sprintf(lang('change_password_new_password_label', $min_password_length));?></label> <br />
             <?php echo form_input($new_password);?>
       </p>
 
