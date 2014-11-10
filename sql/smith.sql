@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2014 at 08:39 PM
+-- Generation Time: Nov 10, 2014 at 01:56 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=112 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=115 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -261,7 +261,10 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (108, '2014-11-07 11:15:40', 1, 'Successful login by ''admin'' from ::1', 'debug'),
 (109, '2014-11-07 11:15:45', 1, 'The cache has been cleared.', 'info'),
 (110, '2014-11-07 11:19:39', 1, 'The cache has been cleared.', 'info'),
-(111, '2014-11-07 12:14:37', 1, 'The cache has been cleared.', 'info');
+(111, '2014-11-07 12:14:37', 1, 'The cache has been cleared.', 'info'),
+(112, '2014-11-10 13:56:21', 0, 'Failed login by ''admin'' from ::1, login attempts:   1', 'debug'),
+(113, '2014-11-10 13:56:27', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(114, '2014-11-10 13:56:35', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -513,7 +516,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'c8219f9bea578beddea2de1cbd6a69440cfbc019', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '9d349e9c8edfc74315c806f7a29ee173', 'yes', 'yes');
+(1, 'admin', 'd47803d04d66e6ea16fb6547427b2d019b650351', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '3ec68e71f6f5539a0823e99e5edad321', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -546,7 +549,14 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(34, '::1', 'a.mocioi@gmail.com', 1415620373);
 
 -- --------------------------------------------------------
 
@@ -622,15 +632,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `birth_date` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1268889823, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
-(8, '::1', 'horia mocioi', '$2y$08$XQ1HPeDUjHaxVbz25gXS7eVd4hbODZq5w6bKCNxKKs.BSxKpLr/pq', NULL, 'a.mocioi@gmail.com', NULL, 'CH7zpmTF74VHlodWdmJJxO8c6c0c9b8cf7bd2900', 1415448214, NULL, 1415447144, 1415448269, 1, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981');
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1415618006, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
+(8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1415620167, 1, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981'),
+(9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981'),
+(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981');
 
 -- --------------------------------------------------------
 
@@ -642,7 +654,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 `id` int(11) unsigned NOT NULL,
   `user_id` int(11) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -651,7 +663,9 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(9, 8, 2);
+(9, 8, 2),
+(10, 9, 2),
+(11, 10, 2);
 
 --
 -- Indexes for dumped tables
@@ -800,7 +814,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
@@ -860,7 +874,7 @@ MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `news`
 --
@@ -875,12 +889,12 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --

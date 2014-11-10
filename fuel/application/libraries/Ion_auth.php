@@ -515,5 +515,42 @@ class Ion_auth
 		 */
 		return $check_all;
 	}
+	
+	public function send_activation_email($id){
+			$identity        = $this->config->item('identity', 'ion_auth');
+			$user            = $this->ion_auth_model->user($id)->row();
+
+			$data = array(
+				'identity'   => $user->{$identity},
+				'id'         => $user->id,
+				'email'      => $user->email,
+				'activation' => $user->activation_code,
+			);
+			if(!$this->config->item('use_ci_email', 'ion_auth'))
+			{
+				$this->set_message('reactivation_email_successful');
+					return TRUE;
+			}
+			else
+			{
+				$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_activate', 'ion_auth'), $data, true);
+
+				$this->email->clear();
+				$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+				$this->email->to($user->email);
+				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
+				$this->email->message($message);
+
+				if ($this->email->send() == TRUE)
+				{
+					$this->set_message('reactivation_email_successful');
+					return TRUE;
+				}
+			
+			}
+			$this->set_error('reactivation_email_unsuccessful');
+			return FALSE;
+	
+	}
 
 }

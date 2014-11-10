@@ -470,6 +470,9 @@ class Ion_auth_model extends CI_Model
 				$this->set_error('activate_unsuccessful');
 				return FALSE;
 			}
+			
+			// sterg incercarile de autentificare
+			$this->clear_login_attempts($result->{$this->identity_column});
 
 			$data = array(
 			    'activation_code' => NULL,
@@ -983,7 +986,7 @@ class Ion_auth_model extends CI_Model
 		                  ->limit(1)
 		    			  ->order_by('id', 'desc')
 		                  ->get($this->tables['users']);
-
+		
 		if($this->is_time_locked_out($identity))
 		{
 			//Hash something anyway, just to take up time
@@ -1057,6 +1060,24 @@ class Ion_auth_model extends CI_Model
 		}
 		return FALSE;
 	}
+	
+	/**
+	 * is_max_login_attempts
+	 * Based on code from Tank Auth, by Ilya Konyukhov (https://github.com/ilkon/Tank-Auth)
+	 *
+	 * @param string $identity
+	 * @return boolean
+	 **/
+	public function is_max_login_attempts($identity) {
+		if ($this->config->item('track_login_attempts', 'ion_auth')) {
+			$max_attempts = $this->config->item('maximum_login_attempts', 'ion_auth');
+			if ($max_attempts > 0) {
+				$attempts = $this->get_attempts_num($identity);
+				return $attempts == $max_attempts;
+			}
+		}
+		return FALSE;
+	}
 
 	/**
 	 * Get number of attempts to login occured from given IP-address or identity
@@ -1078,14 +1099,15 @@ class Ion_auth_model extends CI_Model
         return 0;
 	}
 
+	
 	/**
 	 * Get a boolean to determine if an account should be locked out due to
 	 * exceeded login attempts within a given period
 	 *
 	 * @return	boolean
 	 */
-	public function is_time_locked_out($identity) {
-
+	public function is_time_locked_out($identity) {	
+	
 		return $this->is_max_login_attempts_exceeded($identity) && $this->get_last_attempt_time($identity) > time() - $this->config->item('lockout_time', 'ion_auth');
 	}
 
@@ -1383,6 +1405,38 @@ class Ion_auth_model extends CI_Model
 		$this->users();
 
 		return $this;
+	}
+	
+	/**
+	 * user id by identity
+	 *
+	 * @return object
+	 * @author Horia Mocioi
+	 **/
+	public function userId($identity)
+	{
+
+		if (empty($identity))
+		{
+			$this->set_error('no_identity');
+			return NULL;
+		}
+
+		$query = $this->db->select(' id, active, email, username, activation_code ')
+		                  ->where($this->identity_column, $identity)
+		                  ->limit(1)
+		    			  ->order_by('id', 'desc')
+		                  ->get($this->tables['users']);
+
+		if ($query->num_rows() === 1)
+		{
+			$user = $query->row();
+			
+			return $user;
+		}
+		
+		$this->set_error('no_user');
+		return NULL;
 	}
 
 	/**

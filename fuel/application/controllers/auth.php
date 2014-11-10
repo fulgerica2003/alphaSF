@@ -54,6 +54,7 @@
 			//validate form input
 			$this->form_validation->set_rules('identity', 'Identity', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('word', 'Captcha', 'trim|callback_check_captcha|required' );
 			
 			if ($this->form_validation->run() == true)
 			{
@@ -71,6 +72,17 @@
 				else
 				{
 					//if the login was un-successful
+					// verific daca pentru utilizator s-a atins nr maxim de autentificari nereusite si utilizatorul sa fie activ;
+					// daca a fost atins si e inca activ, dezactivez utilizatorul si trimit mail de reactivare
+					// daca nr nu a fost atins sau utilizatorul nu e activ, nu am nimic de facut
+					$identity = $this->input->post('identity');
+					$user = $this->ion_auth->userId($identity);
+					if ($user != NULL){
+						if ($this->ion_auth->is_max_login_attempts($identity) && ($user->active == 1)){
+							$this->ion_auth->deactivate($user->id);
+							$this->ion_auth->send_activation_email($user->id);
+						}
+					}
 					//redirect them back to the login page
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 					redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
@@ -92,6 +104,15 @@
 				'type' => 'password',
 				);
 				
+				$this->data['word'] = array(
+				'name'  => 'word',
+				'id'    => 'word',
+				'type'  => 'text',
+				'value' => '',
+				);
+				
+				$this->data['image']= $this->_create_captcha();
+				
 				$this->_render_page('auth/login', $this->data);
 			}
 		}
@@ -103,10 +124,10 @@
 			
 			//log the user out
 			$logout = $this->ion_auth->logout();
-			
-			//redirect them to the login page
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect('auth/login', 'refresh');
+		
+		//redirect them to the login page
+		$this->session->set_flashdata('message', $this->ion_auth->messages());
+		redirect('auth/login', 'refresh');
 		}
 		
 		//change password
@@ -914,7 +935,7 @@
 			$this->load->helper('captcha');
 			// we will set all the variables needed to create the captcha image
 			$options = array('img_path'=>'./assets/captcha/','img_url'=>'http://localhost/smith/assets/captcha/','img_width'=>'150','img_height'=>'40','expiration'=>7200,
-			'word_length' => 4, 'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
+			'word_length' => 4, 'pool' => '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
 			//now we will create the c	aptcha by using the helper function create_captcha()
 			$cap = create_captcha($options);
 			// we will store the image html code in a variable
@@ -927,15 +948,16 @@
 		
 		public function check_captcha($string)
 		{
-		if($string==$this->session->userdata('captchaword'))
-		{
-			return TRUE;
-		}
-		else
-		{
+			if($string==$this->session->userdata('captchaword'))
+			{
+				return TRUE;
+			}
+			else
+			{
 			$this->form_validation->set_message('check_captcha', 'Wrong captcha code');
 			return FALSE;
-		}
-		}
-		
-	}
+			}
+			}
+			
+			}
+						
