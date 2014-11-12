@@ -93,6 +93,7 @@ if (!empty($config['modules_allowed']))
 $config['nav']['site'] += array(
 'news' => 'News',
 'ss_cities' => 'Cities',
+'ss_suppliers' => 'Suppliers',
 );
 
 $config['languages'] = array(

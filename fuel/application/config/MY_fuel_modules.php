@@ -34,6 +34,20 @@ $config['modules']['ss_cities'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_suppliers_cat'] = array(
+  'module_name' => 'Suppliers categories',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
+$config['modules']['ss_suppliers'] = array(
+  'module_name' => 'Suppliers',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
 
 
 /*********************** OVERWRITES ************************************/

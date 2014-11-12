@@ -1,0 +1,4 @@
+Probleme Smith
+
+1. ion_auth merge pe english/romana, smith merge pe en/ro; tb unificat
+2. securizat pagini (hook sau controller, detalii aici http://adventuresincms.blogspot.ro/2014/02/creating-authentication-system-for-fuel.html)

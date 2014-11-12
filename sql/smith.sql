@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2014 at 01:56 PM
+-- Generation Time: Nov 13, 2014 at 12:40 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version` smallint(5) unsigned NOT NULL,
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=70 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=87 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -97,7 +97,23 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (66, 2, 'news', '{"id":"2","title":"Program agentii SS","slug":"majoritatea-birourilor-ss-au-program-7-zile-din-7","content":"Majoritatea birourilor SS au program 7 zile din 7\\r\\n\\r\\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae nibh magna. Sed blandit sit amet orci et vehicula. In volutpat posuere fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In quis molestie erat. Maecenas in felis vitae orci ultricies mollis. Curabitur venenatis mollis lorem et molestie. Suspendisse potenti. Duis in diam id tellus volutpat ornare sit amet quis elit. Nulla nibh metus, suscipit non finibus nec, facilisis feugiat tellus. In tincidunt ante a eros efficitur, in imperdiet urna consectetur.","publish_date":"2014-11-06","date_added":"2014-11-06 12:37:24","published":"yes","language":"ro"}', 3, '2014-11-07 07:34:02', 1),
 (67, 5, 'news', '{"id":5,"title":"E gata caseta de stiri","slug":"e-gata-caseta-de-stiri","content":"Am terminat si caseta de stiri, acum o sa fac un backup intrucat ma apuc de login cu ion_auth.","publish_date":"2014-11-07","date_added":"2014-11-07 09:59:04","published":"yes","language":"ro"}', 1, '2014-11-07 07:59:04', 1),
 (68, 6, 'news', '{"id":6,"title":"Stirea numarul 4","slug":"stirea-numarul-4","content":"Aceasta e stirea numarul 4 in limba romana. \\r\\n\\r\\nE interesant de vazut daca listarea stirilor tine cont de limita de 3 stiri.","publish_date":"2014-11-07","date_added":"2014-11-07 10:00:07","published":"yes","language":"ro"}', 1, '2014-11-07 08:00:07', 1),
-(69, 5, 'news', '{"id":"5","title":"E gata caseta de stiri","slug":"e-gata-caseta-de-stiri","content":"Am terminat si caseta de stiri, acum o sa fac un backup intrucat ma apuc de login cu ion_auth.","publish_date":"2014-11-06","date_added":"2014-11-07 09:59:04","published":"yes","language":"ro"}', 2, '2014-11-07 08:01:18', 1);
+(69, 5, 'news', '{"id":"5","title":"E gata caseta de stiri","slug":"e-gata-caseta-de-stiri","content":"Am terminat si caseta de stiri, acum o sa fac un backup intrucat ma apuc de login cu ion_auth.","publish_date":"2014-11-06","date_added":"2014-11-07 09:59:04","published":"yes","language":"ro"}', 2, '2014-11-07 08:01:18', 1),
+(71, 9, 'ss_suppliers', '{"id":"9","name":"Furnizor 1","IBAN":"RO32INGB0000999912341234","bank":"ING Bank Romania","s1":"","t1":"date","s2":"","t2":"date","s3":"","t3":"date","s4":"","t4":"date","s5":"","t5":"date","s6":"","t6":"date"}', 2, '2014-11-11 12:15:31', 1),
+(72, 9, 'ss_suppliers', '{"id":"9","name":"Furnizor 1","IBAN":"RO32INGB0000999912341234","bank":"ING Bank Romania","s1":"","t1":"","s2":"","t2":"date","s3":"","t3":"date","s4":"","t4":"date","s5":"","t5":"date","s6":"","t6":"date"}', 3, '2014-11-11 12:27:29', 1),
+(73, 10, 'ss_suppliers', '{"id":10,"name":"","IBAN":"","bank":"","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 1, '2014-11-11 12:29:53', 1),
+(74, 9, 'ss_suppliers', '{"id":"9","name":"Furnizor 1","IBAN":"RO32INGB0000999912341234","bank":"ING Bank Romania","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 4, '2014-11-11 12:31:51', 1),
+(75, 11, 'ss_suppliers', '{"id":11,"name":"Orange SA","IBAN":"IBAN Orange","bank":"BRD GSG","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 1, '2014-11-11 12:39:23', 1),
+(76, 12, 'ss_suppliers', '{"id":12,"name":"VODAFONE SA","IBAN":"IBAN Vodafone","bank":"ING Bank Romania","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 1, '2014-11-11 12:39:54', 1),
+(77, 1, 'ss_suppliers_cat', '{"id":1,"name":"Telecom"}', 1, '2014-11-11 12:50:16', 1),
+(78, 2, 'ss_suppliers_cat', '{"id":2,"name":"Utilitati"}', 1, '2014-11-11 12:50:30', 1),
+(79, 9, 'ss_suppliers', '{"id":"9","name":"Furnizor 1","IBAN":"RO32INGB0000999912341234","bank":"ING Bank Romania","id_cat":"1","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 5, '2014-11-11 13:13:13', 1),
+(80, 9, 'ss_suppliers', '{"id":"9","name":"ENEL","IBAN":"RO32INGB0000999912341234","bank":"ING Bank Romania","id_cat":"2","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 6, '2014-11-11 13:13:23', 1),
+(81, 1, 'ss_invoices', '{"id":1,"id_tx":"12321","id_user":"1","id_payment_type":"1","amount":"20000","currency":"RON","id_supplier_cat":"1","id_supplier":"1","fee":"100","total":"500","ts":"1970-01-01 02:00:00"}', 1, '2014-11-12 12:06:27', 1),
+(82, 1, 'ss_invoices', '{"id":"1","id_tx":"12321","id_user":"1","id_payment_type":"1","amount":"2000.00","currency":"RON","id_supplier_cat":"1","id_supplier":"1","fee":"100.00","total":"500.00","ts":"1970-01-01 02:00:00"}', 2, '2014-11-12 12:08:00', 1),
+(83, 3, 'ss_suppliers_cat', '{"id":3,"name":"Bancar"}', 1, '2014-11-12 13:52:27', 1),
+(84, 11, 'ss_suppliers', '{"id":"11","name":"Orange SA","IBAN":"IBAN Orange","bank":"BRD GSG","id_cat":"1","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 2, '2014-11-12 22:03:27', 1),
+(85, 12, 'ss_suppliers', '{"id":"12","name":"VODAFONE SA","IBAN":"IBAN Vodafone","bank":"ING Bank Romania","id_cat":"1","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 2, '2014-11-12 22:03:42', 1),
+(86, 13, 'ss_suppliers', '{"id":13,"name":"Libra","IBAN":"3213213","bank":"Libra","id_cat":"3","s1":"","t1":"","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 1, '2014-11-12 22:07:05', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=115 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=141 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -264,7 +280,33 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (111, '2014-11-07 12:14:37', 1, 'The cache has been cleared.', 'info'),
 (112, '2014-11-10 13:56:21', 0, 'Failed login by ''admin'' from ::1, login attempts:   1', 'debug'),
 (113, '2014-11-10 13:56:27', 1, 'Successful login by ''admin'' from ::1', 'debug'),
-(114, '2014-11-10 13:56:35', 1, 'The cache has been cleared.', 'info');
+(114, '2014-11-10 13:56:35', 1, 'The cache has been cleared.', 'info'),
+(115, '2014-11-11 14:01:56', 0, 'Failed login by ''admin'' from ::1, login attempts:   1', 'debug'),
+(116, '2014-11-11 14:02:01', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(117, '2014-11-11 14:04:39', 1, 'Suppliers item <em>Furnizor 1</em> edited', 'info'),
+(118, '2014-11-11 14:15:31', 1, 'Suppliers item <em>Furnizor 1</em> edited', 'info'),
+(119, '2014-11-11 14:27:29', 1, 'Suppliers item <em>Furnizor 1</em> edited', 'info'),
+(120, '2014-11-11 14:29:53', 1, 'Suppliers item <em>  </em> edited', 'info'),
+(121, '2014-11-11 14:30:06', 1, '1 item for <em>ss_suppliers</em> deleted', 'info'),
+(122, '2014-11-11 14:31:51', 1, 'Suppliers item <em>Furnizor 1</em> edited', 'info'),
+(123, '2014-11-11 14:39:24', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
+(124, '2014-11-11 14:39:54', 1, 'Suppliers item <em>VODAFONE SA</em> edited', 'info'),
+(125, '2014-11-11 14:50:17', 1, 'Suppliers categories item <em>Telecom</em> edited', 'info'),
+(126, '2014-11-11 14:50:30', 1, 'Suppliers categories item <em>Utilitati</em> edited', 'info'),
+(127, '2014-11-11 15:13:13', 1, 'Suppliers item <em>Furnizor 1</em> edited', 'info'),
+(128, '2014-11-11 15:13:23', 1, 'Suppliers item <em>ENEL</em> edited', 'info'),
+(129, '2014-11-11 18:07:50', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(130, '2014-11-12 14:05:19', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(131, '2014-11-12 14:06:27', 1, 'Invoices item <em>12321</em> edited', 'info'),
+(132, '2014-11-12 14:08:00', 1, 'Invoices item <em>12321</em> edited', 'info'),
+(133, '2014-11-12 15:52:27', 1, 'Suppliers categories item <em>Bancar</em> edited', 'info'),
+(134, '2014-11-12 18:23:09', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(135, '2014-11-12 22:18:19', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(136, '2014-11-13 00:02:38', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(137, '2014-11-13 00:02:54', 1, 'Suppliers item <em>ENEL</em> edited', 'info'),
+(138, '2014-11-13 00:03:28', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
+(139, '2014-11-13 00:03:42', 1, 'Suppliers item <em>VODAFONE SA</em> edited', 'info'),
+(140, '2014-11-13 00:07:05', 1, 'Suppliers item <em>Libra</em> edited', 'info');
 
 -- --------------------------------------------------------
 
@@ -516,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'd47803d04d66e6ea16fb6547427b2d019b650351', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '3ec68e71f6f5539a0823e99e5edad321', 'yes', 'yes');
+(1, 'admin', '3e5eaeb301e5aa8621d2ed7e0bc7420cd6229322', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'fe13a1ec86524d515d7347de826a6a5b', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -549,14 +591,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(34, '::1', 'a.mocioi@gmail.com', 1415620373);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 -- --------------------------------------------------------
 
@@ -610,6 +645,96 @@ INSERT INTO `ss_cities` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ss_invoices`
+--
+
+CREATE TABLE IF NOT EXISTS `ss_invoices` (
+`id` int(10) unsigned NOT NULL,
+  `id_tx` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_payment_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `amount` decimal(7,2) NOT NULL,
+  `currency` varchar(3) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id_supplier_cat` tinyint(3) NOT NULL,
+  `id_supplier` int(10) NOT NULL,
+  `fee` decimal(7,2) NOT NULL,
+  `total` decimal(7,2) NOT NULL,
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `ss_invoices`
+--
+
+INSERT INTO `ss_invoices` (`id`, `id_tx`, `id_user`, `id_payment_type`, `amount`, `currency`, `id_supplier_cat`, `id_supplier`, `fee`, `total`, `date_added`) VALUES
+(11, '#F5463655046d71', 8, 'card', '2000.00', 'RON', 2, 2, '100.00', '500.00', '2014-11-12 13:49:04'),
+(12, '#F54638db526f89', 8, 'card', '0.00', 'RON', 3, 0, '100.00', '500.00', '2014-11-12 16:41:25'),
+(13, '#F54638eb41f4d0', 8, 'card', '0.00', 'RON', 3, 0, '100.00', '500.00', '2014-11-12 16:45:40'),
+(14, '#F5463939d6d293', 8, 'card', '0.00', 'RON', 3, 0, '100.00', '500.00', '2014-11-12 17:06:37'),
+(15, '#F5463b1db3dcf1', 8, 'cont', '2000.00', 'RON', 3, 1, '100.00', '500.00', '2014-11-12 19:15:39'),
+(16, '#F5463b56c9d4e6', 8, 'card', '0.00', 'RON', 3, 0, '100.00', '500.00', '2014-11-12 19:30:52'),
+(17, '#F5463db0f7fbd4', 8, 'card', '2000.00', 'RON', 3, 13, '100.00', '500.00', '2014-11-12 22:11:27'),
+(18, '#F5463db6cec4e1', 8, 'card', '150.00', 'RON', 1, 11, '100.00', '500.00', '2014-11-12 22:13:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ss_suppliers`
+--
+
+CREATE TABLE IF NOT EXISTS `ss_suppliers` (
+`id` int(10) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `IBAN` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `bank` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id_cat` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `s1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t1` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `s2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t2` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `s3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t3` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `s4` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t4` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `s5` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t5` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `s6` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `t6` enum('','date','numeric','text','alphanumeric','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `ss_suppliers`
+--
+
+INSERT INTO `ss_suppliers` (`id`, `name`, `IBAN`, `bank`, `id_cat`, `s1`, `t1`, `s2`, `t2`, `s3`, `t3`, `s4`, `t4`, `s5`, `t5`, `s6`, `t6`) VALUES
+(9, 'ENEL', 'RO32INGB0000999912341234', 'ING Bank Romania', 2, '', '', '', '', '', '', '', '', '', '', '', ''),
+(11, 'Orange SA', 'IBAN Orange', 'BRD GSG', 1, '', '', '', '', '', '', '', '', '', '', '', ''),
+(12, 'VODAFONE SA', 'IBAN Vodafone', 'ING Bank Romania', 1, '', '', '', '', '', '', '', '', '', '', '', ''),
+(13, 'Libra', '3213213', 'Libra', 3, '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ss_suppliers_cat`
+--
+
+CREATE TABLE IF NOT EXISTS `ss_suppliers_cat` (
+`id` tinyint(3) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `ss_suppliers_cat`
+--
+
+INSERT INTO `ss_suppliers_cat` (`id`, `name`) VALUES
+(1, 'Telecom'),
+(2, 'Utilitati'),
+(3, 'Bancar');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -632,7 +757,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `birth_date` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `users`
@@ -640,9 +765,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`) VALUES
 (1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1415618006, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
-(8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1415620167, 1, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981'),
+(8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1415621775, 1, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981'),
 (9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981'),
-(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981');
+(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981'),
+(11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981');
 
 -- --------------------------------------------------------
 
@@ -654,7 +780,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 `id` int(11) unsigned NOT NULL,
   `user_id` int(11) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -665,7 +791,8 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (2, 1, 2),
 (9, 8, 2),
 (10, 9, 2),
-(11, 10, 2);
+(11, 10, 2),
+(12, 11, 2);
 
 --
 -- Indexes for dumped tables
@@ -780,6 +907,24 @@ ALTER TABLE `ss_cities`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ss_invoices`
+--
+ALTER TABLE `ss_invoices`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ss_suppliers`
+--
+ALTER TABLE `ss_suppliers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ss_suppliers_cat`
+--
+ALTER TABLE `ss_suppliers_cat`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -799,7 +944,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `fuel_archives`
 --
 ALTER TABLE `fuel_archives`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `fuel_blocks`
 --
@@ -814,7 +959,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=141;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
@@ -874,7 +1019,7 @@ MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `news`
 --
@@ -886,15 +1031,30 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 ALTER TABLE `ss_cities`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
+-- AUTO_INCREMENT for table `ss_invoices`
+--
+ALTER TABLE `ss_invoices`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `ss_suppliers`
+--
+ALTER TABLE `ss_suppliers`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `ss_suppliers_cat`
+--
+ALTER TABLE `ss_suppliers_cat`
+MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
