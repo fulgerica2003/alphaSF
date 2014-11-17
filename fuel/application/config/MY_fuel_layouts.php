@@ -75,7 +75,7 @@ $sshomepage->add_field('Slider', array('type' => 'fieldset', 'label' => 'Slider'
 $sshomepage->add_field('sections', array('display_label' => TRUE, 'add_extra' => FALSE, 'dblclick' => 'toggle', 'repeatable' => TRUE, 'type' => 'template', 'label' => 'Slides', 'title_field' => 'title',
                                 'fields' => array(
                                   'section' => array('type' => 'section', 'label' => 'Slide'),
-                                  'slide_title' => array('label' => 'Slider title'),
+                                  'slide_title' => array('label' => 'Slider title',),
 								  'banner_img' => array('label' => 'Slider image', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'slides', 'hide_options' => true, 'overwrite' => false),
 								  'button_title' => array('label' => 'Button title'),
 								  'button_url' => array('label' => 'Button URL'),

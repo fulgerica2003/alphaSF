@@ -27,6 +27,7 @@
 		function __construct()
 		{
 			parent::__construct('ss_invoices'); // table name
+			$this->load->model('ss_messages_model');
 		}
 		
 		function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
@@ -59,6 +60,34 @@
 			
 			// remove if no precedence column is provided
 			$this->db->order_by('precedence asc');
+		}
+		
+		function save_invoice($values = array()){
+			
+			$invoice = $this->create();
+			
+			$invoice->unid = $values['unid'];
+			$invoice->id_user = $values['id_user'];
+			$invoice->id_payment_type = $values['id_payment_type'];
+			$invoice->amount = $values['amount'];
+			$invoice->currency = $values['currency'];
+			$invoice->id_supplier_cat = $values['id_supplier_cat'];
+			$invoice->id_supplier = $values['id_supplier'];
+			$invoice->fee = $values['fee'];
+			$invoice->total = $values['total'];
+			$invoice->status = $values['status'];
+			
+			$invoice->save();
+			
+			$message = $this->ss_messages_model->create();
+			$message->unid = $values['unid'];
+			$message->id_user = $values['id_user'];
+			$message->id_tx = $invoice->id;
+			$message->tx_type = 'invo';
+			$message->message = 'invoice '.$values['unid']. ' successfully added';
+			$message->save();
+			
+			
 		}
 		
 	}
