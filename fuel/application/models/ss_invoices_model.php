@@ -30,7 +30,7 @@
 			$this->load->model('ss_messages_model');
 		}
 		
-		function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
+		function list_items($limit = NULL, $offset = NULL, $col = 'date_added', $order = 'desc', $just_count = FALSE)
 		{
 			$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 			return $data;
@@ -59,7 +59,7 @@
 			parent::_common_query();
 			
 			// remove if no precedence column is provided
-			$this->db->order_by('precedence asc');
+			// $this->db->order_by('precedence asc');
 		}
 		
 		function save_invoice($values = array()){
@@ -85,9 +85,30 @@
 			$message->id_tx = $invoice->id;
 			$message->tx_type = 'invo';
 			$message->message = 'invoice '.$values['unid']. ' successfully added';
-			$message->save();
+			$message->save();		
+		}
+		
+		function invoices($id_user){
+			$where['select'] = 'ss_invoices.id, unid, amount, id_supplier, date_added, status, ss_suppliers.name, currency';
+			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
+			$where['where'] = array('id_user' => $id_user);
+			$where['order_by'] = 'date_added desc';
 			
-			
+			$query = $this->query($where);
+
+			return $query;
+		}
+		
+		function invoice($id){
+			$where['select'] = 'unid, amount, id_supplier, date_added, status, currency, fee, total, id_payment_type, ss_suppliers.name';
+			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
+			$where['where'] = array('ss_invoices.id' => $id);
+			$where['order_by'] = 'date_added desc';
+			$where['limit'] = 1;
+			 
+			$query = $this->query($where);
+
+			return $query;
 		}
 		
 	}

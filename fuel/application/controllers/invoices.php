@@ -1,14 +1,17 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 	class Invoices extends CI_Controller
 	{
 		// TODO de introdus etichetele de limba
-		// TODO seralizare custom_fields sau salvare in tabela separata (tip, eticheta, valoare, unid, id), de vazut de ce nu incarca date_picker, implementare buton back intre details_form si main_form
-		// TODO id user autentificat, tx type in mesaj
+		// TODO serializare custom_fields sau salvare in tabela separata (tip, eticheta, valoare, unid, id), de vazut de ce nu incarca date_picker, implementare buton back intre details_form si main_form
+		// TODO id user autentificat + email, tx type in message
 		// TODO de calculat corect comision
 		// TODO posibil de nevoie schimbare uri_segment(3)
 		
 		public $main_form;
 		public $details_form;
+		
+		// TODO aici tb sa fie adresa utilizatorului autentificat
+		private $user_email = 'a@b.c';
 		
 		function __construct(){
 			parent::__construct();
@@ -18,10 +21,32 @@
 			$this->load->library('session');
 		}
 		
-		public function index(){
-			// aici listez toate invoices cu mesajele aferente, pt utilizatorul curent
+		/**** afisez toate facturile
+		*/
+		function index(){
+			// id utilizator autentificat
+			$user_id = '8';
+			//afisez lista de facturi pentru utilizatorul autentificat
+			$this->data['invoices'] = $this->ss_invoices_model->invoices($user_id)->result();
+				
+			$this->_render_page('invoices/index', $this->data);
 		}
 		
+		/**** afisez o singura factura
+		*/
+		function view($id){
+			//afisez lista de facturi pentru utilizatorul autentificat
+			$results =  $this->ss_invoices_model->invoice($id)->result();
+			if ((count($results)) >= 1 ){
+				$this->data['invoice'] = $results[0];
+			}
+				
+			$this->_render_page('invoices/view', $this->data);
+		}
+		
+		/**** reprezinta pasul 1 din adaugarea unei facturi
+		*** afisez form-ul de introducere a datelor unei facturi
+		*/
 		public function newInvoice(){
 			/*jquery */
 			echo jquery('1.11.1');
@@ -116,7 +141,6 @@
 			if($this->form_validation->run() == FALSE) {
 				// am picat validarea si adaug erorile
 				if($this->input->post('next')){
-					$this->printArray($_POST);
 					foreach($this->main_form['fields'] as $key => $value){
 						$this->main_form['fields'][$key]['value'] = $this->input->post($key);
 						$this->main_form['fields'][$key]['after_html'] = form_error($key);
@@ -131,6 +155,9 @@
 			}
 		}
 		
+		/**** reprezinta pasul 2 din adaugarea unei facturi
+		*** detaliile privind factura: campurile introduse la pasul 1 (doar afisate), campurile custom in functie de furnizor si checkbox confirmare
+		*/
 		public function details(){
 			echo jquery('1.11.1');
 			
@@ -189,7 +216,10 @@
 			
 		}	
 		
-		public function save(){
+		/**** generez unid-ul, afisez mesajul si trimit email
+		*** salvarea mesajului in istoric se face odata cu salvarea facturii in model
+		*/
+		private function save(){
 			
 			$unid = uniqid('#F');
 			
@@ -206,10 +236,21 @@
 			
 			$this->ss_invoices_model->save_invoice($values);
 						
+			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
 			echo 'invoice '.$unid. ' successfully added';
+			
+			send_tx_email(array('unid' => $unid,
+				'receiver' => $this->user_email,
+				'sender' => $this->fuel->config('from_email'),
+				// TODO $this->lang->line incarca in acest moment din language/english
+				'subject' => $this->lang->line('fact_eml011_sb'),
+				'message' => $this->lang->line('fact_eml011_cont'),
+			));
 		}
 		
-		public function get_main_form_values(){
+		/**** pun pe sesiune datele din form-ul de pasul 1 ca sa le pot accesa si la pasul 2
+		*/
+		private function get_main_form_values(){
 			
 			$unid = uniqid('#F');
 			
@@ -229,15 +270,8 @@
 			
 		}
 		
-		function printArray($array, $pad=' '){
-			foreach ($array as $key => $value){
-				echo $pad . "$key => $value";
-				if(is_array($value)){
-					printArray($value, $pad.' ');
-				}  
-			} 
-		}
-		
+		/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
+		*/
 		public function suppliers_by_cat(){
 			$cat = intval(uri_segment(3));
 			$supp = intval(uri_segment(4));
@@ -251,6 +285,8 @@
 			echo $str;
 		}
 		
+		/**** afisez campurile custom ale unui furnizor
+		*/
 		private function supplier_id_fields($id_supplier){
 			$this->load->model('ss_suppliers_model');
 			
@@ -274,6 +310,8 @@
 			}
 		}
 		
+		/**** adaug un camp la form
+		*/
 		private function add_field($label_val, $type_val){
 			
 			$field_name = str_replace(" ", "_", strtolower ($label_val));
@@ -283,6 +321,8 @@
 			}
 		}
 		
+		/**** calcul comision si total; se apeleaza prin jquery
+		*/
 		public function compute(){
 			$amount = floatval(uri_segment(3));
 			$fee = 0.01 * $amount;
@@ -292,4 +332,14 @@
 			echo json_encode( array( "fee"=>$html_fee,"total"=>$html_total ) );
 		}
 		
+		/**** randez $view
+		*/
+		private function _render_page($view, $data=null, $render=false){
+			
+			$this->viewdata = (empty($data)) ? $this->data: $data;
+			
+			$view_html = $this->load->view($view, $this->viewdata, $render);
+			
+			if (!$render) return $view_html;
+		}
 	}						

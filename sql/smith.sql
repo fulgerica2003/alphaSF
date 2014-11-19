@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2014 at 06:20 PM
+-- Generation Time: Nov 19, 2014 at 11:22 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=149 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=153 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -319,7 +319,11 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (145, '2014-11-13 13:37:07', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
 (146, '2014-11-13 14:07:33', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
 (147, '2014-11-13 14:07:53', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
-(148, '2014-11-13 15:21:14', 1, 'Suppliers item <em>VODAFONE SA</em> edited', 'info');
+(148, '2014-11-13 15:21:14', 1, 'Suppliers item <em>VODAFONE SA</em> edited', 'info'),
+(149, '2014-11-18 23:38:46', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(150, '2014-11-18 23:40:33', 1, 'Site Variables item <em>email_from</em> edited', 'info'),
+(151, '2014-11-19 10:02:56', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(152, '2014-11-19 10:03:01', 1, '1 item for <em>sitevariables</em> deleted', 'info');
 
 -- --------------------------------------------------------
 
@@ -517,7 +521,7 @@ CREATE TABLE IF NOT EXISTS `fuel_site_variables` (
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   `scope` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'leave blank if you want the variable to be available to all pages',
   `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `fuel_site_variables`
@@ -571,7 +575,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'c74ed8c2b32477c1234226c6836cc3a9ae664d83', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '3f8e64e229d3e4baf7d1a8997778d60a', 'yes', 'yes');
+(1, 'admin', 'a4e791ddd2475c3507a861004657473e33f1ddd3', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '435b52a125a39c0964b641df3f471d73', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -604,7 +608,14 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', 'admin', 1416261493);
 
 -- --------------------------------------------------------
 
@@ -674,7 +685,7 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
   `total` decimal(7,2) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(3) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=79 ;
 
 --
 -- Dumping data for table `ss_invoices`
@@ -690,7 +701,29 @@ INSERT INTO `ss_invoices` (`id`, `unid`, `id_user`, `id_payment_type`, `amount`,
 (53, '#F5469ec8917896', 8, 'card', '100.00', 'RON', 1, 12, '1.00', '101.00', '2014-11-17 12:39:37', 0),
 (54, '#F546a0e86ab227', 8, 'card', '1000.00', 'RON', 1, 12, '10.00', '1010.00', '2014-11-17 15:04:38', 0),
 (55, '#F546a1da8b08f7', 8, 'card', '100.00', 'RON', 1, 12, '1.00', '101.00', '2014-11-17 16:09:12', 0),
-(56, '#F546a1e1d497db', 8, 'card', '100.00', 'RON', 1, 11, '1.00', '101.00', '2014-11-17 16:11:09', 1);
+(56, '#F546a1e1d497db', 8, 'card', '100.00', 'RON', 1, 11, '1.00', '101.00', '2014-11-17 16:11:09', 1),
+(57, '#F546b6265438ff', 8, 'cont', '120.00', 'RON', 1, 12, '1.20', '121.20', '2014-11-18 15:14:45', 1),
+(58, '#F546b633c7033a', 8, 'card', '32131.00', 'RON', 1, 12, '321.31', '32452.31', '2014-11-18 15:18:20', 1),
+(59, '#F546bba9dad26d', 8, 'card', '123.00', 'RON', 1, 11, '1.23', '124.23', '2014-11-18 21:31:09', 1),
+(60, '#F546bbe9224253', 8, 'card', '111.00', 'RON', 3, 13, '1.11', '112.11', '2014-11-18 21:48:02', 1),
+(61, '#F546bbf1c9d4b5', 8, 'card', '111.00', 'RON', 3, 13, '1.11', '112.11', '2014-11-18 21:50:20', 1),
+(62, '#F546bbf4fd6c6e', 8, 'card', '111.00', 'RON', 3, 13, '1.11', '112.11', '2014-11-18 21:51:11', 1),
+(63, '#F546bc82ddcd16', 8, 'card', '123.00', 'RON', 3, 13, '1.23', '124.23', '2014-11-18 22:29:01', 1),
+(64, '#F546bc8630ab4e', 8, 'card', '123.00', 'RON', 3, 13, '1.23', '124.23', '2014-11-18 22:29:55', 1),
+(65, '#F546bc880617cc', 8, 'card', '543.00', 'RON', 3, 13, '5.43', '548.43', '2014-11-18 22:30:24', 1),
+(66, '#F546bc971056f5', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:34:25', 1),
+(67, '#F546bc9aab8e7c', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:35:22', 1),
+(68, '#F546bc9f819d10', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:36:40', 1),
+(69, '#F546bca6d29282', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:38:37', 1),
+(70, '#F546bcbdf5af0c', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:44:47', 1),
+(71, '#F546bcdc8885ea', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-18 22:52:56', 1),
+(72, '#F546c4c31cdbc8', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 07:52:17', 1),
+(73, '#F546c4c6da9c69', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 07:53:17', 1),
+(74, '#F546c4d79cf742', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 07:57:45', 1),
+(75, '#F546c4fd929977', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 08:07:53', 1),
+(76, '#F546c519d7a49f', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 08:15:25', 1),
+(77, '#F546c51ba2719e', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 08:15:54', 1),
+(78, '#F546c55456a796', 8, 'card', '3213.00', 'RON', 3, 13, '32.13', '3245.13', '2014-11-19 08:31:01', 1);
 
 -- --------------------------------------------------------
 
@@ -706,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `ss_messages` (
   `tx_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `ss_messages`
@@ -742,7 +775,29 @@ INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message
 (27, 53, '#F5469ec8917896', 8, 'invo', 'invoice #F5469ec8917896 successfully added', '2014-11-17 12:39:37'),
 (28, 54, '#F546a0e86ab227', 8, 'invo', 'invoice #F546a0e86ab227 successfully added', '2014-11-17 15:04:38'),
 (29, 55, '#F546a1da8b08f7', 8, 'invo', 'invoice #F546a1da8b08f7 successfully added', '2014-11-17 16:09:12'),
-(30, 56, '#F546a1e1d497db', 8, 'invo', 'invoice #F546a1e1d497db successfully added', '2014-11-17 16:11:09');
+(30, 56, '#F546a1e1d497db', 8, 'invo', 'invoice #F546a1e1d497db successfully added', '2014-11-17 16:11:09'),
+(31, 57, '#F546b6265438ff', 8, 'invo', 'invoice #F546b6265438ff successfully added', '2014-11-18 15:14:45'),
+(32, 58, '#F546b633c7033a', 8, 'invo', 'invoice #F546b633c7033a successfully added', '2014-11-18 15:18:20'),
+(33, 59, '#F546bba9dad26d', 8, 'invo', 'invoice #F546bba9dad26d successfully added', '2014-11-18 21:31:09'),
+(34, 60, '#F546bbe9224253', 8, 'invo', 'invoice #F546bbe9224253 successfully added', '2014-11-18 21:48:02'),
+(35, 61, '#F546bbf1c9d4b5', 8, 'invo', 'invoice #F546bbf1c9d4b5 successfully added', '2014-11-18 21:50:20'),
+(36, 62, '#F546bbf4fd6c6e', 8, 'invo', 'invoice #F546bbf4fd6c6e successfully added', '2014-11-18 21:51:12'),
+(37, 63, '#F546bc82ddcd16', 8, 'invo', 'invoice #F546bc82ddcd16 successfully added', '2014-11-18 22:29:02'),
+(38, 64, '#F546bc8630ab4e', 8, 'invo', 'invoice #F546bc8630ab4e successfully added', '2014-11-18 22:29:55'),
+(39, 65, '#F546bc880617cc', 8, 'invo', 'invoice #F546bc880617cc successfully added', '2014-11-18 22:30:24'),
+(40, 66, '#F546bc971056f5', 8, 'invo', 'invoice #F546bc971056f5 successfully added', '2014-11-18 22:34:25'),
+(41, 67, '#F546bc9aab8e7c', 8, 'invo', 'invoice #F546bc9aab8e7c successfully added', '2014-11-18 22:35:22'),
+(42, 68, '#F546bc9f819d10', 8, 'invo', 'invoice #F546bc9f819d10 successfully added', '2014-11-18 22:36:40'),
+(43, 69, '#F546bca6d29282', 8, 'invo', 'invoice #F546bca6d29282 successfully added', '2014-11-18 22:38:37'),
+(44, 70, '#F546bcbdf5af0c', 8, 'invo', 'invoice #F546bcbdf5af0c successfully added', '2014-11-18 22:44:47'),
+(45, 71, '#F546bcdc8885ea', 8, 'invo', 'invoice #F546bcdc8885ea successfully added', '2014-11-18 22:52:56'),
+(46, 72, '#F546c4c31cdbc8', 8, 'invo', 'invoice #F546c4c31cdbc8 successfully added', '2014-11-19 07:52:17'),
+(47, 73, '#F546c4c6da9c69', 8, 'invo', 'invoice #F546c4c6da9c69 successfully added', '2014-11-19 07:53:17'),
+(48, 74, '#F546c4d79cf742', 8, 'invo', 'invoice #F546c4d79cf742 successfully added', '2014-11-19 07:57:45'),
+(49, 75, '#F546c4fd929977', 8, 'invo', 'invoice #F546c4fd929977 successfully added', '2014-11-19 08:07:53'),
+(50, 76, '#F546c519d7a49f', 8, 'invo', 'invoice #F546c519d7a49f successfully added', '2014-11-19 08:15:25'),
+(51, 77, '#F546c51ba2719e', 8, 'invo', 'invoice #F546c51ba2719e successfully added', '2014-11-19 08:15:54'),
+(52, 78, '#F546c55456a796', 8, 'invo', 'invoice #F546c55456a796 successfully added', '2014-11-19 08:31:01');
 
 -- --------------------------------------------------------
 
@@ -832,7 +887,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1415618006, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1416261507, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
 (8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1415621775, 1, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981'),
 (9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981'),
 (10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981'),
@@ -1033,7 +1088,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=149;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=153;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
@@ -1073,7 +1128,7 @@ MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_site_variables`
 --
 ALTER TABLE `fuel_site_variables`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `fuel_tags`
 --
@@ -1093,7 +1148,7 @@ MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `news`
 --
@@ -1108,12 +1163,12 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 -- AUTO_INCREMENT for table `ss_invoices`
 --
 ALTER TABLE `ss_invoices`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `ss_messages`
 --
 ALTER TABLE `ss_messages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `ss_suppliers`
 --

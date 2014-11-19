@@ -29,7 +29,7 @@ class Ss_messages_model extends Base_module_model {
 		parent::__construct('ss_messages'); // table name
 	}
 
-	function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
+	function list_items($limit = NULL, $offset = NULL, $col = 'date_added', $order = 'desc', $just_count = FALSE)
 	{
 		$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 		return $data;
@@ -58,7 +58,7 @@ class Ss_messages_model extends Base_module_model {
 		parent::_common_query();
 
 		// remove if no precedence column is provided
-		$this->db->order_by('precedence asc');
+		// $this->db->order_by('precedence asc');
 	}
 
 }
