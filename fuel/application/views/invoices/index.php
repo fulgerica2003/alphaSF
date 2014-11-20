@@ -23,4 +23,4 @@
 	<?php endforeach;?>
 </table>
 
-<p><?php echo anchor('invoices/newInvoice', 'Factura noua')?></p>
+<p><?php echo anchor('invoices/add', 'Factura noua')?></p>

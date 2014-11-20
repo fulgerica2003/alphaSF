@@ -2,11 +2,11 @@
 	
 	require_once(FUEL_PATH.'models/base_module_model.php');
 	
-	class Ss_invoices_model extends Base_module_model {
+	class Ss_payments_model extends Base_module_model {
 		
 		// read more about models in the user guide to get a list of all properties. Below is a subset of the most common:
 		
-		public $record_class = 'Ss_invoice'; // the name of the record class (if it can't be determined)
+		public $record_class = 'Ss_payment'; // the name of the record class (if it can't be determined)
 		public $filters = array(); // filters to apply to when searching for items
 		public $required = array(); // an array of required fields. If a key => val is provided, the key is name of the field and the value is the error message to display
 		public $foreign_keys = array(); // map foreign keys to table models
@@ -26,11 +26,10 @@
 		
 		function __construct()
 		{
-			parent::__construct('ss_invoices'); // table name
-			$this->load->model('ss_messages_model');
+			parent::__construct('ss_payments'); // table name
 		}
 		
-		function list_items($limit = NULL, $offset = NULL, $col = 'date_added', $order = 'desc', $just_count = FALSE)
+		function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
 		{
 			$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 			return $data;
@@ -59,71 +58,46 @@
 			parent::_common_query();
 			
 			// remove if no precedence column is provided
-			// $this->db->order_by('precedence asc');
+			//$this->db->order_by('precedence asc');
 		}
 		
-		function save_invoice($values = array()){
+		function save_payment($values = array()){
 			
-			$invoice = $this->create();
+			$payment = $this->create();
 			
-			$invoice->unid = $values['unid'];
-			$invoice->id_user = $values['id_user'];
-			$invoice->id_payment_type = $values['id_payment_type'];
-			$invoice->amount = $values['amount'];
-			$invoice->currency = $values['currency'];
-			$invoice->id_supplier_cat = $values['id_supplier_cat'];
-			$invoice->id_supplier = $values['id_supplier'];
-			$invoice->fee = $values['fee'];
-			$invoice->total = $values['total'];
-			$invoice->status = $values['status'];
+			$payment->unid = $values['unid'];
+			$payment->id_user = $values['id_user'];
+			$payment->id_payment_type = $values['id_payment_type'];
+			$payment->amount = $values['amount'];
+			$payment->currency = $values['currency'];
+			$payment->id_ben_payment_method = $values['id_payment_method'];
+			$payment->id_ben_city = $values['ben_city'];
+			$payment->ben_address = $values['ben_address'];
+			$payment->ben_name = $values['ben_name'];
+			$payment->ben_surname = $values['ben_surname'];
+			$payment->ben_phone = $values['ben_phone'];
+			$payment->ben_email = $values['ben_email'];
+			$payment->ben_iban = $values['ben_iban'];
+			$payment->fee = $values['fee'];
+			$payment->total = $values['total'];
+			$payment->status = $values['status'];
 			
-			// custom fields
-			array_key_exists('s1', $values) ? $invoice->s1 = $values['s1'] : $invoice->s1 = null;
-			array_key_exists('s2', $values) ? $invoice->s2 = $values['s2'] : $invoice->s2 = null;
-			array_key_exists('s3', $values) ? $invoice->s3 = $values['s3'] : $invoice->s3 = null;
-			array_key_exists('s4', $values) ? $invoice->s4 = $values['s4'] : $invoice->s4 = null;
-			array_key_exists('s5', $values) ? $invoice->s5 = $values['s5'] : $invoice->s5 = null;
-			array_key_exists('s6', $values) ? $invoice->s6 = $values['s6'] : $invoice->s6 = null;
+			printArray($values);
 			
-			$invoice->save();
+			$payment->save();
 			
 			$message = $this->ss_messages_model->create();
 			$message->unid = $values['unid'];
 			$message->id_user = $values['id_user'];
-			$message->id_tx = $invoice->id;
-			$message->tx_type = 'invo';
-			$message->message = 'invoice '.$values['unid']. ' successfully added';
+			$message->id_tx = $payment->id;
+			$message->tx_type = 'pay';
+			$message->message = 'payment '.$values['unid']. ' successfully added';
 			$message->save();		
-		}
-		
-		function invoices($id_user){
-			$where['select'] = 'ss_invoices.id, unid, amount, id_supplier, date_added, status, ss_suppliers.name, currency';
-			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
-			$where['where'] = array('id_user' => $id_user);
-			$where['order_by'] = 'date_added desc';
-			
-			$query = $this->query($where);
-
-			return $query;
-		}
-		
-		function invoice($id){
-			$where['select'] = 'unid, amount, id_supplier, date_added, status, currency, fee, total, id_payment_type,
-			ss_invoices.s1, ss_invoices.s2, ss_invoices.s3, ss_invoices.s4, ss_invoices.s5, ss_invoices.s6,
-			ss_suppliers.name';
-			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
-			$where['where'] = array('ss_invoices.id' => $id);
-			$where['order_by'] = 'date_added desc';
-			$where['limit'] = 1;
-			 
-			$query = $this->query($where);
-
-			return $query;
 		}
 		
 	}
 	
-	class Ss_invoice_model extends Base_module_record {
+	class Ss_payment_model extends Base_module_record {
 		
 		// put your record model code here
 	}	

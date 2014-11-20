@@ -131,7 +131,7 @@ finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smit
 telefon +4.021.331.8000 pentru clarificarea situatiei.';
 $lang['calc_msg009'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va rugam
-comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {Nume Prenume}.';
+comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
 $lang['calc_msg009'] = 'Tranzactia dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
 dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
@@ -173,11 +173,11 @@ cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith l
 $lang['calc_eml005pin_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml005pin_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va
-rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {Nume Prenume}.';
+rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
 $lang['calc_eml005_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml005_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith si urmeaza sa fie transferata in contul beneficiarului,
-Dl./D-na. {Nume Prenume}.';
+Dl./D-na. %s.';
 $lang['calc_eml006_sb'] = '%s: Diferenta suma transmisa';
 $lang['calc_eml006_cont'] = 'Tranzactia dumneavoastra cu referinta %s a fost receptionata
 in contul Smith & Smith, dar suma transferata este diferita de suma ordonata de

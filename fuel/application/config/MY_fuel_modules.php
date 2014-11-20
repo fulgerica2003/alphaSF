@@ -48,6 +48,13 @@ $config['modules']['ss_suppliers'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_payment_methods'] = array(
+  'module_name' => 'Payment methods',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
 
 
 /*********************** OVERWRITES ************************************/

@@ -95,6 +95,7 @@ $config['nav']['site'] += array(
 'news' => 'News',
 'ss_cities' => 'Cities',
 'ss_suppliers' => 'Suppliers',
+'ss_payment_methods' => 'Payment methods',
 );
 
 $config['languages'] = array(

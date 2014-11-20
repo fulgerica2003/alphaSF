@@ -35,6 +35,12 @@
 		<td>Total</td>
 		<td><?php echo htmlspecialchars($invoice->total,ENT_QUOTES,'UTF-8');?></td>
 	</tr>
+	<?php foreach ($custom_fields as $key => $value){?>
+		<tr>
+			<td><?php echo $key;?></td>
+			<td><?php echo $value;?></td>
+		</tr>
+	<?php }?>
 	<tr>
 		<td>Alte campuri</td>
 		<td>TODO: valoare</td>
