@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2014 at 12:46 AM
+-- Generation Time: Nov 21, 2014 at 10:46 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version` smallint(5) unsigned NOT NULL,
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=107 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=109 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -132,7 +132,9 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (103, 6, 'ss_payment_methods', '{"id":"6","name":"In Cont LEI Romania","language":"ro"}', 2, '2014-11-19 21:50:51', 1),
 (104, 2, 'ss_payment_methods', '{"id":"2","name":"Numerar la Banca Comerciala Romana","language":"ro"}', 2, '2014-11-19 21:51:00', 1),
 (105, 12, 'ss_suppliers', '{"id":"12","name":"VODAFONE SA","IBAN":"IBAN Vodafone","bank":"ING Bank Romania","id_cat":"1","s1":"ro: Cod client | en: Client code","t1":"text","s2":"","t2":"","s3":"","t3":"","s4":"","t4":"","s5":"","t5":"","s6":"","t6":""}', 4, '2014-11-20 12:47:48', 1),
-(106, 11, 'ss_suppliers', '{"id":"11","name":"Orange SA","IBAN":"IBAN Orange","bank":"BRD GSG","id_cat":"1","s1":"ro: Cod client | en: Client code","t1":"text","s2":"ro: Data factura| en: Invoice date","t2":"date","s3":"ro: Camp 3 numeric ro | en: Camp 3 numeric en","t3":"","s4":"ro: Camp 4 textarea ro | en: Camp 4 textarea en","t4":"textarea","s5":"ro: Camp 5 text ro | en: Camp 5 text en","t5":"text","s6":"ro: Camp 6 date ro | en: Camp 6 date en","t6":"date"}', 7, '2014-11-20 13:22:07', 1);
+(106, 11, 'ss_suppliers', '{"id":"11","name":"Orange SA","IBAN":"IBAN Orange","bank":"BRD GSG","id_cat":"1","s1":"ro: Cod client | en: Client code","t1":"text","s2":"ro: Data factura| en: Invoice date","t2":"date","s3":"ro: Camp 3 numeric ro | en: Camp 3 numeric en","t3":"","s4":"ro: Camp 4 textarea ro | en: Camp 4 textarea en","t4":"textarea","s5":"ro: Camp 5 text ro | en: Camp 5 text en","t5":"text","s6":"ro: Camp 6 date ro | en: Camp 6 date en","t6":"date"}', 7, '2014-11-20 13:22:07', 1),
+(107, 5, 'ss_payment_methods', '{"id":"5","name":"ro:Numerar la Livrarea Acasa | en: Cash on home delivery"}', 2, '2014-11-21 09:37:54', 1),
+(108, 7, 'ss_payment_methods', '{"id":"7","name":"ro:In Cont EUR Romania"}', 3, '2014-11-21 09:38:55', 1);
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=171 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=176 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -355,7 +357,12 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (167, '2014-11-20 14:47:01', 1, 'Successful login by ''admin'' from ::1', 'debug'),
 (168, '2014-11-20 14:47:48', 1, 'Suppliers item <em>VODAFONE SA</em> edited', 'info'),
 (169, '2014-11-20 15:22:07', 1, 'Suppliers item <em>Orange SA</em> edited', 'info'),
-(170, '2014-11-20 22:42:05', 1, 'Successful login by ''admin'' from ::1', 'debug');
+(170, '2014-11-20 22:42:05', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(171, '2014-11-21 00:46:40', 1, 'The cache has been cleared.', 'info'),
+(172, '2014-11-21 11:36:51', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(173, '2014-11-21 11:37:54', 1, 'Payment methods item <em>ro:Numerar la Livrarea Acasa | en: Cash on home delivery</em> edited', 'info'),
+(174, '2014-11-21 11:38:55', 1, 'Payment methods item <em>ro:In Cont EUR Romania</em> edited', 'info'),
+(175, '2014-11-21 19:24:31', 1, 'Successful login by ''admin'' from ::1', 'debug');
 
 -- --------------------------------------------------------
 
@@ -608,7 +615,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', '7c33cf714e535c8013bc7744b6d649b6f6c6209f', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '61fdf734f98da44582c154e0f7b29acf', 'yes', 'yes');
+(1, 'admin', '1c5c638cf5724ed1ec0f1859ae3494e990012f26', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '2965a412c0e78fdc6ec91d99f46a3d3c', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -717,7 +724,7 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
   `fee` decimal(7,2) NOT NULL COMMENT 'comision',
   `total` decimal(7,2) NOT NULL COMMENT 'suma totala',
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` tinyint(3) unsigned NOT NULL COMMENT 'stare: 1 in curs de procesare, 100 in curs de plata, 200 platita',
+  `status` tinyint(3) unsigned NOT NULL COMMENT 'stare: 1 in curs de procesare, 50 in curs de plata, 100 platita',
   `s1` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   `s2` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   `s3` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
@@ -750,84 +757,18 @@ CREATE TABLE IF NOT EXISTS `ss_messages` (
   `tx_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `ss_messages`
 --
 
 INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message`, `date_added`) VALUES
-(1, 0, '#F5464d68c1482f', 8, 'invo', 'invoice #F5464d68c1482f successfully added', '2014-11-13 16:04:28'),
-(2, 28, '#F5464d86f262f3', 8, 'invo', 'invoice #F5464d86f262f3 successfully added', '2014-11-13 16:12:31'),
-(3, 29, '#F5465ebadeaea0', 8, 'invo', 'invoice #F5465ebadeaea0 successfully added', '2014-11-14 11:46:54'),
-(4, 30, '#F5465ebb28625f', 8, 'invo', 'invoice #F5465ebb28625f successfully added', '2014-11-14 11:46:58'),
-(5, 31, '#F5465fe2ef18a7', 8, 'invo', 'invoice #F5465fe2ef18a7 successfully added', '2014-11-14 13:05:51'),
-(6, 32, '#F5466006b0db95', 8, 'invo', 'invoice #F5466006b0db95 successfully added', '2014-11-14 13:15:23'),
-(7, 33, '#F546601f78dcd8', 8, 'invo', 'invoice #F546601f78dcd8 successfully added', '2014-11-14 13:21:59'),
-(8, 34, '#F54660370a1905', 8, 'invo', 'invoice #F54660370a1905 successfully added', '2014-11-14 13:28:16'),
-(9, 35, '#F54666fdb2cb18', 8, 'invo', 'invoice #F54666fdb2cb18 successfully added', '2014-11-14 21:10:51'),
-(10, 36, '#F54666fef18ed9', 8, 'invo', 'invoice #F54666fef18ed9 successfully added', '2014-11-14 21:11:11'),
-(11, 37, '#F546670d5e058e', 8, 'invo', 'invoice #F546670d5e058e successfully added', '2014-11-14 21:15:02'),
-(12, 38, '#F5466712e9685b', 8, 'invo', 'invoice #F5466712e9685b successfully added', '2014-11-14 21:16:30'),
-(13, 39, '#F546672021d7d0', 8, 'invo', 'invoice #F546672021d7d0 successfully added', '2014-11-14 21:20:02'),
-(14, 40, '#F54667214d97c8', 8, 'invo', 'invoice #F54667214d97c8 successfully added', '2014-11-14 21:20:21'),
-(15, 41, '#F54667336d32fe', 8, 'invo', 'invoice #F54667336d32fe successfully added', '2014-11-14 21:25:10'),
-(16, 42, '#F546674ae6ce5d', 8, 'invo', 'invoice #F546674ae6ce5d successfully added', '2014-11-14 21:31:26'),
-(17, 43, '#F546674c59dc97', 8, 'invo', 'invoice #F546674c59dc97 successfully added', '2014-11-14 21:31:49'),
-(18, 44, '#F546677f2b95f3', 8, 'invo', 'invoice #F546677f2b95f3 successfully added', '2014-11-14 21:45:22'),
-(19, 45, '#F546678f7bfee3', 8, 'invo', 'invoice #F546678f7bfee3 successfully added', '2014-11-14 21:49:43'),
-(20, 46, '#F5466791c9e998', 8, 'invo', 'invoice #F5466791c9e998 successfully added', '2014-11-14 21:50:20'),
-(21, 47, '#F54667d7ca7685', 8, 'invo', 'invoice #F54667d7ca7685 successfully added', '2014-11-14 22:09:00'),
-(22, 48, '#F54667ebd19f1c', 8, 'invo', 'invoice #F54667ebd19f1c successfully added', '2014-11-14 22:14:21'),
-(23, 49, '#F54667ede30cf6', 8, 'invo', 'invoice #F54667ede30cf6 successfully added', '2014-11-14 22:14:54'),
-(24, 50, '#F54667f04656a2', 8, 'invo', 'invoice #F54667f04656a2 successfully added', '2014-11-14 22:15:32'),
-(25, 51, '#F54667fff1d741', 8, 'invo', 'invoice #F54667fff1d741 successfully added', '2014-11-14 22:19:43'),
-(26, 52, '#F5469dbb547322', 8, 'invo', 'invoice #F5469dbb547322 successfully added', '2014-11-17 11:27:49'),
-(27, 53, '#F5469ec8917896', 8, 'invo', 'invoice #F5469ec8917896 successfully added', '2014-11-17 12:39:37'),
-(28, 54, '#F546a0e86ab227', 8, 'invo', 'invoice #F546a0e86ab227 successfully added', '2014-11-17 15:04:38'),
-(29, 55, '#F546a1da8b08f7', 8, 'invo', 'invoice #F546a1da8b08f7 successfully added', '2014-11-17 16:09:12'),
-(30, 56, '#F546a1e1d497db', 8, 'invo', 'invoice #F546a1e1d497db successfully added', '2014-11-17 16:11:09'),
-(31, 57, '#F546b6265438ff', 8, 'invo', 'invoice #F546b6265438ff successfully added', '2014-11-18 15:14:45'),
-(32, 58, '#F546b633c7033a', 8, 'invo', 'invoice #F546b633c7033a successfully added', '2014-11-18 15:18:20'),
-(33, 59, '#F546bba9dad26d', 8, 'invo', 'invoice #F546bba9dad26d successfully added', '2014-11-18 21:31:09'),
-(34, 60, '#F546bbe9224253', 8, 'invo', 'invoice #F546bbe9224253 successfully added', '2014-11-18 21:48:02'),
-(35, 61, '#F546bbf1c9d4b5', 8, 'invo', 'invoice #F546bbf1c9d4b5 successfully added', '2014-11-18 21:50:20'),
-(36, 62, '#F546bbf4fd6c6e', 8, 'invo', 'invoice #F546bbf4fd6c6e successfully added', '2014-11-18 21:51:12'),
-(37, 63, '#F546bc82ddcd16', 8, 'invo', 'invoice #F546bc82ddcd16 successfully added', '2014-11-18 22:29:02'),
-(38, 64, '#F546bc8630ab4e', 8, 'invo', 'invoice #F546bc8630ab4e successfully added', '2014-11-18 22:29:55'),
-(39, 65, '#F546bc880617cc', 8, 'invo', 'invoice #F546bc880617cc successfully added', '2014-11-18 22:30:24'),
-(40, 66, '#F546bc971056f5', 8, 'invo', 'invoice #F546bc971056f5 successfully added', '2014-11-18 22:34:25'),
-(41, 67, '#F546bc9aab8e7c', 8, 'invo', 'invoice #F546bc9aab8e7c successfully added', '2014-11-18 22:35:22'),
-(42, 68, '#F546bc9f819d10', 8, 'invo', 'invoice #F546bc9f819d10 successfully added', '2014-11-18 22:36:40'),
-(43, 69, '#F546bca6d29282', 8, 'invo', 'invoice #F546bca6d29282 successfully added', '2014-11-18 22:38:37'),
-(44, 70, '#F546bcbdf5af0c', 8, 'invo', 'invoice #F546bcbdf5af0c successfully added', '2014-11-18 22:44:47'),
-(45, 71, '#F546bcdc8885ea', 8, 'invo', 'invoice #F546bcdc8885ea successfully added', '2014-11-18 22:52:56'),
-(46, 72, '#F546c4c31cdbc8', 8, 'invo', 'invoice #F546c4c31cdbc8 successfully added', '2014-11-19 07:52:17'),
-(47, 73, '#F546c4c6da9c69', 8, 'invo', 'invoice #F546c4c6da9c69 successfully added', '2014-11-19 07:53:17'),
-(48, 74, '#F546c4d79cf742', 8, 'invo', 'invoice #F546c4d79cf742 successfully added', '2014-11-19 07:57:45'),
-(49, 75, '#F546c4fd929977', 8, 'invo', 'invoice #F546c4fd929977 successfully added', '2014-11-19 08:07:53'),
-(50, 76, '#F546c519d7a49f', 8, 'invo', 'invoice #F546c519d7a49f successfully added', '2014-11-19 08:15:25'),
-(51, 77, '#F546c51ba2719e', 8, 'invo', 'invoice #F546c51ba2719e successfully added', '2014-11-19 08:15:54'),
-(52, 78, '#F546c55456a796', 8, 'invo', 'invoice #F546c55456a796 successfully added', '2014-11-19 08:31:01'),
-(53, 79, '#F546cfbd5006bb', 8, 'invo', 'invoice #F546cfbd5006bb successfully added', '2014-11-19 20:21:41'),
-(54, 80, '#F546ded31a6732', 8, 'invo', 'invoice #F546ded31a6732 successfully added', '2014-11-20 13:31:29'),
-(55, 81, '#F546dedeb60e6a', 8, 'invo', 'invoice #F546dedeb60e6a successfully added', '2014-11-20 13:34:35'),
-(56, 82, '#F546dee7e87440', 8, 'invo', 'invoice #F546dee7e87440 successfully added', '2014-11-20 13:37:02'),
-(57, 83, '#F546deea16fa5e', 8, 'invo', 'invoice #F546deea16fa5e successfully added', '2014-11-20 13:37:37'),
-(58, 84, '#F546def1891cb0', 8, 'invo', 'invoice #F546def1891cb0 successfully added', '2014-11-20 13:39:36'),
-(59, 85, '#F546def4010a8d', 8, 'invo', 'invoice #F546def4010a8d successfully added', '2014-11-20 13:40:16'),
-(60, 86, '#F546def9c19fce', 8, 'invo', 'invoice #F546def9c19fce successfully added', '2014-11-20 13:41:48'),
-(61, 87, '#F546defcc9ac34', 8, 'invo', 'invoice #F546defcc9ac34 successfully added', '2014-11-20 13:42:36'),
-(62, 88, '#F546df0152a0fa', 8, 'invo', 'invoice #F546df0152a0fa successfully added', '2014-11-20 13:43:49'),
-(63, 89, '#F546df0551aa8a', 8, 'invo', 'invoice #F546df0551aa8a successfully added', '2014-11-20 13:44:53'),
-(64, 90, '#F546df186d0c72', 8, 'invo', 'invoice #F546df186d0c72 successfully added', '2014-11-20 13:49:58'),
-(65, 91, '#F546df194f1e3b', 8, 'invo', 'invoice #F546df194f1e3b successfully added', '2014-11-20 13:50:13'),
-(66, 0, '#S546e6c4bcefa9', 8, 'pay', 'payment #S546e6c4bcefa9 successfully added', '2014-11-20 22:33:47'),
-(67, 0, '#S546e6d259c500', 8, 'pay', 'payment #S546e6d259c500 successfully added', '2014-11-20 22:37:25'),
-(68, 0, '#S546e6d5e63e45', 8, 'pay', 'payment #S546e6d5e63e45 successfully added', '2014-11-20 22:38:22'),
-(69, 0, '#S546e6dae7824a', 8, 'pay', 'payment #S546e6dae7824a successfully added', '2014-11-20 22:39:42'),
-(70, 0, '#S546e6e681853a', 8, 'pay', 'payment #S546e6e681853a successfully added', '2014-11-20 22:42:48'),
-(71, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully added', '2014-11-20 22:45:07');
+(1, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 13:20:07'),
+(2, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 13:24:07'),
+(3, 93, '#S546f5ce1b47ae', 8, 'pay', 'payment #S546f5ce1b47ae successfully added', '2014-11-21 15:40:17'),
+(4, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 16:29:15'),
+(5, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 16:38:45');
 
 -- --------------------------------------------------------
 
@@ -845,7 +786,7 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `fee` decimal(7,2) NOT NULL COMMENT 'comision',
   `total` decimal(7,2) NOT NULL COMMENT 'suma totala',
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` tinyint(3) unsigned NOT NULL COMMENT 'stare: 1 in curs de procesare, 100 in curs de plata, 200 platita',
+  `status` tinyint(3) unsigned NOT NULL COMMENT 'stare: 1 in curs de procesare, 50 in curs de plata, 100 platita',
   `id_ben_payment_method` tinyint(3) unsigned NOT NULL COMMENT 'id modalitate de plata beneficiar',
   `id_ben_city` tinyint(3) unsigned NOT NULL COMMENT 'id oras beneficiar',
   `ben_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'adresa beneficiar',
@@ -854,14 +795,15 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `ben_phone` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'telefon beneficiar',
   `ben_email` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'adresa de mail beneficiar',
   `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=93 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
 
 --
 -- Dumping data for table `ss_payments`
 --
 
 INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount`, `currency`, `fee`, `total`, `date_added`, `status`, `id_ben_payment_method`, `id_ben_city`, `ben_address`, `ben_name`, `ben_surname`, `ben_phone`, `ben_email`, `ben_iban`) VALUES
-(92, '#S546e6ef3bf544', 8, 'card', '123.01', 'ron', '1.23', '124.24', '2014-11-20 22:45:07', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', 'RO121');
+(92, '#S546e6ef3bf544', 8, 'card', '123.01', 'ron', '1.23', '124.24', '2014-11-20 22:45:07', 80, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', 'RO121'),
+(93, '#S546f5ce1b47ae', 8, 'card', '100.00', 'ron', '1.00', '101.00', '2014-11-21 15:40:17', 1, 1, 7, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -871,23 +813,22 @@ INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount`,
 
 CREATE TABLE IF NOT EXISTS `ss_payment_methods` (
 `id` tinyint(3) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `language` varchar(11) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `ss_payment_methods`
 --
 
-INSERT INTO `ss_payment_methods` (`id`, `name`, `language`) VALUES
-(1, 'Numerar la Smith & Smith', 'ro'),
-(2, 'Numerar la Banca Comerciala Romana', 'ro'),
-(3, 'Numerar la Romanian International Bank', 'ro'),
-(4, 'Numerar la Victoria Bank', 'ro'),
-(5, 'Numerar la Livrarea Acasa', 'ro'),
-(6, 'In Cont LEI Romania', 'ro'),
-(7, 'In Cont EUR Romania', 'ro'),
-(8, 'In Cont EUR UE', 'ro');
+INSERT INTO `ss_payment_methods` (`id`, `name`) VALUES
+(1, 'ro:Numerar la Smith & Smith'),
+(2, 'ro:Numerar la Banca Comerciala Romana'),
+(3, 'ro:Numerar la Romanian International Bank'),
+(4, 'ro:Numerar la Victoria Bank'),
+(5, 'ro:Numerar la Livrarea Acasa | en: Cash on home delivery'),
+(6, 'ro:In Cont LEI Romania'),
+(7, 'ro:In Cont EUR Romania'),
+(8, 'ro:In Cont EUR UE');
 
 -- --------------------------------------------------------
 
@@ -1175,7 +1116,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `fuel_archives`
 --
 ALTER TABLE `fuel_archives`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=107;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `fuel_blocks`
 --
@@ -1190,7 +1131,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=171;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=176;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
@@ -1270,12 +1211,12 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic
 -- AUTO_INCREMENT for table `ss_messages`
 --
 ALTER TABLE `ss_messages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `ss_payments`
 --
 ALTER TABLE `ss_payments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',AUTO_INCREMENT=93;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',AUTO_INCREMENT=94;
 --
 -- AUTO_INCREMENT for table `ss_payment_methods`
 --

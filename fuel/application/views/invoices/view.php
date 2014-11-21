@@ -25,7 +25,7 @@
 	</tr>
 	<tr>
 		<td>Stare</td>
-		<td><?php echo htmlspecialchars($invoice->status,ENT_QUOTES,'UTF-8');?></td>
+		<td><?php echo htmlspecialchars(get_status_label($invoice->status),ENT_QUOTES,'UTF-8');?></td>
 	</tr>
 	<tr>
 		<td>Comision</td>
@@ -41,10 +41,6 @@
 			<td><?php echo $value;?></td>
 		</tr>
 	<?php }?>
-	<tr>
-		<td>Alte campuri</td>
-		<td>TODO: valoare</td>
-	</tr>
 </table>
 
-<p><?php echo anchor('invoices/newInvoice', 'Factura noua')?> | <?php echo anchor('invoices/', 'Lista facturi')?></p>
+<p><?php echo anchor('invoices/add', 'Factura noua')?> | <?php echo anchor('invoices/', 'Lista facturi')?></p>

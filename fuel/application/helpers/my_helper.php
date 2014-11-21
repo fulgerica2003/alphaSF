@@ -58,8 +58,41 @@
 			$temp = explode(':', $label);
 			$labels[trim($temp[0])] = trim($temp[1]);
 		}
-		
-		return $labels[$lg];
+		if (array_key_exists ($lg, $labels)){
+			return $labels[$lg];
+		}
+	}
+	
+	function get_status($key){
+		$status = array(
+			'init' => 1,   // in curs de procesare
+			'pay'  => 50,  // in curs de plata
+			'err'  => 55,  // eroare plata
+			'corr' => 60,  // corectie
+			'ref'  => 80,  // in curs de retur
+			'rfd'  => 90,  // returnata
+			'pyd'  => 100, // platita
+			);
+		return $status[$key];
+	}
+	
+	function get_status_label($status){
+		switch ($status){
+			case 1: return 'in curs de procesare';
+				break;
+			case 50: return 'in curs de plata';
+				break;
+			case 55: return 'eroare plata';
+				break;
+			case 60: return 'corectie';
+				break;
+			case 80: return 'in curs de retur';
+				break;
+			case 90: return 'returnata';
+				break;
+			case 100: return 'platita';
+				break;
+		}
 	}
 	/* End of file my_helper.php */
 	/* Location: ./application/helpers/my_helper.php */

@@ -6,7 +6,6 @@
 		// TODO id user autentificat + email, tx type in message
 		// TODO de calculat corect comision
 		// TODO posibil de nevoie schimbare uri_segment(3)
-		// TODO de afisat statusuri friendly (eticheta, nu cod)
 		
 		public $main_form;
 		public $details_form;
@@ -36,7 +35,7 @@
 		*/
 		function view($id){
 			//afisez lista de facturi pentru utilizatorul autentificat
-			$results =  $this->ss_invoices_model->invoice($id)->result();
+			$results =  $this->ss_invoices_model->invoice($id, $this->user_id)->result();
 			if ((count($results)) >= 1 ){
 				$this->data['invoice'] = $results[0];
 				
@@ -62,9 +61,8 @@
             'id'=>'addInvoice',
             'form_attrs' => array(
 			'method' => 'post',
-			'action' => 'add',
+			'action' => '',
             ),
-            'submit_value' => 'next',
             'textarea_rows' => '5',
             'textarea_cols' => '28',
 			'cancel_value' => 'Anuleaza',
@@ -153,6 +151,8 @@
 			$this->form_validation->set_rules('supplier_category', 'Categorie furnizor', 'required|xss_clean');
 			$this->form_validation->set_rules('supplier', 'Furnizor', 'required|xss_clean');
 			
+			$this->form_builder->submit_value  = '<button name="next" type="submit" value="next">Mai departe >></button>';
+			
 			if($this->form_validation->run() == FALSE) {
 				// am picat validarea si adaug erorile
 				if($this->input->post('next')){
@@ -184,9 +184,8 @@
             'id'=>'addInvoiceDetails',
             'form_attrs' => array(
 			'method' => 'post',
-			'action' => 'details',
+			'action' => '',
             ),
-            'submit_value' => 'salveaza',
             'textarea_rows' => '5',
             'textarea_cols' => '28'
 			));
@@ -220,11 +219,12 @@
 			
 			$this->form_validation->set_rules('confirm', 'De acord', 'required|xss_clean');
 			
+			$this->form_builder->submit_value  = '<button name="salveaza" type="submit" value="salveaza">Plateste</button>';
+			
 			if($this->form_validation->run() == FALSE) {
 				// am picat validarea
 				if($this->input->post('salveaza')){
 					foreach($this->details_form['fields'] as $key => $value){
-						echo form_error($key);
 						$this->details_form['fields'][$key]['value'] = $this->input->post($key);
 						$this->details_form['fields'][$key]['after_html'] = form_error($key);
 					}
@@ -253,7 +253,7 @@
 			$values['id_supplier'] = $this->input->post('supplier');
 			$values['fee'] = $this->input->post('fee');
 			$values['total'] = $this->input->post('total');
-			$values['status'] = '1';
+			$values['status'] = get_status('init');
 			
 			$custom_fields = array('s1', 's2', 's3', 's4', 's5', 's6');
 			foreach($custom_fields as $field){

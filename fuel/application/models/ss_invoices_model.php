@@ -107,12 +107,12 @@
 			return $query;
 		}
 		
-		function invoice($id){
+		function invoice($id, $user_id){
 			$where['select'] = 'unid, amount, id_supplier, date_added, status, currency, fee, total, id_payment_type,
 			ss_invoices.s1, ss_invoices.s2, ss_invoices.s3, ss_invoices.s4, ss_invoices.s5, ss_invoices.s6,
 			ss_suppliers.name';
 			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
-			$where['where'] = array('ss_invoices.id' => $id);
+			$where['where'] = array('ss_invoices.id' => $id, 'ss_invoices.id_user' => $user_id);
 			$where['order_by'] = 'date_added desc';
 			$where['limit'] = 1;
 			 

@@ -82,8 +82,6 @@
 			$payment->total = $values['total'];
 			$payment->status = $values['status'];
 			
-			printArray($values);
-			
 			$payment->save();
 			
 			$message = $this->ss_messages_model->create();
@@ -93,6 +91,39 @@
 			$message->tx_type = 'pay';
 			$message->message = 'payment '.$values['unid']. ' successfully added';
 			$message->save();		
+		}
+		
+		function payments($id_user){
+			$where['select'] = 'ss_payments.id, unid, amount, ben_name, ben_surname, date_added, status, ss_payment_methods.name, currency';
+			$where['join'] = array('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
+			$where['where'] = array('id_user' => $id_user);
+			$where['order_by'] = 'date_added desc';
+			
+			$query = $this->query($where);
+
+			return $query;
+		}
+		
+		function payment($id, $user_id){
+		
+			$this->db->select('unid, amount, ben_name, ben_surname, ben_address, ben_phone, ben_email, 
+			date_added, status, ss_payment_methods.name as payment_method, currency, fee, total, status, ben_iban, id_payment_type, ss_cities.name as ben_city');
+			$this->db->from('ss_payments');
+			$this->db->join('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
+			$this->db->join('ss_cities', 'ss_cities.id = ss_payments.id_ben_city');
+			$this->db->where('ss_payments.id' , $id);
+			$this->db->where('ss_payments.id_user' , $user_id);
+			$this->db->limit(1);
+			
+			$query = $this->db->get();
+			
+			return $query;
+		}
+		
+		function update_payment_status($id, $user_id, $new_status){
+			$where['id'] = $id;
+			$where['id_user'] = $user_id;
+			$this->update(array('status' => $new_status), $where);
 		}
 		
 	}

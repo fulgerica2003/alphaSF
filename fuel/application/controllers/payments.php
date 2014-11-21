@@ -4,13 +4,13 @@
 		public $main_form;
 		public $details_form;
 		
-		// TODO de introdus etichetele de limba, atentie la etichete custom_fields pt care se apeleaza o metoda custom cu parametru ro, en etc
+		// TODO de introdus etichetele de limba, atentie la etichete metoda de plata beneficiar care apeleze o metoda custom cu parametru ro, en etc
 		// TODO de vazut de ce nu incarca date_picker, implementare buton back intre details_form si main_form
 		// TODO id user autentificat + email, tx type in message
 		// TODO de calculat corect comision
 		// TODO posibil de nevoie schimbare uri_segment(3)
-		// TODO de afisat statusuri friendly (eticheta, nu cod)
 		// TODO de facut afisarea campurilor in functie de metoda de plata selectata - cand aflu info finale. pana atunci le afisez pe toate
+		// TODO adaugat restrictii pe refund si correction pentru ca doar tx cu statusul corect sa poata fi modificate; pot fi corectate/returnate doar cele in starea corr
 		
 		// TODO aici tb sa fie adresa utilizatorului autentificat, id_user
 		private $user_email = 'a@b.c';
@@ -22,6 +22,27 @@
 			$this->load->model('ss_messages_model');
 			$this->load->library('form_validation');
 			$this->load->library('session');
+		}
+		
+		/**** afisez toate platile
+		*/
+		public function index(){
+			//afisez lista de plati pentru utilizatorul autentificat
+			$this->data['payments'] = $this->ss_payments_model->payments($this->user_id)->result();
+				
+			$this->_render_page('payments/index', $this->data);
+		}
+		
+		/**** afisez o singura plata
+		*/
+		public function view($id){
+			//iau plata
+			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			if ((count($results)) >= 1 ){
+				$this->data['payment'] = $results[0];			
+			}
+				
+			$this->_render_page('payments/view', $this->data);
 		}
 		
 		/**** reprezinta pasul 1 din adaugarea unui transfer
@@ -38,7 +59,6 @@
 			'method' => 'post',
 			'action' => 'add',
             ),
-            'submit_value' => 'next',
             'textarea_rows' => '5',
             'textarea_cols' => '28',
 			'cancel_value' => 'Anuleaza',
@@ -107,6 +127,8 @@
 			$this->form_validation->set_rules('currency', 'Moneda transfer', 'required|xss_clean');
 			$this->form_validation->set_rules('payment_method', 'Modalitatea de plata la beneficiar', 'required|xss_clean');
 			
+			$this->form_builder->submit_value = '<button name="next" type="submit" value="next">Mai departe >></button>';
+			
 			if($this->form_validation->run() == FALSE) {
 				// am picat validarea si adaug erorile
 				if($this->input->post('next')){
@@ -135,9 +157,8 @@
             'id'=>'addInvoiceDetails',
             'form_attrs' => array(
 			'method' => 'post',
-			'action' => 'details',
+			'action' => '',
             ),
-            'submit_value' => 'Transfera',
             'textarea_rows' => '5',
             'textarea_cols' => '28'
 			));
@@ -203,6 +224,8 @@
 			
 			$this->form_validation->set_rules('confirm', 'De acord', 'required|xss_clean');
 			
+			$this->form_builder->submit_value = '<button name="salveaza" type="submit" value="salveaza">PLATESTE</button>';
+			
 			if($this->form_validation->run() == FALSE) {
 				// am picat validarea
 				if($this->input->post('salveaza')){
@@ -213,11 +236,117 @@
 					}
 				}
 				echo $this->form_builder->render($this->details_form['fields']);
-				}else{
+			}else{
 					$this->save();
 			}
 			
 		}
+		
+		/**** confirmarea corectiilor efectuate Frm005
+		*/		
+		public function correction($id){
+			// iau plata
+			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			if ((count($results)) >= 1 ){
+				$this->correction['payment'] = $results[0];
+			}
+			
+			// adaug form cu campul de confirmare corectie
+			$this->load->library('form_builder', array(
+            'id'=>'confirm_correction',
+            'form_attrs' => array(
+			'method' => 'post',
+			'action' => '',
+            ),
+            'textarea_rows' => '5',
+            'textarea_cols' => '28'
+			));
+			
+			$this->correction['fields']['confirm'] = array ('label' => 'De acord cu corectia', 'type' => 'checkbox', 'checked' => FALSE, 'required' => TRUE);
+			
+			$this->form_validation->set_rules('confirm', 'De acord', 'required|xss_clean');
+			
+			$this->form_builder->submit_value = '<button name="accept" type="submit" value="accept">ACCEPT</button>';
+			
+			if($this->form_validation->run() == FALSE) {
+				// am picat validarea
+				if($this->input->post('accept')){
+					foreach($this->correction['fields'] as $key => $value){
+						$this->correction['fields'][$key]['value'] = $this->input->post($key);
+						$this->correction['fields'][$key]['after_html'] = form_error($key);
+					}
+				}
+				$this->correction['correction_form'] = $this->form_builder->render($this->correction['fields']);
+				
+				$this->_render_page('payments/correction', $this->correction);
+			}else{
+					$this->ss_payments_model->update_payment_status($id, $this->user_id, get_status('init'));
+			}
+			
+		}
+		
+		/**** confirmare retur Frm006
+		*/		
+		public function refund($id){
+			// iau plata
+			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			if ((count($results)) >= 1 ){
+				$this->refund['payment'] = $results[0];
+			}
+			
+			// adaug form cu campul de confirmare corectie
+			$this->load->library('form_builder', array(
+            'id'=>'confirm_refund',
+            'form_attrs' => array(
+			'method' => 'post',
+			'action' => '',
+            ),
+            'textarea_rows' => '5',
+            'textarea_cols' => '28'
+			));
+			
+			$this->refund['fields']['confirm'] = array ('label' => 'De acord cu returul', 'type' => 'checkbox', 'checked' => FALSE, 'required' => TRUE);
+			
+			$this->form_validation->set_rules('confirm', 'De acord', 'required|xss_clean');
+			
+			$this->form_builder->submit_value = '<button name="accept" type="submit" value="accept">ACCEPT</button>';
+			
+			if($this->form_validation->run() == FALSE) {
+				// am picat validarea
+				if($this->input->post('accept')){
+					foreach($this->refund['fields'] as $key => $value){
+						$this->refund['fields'][$key]['value'] = $this->input->post($key);
+						$this->refund['fields'][$key]['after_html'] = form_error($key);
+					}
+				}
+				$this->refund['refund_form'] = $this->form_builder->render($this->refund['fields']);
+				
+				$this->_render_page('payments/refund', $this->refund);
+			}else{
+				// modific status plata
+				$this->ss_payments_model->update_payment_status($id, $this->user_id, get_status('ref'));
+					
+				// salvez mesaj
+				$message['unid'] = $results[0]->unid;
+				$message['id_user'] = $this->user_id;
+				$message['id_tx'] = $id;
+				$message['tx_type'] = 'pay';
+				$message['message'] = 'payment '.$message['unid']. ' successfully refunded';
+				$this->ss_messages_model->insert($message);
+				
+				// trimit email
+				send_tx_email(array('unid' => $message['unid'],
+					'receiver' => $this->user_email,
+					'sender' => $this->fuel->sitevars->get()['from_email'],
+					// TODO $this->lang->line incarca in acest moment din language/english
+					'subject' => $this->lang->line('fact_eml011_sb'),
+					'message' => $this->lang->line('fact_eml011_cont'),
+				));
+				
+				echo $message['message'];
+			}
+			
+		}		
 		
 		/**** generez unid-ul, afisez mesajul si trimit email
 		*** salvarea mesajului in istoric se face odata cu salvarea facturii in model
@@ -241,7 +370,7 @@
 			$values['ben_iban'] = $this->input->post('ben_iban');
 			$values['fee'] = $this->input->post('fee');
 			$values['total'] = $this->input->post('total');
-			$values['status'] = '1';
+			$values['status'] = get_status('init');
 			
 			$this->ss_payments_model->save_payment($values);
 						
@@ -292,5 +421,16 @@
 			$html_fee = '<div id="cfee">' . $fee . '</div>'.'<input type="hidden" name="fee" id="fee" value="'.$fee.'"/>';
 			$html_total = '<div id="ctotal">' . $total . '</div>'.'<input type="hidden" name="total" id="total" value = "'.$total.'"/>';
 			echo json_encode( array( "fee"=>$html_fee,"total"=>$html_total ) );
+		}
+		
+		/**** randez $view
+		*/
+		private function _render_page($view, $data=null, $render=false){
+			
+			$this->viewdata = (empty($data)) ? $this->data: $data;
+			
+			$view_html = $this->load->view($view, $this->viewdata, $render);
+			
+			if (!$render) return $view_html;
 		}
 	}	
