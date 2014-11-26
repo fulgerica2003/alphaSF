@@ -75,7 +75,8 @@
 			$this->main_form['fields']['lbl_title'] = array('type' => 'copy', 'tag' => 'p', 'value' => $lbl_title);
 			
 			// tipul platii
-			$options = array('card' => 'Card', 'cont' => 'Cont');
+			// $options = array('card' => 'Card', 'cont' => 'Cont');
+			$options = get_payment_types();
 			$this->main_form['fields']['payment_type'] = array('type' => 'select', 'options' => $options, 'label' => 'Plateste', 'value'=> '' );
 			
 			// suma; adaug js ca sa pot actualiza comisionul si totalul

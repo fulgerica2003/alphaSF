@@ -55,6 +55,34 @@ $config['modules']['ss_payment_methods'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_types'] = array(
+  'module_name' => 'Types',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
+$config['modules']['ss_profiles'] = array(
+  'module_name' => 'Profiles',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
+$config['modules']['ss_fees'] = array(
+  'module_name' => 'Fees',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
+$config['modules']['ss_faq'] = array(
+  'module_name' => 'FAQ',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
 
 
 /*********************** OVERWRITES ************************************/

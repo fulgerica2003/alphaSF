@@ -337,6 +337,34 @@ $lang['caseta_slider_news_titlu'] = 'Stiri';
 |
 */
 $lang['news_title'] = 'Stiri';
+$lang['news_read'] = 'Citeste→';
+$lang['news_older'] = 'Mai vechi';
+
+/*
+|--------------------------------------------------------------------------
+| etichete faq
+|--------------------------------------------------------------------------
+|
+*/
+$lang['faq_title'] = 'Intrebari frecvente';
+$lang['faq_q'] = 'I';
+$lang['faq_a'] = 'R';
+
+/*
+|--------------------------------------------------------------------------
+| etichete contact
+|--------------------------------------------------------------------------
+|
+*/
+$lang['contact_title'] = 'Contact';
+$lang['contact_name'] = 'Nume';
+$lang['contact_email'] = 'E-mail';
+$lang['contact_msg_type'] = 'Subiect';
+$lang['contact_msg_type_o1'] = 'Intrebare';
+$lang['contact_msg_type_o2'] = 'Sugestie';
+$lang['contact_message'] = 'Mesaj';
+$lang['contact_send'] = 'Trimite';
+
 
 /*
 |--------------------------------------------------------------------------

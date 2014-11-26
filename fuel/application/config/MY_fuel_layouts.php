@@ -99,6 +99,43 @@ $ssnews->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', '
 
 $config['layouts']['ssnews'] = $ssnews;
 
+/*
+|--------------------------------------------------------------------------
+| Contact page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$sscontact = new Fuel_layout('sscontact');
+$sscontact->set_label('Contact page template');
+$sscontact->add_fields($common_meta);
+
+$sscontact->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
+
+$sscontact->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$sscontact->add_field('heading', array('label' => lang('layout_field_heading')));
+$sscontact->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$sscontact->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+$config['layouts']['sscontact'] = $sscontact;
+
+/*
+|--------------------------------------------------------------------------
+| FAQ page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$ssfaq = new Fuel_layout('ssfaq');
+$ssfaq->set_label('FAQ page template');
+$ssfaq->add_fields($common_meta);
+
+$ssfaq->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false, 'default' => 'banners/b_contact._.1134x184_._.o_.jpg'));
+
+$config['layouts']['ssfaq'] = $ssfaq;
+
 /* End of file MY_fuel_layouts.php */
 /* Location: ./application/config/MY_fuel_layouts.php */
 

@@ -104,15 +104,16 @@
 			return $query;
 		}
 		
-		function payment($id, $user_id){
+		function payment($where = array()){
 		
 			$this->db->select('unid, amount, ben_name, ben_surname, ben_address, ben_phone, ben_email, 
 			date_added, status, ss_payment_methods.name as payment_method, currency, fee, total, status, ben_iban, id_payment_type, ss_cities.name as ben_city');
 			$this->db->from('ss_payments');
 			$this->db->join('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
 			$this->db->join('ss_cities', 'ss_cities.id = ss_payments.id_ben_city');
-			$this->db->where('ss_payments.id' , $id);
-			$this->db->where('ss_payments.id_user' , $user_id);
+			foreach ($where as $key => $value){
+				$this->db->where('ss_payments.' . $key , $value);
+			}
 			$this->db->limit(1);
 			
 			$query = $this->db->get();

@@ -37,7 +37,7 @@
 		*/
 		public function view($id){
 			//iau plata
-			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			$results =  $this->ss_payments_model->payment(array('id' => $id, 'id_user' => $this->user_id))->result();
 			if ((count($results)) >= 1 ){
 				$this->data['payment'] = $results[0];			
 			}
@@ -68,7 +68,8 @@
 			/*campuri */
 			
 			// tipul platii
-			$options = array('card' => 'Card', 'cont' => 'Cont');
+			// $options = array('card' => 'Card', 'cont' => 'Cont');
+			$options = get_payment_types();
 			$this->main_form['fields']['payment_type'] = array('type' => 'select', 'options' => $options, 'label' => 'Transfera', 'value'=> '' );
 			
 			// suma; adaug js ca sa pot actualiza comisionul si totalul
@@ -246,7 +247,13 @@
 		*/		
 		public function correction($id){
 			// iau plata
-			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			$results =  $this->ss_payments_model->payment(array('id' => $id, 'id_user' => $this->user_id, 'status' => get_status('corr')))->result();
+			
+			// permit corectia doar platilor cu status corr
+			if (empty($results) || empty($results[0]) || $results[0]->status != get_status('corr')){
+				redirect('payments/');
+			}			
+			
 			if ((count($results)) >= 1 ){
 				$this->correction['payment'] = $results[0];
 			}
@@ -289,7 +296,13 @@
 		*/		
 		public function refund($id){
 			// iau plata
-			$results =  $this->ss_payments_model->payment($id, $this->user_id)->result();
+			$results =  $this->ss_payments_model->payment(array('id' => $id, 'id_user' => $this->user_id, 'status' => get_status('corr')))->result();
+			
+			// permit returul doar platilor cu status corr
+			if (empty($results) || empty($results[0]) || $results[0]->status != get_status('corr')){
+				redirect('payments/');
+			}
+			
 			if ((count($results)) >= 1 ){
 				$this->refund['payment'] = $results[0];
 			}
@@ -330,7 +343,7 @@
 				$message['unid'] = $results[0]->unid;
 				$message['id_user'] = $this->user_id;
 				$message['id_tx'] = $id;
-				$message['tx_type'] = 'pay';
+				$message['tx_type'] = get_tx_type('pay');
 				$message['message'] = 'payment '.$message['unid']. ' successfully refunded';
 				$this->ss_messages_model->insert($message);
 				

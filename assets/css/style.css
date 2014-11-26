@@ -109,6 +109,7 @@ div#text-slider a {margin-top:0px;}
 .lista-nav-big li {display: inline;margin-right: 80px;font: 14px/30px DINNextRoundedLTProMedium, Arial, Helvetica, sans-serif;color:#7a707e;cursor:pointer;}
 .lista-nav-big li:last-child {margin-right: 35px;}
 .lista-nav-big li a {padding:0px;}
+.lista-nav-big a {text-transform: uppercase;}
 .lista-nav-big .activ, .lista-nav-big li:hover {border-bottom: 5px solid #b5251d;padding-bottom: 30px;}
 
 #nav-main {position: absolute;top: 95px;left: 2px;border-radius: 0px;z-index: 1000;}

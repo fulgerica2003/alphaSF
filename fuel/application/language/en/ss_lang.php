@@ -42,6 +42,8 @@ $lang['caseta_slider_news_titlu'] = 'News';
 |
 */
 $lang['news_title'] = 'News';
+$lang['news_read'] = 'Read→';
+$lang['news_older'] = 'Older';
 
 /*
 |--------------------------------------------------------------------------
