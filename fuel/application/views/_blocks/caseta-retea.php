@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-sm-6">  
-	<div class="caseta minimize special-height">
+	<div class="caseta <?php echo (!empty($page) && $page == 'services' ? 'bkg-brown' : ''); ?> minimize special-height">
 		<div class="minimize-caseta">+</div>
 		<div class="caseta-titlu"><?php echo lang('caseta_retea_titlu')?></div>
 		

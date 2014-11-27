@@ -1,10 +1,22 @@
-<div class="col-lg-3 col-sm-6">  
-	<div class="caseta caseta-bkg <?php echo (!is_home() ? 'bkg-brown' : ''); ?> minimize" id="caseta-online">
+<div class="<?php echo (!empty($page) && $page == 'services' ? 'col-lg-6' : 'col-lg-3'); ?> col-sm-6">  
+	<div class="caseta caseta-bkg <?php echo (empty($page) ? 'minimize' : ($page == 'services' ? 'bkb-mare online' : 'bkg-brown minimize')); ?> " id="caseta-online">
 		<div class="minimize-caseta">+</div>
 		<div class="caseta-titlu"><?php echo lang('caseta_online_titlu')?></div>
-		<div class="caseta-content">
-			<?php echo lang('caseta_online_content')?>
+		<div class="<?php echo (!empty($page) && $page == 'services' ? 'col-lg-6 col-sm-12' : '');?> caseta-content">
+			<?php echo lang('caseta_online_content');?>
 		</div>
-		<a href="<?=fuel_var('caseta_online_url')?>" class="detail-link"><?php echo lang('caseta_details')?></a>
+		
+		<?php if (!empty($page) && $page == 'services'){?>
+			<div class="col-lg-6 col-sm-12 caseta-content">
+				<ul class="lista-services">
+					<li>CARD</li>
+					<li>ACCOUNT</li>
+					<li>ACASA (HD)</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+			<?php }else{ ?>
+			<a href="<?=fuel_var("caseta_online_url");?>" class="detail-link"><?php echo lang("caseta_details");?></a>
+		<?php }?>
 	</div>
 </div>

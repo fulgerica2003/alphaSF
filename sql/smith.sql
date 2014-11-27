@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2014 at 01:31 AM
+-- Generation Time: Nov 27, 2014 at 05:24 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version` smallint(5) unsigned NOT NULL,
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=180 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=218 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -197,7 +197,45 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (176, 7, 'fuel_pages', '{"id":7,"location":"contact\\/mesaj","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-26 18:39:00","last_modified":"2014-11-26 18:39:00","last_modified_by":"","variables":[{"id":"261","page_id":"7","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"263","page_id":"7","name":"body","scope":"","value":"{$form}","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"264","page_id":"7","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"262","page_id":"7","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"259","page_id":"7","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"260","page_id":"7","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"258","page_id":"7","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"}]}', 1, '2014-11-26 16:39:00', 1),
 (177, 7, 'fuel_pages', '{"id":"7","location":"contact\\/mesaj","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-26 18:39:00","last_modified":"2014-11-26 18:39:57","last_modified_by":"1","variables":[{"id":"268","page_id":"7","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"270","page_id":"7","name":"body","scope":"","value":"{$form}","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"271","page_id":"7","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"269","page_id":"7","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"266","page_id":"7","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"267","page_id":"7","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"},{"id":"265","page_id":"7","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/mesaj","page_published":"yes"}]}', 2, '2014-11-26 16:39:57', 1),
 (178, 15, 'fuel_navigation', '{"id":15,"location":"contact\\/mesaj","group_id":"2","nav_key":"contact\\/mesaj","label":"Trimite mesaj","parent_id":"0","precedence":"25","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-26 16:45:38', 1),
-(179, 16, 'fuel_navigation', '{"id":16,"location":"contact\\/mesaj","group_id":"2","nav_key":"contact\\/mesaj","label":"Send message","parent_id":"0","precedence":"25","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-11-26 16:45:53', 1);
+(179, 16, 'fuel_navigation', '{"id":16,"location":"contact\\/mesaj","group_id":"2","nav_key":"contact\\/mesaj","label":"Send message","parent_id":"0","precedence":"25","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-11-26 16:45:53', 1),
+(180, 3, 'fuel_navigation', '{"id":"3","location":"home","group_id":"1","nav_key":"home","label":"Prima pagina","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-11-27 09:09:24', 1),
+(181, 8, 'fuel_pages', '{"id":8,"location":"services","layout":"ssservices_main","published":"yes","cache":"yes","date_added":"2014-11-27 11:39:51","last_modified":"2014-11-27 11:39:51","last_modified_by":"","variables":[{"id":"273","page_id":"8","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservices_main","location":"services","page_published":"yes"},{"id":"274","page_id":"8","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservices_main","location":"services","page_published":"yes"},{"id":"272","page_id":"8","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservices_main","location":"services","page_published":"yes"}]}', 1, '2014-11-27 09:39:51', 1),
+(182, 9, 'fuel_pages', '{"id":9,"location":"services","layout":"ssservice_main","published":"yes","cache":"yes","date_added":"2014-11-27 11:40:50","last_modified":"2014-11-27 11:40:50","last_modified_by":"","variables":[{"id":"276","page_id":"9","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"services","page_published":"yes"},{"id":"277","page_id":"9","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"services","page_published":"yes"},{"id":"275","page_id":"9","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"services","page_published":"yes"}]}', 1, '2014-11-27 09:40:50', 1),
+(183, 17, 'fuel_navigation', '{"id":17,"location":"servicii","group_id":"1","nav_key":"servicii","label":"Servicii","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 10:21:14', 1),
+(184, 9, 'fuel_pages', '{"id":"9","location":"servicii","layout":"ssservice_main","published":"yes","cache":"yes","date_added":"2014-11-27 11:40:50","last_modified":"2014-11-27 12:21:26","last_modified_by":"1","variables":[{"id":"279","page_id":"9","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"280","page_id":"9","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"278","page_id":"9","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"}]}', 2, '2014-11-27 10:21:27', 1),
+(185, 3, 'fuel_navigation', '{"id":"3","location":"home","group_id":"1","nav_key":"home","label":"Pagina principala","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 4, '2014-11-27 10:22:00', 1),
+(186, 9, 'fuel_pages', '{"id":"9","location":"servicii","layout":"ssservice_main","published":"yes","cache":"yes","date_added":"2014-11-27 11:40:50","last_modified":"2014-11-27 13:16:03","last_modified_by":"1","variables":[{"id":"284","page_id":"9","name":"banner_img","scope":"","value":"banners\\/b_contact._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"282","page_id":"9","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"283","page_id":"9","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"281","page_id":"9","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"}]}', 3, '2014-11-27 11:16:04', 1),
+(187, 9, 'fuel_pages', '{"id":"9","location":"servicii","layout":"ssservice_main","published":"yes","cache":"yes","date_added":"2014-11-27 11:40:50","last_modified":"2014-11-27 13:16:54","last_modified_by":"1","variables":[{"id":"288","page_id":"9","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"286","page_id":"9","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"287","page_id":"9","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"},{"id":"285","page_id":"9","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice_main","location":"servicii","page_published":"yes"}]}', 4, '2014-11-27 11:16:54', 1),
+(188, 3, 'fuel_navigation_groups', '{"id":3,"name":"servicii","published":"yes"}', 2, '2014-11-27 11:18:16', 1),
+(189, 18, 'fuel_navigation', '{"id":18,"location":"","group_id":"3","nav_key":"","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 11:18:40', 1),
+(190, 19, 'fuel_navigation', '{"id":19,"location":"","group_id":"2","nav_key":"","label":"Conturi de plati","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 11:19:20', 1),
+(191, 19, 'fuel_navigation', '{"id":"19","location":"","group_id":"3","nav_key":"1","label":"Conturi de plati","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-11-27 11:19:54', 1),
+(192, 19, 'fuel_navigation', '{"id":"19","location":"","group_id":"3","nav_key":"home","label":"Conturi de plati","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-11-27 11:21:56', 1),
+(193, 18, 'fuel_navigation', '{"id":"18","location":"home","group_id":"3","nav_key":"home1","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-11-27 11:22:24', 1),
+(194, 1, 'ss_display_fees', '{"id":1,"amount_min":"1","amount_max":"50","fee":"3.5"}', 1, '2014-11-27 12:00:34', 1),
+(195, 2, 'ss_display_fees', '{"id":2,"amount_min":"51","amount_max":"100","fee":"4"}', 1, '2014-11-27 12:00:58', 1),
+(196, 3, 'ss_display_fees', '{"id":3,"amount_min":"101","amount_max":"200","fee":"6"}', 1, '2014-11-27 12:01:10', 1),
+(197, 4, 'ss_display_fees', '{"id":4,"amount_min":"201","amount_max":"300","fee":"9"}', 1, '2014-11-27 12:01:24', 1),
+(198, 5, 'ss_display_fees', '{"id":5,"amount_min":"301","amount_max":"400","fee":"12"}', 1, '2014-11-27 12:01:37', 1),
+(199, 6, 'ss_display_fees', '{"id":6,"amount_min":"401","amount_max":"500","fee":"14"}', 1, '2014-11-27 12:01:49', 1),
+(200, 7, 'ss_display_fees', '{"id":7,"amount_min":"501","amount_max":"600","fee":"16"}', 1, '2014-11-27 12:02:05', 1),
+(201, 8, 'ss_display_fees', '{"id":8,"amount_min":"601","amount_max":"700","fee":"20"}', 1, '2014-11-27 12:02:17', 1),
+(202, 9, 'ss_display_fees', '{"id":9,"amount_min":"701","amount_max":"800","fee":"22"}', 1, '2014-11-27 12:02:28', 1),
+(203, 10, 'ss_display_fees', '{"id":10,"amount_min":"801","amount_max":"900","fee":"24"}', 1, '2014-11-27 12:02:42', 1),
+(204, 11, 'ss_display_fees', '{"id":11,"amount_min":"901","amount_max":"1000","fee":"28"}', 1, '2014-11-27 12:02:53', 1),
+(205, 12, 'ss_display_fees', '{"id":12,"amount_min":"1001","amount_max":"9999","fee":"3","type":"prc"}', 1, '2014-11-27 12:05:27', 1),
+(206, 10, 'fuel_pages', '{"id":10,"location":"servicii\\/transfer-bani","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:25","last_modified":"2014-11-27 15:35:25","last_modified_by":"","variables":[{"id":"292","page_id":"10","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"290","page_id":"10","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"291","page_id":"10","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"289","page_id":"10","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"}]}', 1, '2014-11-27 13:35:25', 1),
+(207, 11, 'fuel_pages', '{"id":11,"location":"servicii\\/conturi-plati","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:52","last_modified":"2014-11-27 15:35:52","last_modified_by":"","variables":[{"id":"296","page_id":"11","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"294","page_id":"11","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"295","page_id":"11","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"293","page_id":"11","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"}]}', 1, '2014-11-27 13:35:53', 1),
+(208, 18, 'fuel_navigation', '{"id":"18","location":"servicii\\/transfer-bani","group_id":"3","nav_key":"servicii\\/transfer-bani","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-11-27 13:36:51', 1),
+(209, 19, 'fuel_navigation', '{"id":"19","location":"servicii\\/conturi-plati","group_id":"3","nav_key":"servicii\\/conturi-plati","label":"Conturi de plati","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 4, '2014-11-27 13:37:14', 1),
+(210, 19, 'fuel_navigation', '{"id":"19","location":"servicii\\/conturi-plati","group_id":"3","nav_key":"servicii\\/conturi-plati","label":"Conturi de plati","parent_id":"0","precedence":"10","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 5, '2014-11-27 13:37:40', 1),
+(211, 10, 'fuel_pages', '{"id":"10","location":"servicii\\/transfer-bani","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:25","last_modified":"2014-11-27 15:42:30","last_modified_by":"1","variables":[{"id":"300","page_id":"10","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"302","page_id":"10","name":"body","scope":"","value":"<p class=\\"text-negru\\">Smith Worldtrans is the service through which one can send money in cash from Romania to abroad in almost all the countries.<\\/p>\\r\\n\\t\\t\\t\\t<p>Using our services one can be in touch with your relatives from abroad, sending them money no matter of their need: day to day living, studies fees, buying a car, and so on.\\r\\n\\t\\t\\t\\t\\t<br \\/><br \\/>\\r\\n\\t\\t\\t\\t\\tAll you can do is to come to our offices that are opened even during the weekends.\\r\\n\\t\\t\\t\\t\\t<br \\/><br \\/>\\r\\n\\t\\t\\t\\t\\tOur commissions are very competitive as you can see in the above table being available for Italy, Spain, Switzerland, UK, Portugal, Germany and Ireland. If you want to send money in another country than we mentioned above, please come in contact with our personnel from our offices in order to get our best commissions no matter of your money destination.\\r\\n\\t\\t\\t\\t<\\/p>","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"303","page_id":"10","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"301","page_id":"10","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"298","page_id":"10","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"299","page_id":"10","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"297","page_id":"10","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"}]}', 2, '2014-11-27 13:42:30', 1),
+(212, 10, 'fuel_pages', '{"id":"10","location":"servicii\\/transfer-bani","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:25","last_modified":"2014-11-27 15:44:01","last_modified_by":"1","variables":[{"id":"307","page_id":"10","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"309","page_id":"10","name":"body","scope":"","value":"Transfer de bani","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"310","page_id":"10","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"308","page_id":"10","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"305","page_id":"10","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"306","page_id":"10","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"304","page_id":"10","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"}]}', 3, '2014-11-27 13:44:01', 1),
+(213, 11, 'fuel_pages', '{"id":"11","location":"servicii\\/conturi-plati","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:52","last_modified":"2014-11-27 15:45:19","last_modified_by":"1","variables":[{"id":"314","page_id":"11","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"316","page_id":"11","name":"body","scope":"","value":"Conturi de plati","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"317","page_id":"11","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"315","page_id":"11","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"312","page_id":"11","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"313","page_id":"11","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"311","page_id":"11","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"}]}', 2, '2014-11-27 13:45:19', 1),
+(214, 12, 'fuel_pages', '{"id":12,"location":"servicii\\/transfer-bani\\/ro-ro","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:49:26","last_modified":"2014-11-27 15:49:26","last_modified_by":"","variables":[{"id":"321","page_id":"12","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"323","page_id":"12","name":"body","scope":"","value":"Transfer de bani RO RO","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"324","page_id":"12","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"322","page_id":"12","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"319","page_id":"12","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"320","page_id":"12","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"318","page_id":"12","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"}]}', 1, '2014-11-27 13:49:27', 1),
+(215, 20, 'fuel_navigation', '{"id":20,"location":"servicii\\/transfer-bani\\/ro-ro","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-ro","label":"Romania - Romania","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 13:50:07', 1),
+(216, 13, 'fuel_pages', '{"id":13,"location":"servicii\\/transfer-bani\\/ro-str","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 16:51:15","last_modified":"2014-11-27 16:51:15","last_modified_by":"","variables":[{"id":"328","page_id":"13","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"330","page_id":"13","name":"body","scope":"","value":"Transfer de bani Ro - strainatate","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"331","page_id":"13","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"329","page_id":"13","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"326","page_id":"13","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"327","page_id":"13","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"325","page_id":"13","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"}]}', 1, '2014-11-27 14:51:16', 1),
+(217, 21, 'fuel_navigation', '{"id":21,"location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - strainatate","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 14:51:50', 1);
 
 -- --------------------------------------------------------
 
@@ -244,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=250 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=288 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -499,7 +537,45 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (246, '2014-11-26 18:39:57', 1, 'Pages item <em>contact/mesaj</em> edited', 'info'),
 (247, '2014-11-26 18:40:23', 1, '1 item for <em>pages</em> deleted', 'info'),
 (248, '2014-11-26 18:45:38', 1, 'Navigation item <em>Trimite mesaj</em> edited', 'info'),
-(249, '2014-11-26 18:45:53', 1, 'Navigation item <em>Send message</em> edited', 'info');
+(249, '2014-11-26 18:45:53', 1, 'Navigation item <em>Send message</em> edited', 'info'),
+(250, '2014-11-27 01:32:13', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(251, '2014-11-27 01:32:25', 1, 'The cache has been cleared.', 'info'),
+(252, '2014-11-27 11:09:08', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(253, '2014-11-27 11:09:24', 1, 'Navigation item <em>Prima pagina</em> edited', 'info'),
+(254, '2014-11-27 11:40:39', 1, '1 item for <em>pages</em> deleted', 'info'),
+(255, '2014-11-27 12:21:14', 1, 'Navigation item <em>Servicii</em> edited', 'info'),
+(256, '2014-11-27 12:21:27', 1, 'Pages item <em>servicii</em> edited', 'info'),
+(257, '2014-11-27 12:22:00', 1, 'Navigation item <em>Pagina principala</em> edited', 'info'),
+(258, '2014-11-27 13:16:04', 1, 'Pages item <em>servicii</em> edited', 'info'),
+(259, '2014-11-27 13:16:46', 1, 'Assets item <em>b_servicii..1134x184..o.jpg</em> edited', 'info'),
+(260, '2014-11-27 13:16:54', 1, 'Pages item <em>servicii</em> edited', 'info'),
+(261, '2014-11-27 13:18:16', 1, 'Navigation Groups item <em>servicii</em> edited', 'info'),
+(262, '2014-11-27 13:18:40', 1, 'Navigation item <em>Transfer de bani</em> edited', 'info'),
+(263, '2014-11-27 13:19:21', 1, 'Navigation item <em>Conturi de plati</em> edited', 'info'),
+(264, '2014-11-27 13:19:54', 1, 'Navigation item <em>Conturi de plati</em> edited', 'info'),
+(265, '2014-11-27 13:21:56', 1, 'Navigation item <em>Conturi de plati</em> edited', 'info'),
+(266, '2014-11-27 13:22:24', 1, 'Navigation item <em>Transfer de bani</em> edited', 'info'),
+(267, '2014-11-27 14:00:34', 1, 'Display fees item <em> 1</em> edited', 'info'),
+(268, '2014-11-27 14:00:58', 1, 'Display fees item <em>51</em> edited', 'info'),
+(269, '2014-11-27 14:01:10', 1, 'Display fees item <em>101</em> edited', 'info'),
+(270, '2014-11-27 14:01:24', 1, 'Display fees item <em>201</em> edited', 'info'),
+(271, '2014-11-27 14:01:38', 1, 'Display fees item <em>301</em> edited', 'info'),
+(272, '2014-11-27 14:01:49', 1, 'Display fees item <em>401</em> edited', 'info'),
+(273, '2014-11-27 14:02:05', 1, 'Display fees item <em>501</em> edited', 'info'),
+(274, '2014-11-27 14:02:17', 1, 'Display fees item <em>601</em> edited', 'info'),
+(275, '2014-11-27 14:02:28', 1, 'Display fees item <em>701</em> edited', 'info'),
+(276, '2014-11-27 14:02:42', 1, 'Display fees item <em>801</em> edited', 'info'),
+(277, '2014-11-27 14:02:53', 1, 'Display fees item <em>901</em> edited', 'info'),
+(278, '2014-11-27 14:05:28', 1, 'Display fees item <em>1001</em> edited', 'info'),
+(279, '2014-11-27 15:36:51', 1, 'Navigation item <em>Transfer de bani</em> edited', 'info'),
+(280, '2014-11-27 15:37:14', 1, 'Navigation item <em>Conturi de plati</em> edited', 'info'),
+(281, '2014-11-27 15:37:40', 1, 'Navigation item <em>Conturi de plati</em> edited', 'info'),
+(282, '2014-11-27 15:42:30', 1, 'Pages item <em>servicii/transfer-bani</em> edited', 'info'),
+(283, '2014-11-27 15:44:01', 1, 'Pages item <em>servicii/transfer-bani</em> edited', 'info'),
+(284, '2014-11-27 15:45:20', 1, 'Pages item <em>servicii/conturi-plati</em> edited', 'info'),
+(285, '2014-11-27 15:50:08', 1, 'Navigation item <em>Romania - Romania</em> edited', 'info'),
+(286, '2014-11-27 16:51:50', 1, 'Navigation item <em>Romania - strainatate</em> edited', 'info'),
+(287, '2014-11-27 17:23:05', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -520,14 +596,14 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation` (
   `hidden` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no' COMMENT 'A hidden value can be used in rendering the menu. In some areas, the menu item may not want to be displayed',
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Determines whether the item is displayed or not'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `fuel_navigation`
 --
 
 INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`, `parent_id`, `precedence`, `attributes`, `selected`, `hidden`, `language`, `published`) VALUES
-(3, 'home', 1, 'home', 'HOMEPAGE', 0, 0, '', '', 'no', 'ro', 'yes'),
+(3, 'home', 1, 'home', 'Pagina principala', 0, 0, '', '', 'no', 'ro', 'yes'),
 (4, 'stiri', 1, 'stiri', 'STIRI', 0, 0, '', '', 'no', 'ro', 'yes'),
 (5, 'home', 1, 'home', 'HOMEPAGE', 0, 0, '', '', 'no', 'en', 'yes'),
 (6, 'stiri', 1, 'stiri', 'NEWS', 0, 0, '', '', 'no', 'en', 'yes'),
@@ -540,7 +616,12 @@ INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`,
 (13, 'contact/callcenter', 2, 'contact/callcenter', 'Call center', 0, 50, '', '', 'no', 'en', 'yes'),
 (14, 'contact/detalii', 2, 'contact/detalii', 'Contact details', 0, 0, '', '', 'no', 'en', 'yes'),
 (15, 'contact/mesaj', 2, 'contact/mesaj', 'Trimite mesaj', 0, 25, '', '', 'no', 'ro', 'yes'),
-(16, 'contact/mesaj', 2, 'contact/mesaj', 'Send message', 0, 25, '', '', 'no', 'en', 'yes');
+(16, 'contact/mesaj', 2, 'contact/mesaj', 'Send message', 0, 25, '', '', 'no', 'en', 'yes'),
+(17, 'servicii', 1, 'servicii', 'Servicii', 0, 0, '', '', 'no', 'ro', 'yes'),
+(18, 'servicii/transfer-bani', 3, 'servicii/transfer-bani', 'Transfer de bani', 0, 0, '', '', 'no', 'ro', 'yes'),
+(19, 'servicii/conturi-plati', 3, 'servicii/conturi-plati', 'Conturi de plati', 0, 10, '', '', 'no', 'ro', 'yes'),
+(20, 'servicii/transfer-bani/ro-ro', 3, 'servicii/transfer-bani/ro-ro', 'Romania - Romania', 18, 0, '', '', 'no', 'ro', 'yes'),
+(21, 'servicii/transfer-bani/ro-str', 3, 'servicii/transfer-bani/ro-str', 'Romania - strainatate', 18, 0, '', '', 'no', 'ro', 'yes');
 
 -- --------------------------------------------------------
 
@@ -552,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation_groups` (
 `id` int(3) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `fuel_navigation_groups`
@@ -560,7 +641,8 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation_groups` (
 
 INSERT INTO `fuel_navigation_groups` (`id`, `name`, `published`) VALUES
 (1, 'main', 'yes'),
-(2, 'contact', 'yes');
+(2, 'contact', 'yes'),
+(3, 'servicii', 'yes');
 
 -- --------------------------------------------------------
 
@@ -577,7 +659,7 @@ CREATE TABLE IF NOT EXISTS `fuel_pages` (
   `date_added` datetime DEFAULT NULL,
   `last_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `last_modified_by` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `fuel_pages`
@@ -588,7 +670,12 @@ INSERT INTO `fuel_pages` (`id`, `location`, `layout`, `published`, `cache`, `dat
 (2, 'stiri', 'ssnews', 'yes', 'no', '2014-11-05 15:57:52', '2014-11-26 13:20:58', 1),
 (4, 'faq', 'ssfaq', 'yes', 'yes', '2014-11-26 15:49:30', '2014-11-26 13:49:30', 1),
 (5, 'contact/detalii', 'sscontact', 'yes', 'yes', '2014-11-26 18:16:25', '2014-11-26 16:16:48', 1),
-(6, 'contact/callcenter', 'sscontact', 'yes', 'yes', '2014-11-26 18:31:51', '2014-11-26 16:34:33', 1);
+(6, 'contact/callcenter', 'sscontact', 'yes', 'yes', '2014-11-26 18:31:51', '2014-11-26 16:34:33', 1),
+(9, 'servicii', 'ssservice_main', 'yes', 'yes', '2014-11-27 11:40:50', '2014-11-27 11:16:54', 1),
+(10, 'servicii/transfer-bani', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:25', '2014-11-27 13:44:01', 1),
+(11, 'servicii/conturi-plati', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:52', '2014-11-27 13:45:19', 1),
+(12, 'servicii/transfer-bani/ro-ro', 'ssservice', 'yes', 'yes', '2014-11-27 15:49:26', '2014-11-27 13:49:26', 1),
+(13, 'servicii/transfer-bani/ro-str', 'ssservice', 'yes', 'yes', '2014-11-27 16:51:15', '2014-11-27 14:51:15', 1);
 
 -- --------------------------------------------------------
 
@@ -605,7 +692,7 @@ CREATE TABLE IF NOT EXISTS `fuel_page_variables` (
   `type` enum('string','int','boolean','array') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
   `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=272 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=332 ;
 
 --
 -- Dumping data for table `fuel_page_variables`
@@ -634,7 +721,39 @@ INSERT INTO `fuel_page_variables` (`id`, `page_id`, `name`, `scope`, `value`, `t
 (254, 6, 'banner_img', '', 'banners/b_contact._.1134x184_._.o_.jpg', 'string', 'ro', 'yes'),
 (255, 6, 'heading', '', 'Call center', 'string', 'ro', 'yes'),
 (256, 6, 'body', '', 'Informatii callcenter', 'string', 'ro', 'yes'),
-(257, 6, 'body_class', '', '', 'string', 'ro', 'yes');
+(257, 6, 'body_class', '', '', 'string', 'ro', 'yes'),
+(285, 9, 'page_title', '', '', 'string', 'ro', 'yes'),
+(286, 9, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(287, 9, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(288, 9, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'ro', 'yes'),
+(304, 10, 'page_title', '', '', 'string', 'ro', 'yes'),
+(305, 10, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(306, 10, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(307, 10, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'ro', 'yes'),
+(308, 10, 'heading', '', '', 'string', 'ro', 'yes'),
+(309, 10, 'body', '', 'Transfer de bani', 'string', 'ro', 'yes'),
+(310, 10, 'body_class', '', '', 'string', 'ro', 'yes'),
+(311, 11, 'page_title', '', '', 'string', 'ro', 'yes'),
+(312, 11, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(313, 11, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(314, 11, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'ro', 'yes'),
+(315, 11, 'heading', '', '', 'string', 'ro', 'yes'),
+(316, 11, 'body', '', 'Conturi de plati', 'string', 'ro', 'yes'),
+(317, 11, 'body_class', '', '', 'string', 'ro', 'yes'),
+(318, 12, 'page_title', '', '', 'string', 'ro', 'yes'),
+(319, 12, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(320, 12, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(321, 12, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'ro', 'yes'),
+(322, 12, 'heading', '', '', 'string', 'ro', 'yes'),
+(323, 12, 'body', '', 'Transfer de bani RO RO', 'string', 'ro', 'yes'),
+(324, 12, 'body_class', '', '', 'string', 'ro', 'yes'),
+(325, 13, 'page_title', '', '', 'string', 'ro', 'yes'),
+(326, 13, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(327, 13, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(328, 13, 'banner_img', '', '', 'string', 'ro', 'yes'),
+(329, 13, 'heading', '', '', 'string', 'ro', 'yes'),
+(330, 13, 'body', '', 'Transfer de bani Ro - strainatate', 'string', 'ro', 'yes'),
+(331, 13, 'body_class', '', '', 'string', 'ro', 'yes');
 
 -- --------------------------------------------------------
 
@@ -784,7 +903,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'c531c8e0e0948747123c3c5bd9f5ba940c875d21', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '6123ba4202e971b1b9e6c9e603a428b4', 'yes', 'yes');
+(1, 'admin', '1e7b315cef5ed03a5e51f7718d617a1bb76006f0', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '1469c6c219dadf06c961b6982452d536', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -874,6 +993,38 @@ INSERT INTO `ss_cities` (`id`, `name`) VALUES
 (5, 'Bucuresti'),
 (7, 'Brasov'),
 (8, 'Cluj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ss_display_fees`
+--
+
+CREATE TABLE IF NOT EXISTS `ss_display_fees` (
+`id` tinyint(3) unsigned NOT NULL,
+  `amount_min` mediumint(9) NOT NULL,
+  `amount_max` mediumint(9) NOT NULL,
+  `fee` decimal(10,2) NOT NULL,
+  `type` enum('flat','prc') COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `ss_display_fees`
+--
+
+INSERT INTO `ss_display_fees` (`id`, `amount_min`, `amount_max`, `fee`, `type`) VALUES
+(1, 1, 50, '3.50', 'flat'),
+(2, 51, 100, '4.00', 'flat'),
+(3, 101, 200, '6.00', 'flat'),
+(4, 201, 300, '9.00', 'flat'),
+(5, 301, 400, '12.00', 'flat'),
+(6, 401, 500, '14.00', 'flat'),
+(7, 501, 600, '16.00', 'flat'),
+(8, 601, 700, '20.00', 'flat'),
+(9, 701, 800, '22.00', 'flat'),
+(10, 801, 900, '24.00', 'flat'),
+(11, 901, 1000, '28.00', 'flat'),
+(12, 1001, 9999, '3.00', 'prc');
 
 -- --------------------------------------------------------
 
@@ -1359,6 +1510,12 @@ ALTER TABLE `ss_cities`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ss_display_fees`
+--
+ALTER TABLE `ss_display_fees`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ss_faq`
 --
 ALTER TABLE `ss_faq`
@@ -1438,7 +1595,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `fuel_archives`
 --
 ALTER TABLE `fuel_archives`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=180;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=218;
 --
 -- AUTO_INCREMENT for table `fuel_blocks`
 --
@@ -1453,27 +1610,27 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=250;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=288;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
 ALTER TABLE `fuel_navigation`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `fuel_navigation_groups`
 --
 ALTER TABLE `fuel_navigation_groups`
-MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `fuel_pages`
 --
 ALTER TABLE `fuel_pages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `fuel_page_variables`
 --
 ALTER TABLE `fuel_page_variables`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=272;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=332;
 --
 -- AUTO_INCREMENT for table `fuel_permissions`
 --
@@ -1524,6 +1681,11 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 ALTER TABLE `ss_cities`
 MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `ss_display_fees`
+--
+ALTER TABLE `ss_display_fees`
+MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `ss_faq`
 --

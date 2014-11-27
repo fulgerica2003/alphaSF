@@ -3,7 +3,7 @@
 	$ssNews = $CI->news_model->find_all_array(array('language' => $lang, 'published' => 'yes'), 'publish_date desc', '3');
 ?>
 <div class="col-lg-3 col-sm-6">
-	<div class="caseta minimize slider-news">
+	<div class="caseta <?php echo (!empty($page) && $page == 'services' ? 'bkg-brown' : ''); ?> minimize slider-news">
 		<div class="minimize-caseta">+</div>
 		<div class="caseta-titlu"><?php echo lang('caseta_slider_news_titlu');?></div>
 		<ul id="slider-news">

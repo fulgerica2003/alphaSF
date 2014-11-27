@@ -310,6 +310,7 @@ dumneavoastra este %s';
 */
 $lang['caseta_details'] = 'Detalii';
 $lang['caseta_fees'] = 'Toate comisioanele';
+
 $lang['caseta_find_more'] = 'Afla mai multe';
 $lang['caseta_read_more'] = 'Citeste mai departe';
 
@@ -322,8 +323,11 @@ $lang['caseta_acasa_content'] = 'Lorem ipsum dolor sit amet, money transfer, adi
 $lang['caseta_cash_titlu'] = 'Transfer de bani lichizi';
 $lang['caseta_cash_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
 
-$lang['caseta_comisioane_titlu'] = 'Comisioane Romania - Abroad';
+$lang['caseta_comisioane_titlu'] = 'Comisioane Romania - strainatate';
 $lang['caseta_comisioane_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
+$lang['caseta_comisioane_short'] = 'Comisioane bani lichizi RO- strainatate';
+$lang['caseta_comisioane_amount'] = 'Suma';
+$lang['caseta_comisioane_fee'] = 'Comision';
 
 $lang['caseta_retea_titlu'] = 'Reteaua noastra';
 $lang['caseta_retea_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';

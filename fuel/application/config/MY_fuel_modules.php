@@ -83,6 +83,13 @@ $config['modules']['ss_faq'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_display_fees'] = array(
+  'module_name' => 'Display fees',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
 
 
 /*********************** OVERWRITES ************************************/

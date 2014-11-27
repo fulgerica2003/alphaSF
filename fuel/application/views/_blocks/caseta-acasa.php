@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-sm-6">
-	<div class="caseta caseta-bkg minimize" id="caseta-acasa">
+	<div class="caseta <?php echo (!empty($page) && $page == 'services' ? 'bkg-brown' : ''); ?> caseta-bkg minimize" id="caseta-acasa">
 		<div class="minimize-caseta">+</div>
 		<div class="caseta-titlu"><?php echo lang('caseta_acasa_titlu')?></div>
 		<div class="caseta-content">

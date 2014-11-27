@@ -100,6 +100,7 @@ $config['nav']['site'] += array(
 'ss_types' => 'Types',
 'ss_fees' => 'Fees',
 'ss_faq' => 'FAQ',
+'ss_display_fees' => 'Display fees',
 );
 
 $config['languages'] = array(

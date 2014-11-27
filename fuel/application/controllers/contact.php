@@ -19,7 +19,7 @@
 			}
 			else
 			{
-				$this->fuel->pages->render('formsuccess');
+				$this->fuel->pages->render('contact_success');
 				$email_info = array ('sender' => $this->input->post('email'),
 					'receiver' => $this->fuel->sitevars->get()['from_email'],
 					'subject' => $this->input->post('subject'),
