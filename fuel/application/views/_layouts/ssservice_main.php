@@ -21,7 +21,7 @@
 		</nav>
 	</div>
 	
-		<div id="wrapper" class="margin-top">
+	<div id="wrapper" class="margin-top">
 		<?php $this->load->view('_blocks/caseta-online', array('page' => 'services')); ?>
 		<?php $this->load->view('_blocks/caseta-cash', array('page' => 'services')); ?>
 		<?php $this->load->view('_blocks/caseta-comisioane', array('page' => 'services')); ?>

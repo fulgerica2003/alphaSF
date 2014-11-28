@@ -96,6 +96,6 @@
 		<?php $this->load->view('_blocks/caseta-moneygram', array('page' => 'services')); ?>
 		
 		
-	</div>
+	
 	
 	<?php $this->load->view('_blocks/ssfooter')?>

@@ -50,14 +50,14 @@
 	<div class="col-lg-12 col-sm-12">
 		<div class="caseta thin-box">
 			<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-5 col-sm-5">
+					<a href="conditii-generale" >Conditii generale ale afacerii</a>
+				</div>
 				<div class="col-lg-2 col-sm-2">
-					ANPC 
+					<a href="http://www.anpc.gov.ro/" target="_blank">ANPC</a>
 				</div>
 				<div class="col-lg-5 col-sm-5">
-					Conditii generale ale afacerii  
-				</div>
-				<div class="col-lg-5 col-sm-5">
-					Data Protection
+					<a href="http://www.dataprotection.ro/" target="_blank">Data Protection</a>
 				</div>
 			</div>
 			<div class="col-lg-6 col-sm-12">

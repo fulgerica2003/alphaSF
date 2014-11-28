@@ -3,7 +3,7 @@
 <!--[if IE 8]><html class="ie8" lang="<?php echo $lang; ?>"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="<?php echo $lang; ?>"><![endif]-->
 <!--[if !IE]><!--><html lang="<?php echo $lang; ?>"><!--<![endif]-->
-<html>
+
 <head>
 	<meta charset="utf-8">
 	<title><?php echo fuel_var('page_title', ''); ?> - <?=$this->fuel->config('site_name')?></title>

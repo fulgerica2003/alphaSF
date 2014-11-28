@@ -21,7 +21,7 @@
 		</nav>
 	</div>
 	
-	<div id="wrapper">
+	<div id="wrapper" class="margin-top">
 		<div class="col-lg-9 col-sm-12">
 			<div class="caseta page-text">
 				<?php echo fuel_var('body', ''); ?>
@@ -29,9 +29,7 @@
 		</div>
 		
 		<?php $this->load->view('_blocks/caseta-online')?>
-		<div class="col-lg-3 col-sm-6">
-			<?php $this->load->view('_blocks/caseta-calculator')?>
-		</div>
+		<?php $this->load->view('_blocks/caseta-calculator')?>
 	</div>
 	
 	<?php $this->load->view('_blocks/ssfooter')?>

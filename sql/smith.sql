@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2014 at 05:24 PM
+-- Generation Time: Nov 28, 2014 at 11:31 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version` smallint(5) unsigned NOT NULL,
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=218 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=225 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -235,7 +235,15 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (214, 12, 'fuel_pages', '{"id":12,"location":"servicii\\/transfer-bani\\/ro-ro","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:49:26","last_modified":"2014-11-27 15:49:26","last_modified_by":"","variables":[{"id":"321","page_id":"12","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"323","page_id":"12","name":"body","scope":"","value":"Transfer de bani RO RO","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"324","page_id":"12","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"322","page_id":"12","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"319","page_id":"12","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"320","page_id":"12","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"318","page_id":"12","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"}]}', 1, '2014-11-27 13:49:27', 1),
 (215, 20, 'fuel_navigation', '{"id":20,"location":"servicii\\/transfer-bani\\/ro-ro","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-ro","label":"Romania - Romania","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 13:50:07', 1),
 (216, 13, 'fuel_pages', '{"id":13,"location":"servicii\\/transfer-bani\\/ro-str","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 16:51:15","last_modified":"2014-11-27 16:51:15","last_modified_by":"","variables":[{"id":"328","page_id":"13","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"330","page_id":"13","name":"body","scope":"","value":"Transfer de bani Ro - strainatate","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"331","page_id":"13","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"329","page_id":"13","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"326","page_id":"13","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"327","page_id":"13","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"325","page_id":"13","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"}]}', 1, '2014-11-27 14:51:16', 1),
-(217, 21, 'fuel_navigation', '{"id":21,"location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - strainatate","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 14:51:50', 1);
+(217, 21, 'fuel_navigation', '{"id":21,"location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - strainatate","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-27 14:51:50', 1),
+(218, 4, 'fuel_navigation_groups', '{"id":4,"name":"footer_bottom","published":"yes"}', 1, '2014-11-28 19:56:01', 1),
+(219, 22, 'fuel_navigation', '{"id":22,"location":"http:\\/\\/www.anpc.gov.ro\\/","group_id":"4","nav_key":"http:\\/\\/www.anpc.gov.ro\\/","label":"ANPC","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-28 19:56:56', 1),
+(220, 23, 'fuel_navigation', '{"id":23,"location":"","group_id":"4","nav_key":"1","label":"Conditii generale ale afacerii","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-28 19:57:27', 1);
+INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `version_timestamp`, `archived_user_id`) VALUES
+(221, 14, 'fuel_pages', '{"id":14,"location":"Conditii-generale-ale-afacerii","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-11-28 21:58:44","last_modified_by":"","variables":[{"id":"335","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"337","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"338","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"336","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"333","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"334","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"332","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"}]}', 1, '2014-11-28 19:58:44', 1),
+(222, 23, 'fuel_navigation', '{"id":"23","location":"Conditii-generale-ale-afacerii","group_id":"4","nav_key":"Conditii-generale-ale-afacerii","label":"Conditii generale ale afacerii","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-11-28 19:59:19', 1),
+(223, 24, 'fuel_navigation', '{"id":24,"location":"http:\\/\\/www.dataprotection.ro\\/","group_id":"4","nav_key":"http:\\/\\/www.dataprotection.ro\\/","label":"Protectia datelor cu caracter personal","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-28 20:00:34', 1),
+(224, 14, 'fuel_pages', '{"id":"14","location":"conditii-generale","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-11-28 22:07:25","last_modified_by":"1","variables":[{"id":"342","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"344","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"345","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"343","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"340","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"341","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"339","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"}]}', 2, '2014-11-28 20:07:26', 1);
 
 -- --------------------------------------------------------
 
@@ -282,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=288 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=300 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -575,7 +583,19 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (284, '2014-11-27 15:45:20', 1, 'Pages item <em>servicii/conturi-plati</em> edited', 'info'),
 (285, '2014-11-27 15:50:08', 1, 'Navigation item <em>Romania - Romania</em> edited', 'info'),
 (286, '2014-11-27 16:51:50', 1, 'Navigation item <em>Romania - strainatate</em> edited', 'info'),
-(287, '2014-11-27 17:23:05', 1, 'The cache has been cleared.', 'info');
+(287, '2014-11-27 17:23:05', 1, 'The cache has been cleared.', 'info'),
+(288, '2014-11-28 00:39:26', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(289, '2014-11-28 01:19:31', 1, 'The cache has been cleared.', 'info'),
+(290, '2014-11-28 21:55:29', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(291, '2014-11-28 21:56:02', 1, 'Navigation Groups item <em>footer_bottom</em> edited', 'info'),
+(292, '2014-11-28 21:56:56', 1, 'Navigation item <em>ANPC</em> edited', 'info'),
+(293, '2014-11-28 21:57:27', 1, 'Navigation item <em>Conditii generale ale afacerii</em> edited', 'info'),
+(294, '2014-11-28 21:59:19', 1, 'Navigation item <em>Conditii generale ale afacerii</em> edited', 'info'),
+(295, '2014-11-28 22:00:34', 1, 'Navigation item <em>Protectia datelor cu caracter personal</em> edited', 'info'),
+(296, '2014-11-28 22:02:44', 1, 'Multiple <em>navigation</em> deleted', 'info'),
+(297, '2014-11-28 22:02:59', 1, '1 item for <em>navigation_group</em> deleted', 'info'),
+(298, '2014-11-28 22:07:26', 1, 'Pages item <em>conditii-generale</em> edited', 'info'),
+(299, '2014-11-28 23:30:04', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -659,7 +679,7 @@ CREATE TABLE IF NOT EXISTS `fuel_pages` (
   `date_added` datetime DEFAULT NULL,
   `last_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `last_modified_by` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `fuel_pages`
@@ -675,7 +695,8 @@ INSERT INTO `fuel_pages` (`id`, `location`, `layout`, `published`, `cache`, `dat
 (10, 'servicii/transfer-bani', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:25', '2014-11-27 13:44:01', 1),
 (11, 'servicii/conturi-plati', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:52', '2014-11-27 13:45:19', 1),
 (12, 'servicii/transfer-bani/ro-ro', 'ssservice', 'yes', 'yes', '2014-11-27 15:49:26', '2014-11-27 13:49:26', 1),
-(13, 'servicii/transfer-bani/ro-str', 'ssservice', 'yes', 'yes', '2014-11-27 16:51:15', '2014-11-27 14:51:15', 1);
+(13, 'servicii/transfer-bani/ro-str', 'ssservice', 'yes', 'yes', '2014-11-27 16:51:15', '2014-11-27 14:51:15', 1),
+(14, 'conditii-generale', 'sscontact', 'yes', 'yes', '2014-11-28 21:58:44', '2014-11-28 20:07:25', 1);
 
 -- --------------------------------------------------------
 
@@ -692,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `fuel_page_variables` (
   `type` enum('string','int','boolean','array') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
   `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=332 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=346 ;
 
 --
 -- Dumping data for table `fuel_page_variables`
@@ -753,7 +774,14 @@ INSERT INTO `fuel_page_variables` (`id`, `page_id`, `name`, `scope`, `value`, `t
 (328, 13, 'banner_img', '', '', 'string', 'ro', 'yes'),
 (329, 13, 'heading', '', '', 'string', 'ro', 'yes'),
 (330, 13, 'body', '', 'Transfer de bani Ro - strainatate', 'string', 'ro', 'yes'),
-(331, 13, 'body_class', '', '', 'string', 'ro', 'yes');
+(331, 13, 'body_class', '', '', 'string', 'ro', 'yes'),
+(339, 14, 'page_title', '', '', 'string', 'ro', 'yes'),
+(340, 14, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(341, 14, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(342, 14, 'banner_img', '', '', 'string', 'ro', 'yes'),
+(343, 14, 'heading', '', '', 'string', 'ro', 'yes'),
+(344, 14, 'body', '', 'Conditii generale ale afacerii', 'string', 'ro', 'yes'),
+(345, 14, 'body_class', '', '', 'string', 'ro', 'yes');
 
 -- --------------------------------------------------------
 
@@ -903,7 +931,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', '1e7b315cef5ed03a5e51f7718d617a1bb76006f0', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '1469c6c219dadf06c961b6982452d536', 'yes', 'yes');
+(1, 'admin', '87a5ef881744f15806f512164844e0821a40ab24', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '7358f555a32489eba463e4ccfeb197f1', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -1595,7 +1623,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `fuel_archives`
 --
 ALTER TABLE `fuel_archives`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=218;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=225;
 --
 -- AUTO_INCREMENT for table `fuel_blocks`
 --
@@ -1610,7 +1638,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `fuel_logs`
 --
 ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=288;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=300;
 --
 -- AUTO_INCREMENT for table `fuel_navigation`
 --
@@ -1625,12 +1653,12 @@ MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `fuel_pages`
 --
 ALTER TABLE `fuel_pages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `fuel_page_variables`
 --
 ALTER TABLE `fuel_page_variables`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=332;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=346;
 --
 -- AUTO_INCREMENT for table `fuel_permissions`
 --

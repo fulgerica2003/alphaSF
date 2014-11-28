@@ -31,9 +31,7 @@
 		</div>
 		
 		<?php $this->load->view('_blocks/caseta-online')?>
-		<div class="col-lg-3 col-sm-6">
-			<?php $this->load->view('_blocks/caseta-calculator')?>
-		</div>
+		<?php $this->load->view('_blocks/caseta-calculator')?>
 	</div>
 	
 	<?php $this->load->view('_blocks/ssfooter')?>
