@@ -109,7 +109,7 @@ $config['layouts']['ssservice_main'] = $ssservice_main;
 
 $ssservice = new Fuel_layout('ssservice');
 $ssservice->set_label('Service page template');
-$ssservice->add_fields($common_meta);
+	$ssservice->add_fields($common_meta);
 
 $ssservice->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
 
@@ -135,6 +135,25 @@ $ssnews->add_fields($common_meta);
 $ssnews->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
 
 $config['layouts']['ssnews'] = $ssnews;
+
+/*
+|--------------------------------------------------------------------------
+| About us  page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$ssabout = new Fuel_layout('ssabout');
+$ssabout->set_label('Aboutus page template');
+$ssabout->add_fields($common_meta);
+$ssabout->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
+$ssabout->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$ssabout->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$ssabout->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+$config['layouts']['ssabout'] = $ssabout;
+
 
 /*
 |--------------------------------------------------------------------------
