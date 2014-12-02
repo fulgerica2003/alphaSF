@@ -8,6 +8,14 @@
 
 /*
 |--------------------------------------------------------------------------
+| etichete servicii
+|--------------------------------------------------------------------------
+|
+*/
+$lang['services_title'] = 'Servicii';
+
+/*
+|--------------------------------------------------------------------------
 | etichete login; a se vedea documentul de specificatii
 | pentru maparea campurilor
 | TODO de standardizat placeholdere: de ex, ref tx, nume, prenume, link etc
@@ -364,10 +372,15 @@ $lang['contact_title'] = 'Contact';
 $lang['contact_name'] = 'Nume';
 $lang['contact_email'] = 'E-mail';
 $lang['contact_msg_type'] = 'Subiect';
-$lang['contact_msg_type_o1'] = 'Intrebare';
-$lang['contact_msg_type_o2'] = 'Sugestie';
+$lang['contact_msg_type_o1'] = 'Intrebari diverse';
+$lang['contact_msg_type_o2'] = 'Intrebari referitoare la transfer de bani';
+$lang['contact_msg_type_o3'] = 'Sunt deja agent';
+$lang['contact_msg_type_o4'] = 'Doresc sa devin agent';
 $lang['contact_message'] = 'Mesaj';
 $lang['contact_send'] = 'Trimite';
+$lang['contact_success'] = 'Mesajul dvs. a fost trimis cu succes!';
+$lang['contact_new'] = 'Mesaj nou';
+$lang['contact_required'] = 'Acest camp e obligatoriu';
 
 
 /*
@@ -376,6 +389,12 @@ $lang['contact_send'] = 'Trimite';
 |--------------------------------------------------------------------------
 |
 */
+$lang['foo_menu1_title'] = 'Transfer online de bani';
+$lang['foo_menu2_title'] = 'Transfer de bani lichizi';
+$lang['foo_menu3_title'] = 'Despre noi';
+$lang['foo_cga'] = 'Conditii generale ale afacerii';
+$lang['foo_anpc'] = 'ANPC';
+$lang['foo_data_protection'] = 'Protectia datelor';
 $lang['foo_top'] = 'SUS';
 $lang['foo_support_title'] = 'Suport 24/7';
 $lang['foo_support_text'] = 'Nu ezitati sa ne contactati in orice moment. <br/>Telefon 004 021 335 88 00 si 004 0724 388 388 sau pe email la adresa <a href="#">hello@smith.com.ro</a>';

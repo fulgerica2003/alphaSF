@@ -20,7 +20,7 @@
 				<ul class="news-list">
 					<?php $ni = 0; foreach($ssNews as $news) : $ni++; ?>
 					<li>
-						<div class="news-date col-lg-3 col-sm-3"><?php echo strftime('%#d %B %Y', strtotime($news['publish_date'])); ?></div>
+						<div class="news-date col-lg-3 col-sm-3"><?php setlocale(LC_TIME, $lang . '_' . strtoupper ($lang)); echo strftime('%#d %B %Y', strtotime($news['publish_date'])); ?></div>
 						<div class="col-lg-9 col-sm-9"><span class="news-exp"><?php echo $news['title']; ?></span><a class="news-citeste"><?php echo lang('news_read', $lang); ?></a></div>
 					</li>
 					<?php endforeach; ?>

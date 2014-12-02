@@ -3,7 +3,7 @@
 		<div class="caseta">
 			<div class="col-lg-6 col-sm-12">
 				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer">Money Transfer Online</div>
+					<div class="titlu-lista-footer"><?php echo lang('foo_menu1_title')?></div>
 					<ul class="liste-footer">
 						<li><a href="#" >CARD</a></li>
 						<li><a href="#" >ACCOUNT</a></li>
@@ -11,24 +11,12 @@
 					</ul>
 				</div>
 				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer">Money Transfer Cash</div>
-					<ul class="liste-footer">
-						<li><a href="#" >ROMANIA — ABROAD</a></li>
-						<li><a href="#" >ROMANIA — ROMANIA</a></li>
-						<li><a href="#" >ABROAD — ROMANIA</a></li>
-						<li><a href="#" >ACASA (HD)</a></li>
-					</ul>
+					<div class="titlu-lista-footer"><?php echo lang('foo_menu2_title')?></div>
+					<?php echo fuel_nav(array('group_id' => 'servicii', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', 'parent' => 'servicii/transfer-bani', )); ?>
 				</div>
 				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer">About us</div>
-					<ul class="liste-footer">
-						<li><a href="#" >ABOUT US</a></li>
-						<li><a href="#" >NEWS</a></li>
-						<li><a href="#" >OUR PARTNERS</a></li>
-						<li><a href="#" >BECOME AGENT</a></li>
-						<li><a href="#" >OUR NETWORK</a></li>
-						<li><a href="#" >CONTACT</a></li>
-					</ul>
+					<div class="titlu-lista-footer"><?php echo lang('foo_menu3_title')?></div>
+						<?php echo fuel_nav(array('group_id' => 'foo_menu3', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
 				</div>
 			</div>
 			
@@ -51,13 +39,13 @@
 		<div class="caseta thin-box">
 			<div class="col-lg-6 col-sm-12">
 				<div class="col-lg-5 col-sm-5">
-					<a href="conditii-generale" >Conditii generale ale afacerii</a>
+					<a href="conditii-generale" ><?php echo lang('foo_cga'); ?></a>
 				</div>
 				<div class="col-lg-2 col-sm-2">
-					<a href="http://www.anpc.gov.ro/" target="_blank">ANPC</a>
+					<a href="http://www.anpc.gov.ro/" target="_blank"><?php echo lang('foo_anpc'); ?></a>
 				</div>
 				<div class="col-lg-5 col-sm-5">
-					<a href="http://www.dataprotection.ro/" target="_blank">Data Protection</a>
+					<a href="http://www.dataprotection.ro/" target="_blank"><?php echo lang('foo_data_protection'); ?></a>
 				</div>
 			</div>
 			<div class="col-lg-6 col-sm-12">

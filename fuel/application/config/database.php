@@ -47,10 +47,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'smith';
+$db['default']['hostname'] = 'bookreader.ro';
+$db['default']['username'] = 'bookread_smith';
 $db['default']['password'] = 'dFh3M2UMDUZjTmvm';
-$db['default']['database'] = 'smith';
+$db['default']['database'] = 'bookread_smith';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

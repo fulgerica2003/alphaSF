@@ -47,7 +47,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql5.hostbase.net';
+$db['default']['hostname'] = 'server-0133.whmpanels.com';
 $db['default']['username'] = 'bookread_smith';
 $db['default']['password'] = 'dFh3M2UMDUZjTmvm';
 $db['default']['database'] = 'bookread_smith';

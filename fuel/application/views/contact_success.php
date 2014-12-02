@@ -1,3 +1,3 @@
-<h3>Your form was successfully submitted!</h3>
+<h3><?php echo lang('contact_success')?></h3>
 
-<p><?php echo anchor('contact/mesaj', 'Try it again!'); ?></p>
+<p><?php echo anchor('contact/mesaj', lang('contact_new')); ?></p>

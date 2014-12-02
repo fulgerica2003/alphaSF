@@ -597,7 +597,7 @@ div.calc-mare div.total-calc {padding-top: 25px;}
 #footer a {color:#4f4553;}
 #footer a:hover {color:#4f4553;text-decoration:none;}
 .titlu-lista-footer {margin-top:65px;font: 14px/20px MetaSerifBookRegular, Arial, Helvetica, sans-serif;margin-bottom:30px;}
-.liste-footer {font: 14px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
+.liste-footer {font: 14px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif; text-transform: uppercase;}
 #suport-image {float:left;margin-right:20px;margin-top: -10px;}
 #button-top {
 	margin-top:-47px;

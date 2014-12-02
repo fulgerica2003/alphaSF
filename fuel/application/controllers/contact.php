@@ -8,17 +8,15 @@
 			
 			$this->load->library('form_validation');
 			
-			$this->form_validation->set_rules('name', 'Nume', 'trim|required|max_length[255]|xss_clean');
-			$this->form_validation->set_rules('email', 'Adres de email', 'trim|required|max_length[255]|valid_email|xss_clean');
-			$this->form_validation->set_rules('subject', 'Subiect', 'required');
-			$this->form_validation->set_rules('message', 'Mesaj', 'required|trim|min_length[8]|max_length[1024]|xss_clean');
+			$this->form_validation->set_rules('name', lang('contact_name'), 'trim|required|max_length[255]|xss_clean');
+			$this->form_validation->set_rules('email', lang('contact_email'), 'trim|required|max_length[255]|valid_email|xss_clean');
+			$this->form_validation->set_rules('subject', lang('contact_subject'), 'required');
+			$this->form_validation->set_rules('message', lang('contact_message'), 'required|trim|min_length[8]|max_length[1024]|xss_clean');
 			
-			if ($this->form_validation->run() == FALSE)
-			{
+			if ($this->form_validation->run() == FALSE){
 				$this->fuel->pages->render('contact');
 			}
-			else
-			{
+			else{
 				$this->fuel->pages->render('contact_success');
 				$email_info = array ('sender' => $this->input->post('email'),
 					'receiver' => $this->fuel->sitevars->get()['from_email'],

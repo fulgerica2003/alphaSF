@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.8
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 28, 2014 at 11:31 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Host: localhost
+-- Generation Time: Dec 02, 2014 at 05:37 PM
+-- Server version: 5.5.35-33.0
+-- PHP Version: 5.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `smith`
+-- Database: `bookread_smith`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +27,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_archives` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ref_id` int(10) unsigned NOT NULL,
   `table_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `data` text COLLATE utf8_unicode_ci NOT NULL,
   `version` smallint(5) unsigned NOT NULL,
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `archived_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=225 ;
+  `archived_user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=274 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -243,7 +244,56 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (221, 14, 'fuel_pages', '{"id":14,"location":"Conditii-generale-ale-afacerii","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-11-28 21:58:44","last_modified_by":"","variables":[{"id":"335","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"337","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"338","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"336","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"333","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"334","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"},{"id":"332","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"Conditii-generale-ale-afacerii","page_published":"yes"}]}', 1, '2014-11-28 19:58:44', 1),
 (222, 23, 'fuel_navigation', '{"id":"23","location":"Conditii-generale-ale-afacerii","group_id":"4","nav_key":"Conditii-generale-ale-afacerii","label":"Conditii generale ale afacerii","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-11-28 19:59:19', 1),
 (223, 24, 'fuel_navigation', '{"id":24,"location":"http:\\/\\/www.dataprotection.ro\\/","group_id":"4","nav_key":"http:\\/\\/www.dataprotection.ro\\/","label":"Protectia datelor cu caracter personal","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-11-28 20:00:34', 1),
-(224, 14, 'fuel_pages', '{"id":"14","location":"conditii-generale","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-11-28 22:07:25","last_modified_by":"1","variables":[{"id":"342","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"344","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"345","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"343","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"340","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"341","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"339","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"}]}', 2, '2014-11-28 20:07:26', 1);
+(224, 14, 'fuel_pages', '{"id":"14","location":"conditii-generale","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-11-28 22:07:25","last_modified_by":"1","variables":[{"id":"342","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"344","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"345","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"343","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"340","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"341","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"339","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"}]}', 2, '2014-11-28 20:07:26', 1),
+(225, 15, 'fuel_pages', '{"id":15,"location":"conditii-generale_en","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-12-02 13:45:10","last_modified":"2014-12-02 13:45:10","last_modified_by":"","variables":[{"id":"349","page_id":"15","name":"banner_img","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"351","page_id":"15","name":"body","scope":"","value":"Business Terms and Conditions","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"352","page_id":"15","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"350","page_id":"15","name":"heading","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"347","page_id":"15","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"348","page_id":"15","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"},{"id":"346","page_id":"15","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale_en","page_published":"yes"}]}', 1, '2014-12-02 11:45:10', 1),
+(226, 22, 'fuel_navigation', '{"id":22,"location":"servicii","group_id":"1","nav_key":"serv","label":"Services","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 11:47:49', 1),
+(227, 14, 'fuel_pages', '{"id":"14","location":"conditii-generale","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-28 21:58:44","last_modified":"2014-12-02 13:53:16","last_modified_by":"1","variables":[{"id":"356","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"342","page_id":"14","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"358","page_id":"14","name":"body","scope":"","value":"Business Terms and Conditions","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"344","page_id":"14","name":"body","scope":"","value":"Conditii generale ale afacerii","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"359","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"345","page_id":"14","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"357","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"343","page_id":"14","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"354","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"340","page_id":"14","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"355","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"341","page_id":"14","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"353","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"},{"id":"339","page_id":"14","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"conditii-generale","page_published":"yes"}]}', 3, '2014-12-02 11:53:16', 1),
+(228, 5, 'fuel_pages', '{"id":"5","location":"contact\\/detalii","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-26 18:16:25","last_modified":"2014-12-02 14:06:54","last_modified_by":"1","variables":[{"id":"363","page_id":"5","name":"banner_img","scope":"","value":"banners\\/b_contact._.1134x184_._.o_.jpg","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"240","page_id":"5","name":"banner_img","scope":"","value":"banners\\/b_contact._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"365","page_id":"5","name":"body","scope":"","value":"Contact details","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"242","page_id":"5","name":"body","scope":"","value":"Detalii contact","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"366","page_id":"5","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"243","page_id":"5","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"364","page_id":"5","name":"heading","scope":"","value":"Detalii contact","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"241","page_id":"5","name":"heading","scope":"","value":"Detalii contact","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"361","page_id":"5","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"238","page_id":"5","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"362","page_id":"5","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"239","page_id":"5","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"360","page_id":"5","name":"page_title","scope":"","value":"Detalii contact","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"},{"id":"237","page_id":"5","name":"page_title","scope":"","value":"Detalii contact","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/detalii","page_published":"yes"}]}', 3, '2014-12-02 12:06:53', 1),
+(229, 6, 'fuel_pages', '{"id":"6","location":"contact\\/callcenter","layout":"sscontact","published":"yes","cache":"yes","date_added":"2014-11-26 18:31:51","last_modified":"2014-12-02 14:07:21","last_modified_by":"1","variables":[{"id":"370","page_id":"6","name":"banner_img","scope":"","value":"banners\\/b_contact._.1134x184_._.o_.jpg","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"254","page_id":"6","name":"banner_img","scope":"","value":"banners\\/b_contact._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"372","page_id":"6","name":"body","scope":"","value":"Callcenter information","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"256","page_id":"6","name":"body","scope":"","value":"Informatii callcenter","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"373","page_id":"6","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"257","page_id":"6","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"371","page_id":"6","name":"heading","scope":"","value":"Call center","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"255","page_id":"6","name":"heading","scope":"","value":"Call center","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"368","page_id":"6","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"252","page_id":"6","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"369","page_id":"6","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"253","page_id":"6","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"367","page_id":"6","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"},{"id":"251","page_id":"6","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"sscontact","location":"contact\\/callcenter","page_published":"yes"}]}', 3, '2014-12-02 12:07:21', 1),
+(230, 23, 'fuel_navigation', '{"id":23,"location":"servicii\\/conturi-plati","group_id":"3","nav_key":"servicii\\/conturi-plati","label":"Payment accounts","parent_id":"0","precedence":"10","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 3, '2014-12-02 12:10:38', 1),
+(231, 24, 'fuel_navigation', '{"id":24,"location":"servicii\\/transfer-bani","group_id":"3","nav_key":"servicii\\/transfer-bani","label":"Money transfer","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 12:11:10', 1),
+(232, 25, 'fuel_navigation', '{"id":25,"location":"servicii\\/transfer-bani\\/ro-ro","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-ro","label":"Romania - Romania","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 12:11:54', 1),
+(233, 21, 'fuel_navigation', '{"id":"21","location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - abroad","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 12:12:32', 1),
+(234, 26, 'fuel_navigation', '{"id":26,"location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - strainatate","parent_id":"18","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 12:13:12', 1),
+(235, 10, 'fuel_pages', '{"id":"10","location":"servicii\\/transfer-bani","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:25","last_modified":"2014-12-02 14:16:14","last_modified_by":"1","variables":[{"id":"377","page_id":"10","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"307","page_id":"10","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"379","page_id":"10","name":"body","scope":"","value":"Money transfer","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"309","page_id":"10","name":"body","scope":"","value":"Transfer de bani","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"380","page_id":"10","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"310","page_id":"10","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"378","page_id":"10","name":"heading","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"308","page_id":"10","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"375","page_id":"10","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"305","page_id":"10","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"376","page_id":"10","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"306","page_id":"10","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"374","page_id":"10","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"},{"id":"304","page_id":"10","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani","page_published":"yes"}]}', 4, '2014-12-02 12:16:14', 1),
+(236, 12, 'fuel_pages', '{"id":"12","location":"servicii\\/transfer-bani\\/ro-ro","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:49:26","last_modified":"2014-12-02 14:16:39","last_modified_by":"1","variables":[{"id":"384","page_id":"12","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"321","page_id":"12","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"386","page_id":"12","name":"body","scope":"","value":"Money transfer RO RO","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"323","page_id":"12","name":"body","scope":"","value":"Transfer de bani RO RO","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"387","page_id":"12","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"324","page_id":"12","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"385","page_id":"12","name":"heading","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"322","page_id":"12","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"382","page_id":"12","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"319","page_id":"12","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"383","page_id":"12","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"320","page_id":"12","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"381","page_id":"12","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"},{"id":"318","page_id":"12","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-ro","page_published":"yes"}]}', 2, '2014-12-02 12:16:39', 1),
+(237, 13, 'fuel_pages', '{"id":"13","location":"servicii\\/transfer-bani\\/ro-str","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 16:51:15","last_modified":"2014-12-02 14:17:04","last_modified_by":"1","variables":[{"id":"391","page_id":"13","name":"banner_img","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"393","page_id":"13","name":"body","scope":"","value":"Money transfer Ro - abroad","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"394","page_id":"13","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"392","page_id":"13","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"389","page_id":"13","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"390","page_id":"13","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"},{"id":"388","page_id":"13","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/transfer-bani\\/ro-str","page_published":"yes"}]}', 2, '2014-12-02 12:17:04', 1),
+(238, 11, 'fuel_pages', '{"id":"11","location":"servicii\\/conturi-plati","layout":"ssservice","published":"yes","cache":"yes","date_added":"2014-11-27 15:35:52","last_modified":"2014-12-02 14:18:01","last_modified_by":"1","variables":[{"id":"398","page_id":"11","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"314","page_id":"11","name":"banner_img","scope":"","value":"banners\\/b_servicii._.1134x184_._.o_.jpg","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"400","page_id":"11","name":"body","scope":"","value":"Payment accounts","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"316","page_id":"11","name":"body","scope":"","value":"Conturi de plati","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"401","page_id":"11","name":"body_class","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"317","page_id":"11","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"399","page_id":"11","name":"heading","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"315","page_id":"11","name":"heading","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"396","page_id":"11","name":"meta_description","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"312","page_id":"11","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"397","page_id":"11","name":"meta_keywords","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"313","page_id":"11","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"395","page_id":"11","name":"page_title","scope":"","value":"","type":"string","language":"en","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"},{"id":"311","page_id":"11","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssservice","location":"servicii\\/conturi-plati","page_published":"yes"}]}', 3, '2014-12-02 12:18:01', 1),
+(239, 27, 'fuel_navigation', '{"id":27,"location":"servicii","group_id":"1","nav_key":"servicii","label":"Services","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 12:21:16', 1),
+(240, 25, 'fuel_navigation', '{"id":"25","location":"servicii\\/transfer-bani\\/ro-ro","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-ro","label":"Romania - Romania","parent_id":"24","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 12:29:56', 1),
+(241, 21, 'fuel_navigation', '{"id":"21","location":"servicii\\/transfer-bani\\/ro-str","group_id":"3","nav_key":"servicii\\/transfer-bani\\/ro-str","label":"Romania - abroad","parent_id":"24","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 3, '2014-12-02 12:30:32', 1),
+(242, 4, 'fuel_navigation_groups', '{"id":4,"name":"foo_menu3","published":"yes"}', 2, '2014-12-02 15:09:57', 1),
+(243, 28, 'fuel_navigation', '{"id":28,"location":"","group_id":"4","nav_key":"","label":"Despre noi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:10:42', 1),
+(244, 28, 'fuel_navigation', '{"id":"28","location":"\\/","group_id":"4","nav_key":"\\/","label":"Despre noi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:10:52', 1),
+(245, 29, 'fuel_navigation', '{"id":29,"location":"stiri","group_id":"4","nav_key":"stiri","label":"Stiri","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:11:24', 1),
+(246, 30, 'fuel_navigation', '{"id":30,"location":"#","group_id":"4","nav_key":"1","label":"Partenerii nostri","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:11:58', 1),
+(247, 31, 'fuel_navigation', '{"id":31,"location":"contact","group_id":"4","nav_key":"contact","label":"Contact","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:12:24', 1),
+(248, 32, 'fuel_navigation', '{"id":32,"location":"agent","group_id":"4","nav_key":"agent","label":"Alatura-te echipei","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:13:02', 1),
+(249, 32, 'fuel_navigation', '{"id":"32","location":"retea","group_id":"4","nav_key":"retea","label":"Reteaua noastra","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:13:14', 1),
+(250, 33, 'fuel_navigation', '{"id":33,"location":"join","group_id":"4","nav_key":"join","label":"Alatura-te echipei","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2014-12-02 15:15:17', 1),
+(251, 30, 'fuel_navigation', '{"id":"30","location":"partners","group_id":"4","nav_key":"partners","label":"Partenerii nostri","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:16:01', 1),
+(252, 34, 'fuel_navigation', '{"id":34,"location":"despre","group_id":"4","nav_key":"despre","label":"about us","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:16:52', 1),
+(253, 35, 'fuel_navigation', '{"id":35,"location":"partners","group_id":"4","nav_key":"partners","label":"our partners","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:17:18', 1),
+(254, 36, 'fuel_navigation', '{"id":36,"location":"contact","group_id":"4","nav_key":"contact","label":"Contact","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:17:42', 1),
+(255, 36, 'fuel_navigation', '{"id":"36","location":"agent","group_id":"4","nav_key":"agent","label":"Become an agen","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:17:58', 1),
+(256, 36, 'fuel_navigation', '{"id":"36","location":"agent","group_id":"4","nav_key":"agent","label":"Become an agent","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 3, '2014-12-02 15:18:06', 1),
+(257, 37, 'fuel_navigation', '{"id":37,"location":"network","group_id":"4","nav_key":"network","label":"Our network","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:18:30', 1),
+(258, 38, 'fuel_navigation', '{"id":38,"location":"stiri","group_id":"4","nav_key":"stiri","label":"News","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:18:49', 1),
+(259, 37, 'fuel_navigation', '{"id":"37","location":"retea","group_id":"4","nav_key":"retea","label":"Our network","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:19:59', 1),
+(260, 36, 'fuel_navigation', '{"id":"36","location":"join","group_id":"4","nav_key":"join","label":"Become an agent","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 4, '2014-12-02 15:20:38', 1),
+(261, 39, 'fuel_navigation', '{"id":39,"location":"contact","group_id":"4","nav_key":"contact","label":"Contact","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2014-12-02 15:21:15', 1),
+(262, 28, 'fuel_navigation', '{"id":"28","location":"depre","group_id":"4","nav_key":"despre","label":"Despre noi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-12-02 15:22:31', 1),
+(263, 38, 'fuel_navigation', '{"id":"38","location":"stiri","group_id":"4","nav_key":"stiri","label":"News","parent_id":"0","precedence":"10","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:22:53', 1),
+(264, 29, 'fuel_navigation', '{"id":"29","location":"stiri","group_id":"4","nav_key":"stiri","label":"Stiri","parent_id":"0","precedence":"10","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:23:06', 1),
+(265, 30, 'fuel_navigation', '{"id":"30","location":"partners","group_id":"4","nav_key":"partners","label":"Partenerii nostri","parent_id":"0","precedence":"20","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-12-02 15:23:21', 1),
+(266, 35, 'fuel_navigation', '{"id":"35","location":"partners","group_id":"4","nav_key":"partners","label":"our partners","parent_id":"0","precedence":"20","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:23:33', 1),
+(267, 33, 'fuel_navigation', '{"id":"33","location":"join","group_id":"4","nav_key":"join","label":"Alatura-te echipei","parent_id":"0","precedence":"30","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:23:46', 1),
+(268, 36, 'fuel_navigation', '{"id":"36","location":"join","group_id":"4","nav_key":"join","label":"Become an agent","parent_id":"0","precedence":"30","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 5, '2014-12-02 15:24:04', 1),
+(269, 32, 'fuel_navigation', '{"id":"32","location":"retea","group_id":"4","nav_key":"retea","label":"Reteaua noastra","parent_id":"0","precedence":"40","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2014-12-02 15:24:20', 1),
+(270, 37, 'fuel_navigation', '{"id":"37","location":"retea","group_id":"4","nav_key":"retea","label":"Our network","parent_id":"0","precedence":"40","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 3, '2014-12-02 15:24:34', 1),
+(271, 31, 'fuel_navigation', '{"id":"31","location":"contact","group_id":"4","nav_key":"contact","label":"Contact","parent_id":"0","precedence":"50","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2014-12-02 15:24:47', 1),
+(272, 39, 'fuel_navigation', '{"id":"39","location":"contact","group_id":"4","nav_key":"contact","label":"Contact","parent_id":"0","precedence":"50","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:24:58', 1),
+(273, 16, 'fuel_navigation', '{"id":"16","location":"en\\/contact\\/mesaj","group_id":"2","nav_key":"contact\\/mesaj","label":"Send message","parent_id":"0","precedence":"25","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 2, '2014-12-02 15:35:09', 1);
 
 -- --------------------------------------------------------
 
@@ -252,14 +302,16 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_blocks` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `view` text COLLATE utf8_unicode_ci NOT NULL,
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
   `date_added` datetime DEFAULT NULL,
-  `last_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `last_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`,`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -269,13 +321,15 @@ CREATE TABLE IF NOT EXISTS `fuel_blocks` (
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_categories` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
   `slug` varchar(100) NOT NULL DEFAULT '',
   `context` varchar(100) NOT NULL DEFAULT '',
   `precedence` int(11) NOT NULL,
   `parent_id` int(11) NOT NULL,
-  `published` enum('yes','no') NOT NULL DEFAULT 'yes'
+  `published` enum('yes','no') NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -285,12 +339,13 @@ CREATE TABLE IF NOT EXISTS `fuel_categories` (
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_logs` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `entry_date` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=300 ;
+  `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=358 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -595,7 +650,65 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (296, '2014-11-28 22:02:44', 1, 'Multiple <em>navigation</em> deleted', 'info'),
 (297, '2014-11-28 22:02:59', 1, '1 item for <em>navigation_group</em> deleted', 'info'),
 (298, '2014-11-28 22:07:26', 1, 'Pages item <em>conditii-generale</em> edited', 'info'),
-(299, '2014-11-28 23:30:04', 1, 'The cache has been cleared.', 'info');
+(299, '2014-11-28 23:30:04', 1, 'The cache has been cleared.', 'info'),
+(300, '2014-12-02 12:20:03', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(301, '2014-12-02 12:20:37', 1, 'Password reset from CMS for ''test'' from ::1', 'debug'),
+(302, '2014-12-02 12:20:37', 1, 'Users item <em>fulgerica2003@gmail.com</em> edited', 'info'),
+(303, '2014-12-02 12:21:07', 1, '1 item for <em>users</em> deleted', 'info'),
+(304, '2014-12-02 12:22:56', 1, 'Password reset from CMS for ''test'' from ::1', 'debug'),
+(305, '2014-12-02 12:22:57', 1, 'Users item <em>fulgerica2003@gmail.com</em> edited', 'info'),
+(306, '2014-12-02 12:23:10', 1, '1 item for <em>users</em> deleted', 'info'),
+(307, '2014-12-02 13:22:11', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(308, '2014-12-02 13:46:46', 1, '1 item for <em>pages</em> deleted', 'info'),
+(309, '2014-12-02 13:47:50', 1, 'Navigation item <em>Services</em> edited', 'info'),
+(310, '2014-12-02 13:53:17', 1, 'Pages item <em>conditii-generale</em> edited', 'info'),
+(311, '2014-12-02 14:06:54', 1, 'Pages item <em>contact/detalii</em> edited', 'info'),
+(312, '2014-12-02 14:07:22', 1, 'Pages item <em>contact/callcenter</em> edited', 'info'),
+(313, '2014-12-02 14:10:38', 1, 'Navigation item <em>Payment accounts</em> edited', 'info'),
+(314, '2014-12-02 14:11:11', 1, 'Navigation item <em>Money transfer</em> edited', 'info'),
+(315, '2014-12-02 14:11:55', 1, 'Navigation item <em>Romania - Romania</em> edited', 'info'),
+(316, '2014-12-02 14:12:33', 1, 'Navigation item <em>Romania - abroad</em> edited', 'info'),
+(317, '2014-12-02 14:13:12', 1, 'Navigation item <em>Romania - strainatate</em> edited', 'info'),
+(318, '2014-12-02 14:16:15', 1, 'Pages item <em>servicii/transfer-bani</em> edited', 'info'),
+(319, '2014-12-02 14:16:39', 1, 'Pages item <em>servicii/transfer-bani/ro-ro</em> edited', 'info'),
+(320, '2014-12-02 14:17:05', 1, 'Pages item <em>servicii/transfer-bani/ro-str</em> edited', 'info'),
+(321, '2014-12-02 14:18:02', 1, 'Pages item <em>servicii/conturi-plati</em> edited', 'info'),
+(322, '2014-12-02 14:20:36', 1, '1 item for <em>navigation</em> deleted', 'info'),
+(323, '2014-12-02 14:21:17', 1, 'Navigation item <em>Services</em> edited', 'info'),
+(324, '2014-12-02 14:29:57', 1, 'Navigation item <em>Romania - Romania</em> edited', 'info'),
+(325, '2014-12-02 14:30:33', 1, 'Navigation item <em>Romania - abroad</em> edited', 'info'),
+(326, '2014-12-02 17:09:57', 1, 'Navigation Groups item <em>foo_menu3</em> edited', 'info'),
+(327, '2014-12-02 17:10:43', 1, 'Navigation item <em>Despre noi</em> edited', 'info'),
+(328, '2014-12-02 17:10:53', 1, 'Navigation item <em>Despre noi</em> edited', 'info'),
+(329, '2014-12-02 17:11:25', 1, 'Navigation item <em>Stiri</em> edited', 'info'),
+(330, '2014-12-02 17:11:58', 1, 'Navigation item <em>Partenerii nostri</em> edited', 'info'),
+(331, '2014-12-02 17:12:25', 1, 'Navigation item <em>Contact</em> edited', 'info'),
+(332, '2014-12-02 17:13:03', 1, 'Navigation item <em>Alatura-te echipei</em> edited', 'info'),
+(333, '2014-12-02 17:13:15', 1, 'Navigation item <em>Reteaua noastra</em> edited', 'info'),
+(334, '2014-12-02 17:15:18', 1, 'Navigation item <em>Alatura-te echipei</em> edited', 'info'),
+(335, '2014-12-02 17:16:02', 1, 'Navigation item <em>Partenerii nostri</em> edited', 'info'),
+(336, '2014-12-02 17:16:53', 1, 'Navigation item <em>about us</em> edited', 'info'),
+(337, '2014-12-02 17:17:18', 1, 'Navigation item <em>our partners</em> edited', 'info'),
+(338, '2014-12-02 17:17:43', 1, 'Navigation item <em>Contact</em> edited', 'info'),
+(339, '2014-12-02 17:17:59', 1, 'Navigation item <em>Become an agen</em> edited', 'info'),
+(340, '2014-12-02 17:18:07', 1, 'Navigation item <em>Become an agent</em> edited', 'info'),
+(341, '2014-12-02 17:18:31', 1, 'Navigation item <em>Our network</em> edited', 'info'),
+(342, '2014-12-02 17:18:50', 1, 'Navigation item <em>News</em> edited', 'info'),
+(343, '2014-12-02 17:20:00', 1, 'Navigation item <em>Our network</em> edited', 'info'),
+(344, '2014-12-02 17:20:39', 1, 'Navigation item <em>Become an agent</em> edited', 'info'),
+(345, '2014-12-02 17:21:15', 1, 'Navigation item <em>Contact</em> edited', 'info'),
+(346, '2014-12-02 17:22:31', 1, 'Navigation item <em>Despre noi</em> edited', 'info'),
+(347, '2014-12-02 17:22:53', 1, 'Navigation item <em>News</em> edited', 'info'),
+(348, '2014-12-02 17:23:07', 1, 'Navigation item <em>Stiri</em> edited', 'info'),
+(349, '2014-12-02 17:23:22', 1, 'Navigation item <em>Partenerii nostri</em> edited', 'info'),
+(350, '2014-12-02 17:23:34', 1, 'Navigation item <em>our partners</em> edited', 'info'),
+(351, '2014-12-02 17:23:46', 1, 'Navigation item <em>Alatura-te echipei</em> edited', 'info'),
+(352, '2014-12-02 17:24:04', 1, 'Navigation item <em>Become an agent</em> edited', 'info'),
+(353, '2014-12-02 17:24:20', 1, 'Navigation item <em>Reteaua noastra</em> edited', 'info'),
+(354, '2014-12-02 17:24:35', 1, 'Navigation item <em>Our network</em> edited', 'info'),
+(355, '2014-12-02 17:24:48', 1, 'Navigation item <em>Contact</em> edited', 'info'),
+(356, '2014-12-02 17:24:59', 1, 'Navigation item <em>Contact</em> edited', 'info'),
+(357, '2014-12-02 17:35:10', 1, 'Navigation item <em>Send message</em> edited', 'info');
 
 -- --------------------------------------------------------
 
@@ -604,7 +717,7 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_navigation` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `location` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'The part of the path after the domain name that you want the link to go to (e.g. comany/about_us)',
   `group_id` int(5) unsigned NOT NULL DEFAULT '1',
   `nav_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'The nav key is a friendly ID that you can use for setting the selected state. If left blank, a default value will be set for you.',
@@ -615,8 +728,10 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation` (
   `selected` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'The pattern to match for the active state. Most likely you leave this field blank',
   `hidden` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no' COMMENT 'A hidden value can be used in rendering the menu. In some areas, the menu item may not want to be displayed',
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
-  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Determines whether the item is displayed or not'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Determines whether the item is displayed or not',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `group_id_nav_key_language` (`group_id`,`nav_key`,`language`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `fuel_navigation`
@@ -636,12 +751,29 @@ INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`,
 (13, 'contact/callcenter', 2, 'contact/callcenter', 'Call center', 0, 50, '', '', 'no', 'en', 'yes'),
 (14, 'contact/detalii', 2, 'contact/detalii', 'Contact details', 0, 0, '', '', 'no', 'en', 'yes'),
 (15, 'contact/mesaj', 2, 'contact/mesaj', 'Trimite mesaj', 0, 25, '', '', 'no', 'ro', 'yes'),
-(16, 'contact/mesaj', 2, 'contact/mesaj', 'Send message', 0, 25, '', '', 'no', 'en', 'yes'),
+(16, 'en/contact/mesaj', 2, 'contact/mesaj', 'Send message', 0, 25, '', '', 'no', 'en', 'yes'),
 (17, 'servicii', 1, 'servicii', 'Servicii', 0, 0, '', '', 'no', 'ro', 'yes'),
 (18, 'servicii/transfer-bani', 3, 'servicii/transfer-bani', 'Transfer de bani', 0, 0, '', '', 'no', 'ro', 'yes'),
 (19, 'servicii/conturi-plati', 3, 'servicii/conturi-plati', 'Conturi de plati', 0, 10, '', '', 'no', 'ro', 'yes'),
 (20, 'servicii/transfer-bani/ro-ro', 3, 'servicii/transfer-bani/ro-ro', 'Romania - Romania', 18, 0, '', '', 'no', 'ro', 'yes'),
-(21, 'servicii/transfer-bani/ro-str', 3, 'servicii/transfer-bani/ro-str', 'Romania - strainatate', 18, 0, '', '', 'no', 'ro', 'yes');
+(21, 'servicii/transfer-bani/ro-str', 3, 'servicii/transfer-bani/ro-str', 'Romania - abroad', 24, 0, '', '', 'no', 'en', 'yes'),
+(23, 'servicii/conturi-plati', 3, 'servicii/conturi-plati', 'Payment accounts', 0, 10, '', '', 'no', 'en', 'yes'),
+(24, 'servicii/transfer-bani', 3, 'servicii/transfer-bani', 'Money transfer', 0, 0, '', '', 'no', 'en', 'yes'),
+(25, 'servicii/transfer-bani/ro-ro', 3, 'servicii/transfer-bani/ro-ro', 'Romania - Romania', 24, 0, '', '', 'no', 'en', 'yes'),
+(26, 'servicii/transfer-bani/ro-str', 3, 'servicii/transfer-bani/ro-str', 'Romania - strainatate', 18, 0, '', '', 'no', 'ro', 'yes'),
+(27, 'servicii', 1, 'servicii', 'Services', 0, 0, '', '', 'no', 'en', 'yes'),
+(28, 'depre', 4, 'despre', 'Despre noi', 0, 0, '', '', 'no', 'ro', 'yes'),
+(29, 'stiri', 4, 'stiri', 'Stiri', 0, 10, '', '', 'no', 'ro', 'yes'),
+(30, 'partners', 4, 'partners', 'Partenerii nostri', 0, 20, '', '', 'no', 'ro', 'yes'),
+(31, 'contact', 4, 'contact', 'Contact', 0, 50, '', '', 'no', 'ro', 'yes'),
+(32, 'retea', 4, 'retea', 'Reteaua noastra', 0, 40, '', '', 'no', 'ro', 'yes'),
+(33, 'join', 4, 'join', 'Alatura-te echipei', 0, 30, '', '', 'no', 'ro', 'yes'),
+(34, 'despre', 4, 'despre', 'about us', 0, 0, '', '', 'no', 'en', 'yes'),
+(35, 'partners', 4, 'partners', 'our partners', 0, 20, '', '', 'no', 'en', 'yes'),
+(36, 'join', 4, 'join', 'Become an agent', 0, 30, '', '', 'no', 'en', 'yes'),
+(37, 'retea', 4, 'retea', 'Our network', 0, 40, '', '', 'no', 'en', 'yes'),
+(38, 'stiri', 4, 'stiri', 'News', 0, 10, '', '', 'no', 'en', 'yes'),
+(39, 'contact', 4, 'contact', 'Contact', 0, 50, '', '', 'no', 'en', 'yes');
 
 -- --------------------------------------------------------
 
@@ -650,10 +782,12 @@ INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`,
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_navigation_groups` (
-`id` int(3) unsigned NOT NULL,
+  `id` int(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `fuel_navigation_groups`
@@ -662,7 +796,8 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation_groups` (
 INSERT INTO `fuel_navigation_groups` (`id`, `name`, `published`) VALUES
 (1, 'main', 'yes'),
 (2, 'contact', 'yes'),
-(3, 'servicii', 'yes');
+(3, 'servicii', 'yes'),
+(4, 'foo_menu3', 'yes');
 
 -- --------------------------------------------------------
 
@@ -671,15 +806,18 @@ INSERT INTO `fuel_navigation_groups` (`id`, `name`, `published`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_pages` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `location` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Add the part of the url after the root of your site (usually after the domain name). For the homepage, just put the word ''home''',
   `layout` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'The name of the template to associate with this page',
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'A ''yes'' value will display the page and an ''no'' value will give a 404 error message',
   `cache` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Cache controls whether the page will pull from the database or from a saved file which is more effeicent. If a page has content that is dynamic, it''s best to set cache to ''no''',
   `date_added` datetime DEFAULT NULL,
   `last_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `last_modified_by` int(10) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+  `last_modified_by` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `location` (`location`),
+  KEY `layout` (`layout`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `fuel_pages`
@@ -689,14 +827,14 @@ INSERT INTO `fuel_pages` (`id`, `location`, `layout`, `published`, `cache`, `dat
 (1, 'home', 'sshomepage', 'yes', 'no', '2014-11-04 05:24:11', '2014-11-05 18:46:00', 1),
 (2, 'stiri', 'ssnews', 'yes', 'no', '2014-11-05 15:57:52', '2014-11-26 13:20:58', 1),
 (4, 'faq', 'ssfaq', 'yes', 'yes', '2014-11-26 15:49:30', '2014-11-26 13:49:30', 1),
-(5, 'contact/detalii', 'sscontact', 'yes', 'yes', '2014-11-26 18:16:25', '2014-11-26 16:16:48', 1),
-(6, 'contact/callcenter', 'sscontact', 'yes', 'yes', '2014-11-26 18:31:51', '2014-11-26 16:34:33', 1),
+(5, 'contact/detalii', 'sscontact', 'yes', 'yes', '2014-11-26 18:16:25', '2014-12-02 12:06:54', 1),
+(6, 'contact/callcenter', 'sscontact', 'yes', 'yes', '2014-11-26 18:31:51', '2014-12-02 12:07:21', 1),
 (9, 'servicii', 'ssservice_main', 'yes', 'yes', '2014-11-27 11:40:50', '2014-11-27 11:16:54', 1),
-(10, 'servicii/transfer-bani', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:25', '2014-11-27 13:44:01', 1),
-(11, 'servicii/conturi-plati', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:52', '2014-11-27 13:45:19', 1),
-(12, 'servicii/transfer-bani/ro-ro', 'ssservice', 'yes', 'yes', '2014-11-27 15:49:26', '2014-11-27 13:49:26', 1),
-(13, 'servicii/transfer-bani/ro-str', 'ssservice', 'yes', 'yes', '2014-11-27 16:51:15', '2014-11-27 14:51:15', 1),
-(14, 'conditii-generale', 'sscontact', 'yes', 'yes', '2014-11-28 21:58:44', '2014-11-28 20:07:25', 1);
+(10, 'servicii/transfer-bani', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:25', '2014-12-02 12:16:14', 1),
+(11, 'servicii/conturi-plati', 'ssservice', 'yes', 'yes', '2014-11-27 15:35:52', '2014-12-02 12:18:01', 1),
+(12, 'servicii/transfer-bani/ro-ro', 'ssservice', 'yes', 'yes', '2014-11-27 15:49:26', '2014-12-02 12:16:39', 1),
+(13, 'servicii/transfer-bani/ro-str', 'ssservice', 'yes', 'yes', '2014-11-27 16:51:15', '2014-12-02 12:17:04', 1),
+(14, 'conditii-generale', 'sscontact', 'yes', 'yes', '2014-11-28 21:58:44', '2014-12-02 11:53:16', 1);
 
 -- --------------------------------------------------------
 
@@ -705,15 +843,17 @@ INSERT INTO `fuel_pages` (`id`, `location`, `layout`, `published`, `cache`, `dat
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_page_variables` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `page_id` int(10) unsigned NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `scope` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `value` longtext COLLATE utf8_unicode_ci NOT NULL,
   `type` enum('string','int','boolean','array') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
   `language` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'english',
-  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=346 ;
+  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `page_id` (`page_id`,`name`,`language`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=402 ;
 
 --
 -- Dumping data for table `fuel_page_variables`
@@ -768,20 +908,62 @@ INSERT INTO `fuel_page_variables` (`id`, `page_id`, `name`, `scope`, `value`, `t
 (322, 12, 'heading', '', '', 'string', 'ro', 'yes'),
 (323, 12, 'body', '', 'Transfer de bani RO RO', 'string', 'ro', 'yes'),
 (324, 12, 'body_class', '', '', 'string', 'ro', 'yes'),
-(325, 13, 'page_title', '', '', 'string', 'ro', 'yes'),
-(326, 13, 'meta_description', '', '', 'string', 'ro', 'yes'),
-(327, 13, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
-(328, 13, 'banner_img', '', '', 'string', 'ro', 'yes'),
-(329, 13, 'heading', '', '', 'string', 'ro', 'yes'),
-(330, 13, 'body', '', 'Transfer de bani Ro - strainatate', 'string', 'ro', 'yes'),
-(331, 13, 'body_class', '', '', 'string', 'ro', 'yes'),
 (339, 14, 'page_title', '', '', 'string', 'ro', 'yes'),
 (340, 14, 'meta_description', '', '', 'string', 'ro', 'yes'),
 (341, 14, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
 (342, 14, 'banner_img', '', '', 'string', 'ro', 'yes'),
 (343, 14, 'heading', '', '', 'string', 'ro', 'yes'),
 (344, 14, 'body', '', 'Conditii generale ale afacerii', 'string', 'ro', 'yes'),
-(345, 14, 'body_class', '', '', 'string', 'ro', 'yes');
+(345, 14, 'body_class', '', '', 'string', 'ro', 'yes'),
+(353, 14, 'page_title', '', '', 'string', 'en', 'yes'),
+(354, 14, 'meta_description', '', '', 'string', 'en', 'yes'),
+(355, 14, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(356, 14, 'banner_img', '', '', 'string', 'en', 'yes'),
+(357, 14, 'heading', '', '', 'string', 'en', 'yes'),
+(358, 14, 'body', '', 'Business Terms and Conditions', 'string', 'en', 'yes'),
+(359, 14, 'body_class', '', '', 'string', 'en', 'yes'),
+(360, 5, 'page_title', '', 'Detalii contact', 'string', 'en', 'yes'),
+(361, 5, 'meta_description', '', '', 'string', 'en', 'yes'),
+(362, 5, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(363, 5, 'banner_img', '', 'banners/b_contact._.1134x184_._.o_.jpg', 'string', 'en', 'yes'),
+(364, 5, 'heading', '', 'Detalii contact', 'string', 'en', 'yes'),
+(365, 5, 'body', '', 'Contact details', 'string', 'en', 'yes'),
+(366, 5, 'body_class', '', '', 'string', 'en', 'yes'),
+(367, 6, 'page_title', '', '', 'string', 'en', 'yes'),
+(368, 6, 'meta_description', '', '', 'string', 'en', 'yes'),
+(369, 6, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(370, 6, 'banner_img', '', 'banners/b_contact._.1134x184_._.o_.jpg', 'string', 'en', 'yes'),
+(371, 6, 'heading', '', 'Call center', 'string', 'en', 'yes'),
+(372, 6, 'body', '', 'Callcenter information', 'string', 'en', 'yes'),
+(373, 6, 'body_class', '', '', 'string', 'en', 'yes'),
+(374, 10, 'page_title', '', '', 'string', 'en', 'yes'),
+(375, 10, 'meta_description', '', '', 'string', 'en', 'yes'),
+(376, 10, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(377, 10, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'en', 'yes'),
+(378, 10, 'heading', '', '', 'string', 'en', 'yes'),
+(379, 10, 'body', '', 'Money transfer', 'string', 'en', 'yes'),
+(380, 10, 'body_class', '', '', 'string', 'en', 'yes'),
+(381, 12, 'page_title', '', '', 'string', 'en', 'yes'),
+(382, 12, 'meta_description', '', '', 'string', 'en', 'yes'),
+(383, 12, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(384, 12, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'en', 'yes'),
+(385, 12, 'heading', '', '', 'string', 'en', 'yes'),
+(386, 12, 'body', '', 'Money transfer RO RO', 'string', 'en', 'yes'),
+(387, 12, 'body_class', '', '', 'string', 'en', 'yes'),
+(388, 13, 'page_title', '', '', 'string', 'ro', 'yes'),
+(389, 13, 'meta_description', '', '', 'string', 'ro', 'yes'),
+(390, 13, 'meta_keywords', '', '', 'string', 'ro', 'yes'),
+(391, 13, 'banner_img', '', '', 'string', 'ro', 'yes'),
+(392, 13, 'heading', '', '', 'string', 'ro', 'yes'),
+(393, 13, 'body', '', 'Money transfer Ro - abroad', 'string', 'ro', 'yes'),
+(394, 13, 'body_class', '', '', 'string', 'ro', 'yes'),
+(395, 11, 'page_title', '', '', 'string', 'en', 'yes'),
+(396, 11, 'meta_description', '', '', 'string', 'en', 'yes'),
+(397, 11, 'meta_keywords', '', '', 'string', 'en', 'yes'),
+(398, 11, 'banner_img', '', 'banners/b_servicii._.1134x184_._.o_.jpg', 'string', 'en', 'yes'),
+(399, 11, 'heading', '', '', 'string', 'en', 'yes'),
+(400, 11, 'body', '', 'Payment accounts', 'string', 'en', 'yes'),
+(401, 11, 'body_class', '', '', 'string', 'en', 'yes');
 
 -- --------------------------------------------------------
 
@@ -790,10 +972,12 @@ INSERT INTO `fuel_page_variables` (`id`, `page_id`, `name`, `scope`, `value`, `t
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_permissions` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'In most cases, this should be the name of the module (e.g. news)',
-  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
+  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
 
 --
@@ -844,11 +1028,14 @@ INSERT INTO `fuel_permissions` (`id`, `description`, `name`, `active`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_relationships` (
-`id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `candidate_table` varchar(100) COLLATE utf8_unicode_ci DEFAULT '',
   `candidate_key` int(11) NOT NULL,
   `foreign_table` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `foreign_key` int(11) NOT NULL
+  `foreign_key` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `candidate_table` (`candidate_table`,`candidate_key`),
+  KEY `foreign_table` (`foreign_table`,`foreign_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -858,10 +1045,12 @@ CREATE TABLE IF NOT EXISTS `fuel_relationships` (
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_settings` (
-`id` bigint(20) unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `key` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `value` longtext COLLATE utf8_unicode_ci
+  `value` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `module` (`module`,`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -871,11 +1060,13 @@ CREATE TABLE IF NOT EXISTS `fuel_settings` (
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_site_variables` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   `scope` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'leave blank if you want the variable to be available to all pages',
-  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
+  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
@@ -898,12 +1089,14 @@ INSERT INTO `fuel_site_variables` (`id`, `name`, `value`, `scope`, `active`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_tags` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(10) unsigned NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `precedence` int(11) NOT NULL,
-  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
+  `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -913,7 +1106,7 @@ CREATE TABLE IF NOT EXISTS `fuel_tags` (
 --
 
 CREATE TABLE IF NOT EXISTS `fuel_users` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -923,15 +1116,17 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
   `reset_key` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `salt` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `super_admin` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  `active` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `fuel_users`
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', '87a5ef881744f15806f512164844e0821a40ab24', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '7358f555a32489eba463e4ccfeb197f1', 'yes', 'yes');
+(1, 'admin', '7ac75e614b24f91634bd669e251b5515ce92f60f', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '6e8d58149b2654f4aa7bd7f2b1e6610d', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -940,9 +1135,10 @@ INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, 
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `description` varchar(100) NOT NULL
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
@@ -960,10 +1156,11 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `login_attempts` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `time` int(11) unsigned DEFAULT NULL
+  `time` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -980,14 +1177,15 @@ INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'if left blank, one will automatically be generated for you',
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `publish_date` date DEFAULT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
-  `language` varchar(11) COLLATE utf8_unicode_ci NOT NULL
+  `language` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
@@ -1009,8 +1207,9 @@ INSERT INTO `news` (`id`, `title`, `slug`, `content`, `publish_date`, `date_adde
 --
 
 CREATE TABLE IF NOT EXISTS `ss_cities` (
-`id` tinyint(3) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
@@ -1029,11 +1228,12 @@ INSERT INTO `ss_cities` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ss_display_fees` (
-`id` tinyint(3) unsigned NOT NULL,
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `amount_min` mediumint(9) NOT NULL,
   `amount_max` mediumint(9) NOT NULL,
   `fee` decimal(10,2) NOT NULL,
-  `type` enum('flat','prc') COLLATE utf8_unicode_ci NOT NULL
+  `type` enum('flat','prc') COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
@@ -1061,12 +1261,13 @@ INSERT INTO `ss_display_fees` (`id`, `amount_min`, `amount_max`, `fee`, `type`) 
 --
 
 CREATE TABLE IF NOT EXISTS `ss_faq` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `answer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
-  `language` varchar(11) COLLATE utf8_unicode_ci NOT NULL
+  `language` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -1086,7 +1287,7 @@ INSERT INTO `ss_faq` (`id`, `question`, `answer`, `date_added`, `published`, `la
 --
 
 CREATE TABLE IF NOT EXISTS `ss_fees` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `com_val` decimal(10,0) unsigned DEFAULT '0',
   `com_type` enum('flat','prc') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'flat' COMMENT 'tipul comisionului',
   `com_int_apply` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT 'aplicare comision pe interval',
@@ -1109,7 +1310,8 @@ CREATE TABLE IF NOT EXISTS `ss_fees` (
   `fk_promo_code` int(11) NOT NULL DEFAULT '0' COMMENT 'verificare cheie promo code',
   `fk_promo_type` int(11) NOT NULL DEFAULT '0' COMMENT 'tip promo',
   `apply_to_amount` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT 'se aplica la suma sau la comision',
-  `active` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT 'aplicabil sau nu'
+  `active` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT 'aplicabil sau nu',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1126,7 +1328,7 @@ INSERT INTO `ss_fees` (`id`, `com_val`, `com_type`, `com_int_apply`, `com_int_mi
 --
 
 CREATE TABLE IF NOT EXISTS `ss_invoices` (
-`id` int(10) unsigned NOT NULL COMMENT 'identificator unic tabela',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',
   `unid` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'identificator unic tranzactie; se genereaza in controller',
   `id_user` int(11) NOT NULL COMMENT 'id utilizator caruia ii apartine tranzactia',
   `id_payment_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'modalitatea de plata: cont sau card',
@@ -1143,7 +1345,8 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
   `s3` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   `s4` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   `s5` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
-  `s6` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor'
+  `s6` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
 
 --
@@ -1163,13 +1366,14 @@ INSERT INTO `ss_invoices` (`id`, `unid`, `id_user`, `id_payment_type`, `amount`,
 --
 
 CREATE TABLE IF NOT EXISTS `ss_messages` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_tx` int(10) unsigned NOT NULL,
   `unid` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_user` int(11) NOT NULL,
   `tx_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
@@ -1198,7 +1402,7 @@ INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message
 --
 
 CREATE TABLE IF NOT EXISTS `ss_payments` (
-`id` int(10) unsigned NOT NULL COMMENT 'identificator unic tabela',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',
   `unid` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'identificator unic tranzactie; se genereaza in controller',
   `id_user` int(11) NOT NULL COMMENT 'id utilizator caruia ii apartine tranzactia',
   `id_payment_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'modalitatea de plata: cont sau card',
@@ -1215,7 +1419,8 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `ben_surname` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'prenume beneficiar',
   `ben_phone` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'telefon beneficiar',
   `ben_email` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'adresa de mail beneficiar',
-  `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar'
+  `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=96 ;
 
 --
@@ -1235,8 +1440,9 @@ INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount`,
 --
 
 CREATE TABLE IF NOT EXISTS `ss_payment_methods` (
-`id` tinyint(3) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
@@ -1260,10 +1466,11 @@ INSERT INTO `ss_payment_methods` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ss_profiles` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `id_profile_type` tinyint(3) NOT NULL
+  `id_profile_type` tinyint(3) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
@@ -1280,7 +1487,7 @@ INSERT INTO `ss_profiles` (`id`, `name`, `value`, `id_profile_type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ss_suppliers` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `IBAN` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `bank` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1296,7 +1503,8 @@ CREATE TABLE IF NOT EXISTS `ss_suppliers` (
   `s5` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `t5` enum('','date','number','text','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
   `s6` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `t6` enum('','date','number','text','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL
+  `t6` enum('','date','number','text','textarea','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
@@ -1316,8 +1524,9 @@ INSERT INTO `ss_suppliers` (`id`, `name`, `IBAN`, `bank`, `id_cat`, `s1`, `t1`, 
 --
 
 CREATE TABLE IF NOT EXISTS `ss_suppliers_cat` (
-`id` tinyint(3) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -1336,9 +1545,10 @@ INSERT INTO `ss_suppliers_cat` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ss_types` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `type` enum('client','beneficiar','fee') COLLATE utf8_unicode_ci NOT NULL
+  `type` enum('client','beneficiar','fee') COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
@@ -1370,7 +1580,7 @@ INSERT INTO `ss_types` (`id`, `name`, `type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -1387,7 +1597,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_name` varchar(50) DEFAULT NULL,
   `country` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `birth_date` varchar(100) NOT NULL
+  `birth_date` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
@@ -1408,9 +1619,13 @@ INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`
 --
 
 CREATE TABLE IF NOT EXISTS `users_groups` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL
+  `group_id` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  KEY `fk_users_groups_users1_idx` (`user_id`),
+  KEY `fk_users_groups_groups1_idx` (`group_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
@@ -1426,355 +1641,6 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (12, 11, 2);
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `fuel_archives`
---
-ALTER TABLE `fuel_archives`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fuel_blocks`
---
-ALTER TABLE `fuel_blocks`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`,`language`);
-
---
--- Indexes for table `fuel_categories`
---
-ALTER TABLE `fuel_categories`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Indexes for table `fuel_logs`
---
-ALTER TABLE `fuel_logs`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fuel_navigation`
---
-ALTER TABLE `fuel_navigation`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `group_id_nav_key_language` (`group_id`,`nav_key`,`language`);
-
---
--- Indexes for table `fuel_navigation_groups`
---
-ALTER TABLE `fuel_navigation_groups`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `fuel_pages`
---
-ALTER TABLE `fuel_pages`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `location` (`location`), ADD KEY `layout` (`layout`);
-
---
--- Indexes for table `fuel_page_variables`
---
-ALTER TABLE `fuel_page_variables`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `page_id` (`page_id`,`name`,`language`);
-
---
--- Indexes for table `fuel_permissions`
---
-ALTER TABLE `fuel_permissions`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `fuel_relationships`
---
-ALTER TABLE `fuel_relationships`
- ADD PRIMARY KEY (`id`), ADD KEY `candidate_table` (`candidate_table`,`candidate_key`), ADD KEY `foreign_table` (`foreign_table`,`foreign_key`);
-
---
--- Indexes for table `fuel_settings`
---
-ALTER TABLE `fuel_settings`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `module` (`module`,`key`);
-
---
--- Indexes for table `fuel_site_variables`
---
-ALTER TABLE `fuel_site_variables`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `fuel_tags`
---
-ALTER TABLE `fuel_tags`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Indexes for table `fuel_users`
---
-ALTER TABLE `fuel_users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login_attempts`
---
-ALTER TABLE `login_attempts`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `news`
---
-ALTER TABLE `news`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_cities`
---
-ALTER TABLE `ss_cities`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_display_fees`
---
-ALTER TABLE `ss_display_fees`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_faq`
---
-ALTER TABLE `ss_faq`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_fees`
---
-ALTER TABLE `ss_fees`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_invoices`
---
-ALTER TABLE `ss_invoices`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_messages`
---
-ALTER TABLE `ss_messages`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_payments`
---
-ALTER TABLE `ss_payments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_payment_methods`
---
-ALTER TABLE `ss_payment_methods`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_profiles`
---
-ALTER TABLE `ss_profiles`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_suppliers`
---
-ALTER TABLE `ss_suppliers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_suppliers_cat`
---
-ALTER TABLE `ss_suppliers_cat`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ss_types`
---
-ALTER TABLE `ss_types`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users_groups`
---
-ALTER TABLE `users_groups`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`), ADD KEY `fk_users_groups_users1_idx` (`user_id`), ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `fuel_archives`
---
-ALTER TABLE `fuel_archives`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=225;
---
--- AUTO_INCREMENT for table `fuel_blocks`
---
-ALTER TABLE `fuel_blocks`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `fuel_categories`
---
-ALTER TABLE `fuel_categories`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `fuel_logs`
---
-ALTER TABLE `fuel_logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=300;
---
--- AUTO_INCREMENT for table `fuel_navigation`
---
-ALTER TABLE `fuel_navigation`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `fuel_navigation_groups`
---
-ALTER TABLE `fuel_navigation_groups`
-MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `fuel_pages`
---
-ALTER TABLE `fuel_pages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `fuel_page_variables`
---
-ALTER TABLE `fuel_page_variables`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=346;
---
--- AUTO_INCREMENT for table `fuel_permissions`
---
-ALTER TABLE `fuel_permissions`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
---
--- AUTO_INCREMENT for table `fuel_relationships`
---
-ALTER TABLE `fuel_relationships`
-MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `fuel_settings`
---
-ALTER TABLE `fuel_settings`
-MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `fuel_site_variables`
---
-ALTER TABLE `fuel_site_variables`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `fuel_tags`
---
-ALTER TABLE `fuel_tags`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `fuel_users`
---
-ALTER TABLE `fuel_users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `login_attempts`
---
-ALTER TABLE `login_attempts`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `news`
---
-ALTER TABLE `news`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `ss_cities`
---
-ALTER TABLE `ss_cities`
-MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `ss_display_fees`
---
-ALTER TABLE `ss_display_fees`
-MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `ss_faq`
---
-ALTER TABLE `ss_faq`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `ss_fees`
---
-ALTER TABLE `ss_fees`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `ss_invoices`
---
-ALTER TABLE `ss_invoices`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',AUTO_INCREMENT=92;
---
--- AUTO_INCREMENT for table `ss_messages`
---
-ALTER TABLE `ss_messages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `ss_payments`
---
-ALTER TABLE `ss_payments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'identificator unic tabela',AUTO_INCREMENT=96;
---
--- AUTO_INCREMENT for table `ss_payment_methods`
---
-ALTER TABLE `ss_payment_methods`
-MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `ss_profiles`
---
-ALTER TABLE `ss_profiles`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `ss_suppliers`
---
-ALTER TABLE `ss_suppliers`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `ss_suppliers_cat`
---
-ALTER TABLE `ss_suppliers_cat`
-MODIFY `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `ss_types`
---
-ALTER TABLE `ss_types`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `users_groups`
---
-ALTER TABLE `users_groups`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
 -- Constraints for dumped tables
 --
 
@@ -1782,8 +1648,8 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- Constraints for table `users_groups`
 --
 ALTER TABLE `users_groups`
-ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
