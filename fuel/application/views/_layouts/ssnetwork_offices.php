@@ -30,7 +30,7 @@
 	<div id="wrapper">
 		<div class="col-lg-12 col-sm-12">
 			<div class="caseta">
-				<?php $idx = 0; $office_data = array(); foreach ($ss_offices as $key => $value):?>
+				<?php $idx = 0; $locations = ''; $office_data = array(); foreach ($ss_offices as $key => $value):?>
 				<div class="letter-box">
 					<div class="network-letter col-lg-1 col-sm-1"><?php echo $key;?></div>
 					<ul class="network-list col-lg-11 col-sm-11">
@@ -54,9 +54,7 @@
 						
 						$office_info .= (!empty($office_details) && strlen($office_details) > 0) ? $office_details : '';
 						
-						//$office_data[$idx++] = $office_info;
-						
-						$locations .= "['". $office_info ."'," . $office->coord_lat . ', ' . $office->coord_long . ', ' . idx++ . '],';
+						$locations .= "['". $office_info ."'," . $office->coord_lat . ', ' . $office->coord_long . ', ' . $idx++ . '],';
 						
 						?>
 						<li>
@@ -76,6 +74,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<?php endforeach; ?>
+				<?php $locations = substr($locations, 0, -1);?>
 			</div>
 		</div>
 		<div class="col-lg-12 col-sm-12">
@@ -84,8 +83,7 @@
 				<div id="map" style="width:100%;height:500px;"></div>
 				<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 				<script type="text/javascript">
-					
-                    var locations = [['<?php echo $office_data[0]; ?>',45.646854,25.601206000000047,1],['<?php echo $office_data[1]; ?>',44.425252, 26.093440999999984,2],['<?php echo $office_data[2]; ?>',46.766667,23.58333300000004,3]];
+					var locations = [<?php echo $locations?>];
 					var map=new google.maps.Map(document.getElementById('map'),{zoom:6,center: new google.maps.LatLng(45.9419466,25.0094303),mapTypeId:google.maps.MapTypeId.ROADMAP});
                     var infowindow = new google.maps.InfoWindow();
                     var marker=new Array(), i;
