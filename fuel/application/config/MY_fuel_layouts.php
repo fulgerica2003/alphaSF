@@ -194,6 +194,27 @@ $config['layouts']['sscontact'] = $sscontact;
 
 /*
 |--------------------------------------------------------------------------
+| Contact form page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$sscontactform = new Fuel_layout('sscontactform');
+$sscontactform->set_label('Contact form page template');
+$sscontactform->add_fields($common_meta);
+
+$sscontactform->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
+
+$sscontactform->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$sscontactform->add_field('heading', array('label' => lang('layout_field_heading')));
+$sscontactform->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$sscontactform->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+$config['layouts']['sscontactform'] = $sscontactform;
+
+/*
+|--------------------------------------------------------------------------
 | FAQ page Layout
 |--------------------------------------------------------------------------
 |
