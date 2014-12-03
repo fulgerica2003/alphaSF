@@ -369,6 +369,24 @@ $lang['faq_a'] = 'A';
 
 /*
 |--------------------------------------------------------------------------
+| etichete retea
+|--------------------------------------------------------------------------
+|
+*/
+$lang['network_title'] = 'Our network';
+$lang['network_phone'] = 'P';
+$lang['network_email'] = 'E';
+$lang['network_address'] = 'A';
+$lang['network_see_map'] = 'See map→';
+$lang['network_bh'] = 'Business hours';
+$lang['network_mon'] = 'Mon';
+$lang['network_fri'] = 'Fri';
+$lang['network_break'] = 'lunch time';
+$lang['network_sat'] = 'Sat';
+$lang['network_sun'] = 'Sun';
+
+/*
+|--------------------------------------------------------------------------
 | etichete contact
 |--------------------------------------------------------------------------
 |

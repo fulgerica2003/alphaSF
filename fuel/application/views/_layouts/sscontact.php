@@ -24,7 +24,7 @@
 	<div id="wrapper" class="margin-top">
 		<div class="col-lg-9 col-sm-12">
 			<div class="caseta page-text">
-				<?php echo fuel_var('body', ''); ?>
+				<?php echo fuel_var('body'); ?>
 			</div>
 		</div>
 		

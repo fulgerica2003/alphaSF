@@ -90,6 +90,13 @@ $config['modules']['ss_display_fees'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_network'] = array(
+  'module_name' => 'offices',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
 
 
 /*********************** OVERWRITES ************************************/

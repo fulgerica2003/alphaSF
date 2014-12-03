@@ -322,18 +322,18 @@ $lang['caseta_fees'] = 'Toate comisioanele';
 $lang['caseta_find_more'] = 'Afla mai multe';
 $lang['caseta_read_more'] = 'Citeste mai departe';
 
-$lang['caseta_online_titlu'] = 'Transfer online de bani';
+$lang['caseta_online_titlu'] = 'Transfer online';
 $lang['caseta_online_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
 
 $lang['caseta_acasa_titlu'] = 'Acasa (HD)';
 $lang['caseta_acasa_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
 
-$lang['caseta_cash_titlu'] = 'Transfer de bani lichizi';
+$lang['caseta_cash_titlu'] = 'Transfer de numerar';
 $lang['caseta_cash_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
 
 $lang['caseta_comisioane_titlu'] = 'Comisioane Romania - strainatate';
 $lang['caseta_comisioane_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
-$lang['caseta_comisioane_short'] = 'Comisioane bani lichizi RO- strainatate';
+$lang['caseta_comisioane_short'] = 'Comisioane numerar RO- strainatate';
 $lang['caseta_comisioane_amount'] = 'Suma';
 $lang['caseta_comisioane_fee'] = 'Comision';
 
@@ -364,6 +364,24 @@ $lang['faq_a'] = 'R';
 
 /*
 |--------------------------------------------------------------------------
+| etichete retea
+|--------------------------------------------------------------------------
+|
+*/
+$lang['network_title'] = 'Retea birouri si agentii';
+$lang['network_phone'] = 'T';
+$lang['network_email'] = 'E';
+$lang['network_address'] = 'A';
+$lang['network_see_map'] = 'Vezi pe harta→';
+$lang['network_bh'] = 'Program';
+$lang['network_mon'] = 'Luni';
+$lang['network_fri'] = 'Vineri';
+$lang['network_break'] = 'pauza';
+$lang['network_sat'] = 'Sambata';
+$lang['network_sun'] = 'Duminica';
+
+/*
+|--------------------------------------------------------------------------
 | etichete contact
 |--------------------------------------------------------------------------
 |
@@ -389,8 +407,8 @@ $lang['contact_required'] = 'Acest camp e obligatoriu';
 |--------------------------------------------------------------------------
 |
 */
-$lang['foo_menu1_title'] = 'Transfer online de bani';
-$lang['foo_menu2_title'] = 'Transfer de bani lichizi';
+$lang['foo_menu1_title'] = 'Transfer online';
+$lang['foo_menu2_title'] = 'Transfer de numerar';
 $lang['foo_menu3_title'] = 'Despre noi';
 $lang['foo_cga'] = 'Conditii generale ale afacerii';
 $lang['foo_anpc'] = 'ANPC';

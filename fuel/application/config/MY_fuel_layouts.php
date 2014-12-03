@@ -154,6 +154,22 @@ $ssabout->add_field('body_class', array('label' => lang('layout_field_body_class
 
 $config['layouts']['ssabout'] = $ssabout;
 
+/*
+|--------------------------------------------------------------------------
+| Network page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$ssnetwork = new Fuel_layout('ssnetwork_offices');
+$ssnetwork->set_label('Office list page template');
+$ssnetwork->add_fields($common_meta);
+
+$ssnetwork->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false, ));
+
+$config['layouts']['ssnetwork'] = $ssnetwork;
+
 
 /*
 |--------------------------------------------------------------------------
