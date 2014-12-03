@@ -9,7 +9,7 @@
 ?>
 
 <div class="col-lg-6 col-sm-12">  
-	<div class="caseta <?php echo (!empty($page) && $page == 'services' ? 'bkg-brown abroad-mare' : ''); ?> minimize special-height" id="caseta-abroad">
+	<div class="caseta <?php echo (!empty($page) && $page == 'services' ? 'bkg-brown abroad-mare' : ''); ?> minimize" id="caseta-abroad">
 		<div class="caseta-titlu"><span id="intreg"><?php echo lang('caseta_comisioane_titlu')?></span><span id="prescurtare"><?php echo lang('caseta_comisioane_short');?></span></div>
 		<div class="minimize-caseta">+</div>
 		<?php if (empty($page) || $page != 'services'){?>

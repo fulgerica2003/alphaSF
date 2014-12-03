@@ -36,44 +36,8 @@
 			<div class="caseta page-text">
 							
 							<?php
-								
-								echo fuel_var('page_title');
-								echo fuel_var('body', ''); ?> 
-							
-						
-							<!--
-	
-								<?php
-									
-									$activeitemno=$this->menu->active;
-									//$activeitem=echo $this->menu->_items[$activeitem];
-									
-									var_dump($this->menu->active_items());
-									
-									//echo $this->menu->_items[$activeitem]->nav_key;
-									//echo $this->menu->active;
-
-							?>
--->
-									
-									<!--
-/*$activeitems = $this->menu->active_items();
-									
-									
-									
-
-							
-									$arrlength = count($activeitems);
-
-									for($x = 0; $x < $arrlength; $x++) {
-									echo $activeitems[$x];
-									echo "<br>";
-									}
-								?>
--->
-
-								
-								
+								echo fuel_var('body', '');
+							?> 		
 			</div>
 		</div>
 		
@@ -85,6 +49,5 @@
 		<?php $this->load->view('_blocks/caseta-comisioane', array('page' => '')); ?>
 				
 	</div>
-	
-	<div></div>		
+			
 	<?php $this->load->view('_blocks/ssfooter')?>

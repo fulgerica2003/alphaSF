@@ -156,6 +156,25 @@ $config['layouts']['ssabout'] = $ssabout;
 
 /*
 |--------------------------------------------------------------------------
+| About us agent page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$ssabouta = new Fuel_layout('ssabout_agent');
+$ssabouta->set_label('Aboutus agent page template');
+$ssabouta->add_fields($common_meta);
+$ssabouta->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
+$ssabouta->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$ssabouta->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$ssabouta->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+$config['layouts']['ssabout_agent'] = $ssabouta;
+
+
+/*
+|--------------------------------------------------------------------------
 | Network page Layout
 |--------------------------------------------------------------------------
 |
@@ -169,6 +188,26 @@ $ssnetwork->add_fields($common_meta);
 $ssnetwork->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false, ));
 
 $config['layouts']['ssnetwork'] = $ssnetwork;
+
+/*
+|--------------------------------------------------------------------------
+| Network static content page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$ssnetworks = new Fuel_layout('ssnetworks');
+$ssnetworks->set_label('Network static content');
+$ssnetworks->add_fields($common_meta);
+
+$ssnetworks->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false, ));
+$ssnetworks->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$ssnetworks->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$ssnetworks->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+
+$config['layouts']['ssnetworks'] = $ssnetworks;
 
 
 /*
@@ -191,27 +230,6 @@ $sscontact->add_field('body', array('label' => lang('layout_field_body'), 'type'
 $sscontact->add_field('body_class', array('label' => lang('layout_field_body_class')));
 
 $config['layouts']['sscontact'] = $sscontact;
-
-/*
-|--------------------------------------------------------------------------
-| Contact form page Layout
-|--------------------------------------------------------------------------
-|
-| layout for other pages
-*/
-
-$sscontactform = new Fuel_layout('sscontactform');
-$sscontactform->set_label('Contact form page template');
-$sscontactform->add_fields($common_meta);
-
-$sscontactform->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
-
-$sscontactform->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
-$sscontactform->add_field('heading', array('label' => lang('layout_field_heading')));
-$sscontactform->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
-$sscontactform->add_field('body_class', array('label' => lang('layout_field_body_class')));
-
-$config['layouts']['sscontactform'] = $sscontactform;
 
 /*
 |--------------------------------------------------------------------------
