@@ -347,6 +347,22 @@ $lang['caseta_retea_content'] = 'Lorem ipsum dolor sit amet, money transfer, adi
 
 $lang['caseta_slider_news_titlu'] = 'News';
 
+$lang['caseta_curs_valutar_titlu'] = 'Foreign Exchange';
+$lang['caseta_curs_valutar_currency'] = 'Currency';
+$lang['caseta_curs_valutar_quote'] = 'RON Quote';
+$lang['caseta_curs_valutar_eur'] = 'Eur';
+$lang['caseta_curs_valutar_usd'] = 'US Dollar';
+
+$lang['caseta_promo_titlu'] = 'Discounts';
+$lang['caseta_promo_msg'] = 'Discounts<br />message.';
+$lang['caseta_promo_content'] = 'Lorem ipsum dolor sit amet';
+
+$lang['caseta_reclama1_titlu'] = 'Commercial 1';
+$lang['caseta_reclama1_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
+
+$lang['caseta_reclama2_titlu'] = 'Commercial 2';
+$lang['caseta_reclama2_content'] = 'Lorem ipsum dolor sit amet, <span style="color:#ff0000;">money transfer</span>, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
+
 /*
 |--------------------------------------------------------------------------
 | etichete stiri
@@ -356,6 +372,8 @@ $lang['caseta_slider_news_titlu'] = 'News';
 $lang['news_title'] = 'News';
 $lang['news_read'] = 'Read→';
 $lang['news_older'] = 'Older';
+$lang['news_newer'] = 'Newer';
+$lang['news_details_back'] = 'Back';
 
 /*
 |--------------------------------------------------------------------------
@@ -412,9 +430,11 @@ $lang['contact_required'] = 'This field is required';
 |--------------------------------------------------------------------------
 |
 */
-$lang['foo_menu1_title'] = 'Money Transfer Online';
-$lang['foo_menu2_title'] = 'Money Transfer Cash';
-$lang['foo_menu3_title'] = 'About us';
+$lang['foo_menu1_title'] = 'Services';
+$lang['foo_menu2_title'] = 'Online';
+$lang['foo_menu3_title'] = 'Contact';
+$lang['foo_menu4_title'] = 'About us';
+$lang['foo_menu5_title'] = 'Keep in touch';
 $lang['foo_cga'] = 'Business Terms & Conditions';
 $lang['foo_anpc'] = 'NACP';
 $lang['foo_data_protection'] = 'Data Protection';

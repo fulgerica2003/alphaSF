@@ -29,13 +29,13 @@
 	
 	
 	<div id="content-wrapper">
-		<?php $this->load->view('_blocks/caseta-online');?>
-		<?php $this->load->view('_blocks/caseta-acasa');?>
-		<?php $this->load->view('_blocks/caseta-calculator');?>
-		<?php $this->load->view('_blocks/caseta-cash');?>
+		<?php $this->load->view('_blocks/_caseta-calc-online');?>
+		<?php $this->load->view('_blocks/_caseta-reclama1');?>
+		<?php $this->load->view('_blocks/_caseta-calc-fact');?>
+		<?php $this->load->view('_blocks/_caseta-reclama2');?>
 		<?php $this->load->view('_blocks/caseta-retea');?>
-		<?php $this->load->view('_blocks/caseta-retea');?>
-		<?php $this->load->view('_blocks/caseta-retea');?>
+		<?php $this->load->view('_blocks/_caseta-promo');?>
+		<?php $this->load->view('_blocks/_caseta-curs-valutar');?>
 		<?php $this->load->view('_blocks/caseta-slider-news');?>
 		<?php $this->load->view('_blocks/caseta-moneygram');?>
 	

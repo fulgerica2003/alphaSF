@@ -11,21 +11,10 @@
 		</div>
 	</div>
 	
-	<div class="col-lg-12 col-sm-12">
-		<nav class="meniu-interior">
-			<div id="box-meniu-interior">
-				<div id="button-meniu-interior"></div>
-				<?php echo fuel_nav(array('group_id' => 'contact', 'language' => $lang, 'depth' => 1, 'container_tag_class' => 'lista-nav-big', 'active_class' => 'activ', )); ?>
-				<div class="clearfix"></div>
-			</div>
-		</nav>
-	</div>
-	
 	<div id="wrapper" class="margin-top">
 		<div class="col-lg-9 col-sm-12">
 			<div class="caseta page-text">
 				<?php echo fuel_var('body'); ?>
-				<?php echo fuel_block('_contact'); ?>
 			</div>
 		</div>
 		

@@ -1,38 +1,44 @@
 <div id="footer">
 	<div class="col-lg-12 col-sm-12">
 		<div class="caseta">
-			<div class="col-lg-6 col-sm-12">
-				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer"><?php echo lang('foo_menu1_title')?></div>
-					<ul class="liste-footer">
-						<li><a href="#" >CARD</a></li>
-						<li><a href="#" >ACCOUNT</a></li>
-						<li><a href="#" >ACASA (HD)</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer"><?php echo lang('foo_menu2_title')?></div>
-					<?php echo fuel_nav(array('group_id' => 'servicii', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', 'parent' => 'servicii/transfer-bani', )); ?>
-				</div>
-				<div class="col-lg-4 col-sm-4">
-					<div class="titlu-lista-footer"><?php echo lang('foo_menu3_title')?></div>
-						<?php echo fuel_nav(array('group_id' => 'foo_menu3', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
-				</div>
-			</div>
-			
-			<div class="col-lg-6 col-sm-12">
-				<div class="col-lg-12 col-sm-12">
-					<div class="titlu-lista-footer"><?php echo lang('foo_support_title'); ?></div>
-					
-					<div class="caseta-content col-lg-10 col-sm-9" >
-						<div id="suport-image"><img src="assets/img/poza-suport.jpg"></div>
-						<?php echo lang('foo_support_text'); ?>
+				<div class="col-lg-6 col-sm-12">
+					<div class="col-lg-4 col-sm-4">
+						<div class="titlu-lista-footer"><?php echo lang('foo_menu1_title')?></div>
+						<?php echo fuel_nav(array('group_id' => 'servicii', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
 					</div>
-					<div class="col-lg-1" id="button-top"><?php echo lang('foo_top')?></div>
+					<div class="col-lg-4 col-sm-4">
+						<div class="titlu-lista-footer"><?php echo lang('foo_menu2_title')?></div>
+						<ul class="liste-footer">
+							<li><a href="#" >TRANSFER DE BANI</a></li>
+							<li><a href="#" >PLATA FACTURI</a></li>
+							<li><a href="#" >DESCHIDERE CONT</a></li>
+							<li><a href="#" >TOP-UP</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-4 col-sm-4">
+						<div class="titlu-lista-footer"><?php echo lang('foo_menu3_title')?></div>
+						<?php echo fuel_nav(array('group_id' => 'contact', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
+					</div>
 				</div>
-			</div>
+				<div class="col-lg-6 col-sm-12" >
+					<div class="col-lg-4 col-sm-4">
+						<div class="titlu-lista-footer"><?php echo lang('foo_menu4_title')?></div>
+						<?php echo fuel_nav(array('group_id' => 'foo_menu4', 'language' => $lang, 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
+					</div>
+					<div class="col-lg-3 col-sm-3">
+						<div  id="button-top"><?php echo lang('foo_top')?></div>
+					</div>
+					<div class="col-lg-5 col-sm-5">
+						<div class="titlu-lista-footer"><?php echo lang('foo_menu5_title')?></div>
+						<?php echo fuel_nav(array('group_id' => 'foo_menu5', 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
+					</div>
+					
+				</div>
+				
+				
+				 
 			<div class="clearfix"></div>
-		</div>
+			</div>
 		
 	</div>
 	<div class="col-lg-12 col-sm-12">

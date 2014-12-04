@@ -342,6 +342,22 @@ $lang['caseta_retea_content'] = 'Lorem ipsum dolor sit amet, money transfer, adi
 
 $lang['caseta_slider_news_titlu'] = 'Stiri';
 
+$lang['caseta_curs_valutar_titlu'] = 'Curs Valutar';
+$lang['caseta_curs_valutar_currency'] = 'Valuta';
+$lang['caseta_curs_valutar_quote'] = 'Cotatie RON';
+$lang['caseta_curs_valutar_eur'] = 'Euro';
+$lang['caseta_curs_valutar_usd'] = 'Dolar american';
+
+$lang['caseta_promo_titlu'] = 'Promotie';
+$lang['caseta_promo_msg'] = 'Mesaj<br />promotie.';
+$lang['caseta_promo_content'] = 'Lorem ipsum dolor sit amet';
+
+$lang['caseta_reclama1_titlu'] = 'Caseta reclama 1';
+$lang['caseta_reclama1_content'] = 'Lorem ipsum dolor sit amet, money transfer, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
+
+$lang['caseta_reclama2_titlu'] = 'Caseta reclama 2';
+$lang['caseta_reclama2_content'] = 'Lorem ipsum dolor sit amet, <span style="color:#ff0000;">money transfer</span>, adipiscing elit. Pellentesque est ante, fermentum at tellus eget.';
+
 /*
 |--------------------------------------------------------------------------
 | etichete stiri
@@ -351,6 +367,8 @@ $lang['caseta_slider_news_titlu'] = 'Stiri';
 $lang['news_title'] = 'Stiri';
 $lang['news_read'] = 'Citeste→';
 $lang['news_older'] = 'Mai vechi';
+$lang['news_newer'] = 'Mai noi';
+$lang['news_details_back'] = 'Inapoi';
 
 /*
 |--------------------------------------------------------------------------
@@ -407,9 +425,11 @@ $lang['contact_required'] = 'Acest camp e obligatoriu';
 |--------------------------------------------------------------------------
 |
 */
-$lang['foo_menu1_title'] = 'Transfer online';
-$lang['foo_menu2_title'] = 'Transfer de numerar';
-$lang['foo_menu3_title'] = 'Despre noi';
+$lang['foo_menu1_title'] = 'Servicii';
+$lang['foo_menu2_title'] = 'Online';
+$lang['foo_menu3_title'] = 'Contact';
+$lang['foo_menu4_title'] = 'Despre noi';
+$lang['foo_menu5_title'] = 'Tine legatura cu noi';
 $lang['foo_cga'] = 'Conditii generale ale afacerii';
 $lang['foo_anpc'] = 'ANPC';
 $lang['foo_data_protection'] = 'Protectia datelor';

@@ -42,6 +42,13 @@
 $route['default_controller'] = 'fuel/page_router';
 $route['404_override'] = 'fuel/page_router';
 
+$route['stire/(:any)'] = 'stire';
+$route['en/stire/(:any)'] = 'stire';
+
+$route['stiri/(:num)'] = 'stiri';
+$route['en/stiri/(:num)'] = 'stiri';
+
+
 /*	
 | Uncomment this line if you want to use the automatically generated sitemap based on your navigation.
 | To modify the sitemap.xml, go to the views/sitemap_xml.php file.

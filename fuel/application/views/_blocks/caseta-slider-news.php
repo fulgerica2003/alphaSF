@@ -11,7 +11,7 @@
 			<li>
 				<p class="news-slide-titlu"><?php echo $news['title']; ?></p>
 				<p class="news-slide-data">- <?php echo strftime('%#d %B %Y', strtotime($news['publish_date'])); ?></p>
-				<p ><a href = "<?php echo site_url('stiri');?>" class="news-slide-link"><?php echo strtoupper(lang('caseta_read_more'));?></a></p>
+				<p ><a href = "<?php echo site_url('stire/' . $news['slug'])?>" class="news-slide-link"><?php echo strtoupper(lang('caseta_read_more'));?></a></p>
 			</li>
 			<?php endforeach; ?>
 		</ul>
