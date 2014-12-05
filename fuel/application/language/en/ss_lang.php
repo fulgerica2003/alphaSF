@@ -423,6 +423,22 @@ $lang['contact_success'] = 'Your message was successfully submitted!';
 $lang['contact_new'] = 'New message';
 $lang['contact_required'] = 'This field is required';
 
+/*
+|--------------------------------------------------------------------------
+| etichete formular agent
+|--------------------------------------------------------------------------
+|
+*/
+$lang['agent_nume'] = 'Name';
+$lang['agent_prenume'] = 'First Name';
+$lang['agent_email'] = 'E-mail';
+$lang['agent_firma'] = 'Company';
+$lang['agent_varsta'] = 'Age';
+$lang['agent_telefon'] = 'Phone no';
+$lang['agent_oras'] = 'City';
+$lang['agent_required'] = 'This field is required';
+$lang['agent_new'] = 'New request';
+$lang['agent_success'] = 'Your message was successfully submitted!';
 
 /*
 |--------------------------------------------------------------------------

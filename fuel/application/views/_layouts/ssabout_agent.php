@@ -37,9 +37,13 @@
 
 
 							<?php
-								echo fuel_var('body', '');
-							?> 	
-							<?php echo fuel_block('_agent-form'); ?>
+								echo fuel_var('body');
+							?> 
+							<?php 
+								echo fuel_block('_agent'); 
+							?>
+
+
 																				
 			</div>
 		</div>
@@ -53,30 +57,9 @@
 				
 	</div>
 	
-	<div></div>		
+</div>	
 	<?php $this->load->view('_blocks/ssfooter')?>
 
-
-
-
-
-
-
-<?php 
-	$this->load->view('_blocks/ssheader');
-?>
-
-
-<div class="container" >
-  <?php $this->load->view('_blocks/ssmenuheader');?>
-
-<!-- <?php echo lang('caseta_online_titlu')?>	 -->
-	<div id="banner-box">
-		<div class="col-lg-12 col-sm-12">
-			<?php echo (isset($banner_img) && $banner_img?'<div id = "banner-int"><img src="'.img_path($banner_img).'" alt="" /></div>':''); ?>
-			<div class="titlu-pagina"><?php echo lang('aboutus_title')?></div>
-		</div>
-	</div>
 
 
 	
