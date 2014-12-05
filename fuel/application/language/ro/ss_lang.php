@@ -418,6 +418,24 @@ $lang['contact_success'] = 'Mesajul dvs. a fost trimis cu succes!';
 $lang['contact_new'] = 'Mesaj nou';
 $lang['contact_required'] = 'Acest camp e obligatoriu';
 
+/*
+|--------------------------------------------------------------------------
+| etichete formular agent
+|--------------------------------------------------------------------------
+|
+*/
+$lang['agent_nume'] = 'Nume';
+$lang['agent_prenume'] = 'Prenume';
+$lang['agent_email'] = 'E-mail';
+$lang['agent_firma'] = 'Nume firma';
+$lang['agent_varsta'] = 'Varsta';
+$lang['agent_telefon'] = 'Telefon';
+$lang['agent_oras'] = 'Oras';
+$lang['agent_required'] = 'Acest camp este obligatoriu';
+$lang['agent_send'] = 'Trimite';
+$lang['agent_new'] = 'Cerere noua';
+$lang['agent_success'] = 'Mesajul dvs. a fost trimis cu succes!';
+
 
 /*
 |--------------------------------------------------------------------------

@@ -17,7 +17,7 @@ $lang['services_title'] = 'Services';
 /*
 |--------------------------------------------------------------------------
 | etichete login; a se vedea documentul de specificatii
-| pentru maparea campurilor
+| pentru maparea campurilo
 | TODO de standardizat placeholdere: de ex, ref tx, nume, prenume, link etc
 |--------------------------------------------------------------------------
 |
@@ -438,6 +438,7 @@ $lang['agent_telefon'] = 'Phone no';
 $lang['agent_oras'] = 'City';
 $lang['agent_required'] = 'This field is required';
 $lang['agent_new'] = 'New request';
+$lang['agent_send'] = 'Send';
 $lang['agent_success'] = 'Your message was successfully submitted!';
 
 /*
