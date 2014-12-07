@@ -10,7 +10,7 @@
 	<div id="banner-box">
 		<div class="col-lg-12 col-sm-12">
 			<?php echo (isset($banner_img) && $banner_img?'<div id = "banner-int"><img src="'.img_path($banner_img).'" alt="" /></div>':''); ?>
-			<div class="titlu-pagina"><?php echo lang('aboutus_title')?></div>
+			<div class="titlu-pagina"><?php echo $page_title?></div>
 		</div>
 	</div>
 
@@ -56,8 +56,6 @@
 		<?php $this->load->view('_blocks/caseta-comisioane', array('page' => '')); ?>
 				
 	</div>
-	
-</div>	
 	<?php $this->load->view('_blocks/ssfooter')?>
 
 

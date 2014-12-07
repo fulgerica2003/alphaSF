@@ -440,6 +440,7 @@ $lang['agent_required'] = 'This field is required';
 $lang['agent_new'] = 'New request';
 $lang['agent_send'] = 'Send';
 $lang['agent_success'] = 'Your message was successfully submitted!';
+$lang['agent_subject'] = 'Agent affiliation request';
 
 /*
 |--------------------------------------------------------------------------

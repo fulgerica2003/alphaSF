@@ -43,7 +43,7 @@ echo form_open('', $attributes); ?>
 	<?php echo form_error('message'); ?>
 	<?php echo form_textarea('message', '', 'class = "agent-input"');?>
 </div>
-
+<br/>
 <div><button type="submit" name="submit_contact" value="send" class = "agent-submit"><?php echo lang('contact_send'); ?></button></div>
 
 </form>

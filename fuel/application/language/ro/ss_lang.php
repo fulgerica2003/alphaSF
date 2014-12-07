@@ -435,6 +435,7 @@ $lang['agent_required'] = 'Acest camp este obligatoriu';
 $lang['agent_send'] = 'Trimite';
 $lang['agent_new'] = 'Cerere noua';
 $lang['agent_success'] = 'Mesajul dvs. a fost trimis cu succes!';
+$lang['agent_subject'] = 'Cerere afiliere agent';
 
 
 /*

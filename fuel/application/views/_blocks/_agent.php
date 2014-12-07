@@ -25,9 +25,11 @@ if($CI->input->post('submit_agentrequest') == 'send') {
   if ($CI->form_validation->run() == FALSE){
     echo $CI->fuel->blocks->render('_agent-form');
   } else{
+	$site_vars = $CI->fuel->sitevars->get();
+	$receiver = $site_vars['from_email'];
     $email_info = array ('sender' => $CI->input->post('email'),
-      					 'receiver' => $CI->fuel->sitevars->get()['from_email'],
-	  					 'subject' => 'Become agent request',
+      					 'receiver' => $receiver,
+	  					 'subject' => lang('agent_subject'),
 	  					 'body' => $msg_body);
 	  					 send_email($email_info);
 	  					 echo $CI->fuel->blocks->render('_agent-success');
