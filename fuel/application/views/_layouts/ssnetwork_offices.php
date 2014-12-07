@@ -64,7 +64,7 @@
 							<div class="col-lg-3 col-sm-12 oras"><?php echo $office->city_name;?></div>
 							<div class="network-adresa col-lg-5 col-sm-6">
 								<?php echo lang('network_phone'); ?>/ <?php echo $office->phone;?>
-								<br/><?php echo lang('network_email'); ?>/ <a href="#"><?php echo $office->email;?></a>
+								<br/><?php echo lang('network_email'); ?>/ <a href="mailto: <?php echo $office->email;?>"><?php echo $office->email;?></a>
 								<br/><?php echo lang('network_address'); ?>/ <?php echo $office->address;?>,  <?php echo $office->county;?> <a class="vezi-harta" href="javascript:mapView(<?php echo ($idx - 1)?>);"><?php echo lang('network_see_map'); ?></a>
 							</div>
 							<div class="program col-lg-4 col-sm-6">
