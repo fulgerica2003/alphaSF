@@ -88,7 +88,7 @@ $config['layouts']['sshomepage'] = $sshomepage;
 | Services page Layout
 |--------------------------------------------------------------------------
 |
-| layout for other pages
+| layout for services page
 */
 
 $ssservice_main = new Fuel_layout('ssservice_main');
@@ -104,7 +104,7 @@ $config['layouts']['ssservice_main'] = $ssservice_main;
 | Service page Layout
 |--------------------------------------------------------------------------
 |
-| layout for other pages
+| layout for Services pages
 */
 
 $ssservice = new Fuel_layout('ssservice');
@@ -119,6 +119,27 @@ $ssservice->add_field('body', array('label' => lang('layout_field_body'), 'type'
 $ssservice->add_field('body_class', array('label' => lang('layout_field_body_class')));
 
 $config['layouts']['ssservice'] = $ssservice;
+
+/*
+|--------------------------------------------------------------------------
+| Service page Layout
+|--------------------------------------------------------------------------
+|
+| layout for Service pages (the last service in the menu)
+*/
+
+$ssservice_simple = new Fuel_layout('ssservice_simple');
+$ssservice_simple->set_label('Simple Service page template');
+$ssservice_simple->add_fields($common_meta);
+
+$ssservice_simple->add_field('banner_img', array('label' => 'Banner', 'type' => 'asset', 'folder' => 'images', 'subfolder' => 'banners', 'hide_options' => true, 'overwrite' => false));
+
+$ssservice_simple->add_field('Body', array('type' => 'fieldset', 'label' => 'Body', 'class' => 'tab'));
+$ssservice_simple->add_field('heading', array('label' => lang('layout_field_heading')));
+$ssservice_simple->add_field('body', array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')));
+$ssservice_simple->add_field('body_class', array('label' => lang('layout_field_body_class')));
+
+$config['layouts']['ssservice_simple'] = $ssservice_simple;
 
 /*
 |--------------------------------------------------------------------------
