@@ -90,21 +90,70 @@ $(document).ready(function(){
 	 
 	 $('#pop-up-login').modal({
         show: false,
-        remote: 'login.php'
+        remote: 'auth/login'
 	 });
 	 
 	 $('.modal-content').on('click', '#sign-up-button', function(){ 
-	 	$('.modal-title').html('Sign up');
-	 	$('#login-pop').hide();
-	 	$('#sign-up-pop').fadeIn(800);
+	 	//$('.modal-title').html('Sign up');
+	 	$('#auth-pop').hide();
+		$.get( "auth/register", function( data ) {
+			$( '#auth-pop' ).html( data );
+		});
+		$('#auth-pop').fadeIn(800);
+		$('#id-modal-header').show();
 	 });
 	 
 	  $('.modal-content').on('click', '#login-button-pop', function(){ 
-	  	$('.modal-title').html('Login');
-	 	$('#sign-up-pop').hide();
-	 	$('#login-pop').fadeIn(800);
+	  	//$('.modal-title').html('Login');
+		$('#id-modal-header').fadeOut(800);
+	 	$('#auth-pop').hide();
+		$.get( "auth/login", function( data ) {
+			$( '#auth-pop' ).html( data );
+		});
+	 	$('#auth-pop').fadeIn(800);
 	 });
-    
+	 
+	 $('.modal-content').on('click', '#recovery', function(event){ 
+	  	//$('.modal-title').html('Login');
+		event.preventDefault();
+		$('#id-modal-header').fadeOut(800);
+	 	$('#auth-pop').hide();
+		$.get( "auth/forgot_password", function( data ) {
+			$( '#auth-pop' ).html( data );
+		});
+	 	$('#auth-pop').fadeIn(800);
+	 });
+	 
+	 $('.modal-content').on('click', '#back-to-login', function(event){ 
+	  	//$('.modal-title').html('Login');
+		event.preventDefault();
+		$('#id-modal-header').fadeOut(800);
+	 	$('#auth-pop').hide();
+		$.get( "auth/login", function( data ) {
+			$( '#auth-pop' ).html( data );
+		});
+	 	$('#auth-pop').fadeIn(800);
+	 });
+	 
+	 $('.modal-content').on('submit', '#form-login-pop', function(event){
+		// Stop form from submitting normally
+		event.preventDefault();
+		// Get some values from elements on the page:
+		var $form = $( this ),
+		url = $form.attr( "action" );
+		// Send the data using post
+		//var posting = $.post( url, { identity: term } );
+		var posting = $.post( url, $( "#form-login-pop" ).serialize() );
+		// Put the results in a div
+		posting.done(function( data ) {
+			if (data === ""){
+				window.location.replace(document.URL);
+			}else{
+				$('.modal-content').empty().append( data );
+			}
+		});
+	});
+	
 });
 
 $( window ).resize(function() {

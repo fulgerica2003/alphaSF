@@ -71,6 +71,7 @@
 				}
 				else
 				{
+					$blocked = FALSE;
 					//if the login was un-successful
 					// verific daca pentru utilizator s-a atins nr maxim de autentificari nereusite si utilizatorul sa fie activ;
 					// daca a fost atins si e inca activ, dezactivez utilizatorul si trimit mail de reactivare
@@ -81,11 +82,16 @@
 						if ($this->ion_auth->is_max_login_attempts($identity) && ($user->active == 1)){
 							$this->ion_auth->deactivate($user->id);
 							$this->ion_auth->send_activation_email($user->id);
+							$blocked = TRUE;
 						}
 					}
 					//redirect them back to the login page
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
-					redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+					if ($blocked){
+						$this->_render_page("auth/_login-blocked");
+					}else{
+						redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+					}
 				}
 			}
 			else
@@ -98,10 +104,12 @@
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
+				'class' => 'agent-input',
 				);
 				$this->data['password'] = array('name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
+				'class' => 'agent-input',
 				);
 				
 				$this->data['word'] = array(
@@ -109,6 +117,7 @@
 				'id'    => 'word',
 				'type'  => 'text',
 				'value' => '',
+				'class' => 'agent-input',
 				);
 				
 				$this->data['image']= $this->_create_captcha();
@@ -127,7 +136,7 @@
 			
 			//redirect them to the login page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect('auth/login', 'refresh');
+			redirect('/', 'refresh');
 		}
 		
 		//change password
@@ -218,6 +227,7 @@
 				//setup the input
 				$this->data['email'] = array('name' => 'email',
 				'id' => 'email',
+				'class' => 'agent-input',
 				);
 				
 				if ( $this->config->item('identity', 'ion_auth') == 'username' ){
@@ -381,7 +391,7 @@
 			{
 				//redirect them to the auth page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth", 'refresh');
+				redirect("/", 'refresh');
 			}
 			else
 			{
@@ -562,7 +572,7 @@
 				//check to see if we are creating the user
 				//redirect them back to the admin page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth", 'refresh');
+				$this->_render_page("auth/_register-success");
 			}
 			else
 			{
@@ -575,48 +585,56 @@
 				'id'    => 'first_name',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('first_name'),
+				'class' => 'agent-input',
 				);
 				$this->data['last_name'] = array(
 				'name'  => 'last_name',
 				'id'    => 'last_name',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('last_name'),
+				'class' => 'agent-input',
 				);
 				$this->data['email'] = array(
 				'name'  => 'email',
 				'id'    => 'email',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('email'),
+				'class' => 'agent-input',
 				);
 				$this->data['phone'] = array(
 				'name'  => 'phone',
 				'id'    => 'phone',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('phone'),
+				'class' => 'agent-input',
 				);
 				$this->data['password'] = array(
 				'name'  => 'password',
 				'id'    => 'password',
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password'),
+				'class' => 'agent-input',
 				);
 				$this->data['password_confirm'] = array(
 				'name'  => 'password_confirm',
 				'id'    => 'password_confirm',
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
+				'class' => 'agent-input',
 				);
 				$this->data['birth_date'] = array(
 				'name'  => 'birth_date',
 				'id'    => 'birth_date',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('birth_date'),
+				'class' => 'agent-input',
 				);
 				$this->data['country'] = array(
 				'name'  => 'country',
 				'id'    => 'country',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('country'),
+				'class' => 'agent-input',
 				);
 				
 				$this->data['word'] = array(
@@ -624,6 +642,7 @@
 				'id'    => 'word',
 				'type'  => 'text',
 				'value' => '',
+				'class' => 'agent-input',
 				);
 				
 				$this->data['image']= $this->_create_captcha();
