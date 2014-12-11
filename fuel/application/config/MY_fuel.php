@@ -102,6 +102,7 @@ $config['nav']['site'] += array(
 'ss_faq' => 'FAQ',
 'ss_display_fees' => 'Display fees',
 'ss_network' => 'Offices',
+'ss_exchange_rate' => 'Exchange rate',
 );
 
 $config['languages'] = array(
