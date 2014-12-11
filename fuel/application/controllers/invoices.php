@@ -14,12 +14,19 @@
 		private $user_email = 'a@b.c';
 		private $user_id = '8';
 		
+		private $exchange_rate_eur;
+		
 		function __construct(){
 			parent::__construct();
 			$this->load->model('ss_invoices_model');
 			$this->load->model('ss_messages_model');
+			$this->load->model('ss_exchange_rate_model');
+			
 			$this->load->library('form_validation');
 			$this->load->library('session');
+			
+			$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
+			$this->exchange_rate_eur = $eur->value;
 		}
 		
 		/**** afisez toate facturile
@@ -142,7 +149,7 @@
 			// supplier_id ca sa-l pot daca pica validarea
 			$this->main_form['fields']['supplier_id'] = array('type' => 'hidden', );
 			
-			$lbl_cv = 'Curs valutar 1EUR = ' . $this->fuel->sitevars->get()['exchange_rate'] . ' RON';
+			$lbl_cv = 'Curs valutar 1EUR = ' . $this->exchange_rate_eur . ' RON';
 			$this->main_form['fields']['lbl_cv'] = array('type' => 'copy', 'tag' => 'p', 'value' => $lbl_cv);
 			
 			$this->form_builder->set_fields($this->main_form['fields']);
@@ -213,7 +220,7 @@
 			
 			$this->details_form['fields']['confirm'] = array ('label' => 'De acord', 'type' => 'checkbox', 'checked' => FALSE, 'required' => TRUE);
 			
-			$lbl_cv = 'Curs valutar 1EUR = ' . $this->fuel->sitevars->get()['exchange_rate'] . ' RON';
+			$lbl_cv = 'Curs valutar 1EUR = ' . $this->exchange_rate_eur . ' RON';
 			$this->details_form['fields']['lbl_cv'] = array('type' => 'copy', 'tag' => 'p', 'value' => $lbl_cv);
 			
 			$this->form_builder->set_fields($this->details_form['fields']);

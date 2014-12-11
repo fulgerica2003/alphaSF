@@ -68,8 +68,11 @@
 			$payment->unid = $values['unid'];
 			$payment->id_user = $values['id_user'];
 			$payment->id_payment_type = $values['id_payment_type'];
-			$payment->amount = $values['amount'];
-			$payment->currency = $values['currency'];
+			$payment->amount_in = $values['amount_in'];
+			$payment->currency_in = $values['currency_in'];
+			$payment->amount_out = $values['amount_out'];
+			$payment->currency_out = $values['currency_out'];
+			$payment->rate = $values['rate'];
 			$payment->id_ben_payment_method = $values['id_payment_method'];
 			$payment->id_ben_city = $values['ben_city'];
 			$payment->ben_address = $values['ben_address'];
@@ -94,7 +97,7 @@
 		}
 		
 		function payments($id_user){
-			$where['select'] = 'ss_payments.id, unid, amount, ben_name, ben_surname, date_added, status, ss_payment_methods.name, currency';
+			$where['select'] = 'ss_payments.id, unid, amount_in, ben_name, ben_surname, date_added, status, ss_payment_methods.name, currency_in';
 			$where['join'] = array('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
 			$where['where'] = array('id_user' => $id_user);
 			$where['order_by'] = 'date_added desc';
@@ -106,8 +109,8 @@
 		
 		function payment($where = array()){
 		
-			$this->db->select('unid, amount, ben_name, ben_surname, ben_address, ben_phone, ben_email, 
-			date_added, status, ss_payment_methods.name as payment_method, currency, fee, total, status, ben_iban, id_payment_type, ss_cities.name as ben_city');
+			$this->db->select('unid, amount_in, ben_name, ben_surname, ben_address, ben_phone, ben_email, 
+			date_added, status, ss_payment_methods.name as payment_method, currency_in, fee, total, status, ben_iban, id_payment_type, ss_cities.name as ben_city');
 			$this->db->from('ss_payments');
 			$this->db->join('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
 			$this->db->join('ss_cities', 'ss_cities.id = ss_payments.id_ben_city');

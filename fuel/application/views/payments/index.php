@@ -13,8 +13,8 @@
 		<tr>
             <td><?php echo htmlspecialchars($payment->unid,ENT_QUOTES,'UTF-8');?></td>
             <td><?php echo htmlspecialchars($payment->date_added,ENT_QUOTES,'UTF-8');?></td>
-            <td><?php echo htmlspecialchars($payment->amount,ENT_QUOTES,'UTF-8');?></td>
-			<td><?php echo htmlspecialchars($payment->currency,ENT_QUOTES,'UTF-8');?></td>
+            <td><?php echo htmlspecialchars($payment->amount_in,ENT_QUOTES,'UTF-8');?></td>
+			<td><?php echo htmlspecialchars($payment->currency_in,ENT_QUOTES,'UTF-8');?></td>
 			<td><?php echo htmlspecialchars($payment->ben_surname . ' ' . $payment->ben_name,ENT_QUOTES,'UTF-8');?></td>
 			<td><?php echo htmlspecialchars(get_status_label($payment->status),ENT_QUOTES,'UTF-8');?></td>
 			<td>

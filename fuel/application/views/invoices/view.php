@@ -9,11 +9,11 @@
 	</tr>
 	<tr>
 		<td>Suma</td>
-		<td><?php echo htmlspecialchars($invoice->amount,ENT_QUOTES,'UTF-8');?></td>
+		<td><?php echo htmlspecialchars($invoice->amount_in,ENT_QUOTES,'UTF-8');?></td>
 	</tr>
 	<tr>
 		<td>Moneda</td>
-		<td><?php echo htmlspecialchars($invoice->currency,ENT_QUOTES,'UTF-8');?></td>
+		<td><?php echo htmlspecialchars($invoice->currency_in,ENT_QUOTES,'UTF-8');?></td>
 	</tr>
 	<tr>
 		<td>Tip plata</td>

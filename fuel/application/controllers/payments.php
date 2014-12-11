@@ -16,12 +16,19 @@
 		private $user_email = 'a@b.c';
 		private $user_id = '8';
 		
+		private $exchange_rate_eur;
+		
 		function __construct(){
 			parent::__construct();
 			$this->load->model('ss_payments_model');
 			$this->load->model('ss_messages_model');
+			$this->load->model('ss_exchange_rate_model');
+			
 			$this->load->library('form_validation');
 			$this->load->library('session');
+			
+			$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
+			$this->exchange_rate_eur = $eur->value;
 		}
 		
 		/**** afisez toate platile
@@ -196,11 +203,10 @@
 			
 			$options = array(1,2,3,4,5,);
 			//if (in_array($values['payment_method'], $options) && strtoupper ($values['currency']) == strtoupper ('eur')){
-				
-				$this->details_form['fields']['lbl_cv'] = array('type' => 'copy', 'tag' => 'p', 'value' => 'Puteti efectua schimb valutar la cursul 1 EUR = ' . $this->fuel->sitevars->get()['exchange_rate'] . ' RON');
+				$this->details_form['fields']['lbl_cv'] = array('type' => 'copy', 'tag' => 'p', 'value' => 'Puteti efectua schimb valutar la cursul 1 EUR = ' . $this->exchange_rate_eur . ' RON');
 				
 				$this->details_form['fields']['lbl_ben'] = array('type' => 'copy', 'tag' => 'p',
-				'value' => 'Beneficiarul primeste ' . $this->fuel->sitevars->get()['exchange_rate'] * $values['amount'] . ' RON',
+				'value' => 'Beneficiarul primeste ' . $this->exchange_rate_eur * $values['amount'] . ' RON',
 				);
 				
 				$this->details_form['fields']['confirm'] = array ('label' => 'De acord cu schimbul valutar', 'type' => 'checkbox', 'checked' => FALSE, 'required' => TRUE);
@@ -210,7 +216,7 @@
 			//if (in_array($values['payment_method'], $options) && strtoupper ($values['currency']) == strtoupper ('ron')){
 				
 				$this->details_form['fields']['lbl_ben'] = array('type' => 'copy', 'tag' => 'p',
-				'value' => 'Beneficiarul primeste ' . $values['amount'] / $this->fuel->sitevars->get()['exchange_rate'] . ' EUR la curs ' . $this->fuel->sitevars->get()['exchange_rate'] .' RON/EUR',
+				'value' => 'Beneficiarul primeste ' . $values['amount'] / $this->exchange_rate_eur . ' EUR la curs ' . $this->exchange_rate_eur .' RON/EUR',
 				);
 			//}
 			
@@ -371,8 +377,19 @@
 			$values['unid'] = $unid;
 			$values['id_user'] = $this->user_id;
 			$values['id_payment_type'] = $this->input->post('payment_type');
-			$values['amount'] = $this->input->post('amount');
-			$values['currency'] = $this->input->post('currency');
+			$values['amount_in'] = $this->input->post('amount');
+			$values['currency_in'] = $this->input->post('currency');
+			// TODO de introdus corect aceste valori (utile pt schimb valutar)
+			$values['amount_out'] = $this->input->post('amount');
+			$values['currency_out'] = $this->input->post('currency');
+			
+			// TODO se completeaza doar daca se face schimb valutar
+			if ($values['currency_in'] != $values['currency_out'] && strtolower($values['currency_in']) == 'eur'){
+				$values['rate'] = $this->exchange_rate_eur;
+			}else{
+				$values['rate'] = null;
+			}
+			
 			$values['id_payment_method'] = $this->input->post('payment_method');
 			$values['ben_city'] = $this->input->post('ben_city');
 			$values['ben_address'] = $this->input->post('ben_address');

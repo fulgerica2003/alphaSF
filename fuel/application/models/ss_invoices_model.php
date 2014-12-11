@@ -69,8 +69,10 @@
 			$invoice->unid = $values['unid'];
 			$invoice->id_user = $values['id_user'];
 			$invoice->id_payment_type = $values['id_payment_type'];
-			$invoice->amount = $values['amount'];
-			$invoice->currency = $values['currency'];
+			$invoice->amount_in = $values['amount'];
+			$invoice->amount_out = $values['amount'];
+			$invoice->currency_in = $values['currency'];
+			$invoice->currency_out = $values['currency'];
 			$invoice->id_supplier_cat = $values['id_supplier_cat'];
 			$invoice->id_supplier = $values['id_supplier'];
 			$invoice->fee = $values['fee'];
@@ -97,7 +99,7 @@
 		}
 		
 		function invoices($id_user){
-			$where['select'] = 'ss_invoices.id, unid, amount, id_supplier, date_added, status, ss_suppliers.name, currency';
+			$where['select'] = 'ss_invoices.id, unid, amount_in, id_supplier, date_added, status, ss_suppliers.name, currency_in';
 			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
 			$where['where'] = array('id_user' => $id_user);
 			$where['order_by'] = 'date_added desc';
@@ -108,7 +110,7 @@
 		}
 		
 		function invoice($id, $user_id){
-			$where['select'] = 'unid, amount, id_supplier, date_added, status, currency, fee, total, id_payment_type,
+			$where['select'] = 'unid, amount_in, id_supplier, date_added, status, currency_in, fee, total, id_payment_type,
 			ss_invoices.s1, ss_invoices.s2, ss_invoices.s3, ss_invoices.s4, ss_invoices.s5, ss_invoices.s6,
 			ss_suppliers.name';
 			$where['join'] = array('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
