@@ -3,27 +3,27 @@
 	
 	function status(){
 		$status = array(
-			'init' => 1,   // in curs de procesare
-			'pay'  => 50,  // in curs de plata
-			'err'  => 55,  // eroare plata
-			'corr' => 60,  // corectie
-			'ref'  => 80,  // in curs de retur
-			'rfd'  => 90,  // returnata
-			'pyd'  => 100, // platita
-			);
+		'init' => 1,   // in curs de procesare
+		'pay'  => 50,  // in curs de plata
+		'err'  => 55,  // eroare plata
+		'corr' => 60,  // corectie
+		'ref'  => 80,  // in curs de retur
+		'rfd'  => 90,  // returnata
+		'pyd'  => 100, // platita
+		);
 		return $status;
 	}
 	
-		function status_backend_test(){
+	function status_backend_test(){
 		$status = array(
-			1 	=> 'in curs de procesare', 
-			50  => 'in curs de plata',
-			55  => 'eroare plata',
-			60 	=> 'corectie',
-			80  => 'in curs de retur',
-			90  => 'returnata',
-			100 => 'platita',
-			);
+		1 	=> 'in curs de procesare', 
+		50  => 'in curs de plata',
+		55  => 'eroare plata',
+		60 	=> 'corectie',
+		80  => 'in curs de retur',
+		90  => 'returnata',
+		100 => 'platita',
+		);
 		return $status;
 	}
 	
@@ -35,19 +35,19 @@
 	function get_status_label($status){
 		switch ($status){
 			case 1: return 'in curs de procesare';
-				break;
+			break;
 			case 50: return 'in curs de plata';
-				break;
+			break;
 			case 55: return 'eroare plata';
-				break;
+			break;
 			case 60: return 'corectie';
-				break;
+			break;
 			case 80: return 'in curs de retur';
-				break;
+			break;
 			case 90: return 'returnata';
-				break;
+			break;
 			case 100: return 'platita';
-				break;
+			break;
 			default: return 'N/A';
 		}
 	}
@@ -109,7 +109,7 @@
 	/**** metoda e apelata pentru expedierea de mesaje
 	*/
 	function send_email($email_info = array()){
-			
+		
 		$CI =& get_instance();
 		
 		
@@ -153,6 +153,43 @@
 		if (array_key_exists ($lg, $labels)){
 			return $labels[$lg];
 		}
+	}
+	
+	function httpPost($url,$params){
+		$postData = '';
+		//create name value pairs seperated by &
+		foreach($params as $k => $v)
+		{
+			$postData .= $k . '='.$v.'&';
+		}
+		rtrim($postData, '&');
+		
+		$ch = curl_init(); 
+		
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		curl_setopt($ch,CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_POST, count($postData));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);   
+		
+		$output=curl_exec($ch);
+		
+		curl_close($ch);
+		return $output;
+	}
+	
+	function save_csv($name, $content){
+		$fp = fopen($name . '.csv', 'w');
+		
+		foreach ($content as $fields) {
+			fputcsv($fp, $fields, '|');
+		}
+		
+		fclose($fp);
+	}
+	
+	function get_time(){
+		return date("YmdHis");
 	}
 	
 	
