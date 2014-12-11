@@ -1,3 +1,9 @@
+<?php 
+$CI->load->model('ss_exchange_rate_model');
+$eur = $CI->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
+$usd = $CI->ss_exchange_rate_model->find_one(array('type' => 'USD', 'apply_date <= ' => date('Y-m-d', time())));
+?>
+
 <div class="col-lg-3 col-sm-6">  
 	<div class="caseta minimize special-height" >
 		<div class="minimize-caseta">+</div>
@@ -9,10 +15,10 @@
 					<td><?php echo lang('caseta_curs_valutar_currency')?></td><td><?php echo lang('caseta_curs_valutar_quote')?></td>
 				</tr>
 				<tr>
-					<td><?php echo lang('caseta_curs_valutar_eur')?></td><td><p><?php echo fuel_var('exchange_rate')?></p></td>
+					<td><?php echo lang('caseta_curs_valutar_eur')?></td><td><p><?php echo $eur->value;//fuel_var('exchange_rate')?></p></td>
 				</tr>
 				<tr>
-					<td><?php echo lang('caseta_curs_valutar_usd')?></td><td><?php echo fuel_var('exchange_rate_usd')?></td>
+					<td><?php echo lang('caseta_curs_valutar_usd')?></td><td><?php echo $usd->value; //fuel_var('exchange_rate_usd')?></td>
 				</tr>
 			</table>
 		</div>
