@@ -44,7 +44,7 @@
 		*/
 		public function view($id){
 			//iau plata
-			$results =  $this->ss_payments_model->payment(array('id' => $id, 'id_user' => $this->user_id))->result();
+			$results =  $this->ss_payments_model->payment(array('ss_payments.id' => $id, 'ss_payments.id_user' => $this->user_id))->result();
 			if ((count($results)) >= 1 ){
 				$this->data['payment'] = $results[0];			
 			}

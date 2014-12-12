@@ -19,7 +19,7 @@
 		public function testgettran(){
 			$params = array(
 			"type" => "ret",
-			"referinta" => "0"
+			"referinta" => "#S5489a9fadeda1"
 			);
 			
 			echo httpPost("http://localhost/smith/backend/gettran",$params);

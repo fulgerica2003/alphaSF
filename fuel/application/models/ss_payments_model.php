@@ -108,6 +108,38 @@
 		}
 		
 		function payment($where = array()){
+			return $this->get_payments($where, TRUE);
+		}
+		
+		function get_payments($where = array(), $one){
+			
+			// ordinea campurilor este cea din controllers/backend/gettran, ca sa nu mai fie nevoie sa fac mapari acolo
+			$this->db->select('unid, date_added, id_payment_type, status, ss_payment_methods.name as payment_method,
+				amount_in, currency_in, amount_out, currency_out, fee, total, rate,
+				users.first_name as cl_prenume, users.last_name as cl_nume, users.phone as cl_telefon, users.email as cl_email,
+				users.country as cl_tara, users.account as cl_account, users.swift as cl_swift, users.bank as cl_bank,
+				ben_name, ben_surname, ben_phone, ben_email, ben_iban, ben_address, ss_cities.name as ben_city'); 
+			$this->db->from('ss_payments');
+			$this->db->join('ss_payment_methods', 'ss_payment_methods.id = ss_payments.id_ben_payment_method');
+			$this->db->join('ss_cities', 'ss_cities.id = ss_payments.id_ben_city');
+			$this->db->join('users', 'users.id = ss_payments.id_user');
+			$this->db->where($where);
+			/*if (is_array($where)){
+				foreach ($where as $key => $value){
+					$this->db->where('ss_payments.' . $key , $value);
+				}	
+			}else{
+				
+			}*/
+			if ($one) $this->db->limit(1);
+			
+			$query = $this->db->get();
+			
+			return $query;
+		}
+		
+		/* old payment
+		function payment($where = array()){
 		
 			$this->db->select('unid, amount_in, ben_name, ben_surname, ben_address, ben_phone, ben_email, 
 			date_added, status, ss_payment_methods.name as payment_method, currency_in, fee, total, status, ben_iban, id_payment_type, ss_cities.name as ben_city');
@@ -123,6 +155,7 @@
 			
 			return $query;
 		}
+		*/
 		
 		function update_payment_status($id, $user_id, $new_status){
 			$where['id'] = $id;

@@ -135,6 +135,39 @@
 			return $query;
 		}
 		
+		function get_invoices($where = array(), $one){
+			
+			// ordinea campurilor este cea din controllers/backend/getfact, ca sa nu mai fie nevoie sa fac mapari acolo
+			$this->db->select('unid, date_added, id_payment_type, status,
+				ss_suppliers.name as frnz_name, ss_suppliers.iban as frnz_iban, ss_suppliers.bank as frnz_bank,
+				amount_in, currency_in, amount_out, currency_out, fee, total, rate,
+				users.first_name as cl_prenume, users.last_name as cl_nume, users.phone as cl_telefon, users.email as cl_email,
+				users.country as cl_tara, users.account as cl_account, users.swift as cl_swift, users.bank as cl_bank,
+				ss_suppliers.s1 as spl_field_num_1, ss_invoices.s1 as spl_field_val_1,
+				ss_suppliers.s2 as spl_field_num_2, ss_invoices.s2 as spl_field_val_2,
+				ss_suppliers.s3 as spl_field_num_3, ss_invoices.s3 as spl_field_val_3,
+				ss_suppliers.s4 as spl_field_num_4, ss_invoices.s4 as spl_field_val_4,
+				ss_suppliers.s5 as spl_field_num_5, ss_invoices.s5 as spl_field_val_5,
+				ss_suppliers.s6 as spl_field_num_6, ss_invoices.s6 as spl_field_val_6
+				'); 
+			$this->db->from('ss_invoices');
+			$this->db->join('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier');
+			$this->db->join('users', 'users.id = ss_invoices.id_user');
+			$this->db->where($where);
+			/*if (is_array($where)){
+				foreach ($where as $key => $value){
+					$this->db->where('ss_invoices.' . $key , $value);
+				}	
+			}else{
+				
+			}*/
+			if ($one) $this->db->limit(1);
+			
+			$query = $this->db->get();
+			
+			return $query;
+		}
+		
 	}
 	
 	class Ss_invoice_model extends Base_module_record {

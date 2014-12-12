@@ -3,8 +3,8 @@
 	{
 		public $main_form;
 		
-		private $user_email = 'a@b.c';
-		private $user_id = '8';
+		//private $user_email = 'a@b.c';
+		//private $user_id = '8';
 		
 		function __construct(){
 			parent::__construct();
@@ -19,8 +19,8 @@
 			$this->load->library('session');
 		}
 		
-		public function invoice(){
-			/*parametri form */
+		/*public function invoice(){
+			//parametri form 
 			$this->load->library('form_builder', array(
             'id'=>'addPayment',
             'form_attrs' => array(
@@ -78,7 +78,7 @@
 				));
 			}
 			
-		}
+		}*/
 		
 		public function fee(){
 			$results = $this->ss_fees_model->compute_fee(425, 0, 0, 1, 1, 1);
@@ -138,7 +138,6 @@
 			$reference = $this->input->post('referinta');
 			$list = array();
 			
-			// TODO de mapat campurile corect pe header
 			$header = array(
 			'referinta',
 			'data_tran',
@@ -150,6 +149,7 @@
 			'amount_out',
 			'moneda_out',
 			'comision',
+			'total',
 			'rate',
 			'cl_nume',
 			'cl_prenume',
@@ -198,24 +198,27 @@
 					}
 				}
 				
-				$txs = $this->ss_payments_model->find_all_array($type == 'all' ? 'status in ' . $status : array('status' => $status));
+				$txs = $this->ss_payments_model->get_payments($type == 'all' ? 'ss_payments.status in ' . $status : array('ss_payments.status' => $status), FALSE)->result();
 				if ($txs == null || empty($txs) || count($txs) == 0){
 					array_push($list, array('no payments found, type: ' . $type . ', status: ' . $status));
 					}else{
-					$list = array();
 					array_push($list, $header);
 					foreach($txs as $tx){
-						array_push($list, array_values($tx));
+						$values = (array)$tx;
+						$values['payment_method'] = get_label($values['payment_method'], 'ro');
+						array_push($list, array_values($values));
 					}
 				}
 				
 				}else{
-				$tx = $this->ss_payments_model->find_one_array(array('unid' => $reference));
+				$tx = $this->ss_payments_model->payment(array('unid' => $reference))->result();
 				if ($tx == null || empty($tx) || count($tx) == 0){
 					array_push($list, array('no payment found, ref: ' . $reference));
 					}else{
-					array_push($list, array_keys($tx));
-					array_push($list, array_values($tx));
+					array_push($list, $header);
+					$values = (array)$tx[0];
+					$values['payment_method'] = get_label($values['payment_method'], 'ro');
+					array_push($list, array_values($values));
 				}
 			}
 			
@@ -226,7 +229,53 @@
 		public function getfact(){
 			$type = strtolower($this->input->post('type'));
 			$reference = $this->input->post('referinta');
+			$list = array();
 			
+			$custom = array(
+			'spl_field_num_1',
+			'spl_field_num_2',
+			'spl_field_num_3',
+			'spl_field_num_4',
+			'spl_field_num_5',
+			'spl_field_num_6',
+			);
+			
+			$header = array(
+			'referinta',
+			'data_tran',
+			'mod_transfer',
+			'status',
+			'frnz_name',
+			'frnz_iban',
+			'frnz_bank',
+			'amount_in',
+			'moneda_in',
+			'amount_out',
+			'moneda_out',
+			'comision',
+			'total',
+			'rate',
+			'cl_nume',
+			'cl_prenume',
+			'cl_telefon',
+			'cl_email',
+			'cl_tara',
+			'cl_account',
+			'cl_swift',
+			'cl_bank',
+			'spl_field_num_1',
+			'spl_field_val_1',
+			'spl_field_num_2',
+			'spl_field_val_2',
+			'spl_field_num_3',
+			'spl_field_val_3',
+			'spl_field_num_4',
+			'spl_field_val_4',
+			'spl_field_num_5',
+			'spl_field_val_5',
+			'spl_field_num_6',
+			'spl_field_val_6'
+			);
 			
 			if (empty($reference) || strlen($reference) == 0 || $reference === '0'){
 				switch ($type) {
@@ -250,61 +299,31 @@
 					}
 				}
 				
-				// TODO tb sa returnez si info despre furnizor si de mapat campurile corect pe header
-				$header = array(
-				'referinta',
-				'data_tran',
-				'mod_transfer',
-				'status',
-				'frnz_name',
-				'frnz_iban',
-				'frnz_bank',
-				'amount_in',
-				'moneda_in',
-				'amount_out',
-				'moneda_out',
-				'comision',
-				'rate',
-				'cl_nume',
-				'cl_prenume',
-				'cl_telefon',
-				'cl_email',
-				'cl_tara',
-				'cl_account',
-				'cl_swift',
-				'cl_bank',
-				'spl_field_num_1',
-				'spl_field_val_1',
-				'spl_field_num_2',
-				'spl_field_val_2',
-				'spl_field_num_3',
-				'spl_field_val_3',
-				'spl_field_num_4',
-				'spl_field_val_4',
-				'spl_field_num_5',
-				'spl_field_val_5',
-				'spl_field_num_6',
-				'spl_field_val_6'
-				);
-				
-				$txs = $this->ss_invoices_model->find_all_array($type == 'all' ? 'status in ' . $status : array('status' => $status));
+				$txs = $this->ss_invoices_model->get_invoices($type == 'all' ? 'ss_invoices.status in ' . $status : array('ss_invoices.status' => $status), false)->result();
 				if ($txs == null || empty($txs) || count($txs) == 0){
 					array_push($list, array('no invoices found, type: ' . $type . ', status: ' . $status));
 					}else{
-					$list = array();
-					array_push($list, $header	);
+					array_push($list, $header);
 					foreach($txs as $tx){
-						array_push($list, array_values($tx));
+						$values = (array)$tx;
+						foreach ($custom as $field_name){
+							$values[$field_name] = get_label($values[$field_name], 'ro');
+						}
+						array_push($list, array_values($values));
 					}
 				}
 				}else{
-				$tx = $this->ss_invoices_model->find_one_array(array('unid' => $reference));
-				$list = array();
+				$tx = $this->ss_invoices_model->get_invoices(array('ss_invoices.unid' => $reference), true)->result();
+				
 				if ($tx == null || empty($tx) || count($tx) == 0){
 					array_push($list, array('no invoice found, ref: ' . $reference));
 					}else{
-					array_push($list, array_keys($tx));
-					array_push($list, array_values($tx));
+					array_push($list, $header);
+					$values = (array)$tx[0];
+					foreach ($custom as $field_name){
+						$values[$field_name] = get_label($values[$field_name], 'ro');
+					}
+					array_push($list, array_values($values));
 				}
 				
 			}
@@ -631,4 +650,4 @@
 			save_csv(get_time() . 'upcom', $list);
 			
 		}
-	}																					
+	}																							
