@@ -3,7 +3,7 @@ Probleme Smith
 1. ion_auth merge pe english/romana, smith merge pe en/ro; tb unificat
 2. securizat pagini (hook sau controller, detalii aici http://adventuresincms.blogspot.ro/2014/02/creating-authentication-system-for-fuel.html)
 3. ascuns paginile vizibile direct din auth (ex: http://localhost/smith/auth/login)
-4. curs de schimb valutar la payments
-5. prezentarea pe www si online-ul pe online.smith.ro -> cerinta de la Adrian Marinescu; de avut in vedere, dupa finalizare
+4. curs de schimb valutar la payments (controllers/payments/save)
+5. prezentarea pe www si online-ul pe online.smith.ro -> cerinta de la Adrian Marinescu; de avut in vedere dupa finalizare
 6. vezi rute stiri pt limbi straine
-7. de modificat profil utilizator ca sa primeasca si cl_account, cl_bank, cl_swift
+7. backend: de vazut ce stari trebuie puse pe updatetran si cand se trimit mesajele si mail-urile, atat pt facturi cat si pt transferuri
