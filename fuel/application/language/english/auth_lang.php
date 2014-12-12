@@ -84,8 +84,11 @@ $lang['register_user_email_label']                       = 'Email:';
 $lang['register_user_phone_label']                       = 'Phone:';
 $lang['register_user_password_label']                    = 'Password:';
 $lang['register_user_password_confirm_label']            = 'Confirm Password:';
-$lang['register_user_birth_date']					   = 'Date of birth';
-$lang['register_user_country']						   = 'Country of residence';
+$lang['register_user_birth_date']					     = 'Date of birth';
+$lang['register_user_country']						     = 'Country of residence';
+$lang['register_user_account']						   	 = 'Bank account';
+$lang['register_user_swift']						   	 = 'Bank SWIFT code';
+$lang['register_user_bank']						  		 = 'Bank';
 $lang['register_user_submit_btn']                        = 'Register';
 $lang['register_user_validation_fname_label']            = 'First Name';
 $lang['register_user_validation_lname_label']            = 'Last Name';
@@ -98,6 +101,9 @@ $lang['register_user_validation_password_label']         = 'Password';
 $lang['register_user_validation_password_confirm_label'] = 'Password Confirmation';
 $lang['register_user_validation_birth_date_label']       = 'Birth Date';
 $lang['register_user_validation_country_label']          = 'Country of residence';
+$lang['register_user_validation_account_label']			 = 'Bank account';
+$lang['register_user_validation_swift_label']			 = 'Bank SWIFT code';
+$lang['register_user_validation_bank_label']			 = 'Bank';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Edit User';

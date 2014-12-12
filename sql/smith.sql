@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2014 at 05:26 PM
+-- Generation Time: Dec 12, 2014 at 04:11 PM
 -- Server version: 5.5.35-33.0
 -- PHP Version: 5.4.23
 
@@ -490,7 +490,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=654 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=663 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -1150,7 +1150,16 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (650, '2014-12-11 15:07:27', 1, 'The cache has been cleared.', 'info'),
 (651, '2014-12-11 15:08:10', 1, 'The cache has been cleared.', 'info'),
 (652, '2014-12-11 17:25:21', 1, 'Successful login by ''admin'' from ::1', 'debug'),
-(653, '2014-12-11 17:25:31', 1, 'The cache has been cleared.', 'info');
+(653, '2014-12-11 17:25:31', 1, 'The cache has been cleared.', 'info'),
+(654, '2014-12-12 09:31:35', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(655, '2014-12-12 09:31:42', 1, 'The cache has been cleared.', 'info'),
+(656, '2014-12-12 09:38:45', 1, 'The cache has been cleared.', 'info'),
+(657, '2014-12-12 09:44:02', 1, 'The cache has been cleared.', 'info'),
+(658, '2014-12-12 09:54:11', 1, 'The cache has been cleared.', 'info'),
+(659, '2014-12-12 11:02:32', 1, 'The cache has been cleared.', 'info'),
+(660, '2014-12-12 11:41:49', 1, 'The cache has been cleared.', 'info'),
+(661, '2014-12-12 16:09:32', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(662, '2014-12-12 16:09:39', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -1724,7 +1733,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', '0e8a92c64afcf9f595891317f10cd4a72ebaa437', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'd2a29b621c02472e5855545143517f29', 'yes', 'yes');
+(1, 'admin', 'ccd23eb2a210dbfa4741c4da0c35bcaaaa781d8d', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '82784c9f402ff7af8a6d0d2b23f9b0df', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -1983,12 +1992,12 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
 --
 
 INSERT INTO `ss_invoices` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_in`, `currency_in`, `amount_out`, `currency_out`, `rate`, `id_supplier_cat`, `id_supplier`, `fee`, `total`, `date_added`, `status`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`) VALUES
-(88, '#F546df0152a0fa', 8, 'card', '123.00', 'RON', '0.00', '', NULL, 1, 12, '1.23', '124.23', '2014-11-20 13:43:49', 1, 'asdf', NULL, NULL, NULL, NULL, NULL),
+(88, '#F546df0152a0fa', 8, 'card', '123.00', 'RON', '0.00', '', NULL, 1, 12, '1.23', '124.23', '2014-11-20 13:43:49', 0, 'asdf', NULL, NULL, NULL, NULL, NULL),
 (89, '#F546df0551aa8a', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:44:53', 1, 'cc 12345', '10-11-2015', NULL, 'ceva text', 'asdf', '10-11-2016'),
 (90, '#F546df186d0c72', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:49:58', 1, 'cc 12345', NULL, NULL, 'ceva text', 'asdf', NULL),
-(91, '#F546df194f1e3b', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:50:12', 100, 'cc 12345', NULL, NULL, NULL, 'asdf', NULL),
-(92, '#F5489a6bf0605b', 8, 'card', '123.00', 'RON', '123.00', 'RON', NULL, 1, 12, '1.23', '124.23', '2014-12-11 14:14:23', 1, '1234', NULL, NULL, NULL, NULL, NULL),
-(93, '#F5489a74890a93', 8, 'card', '432.00', 'RON', '432.00', 'RON', NULL, 1, 12, '4.32', '436.32', '2014-12-11 14:16:40', 1, '121', NULL, NULL, NULL, NULL, NULL);
+(91, '#F546df194f1e3b', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:50:12', 1, 'cc 12345', NULL, NULL, NULL, 'asdf', NULL),
+(92, '#F5489a6bf0605b', 8, 'card', '123.00', 'RON', '123.00', 'RON', NULL, 1, 12, '1.23', '124.23', '2014-12-11 14:14:23', 0, '1234', NULL, NULL, NULL, NULL, NULL),
+(93, '#F5489a74890a93', 8, 'card', '432.00', 'RON', '432.00', 'RON', NULL, 1, 12, '4.32', '436.32', '2014-12-11 14:16:40', 0, '121', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2127,7 +2136,7 @@ INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_i
 (102, '#S5489a85381bdc', 8, 'card', '543.00', 'ron', '543.00', 'ron', NULL, '5.43', '548.43', '2014-12-11 14:21:07', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
 (103, '#S5489a8819b655', 8, 'card', '654.00', 'eur', '654.00', 'eur', NULL, '6.54', '660.54', '2014-12-11 14:21:53', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
 (104, '#S5489a8d7e99be', 8, 'card', '987.00', 'eur', '987.00', 'ron', '4.4509', '9.87', '996.87', '2014-12-11 14:23:19', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(105, '#S5489a9fadeda1', 8, 'card', '543.00', 'ron', '999.00', '999', '9.9999', '999.00', '548.43', '2014-12-11 14:28:10', 1, 5, 10, 'XXXF', 'XXXA', 'XXXB', 'XXXC', 'XXXD', 'XXXE', '231');
+(105, '#S5489a9fadeda1', 8, 'card', '543.00', 'ron', '999.00', '999', '9.9999', '999.00', '548.43', '2014-12-11 14:28:10', 1, 5, 7, 'XXXF', 'XXXA', 'XXXB', 'XXXC', 'XXXD', 'XXXE', '231');
 
 -- --------------------------------------------------------
 
@@ -2296,32 +2305,36 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `birth_date` varchar(100) NOT NULL,
+  `account` varchar(32) NOT NULL COMMENT 'client bank account',
+  `swift` varchar(32) NOT NULL COMMENT 'client bank swift',
+  `bank` varchar(32) NOT NULL COMMENT 'client bank',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1418299847, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
-(8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', '16fb8a158359c7c60effd957e76982111353ca60', 'OFMpDh0agUc6wOXuXQIVd.f675bdbddd8f8fc577', 1418075118, NULL, 1415447144, 1415621775, 0, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981'),
-(9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981'),
-(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981'),
-(11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981'),
-(13, '::1', 'alexandru mocioi', '$2y$08$YAm/jkVXNRfdmNizUbrZkuxqM6Kg5F4HQxpQSofEgCTelzs5Kix6G', NULL, 'hello@bookreader.ro', '0c1177103f6b2df85db1907a303f4041f5937847', NULL, NULL, NULL, 1418138356, NULL, 0, 'Alexandru', 'Mocioi', 'Romania', '0723276206', '15.09.1981'),
-(14, '::1', 'alexanru1 mocioi1', '$2y$08$Og2qSAMWmxelRk7ycYzNo.He7EUdGMqfNV.XO0vsbXfKSY7WGPgoK', NULL, 'hello1@bookreader.ro', '3ce350535478cfd0e93cbc48bfe31695e969da86', NULL, NULL, NULL, 1418138520, NULL, 0, 'ALexanru1', 'Mocioi1', 'Romania', '0723276206', '15.09.1981'),
-(15, '::1', 'alexanru2 mocioi2', '$2y$08$OUQ5FICiMxHZbA/KjvD.LOBYYy5EictbPEJecw5TEidlZGyPE/nDm', NULL, 'hello2@bokreader.ro', '9688880b4876d02db84a0e5475b7f7739468fa36', NULL, NULL, NULL, 1418138994, NULL, 0, 'ALexanru2', 'Mocioi2', 'Romania', '0723276206', '15.09.1981'),
-(16, '::1', 'alexanru3 mocioi3', '$2y$08$yf/xPLb2EWQFiacSt6t20u1w3XFRVH5Noigv7tqg0UIda8tNkgZDm', NULL, 'hello3@bokreader.ro', 'c8c7d8b42dc1ae4c39a46553c906ea52719f2a47', NULL, NULL, NULL, 1418139050, NULL, 0, 'ALexanru3', 'Mocioi3', 'Romania', '0723276206', '15.09.1981'),
-(17, '::1', 'alexanru4 mocioi4', '$2y$08$ZYq6itiREszlQDyyV4vzve8MzSCc8yk0B2JJmrUrRempRMXUi5RFO', NULL, 'hello4@bokreader.ro', '1b7b239705ffbeff4b1984532182f67fccea05a3', NULL, NULL, NULL, 1418139095, NULL, 0, 'ALexanru4', 'Mocioi4', 'Romania', '0723276206', '15.09.1981'),
-(18, '::1', 'alexanru5 mocioi5', '$2y$08$uEZTQ5YyRYA3wA3ayb/pceAPFyvATto79OWW4gTPVIpevfGs7bJai', NULL, 'hello5@bokreader.ro', '0d4567018b8b26678934989dc1217e6c56571643', NULL, NULL, NULL, 1418139239, NULL, 0, 'ALexanru5', 'Mocioi5', 'Romania', '0723276206', '15.09.1981'),
-(19, '::1', 'alexanru6 mocioi6', '$2y$08$I5gnlEVQGwD.RmwDRP/UteqpALQFwezym5Pjwnz1F8qfFGGC/P0N.', NULL, 'hello6@bokreader.ro', '5fb650d1a03711796c03a27081db87e1b791f93b', NULL, NULL, NULL, 1418139269, NULL, 0, 'ALexanru6', 'Mocioi6', 'Romania', '0723276206', '15.09.1981'),
-(20, '::1', 'alexanru7 mocioi7', '$2y$08$TnaSATVG/YUhv.MsLg1zIevxQqICF49C3wZVlL1gH6hkGz2RINnqK', NULL, 'hello7@bookreader.ro', 'c1aeca0203eaa7e83dd6a4c2ca0a3e24f57bc339', NULL, NULL, NULL, 1418139353, NULL, 0, 'ALexanru7', 'Mocioi7', 'Romania', '0723276206', '15.09.1981'),
-(21, '::1', 'alexandru8 mocioi8', '$2y$08$xApeCotoUVsdbjhernndQOwplCrEdywQE.yHiWMEwGdDSe1knmTHa', NULL, 'hello8@bookreader.ro', '37da1974cf95485ad97236408d4efe434940cd36', NULL, NULL, NULL, 1418139623, NULL, 0, 'Alexandru8', 'Mocioi8', 'Romania', '0723276206', '15.09.1981'),
-(22, '::1', 'alexandru9 mocioi9', '$2y$08$FfZni4oQ9vCRIhOnzGEyv.a475eoRZKIWQkahRAJOwT28l0e9qfoq', NULL, 'hello9@bookreader.ro', NULL, NULL, NULL, NULL, 1418158676, 1418299895, 1, 'Alexandru9', 'Mocioi9', 'Romania', '0723276206', '15.09.1981'),
-(23, '::1', 'alexandru10 mocioi10', '$2y$08$Zf37lrMpt3M2W1XEeljOz.Rlm3X8q4IKGLw3krWlQM.hYJzWLkqhC', NULL, 'hello10@bookreader.ro', 'efd038439cbcaed7694af869cf2f4f1aad9514da', NULL, NULL, NULL, 1418160110, NULL, 0, 'Alexandru10', 'Mocioi10', 'Romania', '0723276206', '15.09.1981'),
-(24, '::1', 'alexandru11 mocioi11', '$2y$08$umaMHOzX4hZEyopGuzXceOoRel.5UOggvOo7iasRAp6hrHIsLDDuu', NULL, 'hello11@bookreader.ro', 'c5216762fa3c47a0216084b96e21403991aaaead', NULL, NULL, NULL, 1418160369, NULL, 0, 'Alexandru11', 'Mocioi11', 'Romania', '0723276206', '15.09.1981'),
-(25, '::1', 'alexandru12 mocioi12', '$2y$08$XE13HZIFPSbqEPwXx42Pj.T1BlIclL6W1arQkjQXMQsP7lLwINXje', NULL, 'hello12@bookreader.ro', '63e1807cf47c939784832eeadcdc59ceb4140345', NULL, NULL, NULL, 1418160876, NULL, 0, 'Alexandru12', 'Mocioi12', 'Romania', '0723276206', '15.09.1981');
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`, `account`, `swift`, `bank`) VALUES
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1418299847, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', ''),
+(8, '::1', 'horia mocioi', '$2y$08$JvhMboEq4U/4sNymFy5LP.6X7cPCdQXgv9tCIoC3K0gTInRhQbKyS', NULL, 'a.mocioi@gmail.com', '16fb8a158359c7c60effd957e76982111353ca60', 'OFMpDh0agUc6wOXuXQIVd.f675bdbddd8f8fc577', 1418075118, NULL, 1415447144, 1415621775, 0, 'Horia', 'Mocioi', 'RO', '+40723276206', '15.09.1981', 'ACCT08', 'SWIFT08', 'BANK08'),
+(9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
+(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
+(11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981', '', '', ''),
+(13, '::1', 'alexandru mocioi', '$2y$08$YAm/jkVXNRfdmNizUbrZkuxqM6Kg5F4HQxpQSofEgCTelzs5Kix6G', NULL, 'hello@bookreader.ro', '0c1177103f6b2df85db1907a303f4041f5937847', NULL, NULL, NULL, 1418138356, NULL, 0, 'Alexandru', 'Mocioi', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(14, '::1', 'alexanru1 mocioi1', '$2y$08$Og2qSAMWmxelRk7ycYzNo.He7EUdGMqfNV.XO0vsbXfKSY7WGPgoK', NULL, 'hello1@bookreader.ro', '3ce350535478cfd0e93cbc48bfe31695e969da86', NULL, NULL, NULL, 1418138520, NULL, 0, 'ALexanru1', 'Mocioi1', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(15, '::1', 'alexanru2 mocioi2', '$2y$08$OUQ5FICiMxHZbA/KjvD.LOBYYy5EictbPEJecw5TEidlZGyPE/nDm', NULL, 'hello2@bokreader.ro', '9688880b4876d02db84a0e5475b7f7739468fa36', NULL, NULL, NULL, 1418138994, NULL, 0, 'ALexanru2', 'Mocioi2', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(16, '::1', 'alexanru3 mocioi3', '$2y$08$yf/xPLb2EWQFiacSt6t20u1w3XFRVH5Noigv7tqg0UIda8tNkgZDm', NULL, 'hello3@bokreader.ro', 'c8c7d8b42dc1ae4c39a46553c906ea52719f2a47', NULL, NULL, NULL, 1418139050, NULL, 0, 'ALexanru3', 'Mocioi3', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(17, '::1', 'alexanru4 mocioi4', '$2y$08$ZYq6itiREszlQDyyV4vzve8MzSCc8yk0B2JJmrUrRempRMXUi5RFO', NULL, 'hello4@bokreader.ro', '1b7b239705ffbeff4b1984532182f67fccea05a3', NULL, NULL, NULL, 1418139095, NULL, 0, 'ALexanru4', 'Mocioi4', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(18, '::1', 'alexanru5 mocioi5', '$2y$08$uEZTQ5YyRYA3wA3ayb/pceAPFyvATto79OWW4gTPVIpevfGs7bJai', NULL, 'hello5@bokreader.ro', '0d4567018b8b26678934989dc1217e6c56571643', NULL, NULL, NULL, 1418139239, NULL, 0, 'ALexanru5', 'Mocioi5', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(19, '::1', 'alexanru6 mocioi6', '$2y$08$I5gnlEVQGwD.RmwDRP/UteqpALQFwezym5Pjwnz1F8qfFGGC/P0N.', NULL, 'hello6@bokreader.ro', '5fb650d1a03711796c03a27081db87e1b791f93b', NULL, NULL, NULL, 1418139269, NULL, 0, 'ALexanru6', 'Mocioi6', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(20, '::1', 'alexanru7 mocioi7', '$2y$08$TnaSATVG/YUhv.MsLg1zIevxQqICF49C3wZVlL1gH6hkGz2RINnqK', NULL, 'hello7@bookreader.ro', 'c1aeca0203eaa7e83dd6a4c2ca0a3e24f57bc339', NULL, NULL, NULL, 1418139353, NULL, 0, 'ALexanru7', 'Mocioi7', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(21, '::1', 'alexandru8 mocioi8', '$2y$08$xApeCotoUVsdbjhernndQOwplCrEdywQE.yHiWMEwGdDSe1knmTHa', NULL, 'hello8@bookreader.ro', '37da1974cf95485ad97236408d4efe434940cd36', NULL, NULL, NULL, 1418139623, NULL, 0, 'Alexandru8', 'Mocioi8', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(22, '::1', 'alexandru9 mocioi9', '$2y$08$FfZni4oQ9vCRIhOnzGEyv.a475eoRZKIWQkahRAJOwT28l0e9qfoq', NULL, 'hello9@bookreader.ro', NULL, NULL, NULL, NULL, 1418158676, 1418299895, 1, 'Alexandru9', 'Mocioi9', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(23, '::1', 'alexandru10 mocioi10', '$2y$08$Zf37lrMpt3M2W1XEeljOz.Rlm3X8q4IKGLw3krWlQM.hYJzWLkqhC', NULL, 'hello10@bookreader.ro', 'efd038439cbcaed7694af869cf2f4f1aad9514da', NULL, NULL, NULL, 1418160110, NULL, 0, 'Alexandru10', 'Mocioi10', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(24, '::1', 'alexandru11 mocioi11', '$2y$08$umaMHOzX4hZEyopGuzXceOoRel.5UOggvOo7iasRAp6hrHIsLDDuu', NULL, 'hello11@bookreader.ro', 'c5216762fa3c47a0216084b96e21403991aaaead', NULL, NULL, NULL, 1418160369, NULL, 0, 'Alexandru11', 'Mocioi11', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(25, '::1', 'alexandru12 mocioi12', '$2y$08$XE13HZIFPSbqEPwXx42Pj.T1BlIclL6W1arQkjQXMQsP7lLwINXje', NULL, 'hello12@bookreader.ro', '63e1807cf47c939784832eeadcdc59ceb4140345', NULL, NULL, NULL, 1418160876, NULL, 0, 'Alexandru12', 'Mocioi12', 'Romania', '0723276206', '15.09.1981', '', '', ''),
+(26, '::1', 'prenume01 nume01', '$2y$08$XBHFj/F7ufDUG78huoG2eOMdAXd5ChlG6t94nmLdyOqNqgYVaBIBq', NULL, 'email01@email.ro', 'eada6ce655cc12810f750393f876955c106927a9', NULL, NULL, NULL, 1418387464, NULL, 0, 'Prenume01', 'Nume01', 'RO', '1234567890', '15.09.1981', 'ACCT01', 'SWIFT01', 'BANK01');
 
 -- --------------------------------------------------------
 
@@ -2337,7 +2350,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -2362,7 +2375,8 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (23, 22, 2),
 (24, 23, 2),
 (25, 24, 2),
-(26, 25, 2);
+(26, 25, 2),
+(27, 26, 2);
 
 --
 -- Constraints for dumped tables

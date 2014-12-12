@@ -68,6 +68,27 @@
 		
 		<div class="input-box">
 			<p>
+				<div class="agent-lable"><?php echo lang('register_user_account', 'account');?> <br /></div>
+				<?php echo form_input($account);?>
+			</p>
+		</div>
+		
+		<div class="input-box">
+			<p>
+				<div class="agent-lable"><?php echo lang('register_user_swift', 'swift');?> <br /></div>
+				<?php echo form_input($swift);?>
+			</p>
+		</div>
+		
+		<div class="input-box">
+			<p>
+				<div class="agent-lable"><?php echo lang('register_user_bank', 'bank');?> <br /></div>
+				<?php echo form_input($bank);?>
+			</p>
+		</div>		
+		
+		<div class="input-box">
+			<p>
 				<div class="agent-lable"><?php echo 'Captcha:';?> <br /></div>
 				<?php echo $image; // this will show the captcha image?><br />
 				<?php echo form_input($word);?>

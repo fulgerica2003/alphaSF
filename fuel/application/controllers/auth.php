@@ -546,11 +546,14 @@
 			$this->form_validation->set_rules('first_name', $this->lang->line('register_user_validation_fname_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('last_name', $this->lang->line('register_user_validation_lname_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('email', $this->lang->line('register_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-			$this->form_validation->set_rules('phone', $this->lang->line('register_user_validation_phone_label'), 'xss_clean');
+			$this->form_validation->set_rules('phone', $this->lang->line('register_user_validation_phone_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('password', $this->lang->line('register_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 			$this->form_validation->set_rules('password_confirm', $this->lang->line('register_user_validation_password_confirm_label'), 'required');
-			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'xss_clean');
-			$this->form_validation->set_rules('country', $this->lang->line('register_user_validation_country_label'), 'xss_clean');
+			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('country', $this->lang->line('register_user_validation_country_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('account', $this->lang->line('register_user_validation_account_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('swift', $this->lang->line('register_user_validation_swift_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('bank', $this->lang->line('register_user_validation_bank_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('word', 'Captcha', 'trim|callback_check_captcha|required' );
 			
 			if ($this->form_validation->run() == true)
@@ -565,6 +568,9 @@
 				'phone'      => $this->input->post('phone'),
 				'birth_date'    => $this->input->post('birth_date'),
 				'country'    => $this->input->post('country'),
+				'account'    => $this->input->post('account'),
+				'swift'    	 => $this->input->post('swift'),
+				'bank'       => $this->input->post('bank'),
 				);
 			}
 			if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
@@ -636,6 +642,30 @@
 				'value' => $this->form_validation->set_value('country'),
 				'class' => 'agent-input',
 				);
+				
+				$this->data['account'] = array(
+				'name'  => 'account',
+				'id'    => 'account',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('account'),
+				'class' => 'agent-input',
+				);
+				
+				$this->data['swift'] = array(
+				'name'  => 'swift',
+				'id'    => 'swift',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('swift'),
+				'class' => 'agent-input',
+				);
+				
+				$this->data['bank'] = array(
+				'name'  => 'bank',
+				'id'    => 'bank',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('bank'),
+				'class' => 'agent-input',
+				);				
 				
 				$this->data['word'] = array(
 				'name'  => 'word',
