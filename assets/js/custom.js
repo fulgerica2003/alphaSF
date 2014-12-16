@@ -7,11 +7,25 @@ function casetaAbroad() {
 		$('#abroad-2').appendTo('#caseta-abroad');
 	}
 }
+
 $(document).ready(function(){
 	casetaAbroad();
-	$('.radio-container .lable').click(function(){
+	
+	$('#catSupplier').change(function() {			
+			$.get('inv/suppliers_by_cat/'+$(this).val() , function( data ) {
+				$('#supplier').empty().append(data);
+				$('#customFields').empty();	
+			});
+	});
+	$('#supplier').change(function() {			
+			$.get('inv/add_custom_fields/'+$(this).val() , function( data ) {
+				$('#customFields').empty().append(data);
+			});
+	});
+	
+	$('.radio-container1 .lable1').click(function(){
 		$(this).siblings('input').click();
-		$('.radio-container .lable').removeClass('radioactiv');
+		$('.radio-container1 .lable1').removeClass('radioactiv');
 		$(this).addClass('radioactiv');
 	})
 	

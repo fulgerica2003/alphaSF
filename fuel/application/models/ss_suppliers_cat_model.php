@@ -11,6 +11,14 @@
 		{
 			parent::__construct('ss_suppliers_cat'); // table name
 		}
+	
+	
+		function list_items($limit = NULL, $offset = NULL, $col = NULL, $order = 'desc', $just_count = FALSE)
+		{
+			$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
+			return $data;
+		}
+	
 		
 	}
 	

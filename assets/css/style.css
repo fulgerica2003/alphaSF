@@ -13,7 +13,7 @@ body { background-color: #e6e6e6;}
 input, select {outline:none;}
 
 .main-container {margin-top:30px;}
-a:focus {text-decoration:none;outline:none;}
+a:focus {text-decoration:none;outline:none;background-color: transparent;}
 
 
 /* ----------------- Slider-home -------------- */
@@ -263,8 +263,8 @@ div.modal-content .agent-submit {float:right;width:45%;padding:13px 0px 11px;mar
 #box-meniu-interior {background-color: #fff;margin-bottom: 5px;}
 .cont-container .meniu-interior {background:url('../img/banner-about.jpg') no-repeat; background-size: cover;}
 .cont-container #box-meniu-interior {background-color:transparent;}
-.cont-container .meniu-interior .lista-nav-big .activ, .cont-container .meniu-interior .lista-nav-big li:hover {padding-bottom:30px;}
-.cont-container .meniu-interior .lista-nav-big .activ a, .cont-container .meniu-interior .lista-nav-big li:hover a {color:#fff;}
+.cont-container .meniu-interior .lista-nav-big .activ, .cont-container .meniu-interior .lista-nav-big li:hover {padding-bottom:30px; background-color:transparent;}
+.cont-container .meniu-interior .lista-nav-big .activ a, .cont-container .meniu-interior .lista-nav-big li:hover a {color:#fff; background-color:transparent;}
 
 .cont-container .meniu-interior #box-meniu-interior .lista-nav-big .activ {color:#fff;}
 .cont-container .lista-nav-big {margin-top:25px;}
@@ -722,7 +722,8 @@ a.link-cas-tranz:hover, .link-arhiva-tranz {text-decoration:none;color:#fff;}
 #form-transfer-calc select {
 width: 100%;
 border: none;
-padding: 12px 10px 8px;
+padding: 12px 10px 8px 10px;
+height: 40px;
 border-radius: 5px;
 margin-bottom: 10px;
 border: 1px solid #ffcccc;

@@ -293,6 +293,22 @@ $config['layouts']['ssfaq'] = $ssfaq;
 
 /*
 |--------------------------------------------------------------------------
+| Payments page Layout
+|--------------------------------------------------------------------------
+|
+| layout for other pages
+*/
+
+$sspay = new Fuel_layout('sspayments');
+$sspay->set_label('Payments page template');
+$sspay->add_fields($common_meta);
+$sspay->add_field('Form', array('type' => 'fieldset', 'label' => 'Payment form', 'class' => 'tab'));
+$sspay->add_field('form_title', array('label' => 'Form title'));
+$config['layouts']['sspayments'] = $sspay;
+
+
+/*
+|--------------------------------------------------------------------------
 | Simple page Layout
 |--------------------------------------------------------------------------
 |
