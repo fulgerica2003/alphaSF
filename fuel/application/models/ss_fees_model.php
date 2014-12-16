@@ -3,6 +3,15 @@
 require_once(FUEL_PATH.'models/base_module_model.php');
 
 class Ss_fees_model extends Base_module_model {
+	
+	private $err = array(
+		'com_amount' 	=> 'FA1',
+		'com_com' 		=> 'FA2',
+		'promo_amount' 	=> 'FP1',
+		'promo_com' 	=> 'FP2',
+		'spot_amount' 	=> 'FS1',
+		'spo_com' 		=> 'FS2',
+	);
 
 	// read more about models in the user guide to get a list of all properties. Below is a subset of the most common:
 
@@ -11,7 +20,7 @@ class Ss_fees_model extends Base_module_model {
 	public $required = array(); // an array of required fields. If a key => val is provided, the key is name of the field and the value is the error message to display
 	public $foreign_keys = array(); // map foreign keys to table models
 	public $linked_fields = array(); // fields that are linked meaning one value helps to determine another. Key is the field, value is a function name to transform it. (e.g. array('slug' => 'title'), or array('slug' => arry('name' => 'strtolower')));
-	public $boolean_fields = array(); // fields that are tinyint and should be treated as boolean
+	public $boolean_fields = array('apply_to_amount', 'promo', 'spot' ); // fields that are tinyint and should be treated as boolean
 	public $unique_fields = array(); // fields that are not IDs but are unique. Can also be an array of arrays for compound keys
 	public $parsed_fields = array(); // fields to automatically parse
 	public $serialized_fields = array(); // fields that contain serialized data. This will automatically serialize before saving and unserialize data upon retrieving
@@ -31,6 +40,7 @@ class Ss_fees_model extends Base_module_model {
 
 	function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
 	{
+		$this->db->select('id, com_val as value, com_type as type, com_promo as promo, com_spot as spot, apply_to_amount, active', FALSE);
 		$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 		return $data;
 	}
@@ -38,6 +48,7 @@ class Ss_fees_model extends Base_module_model {
 	function form_fields($values = array(), $related = array())
 	{	
 		$this->load->model('ss_types_model');
+		$this->load->model('ss_profiles_model');
 		$this->load->model('ss_payment_methods_model');
 		$options = array(1 => 'yes', 0 => 'no');
 		
@@ -46,7 +57,7 @@ class Ss_fees_model extends Base_module_model {
 		$fields['com_val']['label'] 		= 'Fee value'; // 2
 		$fields['com_type']['label'] 		= 'Fee type'; // 3
 		
-		$fields['com_int_apply']['label'] 	= 'Apply to range amount'; // 4
+		$fields['com_int_apply']['label'] 	= 'Apply to amount range'; // 4
 		$fields['com_int_apply']['type'] 	= 'enum';
 		$fields['com_int_apply']['mode'] 	= 'radios';
 		$fields['com_int_apply']['options'] = $options;
@@ -65,21 +76,23 @@ class Ss_fees_model extends Base_module_model {
 		$fields['com_spot']['options'] 		= $options;
 		
 		$fields['com_trn_apply']['label'] 	= 'Apply to trn range'; // 9
-		$fields['com_trn_apply']['type'] 		= 'enum';
-		$fields['com_trn_apply']['mode'] 		= 'radios';
-		$fields['com_trn_apply']['options'] 		= $options;
+		$fields['com_trn_apply']['type'] 	= 'enum';
+		$fields['com_trn_apply']['mode'] 	= 'radios';
+		$fields['com_trn_apply']['options'] = $options;
 		
 		$fields['com_trn_min']['label'] 	= 'Min nr'; // 10
 		$fields['com_trn_max']['label'] 	= 'Max nr'; // 11
 		
 		$fields['com_time_start']['label'] 	= 'Start date';// 12
+		$fields['com_time_start'] 			+= array('first_day' => 1, 'date_format' => 'Y-m-d', 'value' => date('Y-m-d H:i:s'), 'ampm' => false);
 		
 		$fields['com_time_apply']['label'] 	= 'Fee date'; // 13
-		$fields['com_time_apply']['type'] 		= 'enum';
-		$fields['com_time_apply']['mode'] 		= 'radios';
-		$fields['com_time_apply']['options'] 		= $options;
+		$fields['com_time_apply']['type'] 	= 'enum';
+		$fields['com_time_apply']['mode'] 	= 'radios';
+		$fields['com_time_apply']['options']= $options;
 		
 		$fields['com_time_stop']['label'] 	= 'Stop date'; // 14
+		$fields['com_time_stop'] 			+= array('first_day' => 1, 'date_format' => 'Y-m-d', 'value' => date('Y-m-d H:i:s', strtotime ("+1 hour")) , 'ampm' => false);
 		
 		$fields['fk_currency']['label'] 	= 'Currency'; // 15
 		$fields['fk_currency']['type']		= 'select';
@@ -96,11 +109,15 @@ class Ss_fees_model extends Base_module_model {
 		
 		$fields['fk_cl_type']['label'] 		= 'Client type'; // 18
 		$fields['fk_cl_type']['type'] 		= 'select';
-		$fields['fk_cl_type']['options'] 	= $this->ss_types_model->options_list('id', 'name', 'type = \'client\'', null);
+		//$fields['fk_cl_type']['options'] 	= $this->ss_types_model->options_list('id', 'name', 'type = \'client\'', null);
+		$fields['fk_cl_type']['options'] 	= $this->ss_profiles_model->get_client_id_list();
+		$fields['fk_cl_type']['first_option']= 'Select one...';
 		
 		$fields['fk_ben_type']['label'] 	= 'Beneficiary type'; // 19
 		$fields['fk_ben_type']['type'] 		= 'select';
-		$fields['fk_ben_type']['options'] 	= $this->ss_types_model->options_list('id', 'name', 'type = \'beneficiar\'', null);
+		//$fields['fk_ben_type']['options'] 	= $this->ss_types_model->options_list('id', 'name', 'type = \'beneficiar\'', null);
+		$fields['fk_ben_type']['options'] 	= $this->ss_profiles_model->get_ben_id_list();
+		$fields['fk_ben_type']['first_option'] 	= 'Select one...';
 		
 		
 		$fields['com_promo_apply']['label'] = 'Check promo code'; // 20 nefolosit, dezvoltare ulterioara
@@ -123,6 +140,9 @@ class Ss_fees_model extends Base_module_model {
 		$fields['apply_to_amount']['options'] = $options;
 		
 		$fields['active']['label'] 			= 'Active'; // 24
+		$fields['active']['type'] 			= 'enum';
+		$fields['active']['mode'] 			= 'radios';
+		$fields['active']['options'] 		= $options;
 		
 		return $fields;
 	}
@@ -147,19 +167,194 @@ class Ss_fees_model extends Base_module_model {
 		//$this->db->order_by('precedence asc');
 	}
 	
-	function compute_fee($value, $trn, $datatrn, $network_key, $partner_key, $currency_key){
+	function compute_total_fee($values = array()){
+	
+		$fees = array(
+			'com_amount' => 0,
+			'com_com' => 0,
+			'promo_amount' => 0,
+			'promo_com' => 0,
+			'spot_amount' => 0,
+			'spot_com' => 0,
+		);
+
+		// *****************************************************************
+		// comision la suma
+		$fee_select = $this->get_com_amount($values);
+
+		$fees['com_amount'] = $this->get_result($fee_select);
 		
-		$this->db->select('sum(if(com_type=\'flat\', com_val, com_val * '. $value .'/100)) comision from ss_fees
-			where
-					if (com_int_apply, if ('. $value .' >= com_int_min and '. $value .' <= com_int_max, true, false), true)
-				and if (com_trn_apply, if ('. $trn .' >= com_trn_min and '. $trn .' <= com_trn_max, true, false), true)
-				and if (com_time_apply, if ('. $datatrn .' > com_time_start and '. $datatrn .' < com_time_stop, true, false), if ('. $datatrn .' > com_time_start, true, false))
-				and if (fk_currency > 0, if ('. $currency_key .' = fk_currency , true, false), true)
-				and if (fk_network > 0, if ('. $network_key .' = fk_network , true, false), true)
-				and if (fk_partner > 0, if ('. $partner_key .' = fk_partner , true, false), true)
-		', FALSE);
+		$fees['com_amount'] = ($fees['com_amount'] === 'err') ? 'err ' . $this->err['com_amount'] : $fees['com_amount'];
+		
+		// adaug valoarea comisionului ca sa o pot folosi in select-urile care se refera la comision
+		$values['fee'] = $fees['com_amount'];
+		
+		// *****************************************************************
+		// comision la comision	
+		$fee_select = $this->get_com_com($values);
+		
+		$fees['com_com'] = $this->get_result($fee_select);
+		
+		$fees['com_com'] = ($fees['com_com'] === 'err') ? 'err ' . $this->err['com_com'] : $fees['com_com'];
+		
+		// *****************************************************************
+		// promotii pe suma
+		$fee_select = $this->get_promo_amount($values);
+		
+		$fees['promo_amount'] = $this->get_result($fee_select);
+		
+		$fees['promo_amount'] = ($fees['promo_amount'] === 'err') ? 'err ' . $this->err['promo_amount'] : $fees['promo_amount'];
+		
+		// *****************************************************************
+		// promotii pe comision
+		$fee_select = $this->get_promo_com($values);
+		
+		$fees['promo_com'] = $this->get_result($fee_select);
+		
+		$fees['promo_com'] = ($fees['promo_com'] === 'err') ? 'err ' . $this->err['promo_com'] : $fees['promo_com'];
+		
+		// *****************************************************************
+		// spot pe suma
+		$fee_select = $this->get_spot_amount($values);
+		
+		$fees['spot_amount'] = $this->get_result($fee_select);
+		
+		$fees['spot_amount'] = ($fees['spot_amount'] === 'err') ? 'err ' . $this->err['spot_amount'] : $fees['spot_amount'];
+		
+		// *****************************************************************
+		// spot pe comision
+		$fee_select = $this->get_spot_com($values);
+		
+		$fees['spot_com'] = $this->get_result($fee_select);
+		
+		$fees['spot_com'] = ($fees['spot_com'] === 'err') ? 'err ' . $this->err['spot_com'] : $fees['spot_com'];
+		
+		// *****************************************************************
+		// final
+		$all_numeric = true;
+		foreach ($fees as $element){
+			if (!is_numeric($element)){
+				$all_numeric = false;
+				$output = $element;
+				trigger_error("Cannot compute fee: " . $element, E_USER_WARNING);
+			}
+		}
+		if ($all_numeric){
+			$com = $fees['com_amount'] + $fees['com_com'];
+			$promo = $fees['promo_amount'] + $fees['promo_com'];
+			$spot = $fees['spot_amount'] + $fees['spot_com'];
+			
+			$output = $com + (($spot != 0) ? $spot : $promo);
+		}
+		return $output;
+		
+	}
+	
+	private function get_result($select){
+		
+		$this->db->select($select, FALSE);
 		$query = $this->db->get();
-		return $query->result();
+
+		$results = $query->result();
+		
+		if (empty($results)){
+			return 0;
+		}
+		if (count($results) == 1){ // && is_object($results[0]) && property_exists($results[0], 'comision')){
+			return $results[0]->comision;
+		}else{
+			return 'err';
+		}
+		
+	}
+	
+	private function get_fee_values_select($values, $apply_value){
+		return '
+			sum(if(com_type=\'flat\', com_val, com_val * '. $apply_value .'/100)) comision from ss_fees
+			where
+					if (com_int_apply = \'1\', if ('. $apply_value .' >= com_int_min and '. $values['value'] .' <= com_int_max, true, false), true)
+				and if (com_trn_apply = \'1\', if ('. $values['trn'] .' >= com_trn_min and '. $values['trn'] .' <= com_trn_max, true, false), true)
+				and if (com_time_apply, if (timestamp(\''. $values['datatrn'] .'\') > com_time_start and timestamp(\''. $values['datatrn'] .'\') < com_time_stop, true, false), if (timestamp(\''. $values['datatrn'] .'\') > com_time_start, true, false))
+				and if (fk_currency > 0, if ('. $values['currency_key'] .' = fk_currency , true, false), true)
+				and if (fk_network > 0, if ('. $values['network_key'] .' = fk_network , true, false), true)
+				and if (fk_partner > 0, if ('. $values['partner_key'] .' = fk_partner , true, false), true)
+				and if (fk_cl_type > 0, if ('. $values['cl_type_key'] .' = fk_cl_type , true, false), true)
+				and if (fk_ben_type > 0, if ('. $values['bnf_type_key'] .' = fk_ben_type , true, false), true)
+		';
+	
+	}
+	
+	private function get_com_amount($values){
+		// la inceput string-ului e un spatiu
+		return $this->get_fee_values_select($values, $values['value']).
+		' 
+				and com_promo = \'0\'
+				and com_spot = \'0\'
+				and apply_to_amount = \'1\'
+				and active = \'1\'
+				group by active
+		'
+		;	
+	}
+	
+	private function get_com_com($values){
+		// la inceput string-ului e un spatiu
+		return $this->get_fee_values_select($values, $values['fee']) .
+		' 
+				and com_promo = \'0\'
+				and com_spot = \'0\'
+				and apply_to_amount = \'0\'
+				and active = \'1\'
+				group by active
+		';	
+	}
+	
+	private function get_promo_amount($values){
+		// la inceput string-ului e un spatiu		
+		return $this->get_fee_values_select($values, $values['value']) .
+		' 
+				and com_promo = \'1\'
+				and com_spot = \'0\'
+				and apply_to_amount = \'1\'
+				and active = \'1\'
+				group by active
+		';	
+	}
+	
+	private function get_promo_com($values){
+		// la inceput string-ului e un spatiu		
+		return $this->get_fee_values_select($values, $values['fee']) .
+		' 
+				and com_promo = \'1\'
+				and com_spot = \'0\'
+				and apply_to_amount = \'0\'
+				and active = \'1\'
+				group by active
+		';	
+	}
+	
+	private function get_spot_amount($values){
+		// la inceput string-ului e un spatiu		
+		return $this->get_fee_values_select($values, $values['value']) .
+		' 
+				and com_promo = \'0\'
+				and com_spot = \'1\'
+				and apply_to_amount = \'1\'
+				and active = \'1\'
+				group by active
+		';	
+	}
+	
+	private function get_spot_com($values){
+		// la inceput string-ului e un spatiu		
+		return $this->get_fee_values_select($values, $values['fee']) .
+		' 
+				and com_promo = \'0\'
+				and com_spot = \'1\'
+				and apply_to_amount = \'0\'
+				and active = \'1\'
+				group by active
+		';
 	}
 
 }

@@ -80,11 +80,6 @@
 			
 		}*/
 		
-		public function fee(){
-			$results = $this->ss_fees_model->compute_fee(425, 0, 0, 1, 1, 1);
-			echo $results[0]->comision;
-		}
-		
 		public function upcurs(){
 			if ($this->input->post('type')){
 				$values['type'] = strtoupper($this->input->post('type'));

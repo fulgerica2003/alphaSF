@@ -68,6 +68,45 @@ class Ss_profiles_model extends Base_module_model {
 		// remove if no precedence column is provided
 		// $this->db->order_by('precedence asc');
 	}
+	
+	function get_client_id_list(){
+	
+		/*$this->load->model('ss_types_model');
+		$profile_ids = $this->ss_types_model->options_list('id', 'name', 'type = \'client\'', null);
+		
+		foreach (array_keys($profile_ids) as $key){
+			$list .= $key . ',';
+		}
+		$list = '(' . substr($list, 0, -1) . ')';
+		
+		$output = $this->options_list('id', 'name', 'id_profile_type in ' . $list, null);
+		
+		return $output;*/
+		
+		return $this->get_profiles_options_list('client');
+	}
+	
+	function get_ben_id_list(){
+		
+		return $this->get_profiles_options_list('beneficiar');
+	}
+	
+	private function get_profiles_options_list($type){
+	
+		$this->load->model('ss_types_model');
+		$profile_ids = $this->ss_types_model->options_list('id', 'name', 'type = \''. $type .'\'', null);
+		
+		$list = '';
+		
+		foreach (array_keys($profile_ids) as $key){
+			$list .= $key . ',';
+		}
+		$list = '(' . substr($list, 0, -1) . ')';
+		
+		$output = $this->options_list('id', 'name', 'id_profile_type in ' . $list, null);
+		
+		return $output;
+	}
 
 }
 

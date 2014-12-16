@@ -80,9 +80,18 @@
 		}
 		
 		
-		
-		
-		
-		
-		
+		public function total_fee(){
+			$this->load->model('ss_fees_model');
+			$values = array ('value' => 1425,
+							'trn' => 15,
+							'datatrn' => date('Y-m-d H:i:s'),
+							'currency_key' => 1,
+							'network_key' => 1,
+							'partner_key' => 1,
+							'cl_type_key' => 1,
+							'bnf_type_key' => 4,);
+			$fee = $this->ss_fees_model->compute_total_fee($values);
+			echo $fee;
+		}
+
 	}		
