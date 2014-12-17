@@ -1038,3 +1038,10 @@ border-color: #FCC !important;}
 .lable1.dinCont1.radioactiv {background-color: #f3f3f3;
 color: #2c292d;
 border-color: #FCC !important;}
+
+.name-login {color:#ff0000;}
+#message-login {
+	float: left;
+	margin-top: 15px;
+	margin-right: 20px;
+}

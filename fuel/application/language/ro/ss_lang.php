@@ -6,7 +6,7 @@
 |
 */
 $lang['login_label'] = 'AUTENTIFICARE';
-$lang['login_hi'] = 'Salut, %s!';
+$lang['login_hi'] = 'Salut, <a href = \'inv\'><span class="name-login">%s</span></a>!';
 $lang['login_logout'] = 'IESI DIN CONT';
 
 /*
