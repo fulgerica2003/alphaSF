@@ -6,7 +6,7 @@
 |
 */
 $lang['login_label'] = 'LOGIN';
-$lang['login_hi'] = 'Hi, <a href = \'inv\'><span class="name-login">%s</span></a>!';
+$lang['login_hi'] = 'Hi, <a href = \'%s\'><span class="name-login">%s</span></a>!';
 $lang['login_logout'] = 'LOGOUT';
 
 /*
@@ -463,3 +463,29 @@ $lang['foo_top'] = 'TOP';
 $lang['foo_support_title'] = '24/7 Support';
 $lang['foo_support_text'] = 'Don\'t hesitate to call us whenever you like. <br/>Phone number 004 021 335 88 00 and 004 0724 388 388 or email us at <a href="#">hello@smith.com.ro</a>';
 $lang['foo_copyright'] = '©2014. Smith&Smith. All rights reserved.';
+
+/*
+|--------------------------------------------------------------------------
+| etichete profile
+|--------------------------------------------------------------------------
+|
+*/
+$lang['profile_name_box'] = 'Your name';
+$lang['profile_email_box'] = 'These information cannot be changed';
+$lang['profile_password_box'] = 'Pay attention to password change';
+$lang['profile_personal_box'] = 'Personale data';
+$lang['profile_bank_box'] = 'Banking data';
+
+$lang['profile_last_name'] = 'Last name';
+$lang['profile_first_name'] = 'First name';
+$lang['profile_email'] = 'Email address';
+$lang['profile_password'] = 'Password';
+$lang['profile_password_confirm'] = 'Password confirm';
+$lang['profile_phone'] = 'Phone number';
+$lang['profile_birth_date'] = 'Birth date';
+$lang['profile_country'] = 'Country';
+$lang['profile_account'] = 'Bank account';
+$lang['profile_swift'] = 'Bank SWIFT code';
+$lang['profile_bank'] = 'Bank';
+
+$lang['profile_save'] = 'SAVE';

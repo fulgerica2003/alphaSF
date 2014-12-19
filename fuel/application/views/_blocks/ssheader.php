@@ -10,10 +10,12 @@
 	<meta name="keywords" content="<?php echo fuel_var('meta_keywords'); ?>">
 	<meta name="description" content="<?php echo fuel_var('meta_description'); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php echo css('bootstrap,style,fonts').css($css); ?>
+	<?php echo css('bootstrap,style,fonts, jquery-ui').css($css); ?>
 	
 	<?php echo jquery('1.11.1'); ?>
-	<?php echo js('bootstrap.min,jquery.anythingslider.min,custom'); ?>
+	<?php echo js('bootstrap.min, jquery.anythingslider.min, custom'); ?>
+	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
 
 	<!--[if lt IE 9 ]> <script src="/js/html5shiv.js?c=943912800" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/respond.js?c=943912800" type="text/javascript" charset="utf-8"></script>

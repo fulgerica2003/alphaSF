@@ -6,7 +6,7 @@
 |
 */
 $lang['login_label'] = 'AUTENTIFICARE';
-$lang['login_hi'] = 'Salut, <a href = \'inv\'><span class="name-login">%s</span></a>!';
+$lang['login_hi'] = 'Salut, <a href = \'%s\'><span class="name-login">%s</span></a>!';
 $lang['login_logout'] = 'IESI DIN CONT';
 
 /*
@@ -459,3 +459,29 @@ $lang['foo_top'] = 'SUS';
 $lang['foo_support_title'] = 'Suport 24/7';
 $lang['foo_support_text'] = 'Nu ezitati sa ne contactati in orice moment. <br/>Telefon 004 021 335 88 00 si 004 0724 388 388 sau pe email la adresa <a href="#">hello@smith.com.ro</a>';
 $lang['foo_copyright'] = '©2014. Smith&Smith. Toate drepturile rezervate.';
+
+/*
+|--------------------------------------------------------------------------
+| etichete profile
+|--------------------------------------------------------------------------
+|
+*/
+$lang['profile_name_box'] = 'Numele tau';
+$lang['profile_email_box'] = 'Acesta informatie nu se mai poate modifica';
+$lang['profile_password_box'] = 'Ai grija la schimbarea parolei';
+$lang['profile_personal_box'] = 'Date personale';
+$lang['profile_bank_box'] = 'Date bancare';
+
+$lang['profile_last_name'] = 'Numele de familie';
+$lang['profile_first_name'] = 'Prenume';
+$lang['profile_email'] = 'Adresa de email';
+$lang['profile_password'] = 'Parola';
+$lang['profile_password_confirm'] = 'Confirma parola';
+$lang['profile_phone'] = 'Numar de telefon';
+$lang['profile_birth_date'] = 'Data nasterii';
+$lang['profile_country'] = 'Tara';
+$lang['profile_account'] = 'Cont';
+$lang['profile_swift'] = 'Cod SWIFT';
+$lang['profile_bank'] = 'Banca';
+
+$lang['profile_save'] = 'SALVEAZA';

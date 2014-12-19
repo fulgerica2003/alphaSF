@@ -23,6 +23,15 @@ $(document).ready(function(){
 			});
 	});
 	
+$(function() {
+    $( "#birth_date" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+	  dateFormat: "dd.mm.yy",
+	  yearRange: "-70:-14"
+    });
+  });
+	
 	$('.radio-container1 .lable1').click(function(){
 		$(this).siblings('input').click();
 		$('.radio-container1 .lable1').removeClass('radioactiv');
