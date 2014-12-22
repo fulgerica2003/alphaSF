@@ -65,7 +65,50 @@
 	}
 	
 	function get_tx_type($tx_type){
-		//return get_tx_types()[$tx_type];
+		$output = get_tx_types();
+		
+		return $output[$tx_type];
+	}
+	
+	function log_ref($unid, $msg, $email){
+		$CI =& get_instance();
+		
+		$CI->load->model('ss_payments_model');
+		$CI->load->model('ss_invoices_model');
+		$CI->load->model('ss_messages_model');
+		
+		$site_vars = $CI->fuel->sitevars->get();
+
+		$message['unid'] = $unid;
+				
+		if (substr($unid, 1, 1) === 'S'){
+			// payment
+			$message['tx_type'] = get_tx_type('pay');
+			$results = $CI->ss_payments_model->payment_by_unid($unid);
+		}else{
+			// invoice
+			$message['tx_type'] = get_tx_type('inv');
+			$results = $CI->ss_invoices_model->payment_by_unid($unid);
+		}
+		
+		$tx = $results->result();
+		
+		$message['id_user'] = $tx[0]->inv_id_user;
+		$message['id_tx'] = $tx[0]->inv_id;
+		$message['message'] = $msg;
+		if ($msg != null){
+			$CI->ss_messages_model->insert($message);
+		}
+		
+		if ($email != null){
+			send_tx_email(array('unid' => $message['unid'],
+					'receiver' => $tx[0]->u_email,
+					'sender' => $site_vars['from_email'],
+					'subject' => $email['sb'],
+					'message' => $email['cont'],
+				));
+		}
+		
 	}
 	
 	
@@ -170,7 +213,7 @@
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($ch,CURLOPT_HEADER, false);
 		curl_setopt($ch, CURLOPT_POST, count($postData));
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);   
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 		
 		$output=curl_exec($ch);
 		
