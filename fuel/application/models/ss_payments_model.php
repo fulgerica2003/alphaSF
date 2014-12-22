@@ -111,6 +111,18 @@
 			return $this->get_payments($where, TRUE);
 		}
 		
+		function payment_by_unid($unid){
+			$where['select'] = 'ss_payments.id inv_id, ss_payments.id_user inv_id_user, users.email u_email';
+			$where['join'] = array('users', 'ss_payments.id_user = users.id');
+			$where['where'] = array('ss_payments.unid' => $unid);
+			$where['order_by'] = 'date_added desc';
+			$where['limit'] = 1;
+			 
+			$query = $this->query($where);
+
+			return $query;
+		}
+		
 		function get_payments($where = array(), $one){
 			
 			// ordinea campurilor este cea din controllers/backend/gettran, ca sa nu mai fie nevoie sa fac mapari acolo
