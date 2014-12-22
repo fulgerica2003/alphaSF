@@ -11,12 +11,14 @@ function casetaAbroad() {
 $(document).ready(function(){
 	casetaAbroad();
 	
-	$('#catSupplier').change(function() {			
+
+	$('#catSupplier').change(function() {
 			$.get('inv/suppliers_by_cat/'+$(this).val() , function( data ) {
-				$('#supplier').empty().append(data);
+ 				$('#supplier').empty().append(data);
 				$('#customFields').empty();	
 			});
 	});
+
 	$('#supplier').change(function() {			
 			$.get('inv/add_custom_fields/'+$(this).val() , function( data ) {
 				$('#customFields').empty().append(data);
@@ -31,6 +33,15 @@ $(function() {
 	  yearRange: "-70:-14"
     });
   });
+
+	if($('#tipPlataCard').attr('checked')) {
+	  $('#TABleft').addClass('lable1 radioactiv');
+	} 
+
+	if($('#tipPlataCont').attr('checked')) {
+	  $('#TABright').addClass('lable1 radioactiv');
+	} 
+
 	
 	$('.radio-container1 .lable1').click(function(){
 		$(this).siblings('input').click();
