@@ -135,8 +135,12 @@ $lang['calc_msg005'] = 'Operatiunea de plata a fost finalizata cu succes. Referi
 - dumneavoastra este %s. In cazul in care ati ales plata numerar, va vom
 comunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de
 dumneavoastra beneficiarului.';
-$lang['calc_msg006'] = '';
-$lang['calc_msg007'] = '';
+$lang['calc_msg006'] = 'A intervenit o eroare. Va rugam sa contactati banca la care detineti cardul
+pentru verificari si/sau sa contactati serviciul Sesizari, Reclamatii Smith & Smith la telefon
++4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
+$lang['calc_msg007'] = 'Tranzactia dumneavoastra cu referinta %s nu a fost
+finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
+telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
 $lang['calc_msg008'] = 'Tranzactia dumneavoastra cu referinta %s nu a fost
 finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
 telefon +4.021.331.8000 pentru clarificarea situatiei.';
