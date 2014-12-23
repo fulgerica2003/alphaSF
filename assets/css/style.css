@@ -395,10 +395,6 @@ div.nomargin {margin-top:0px;}
 .radio-container1 .lable1 {background-color:#fff;padding-left:10px;cursor:pointer;height:30px;line-height:27px;}
 #form-calc #TABleft {border-top-left-radius: 5px; border-bottom-left-radius: 5px; }
 #form-calc #TABright {border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
-
-input#tipPlataCont:checked {background-color:#FCC; color:#fff;}
-input#tipPlataCard:checked {background-color:#FCC; color:#fff;}
-
 .radio-container .radioactiv {background-color:#990000; color:#fff;}
 .radio-container input {display:none;}
 .radio-container1 .radioactiv {background-color:#990000; color:#fff;}

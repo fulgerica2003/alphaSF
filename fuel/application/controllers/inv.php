@@ -1,65 +1,43 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <?php
 class Inv extends CI_Controller {
-		
+	
+	
 	function index(){
-		$vars['suppCat'] = $this->optsSupplCat();
-	 	$vars['payOpts'] = get_payment_types();
-		$this->fuel->pages->render('inv',$vars);
+		$this->add();
 	}
 	
 	function Inv() {
 		parent::__construct();
 
-		$this->load->helper(array('form', 'url'));
-
-		$this->load->library('form_validation');
-
-
      }
-	
-	public function add(){ 
 
-	 	$vars['suppCat'] = $this->optsSupplCat();
-	 	$vars['payOpts'] = get_payment_types();
-	 		 	
-	 	ob_start();
-	 		$this->suppliers_by_cat($this->input->post('supplier_category'));
-	 		$vars['suppliers'] = ob_get_contents();
-	 	ob_end_clean();
-	 	
-	 	ob_start();
-	 		$this->add_custom_fields($this->input->post('supplier'));
-	 		$vars['customFields'] = ob_get_contents();
-	 	ob_end_clean();	
-
-		$this->form_validation->set_rules('valInt', 'Valoare factura', 'required');
-		$this->form_validation->set_rules('valFract', 'Valoare factura', 'required');
-		$this->form_validation->set_rules('tipPlata', 'Tip plata', 'required');		
-
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->fuel->pages->render('inv',$vars);
-		}
-		else
-		{	
-			$this->fuel->pages->render('inv',$vars);
-		}
+	public function save()
+	{
+ 	 echo $this->input->post('tipPlata'); 
+ 	 echo '</br>';
+ 	 echo $this->input->post('valInt'); 
+ 	 echo '</br>';
+ 	 echo $this->input->post('valFract'); 
+ 	 echo '</br>';
 
 	}
 	
+	public function add(){
+	 	$vars['suppCat'] = $this->optsSupplCat();
+	 	$vars['payOpts'] = get_payment_types();
+
+	 	$this->fuel->pages->render('inv', $vars);
+	}
+	
 	private function optsSupplCat(){
-		$this->load->helper('form');
 		$this->load->model('ss_suppliers_cat_model');
 		$suppcat=$this->ss_suppliers_cat_model->list_items();
-		$opts='<option value="">Alege</option>';
-		
-		$selectedSuppCat=$this->input->post('supplier_category');
-		
+		$opts='<option value="">Alege</option>';									
+
 		foreach ($suppcat as $row)
 				{
-					//	$opts = $opts.'<option value="' . $row['id'] .'">'. $row['name'] .'</option>\n';
-					$opts = $opts. '<option value="'. $row['id'].'"'. ($row['id'] != $selectedSuppCat ? '' : ' selected') .'>'.$row['name'].'</option>';
+					$opts = $opts.'<option value="' . $row['id'] .'">'. $row['name'] .'</option>\n';
      			}
      	return $opts;
 		
@@ -68,18 +46,17 @@ class Inv extends CI_Controller {
 	/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
 	*/
 	public function suppliers_by_cat($id_cat){
-		$this->load->helper('form');
 		$this->load->model('ss_suppliers_model');
 		$str = '<option value="" label="Selecteaza...">Selecteaza...</option>';
 		$options = $this->ss_suppliers_model->options_list(NULL, NULL, array('id_cat' => $id_cat));
-		$selectedSupplier = $this->input->post('supplier');
-
+	
 		foreach($options as $key => $val)
 			{
-				$str = $str. '<option value="'. $key .'"'. ($key != $selectedSupplier ? '' : ' selected') .'>'.$val.'</option>';
-			}
+				$str .= '<option value="'.$key.'" label="'.$val.'" '.'>'.$val.'</option>\n';
+			}	
 		echo $str;
 	}
+	
 	
 	public function add_custom_fields($query){
 		
