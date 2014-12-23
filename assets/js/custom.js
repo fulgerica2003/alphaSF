@@ -23,6 +23,45 @@ $(document).ready(function(){
 			});
 	});
 	
+	// online_payments
+	$('#currency').change(function() {
+			$('#customFields').empty();
+			$('#modIncasare').empty();
+			$('#fee').val('');
+			$('#total').val('');
+			$.get('online_payments/update_ben_opts/'+$(this).val() , function( data ) {
+				$('#modIncasare').empty().append(data);
+			});
+	});
+	
+	$('#modIncasare').change(function() {
+			$('#customFields').empty();
+			$('#fee').val('');
+			$('#total').val('');
+			$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
+				$('#customFields').empty().append(data);
+			});
+			$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
+				$('#fee').val(data.fee);
+				$('#total').val(data.total);
+			}, "json");
+	});
+	
+	$('#amount').change(function() {
+			$('#customFields').empty();
+			$('#fee').val('');
+			$('#total').val('');
+			$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val()}, function(data) {
+				$('#customFields').empty().append(data);
+			});
+			$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val()}, function(data) {
+				$('#fee').val(data.fee);
+				$('#total').val(data.total);
+			}, "json");
+	});
+	
+	
+	// register + login
 $(function() {
     $( "#birth_date" ).datepicker({
       changeMonth: true,
@@ -31,6 +70,10 @@ $(function() {
 	  yearRange: "-70:-14"
     });
   });
+  
+  $('#birth_date').click(function() {			
+			console.log('ceva');
+	});
 	
 	$('.radio-container1 .lable1').click(function(){
 		$(this).siblings('input').click();
@@ -121,7 +164,8 @@ $(function() {
 	 	$('#auth-pop').hide();
 		$.get( "auth/register", function( data ) {
 			$( '#auth-pop' ).html( data );
-		});
+	 });
+		console.log('loaded register');
 		$('#auth-pop').fadeIn(800);
 		$('#id-modal-header').show();
 	 });
