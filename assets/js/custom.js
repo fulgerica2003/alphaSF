@@ -11,12 +11,14 @@ function casetaAbroad() {
 $(document).ready(function(){
 	casetaAbroad();
 	
-	$('#catSupplier').change(function() {			
+
+	$('#catSupplier').change(function() {
 			$.get('inv/suppliers_by_cat/'+$(this).val() , function( data ) {
-				$('#supplier').empty().append(data);
+ 				$('#supplier').empty().append(data);
 				$('#customFields').empty();	
 			});
 	});
+
 	$('#supplier').change(function() {			
 			$.get('inv/add_custom_fields/'+$(this).val() , function( data ) {
 				$('#customFields').empty().append(data);
@@ -62,18 +64,26 @@ $(document).ready(function(){
 	
 	
 	// register + login
-$(function() {
-    $( "#birth_date" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-	  dateFormat: "dd.mm.yy",
-	  yearRange: "-70:-14"
-    });
-  });
+	$(function() {
+		$( "#birth_date" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "dd.mm.yy",
+			yearRange: "-70:-14"
+		});
+	});
   
   $('#birth_date').click(function() {			
 			console.log('ceva');
 	});
+
+	if($('#tipPlataCard').attr('checked')) {
+	  $('#TABleft').addClass('lable1 radioactiv');
+	} 
+
+	if($('#tipPlataCont').attr('checked')) {
+	  $('#TABright').addClass('lable1 radioactiv');
+	} 
 	
 	$('.radio-container1 .lable1').click(function(){
 		$(this).siblings('input').click();
