@@ -656,7 +656,7 @@ div.calc-mare div.total-calc {padding-top: 25px;}
 .eroare {
 	background-color:#b5251d;
 	padding:12px 15px 8px 15px;
-	width:200px;color:#fff;
+	width:400px;color:#fff;
 	font: 14px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
 	position:absolute; 
 	top:-20px;
@@ -734,6 +734,7 @@ border: 1px solid #ffcccc;
 border-radius:5px;
 background-color:#f3f3f3;
 }
+#form-transfer-calc select.err {color:#b5251d !important;background-color:#ffcccc !important;}
 
 .sume-transfer {float: left;width: 50%;text-align: center;border: 1px solid #ffcccc;font:18px/20px DINNextRoundedLTProMedium, Arial, Helvetica, sans-serif;padding: 10px 0px 8px;margin-bottom:50px;}
 .sume-left {border-top-left-radius: 5px;border-bottom-left-radius: 5px; border-right:none;}

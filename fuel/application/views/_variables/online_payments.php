@@ -5,4 +5,5 @@
 	$vars['benOpts']='';
 	$vars['cities']='';
 	$vars['cv']='';
+	$vars['customFields']='';
 ?>
