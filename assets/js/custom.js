@@ -62,6 +62,53 @@ $(document).ready(function(){
 			}, "json");
 	});
 	
+	var displayConfirm = $('input#displayConfirm').val();
+	if (displayConfirm == 'true'){
+		$('#displayConfirmModal').modal('show');
+	}
+	
+	var the_terms = $("#the-terms");
+    the_terms.click(function() {
+        if ($(this).is(":checked")) {
+            $("#acceptBtn").removeAttr("disabled");
+        } else {
+            $("#acceptBtn").attr("disabled", "disabled");
+        }
+    });
+	
+	// calc online_payments
+	$('#cop_currency').change(function() {
+			$('#cop_modIncasare').empty();
+			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
+			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
+			$.get('online_payments/update_ben_opts/'+$(this).val() , function( data ) {
+				$('#cop_modIncasare').empty().append(data);
+			});
+	});
+	
+	$('#cop_modIncasare').change(function() {
+			$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
+				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + data.fee ? data.fee : '0,0' +'</span> <span class="ron-transfer">RON</span></div>');
+				$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+			}, "json");
+	});
+	
+	$('#cop_amount').change(function() {
+			$.get('online_payments/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $(this).val()}, function(data) {
+				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+				$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+			}, "json");
+	});
+	
+	// calc online_invoices
+	
+	$('#cof_amount').change(function() {
+			$.get('online_payments/update_total', {payment_method: 1, currency: 'ron', amount: $(this).val()}, function(data) {
+				$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
+				$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
+			}, "json");
+	});
+	
 	
 	// register + login
 	$(function() {
@@ -229,6 +276,28 @@ $(document).ready(function(){
 				$('.modal-content').empty().append( data );
 			}
 		});
+	});
+	
+	$('#subscribe').on('submit', function(event){
+		// Stop form from submitting normally
+		event.preventDefault();
+		// Get some values from elements on the page:
+		var $form = $( this ),
+		url = $form.attr( "action" );
+		// Send the data using post
+		var posting = $.post( url, $( this ).serialize(), function( data ) {
+			if (data === ""){
+				window.location.replace(document.URL);
+			}else{
+				if (data.error === true){
+					$('#subscribeModalBody').empty().append( '<p class="eroare_factura2">' + data.result + '</p>');
+				}else{
+					$('#subscribeModalBody').empty().append( '<p class="eroare_factura">' + data.result + '</p>');
+				}
+				$('#subscribeModal').modal('show');
+			}
+		}, "json");
+		
 	});
 	
 });

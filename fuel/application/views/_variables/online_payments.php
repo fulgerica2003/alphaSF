@@ -6,4 +6,5 @@
 	$vars['cities']='';
 	$vars['cv']='';
 	$vars['customFields']='';
+	$vars['displayConfirm']='false';
 ?>

@@ -78,14 +78,14 @@
 		$CI->load->model('ss_messages_model');
 		
 		$site_vars = $CI->fuel->sitevars->get();
-
+		
 		$message['unid'] = $unid;
-				
+		
 		if (substr($unid, 1, 1) === 'S'){
 			// payment
 			$message['tx_type'] = get_tx_type('pay');
 			$results = $CI->ss_payments_model->payment_by_unid($unid);
-		}else{
+			}else{
 			// invoice
 			$message['tx_type'] = get_tx_type('inv');
 			$results = $CI->ss_invoices_model->payment_by_unid($unid);
@@ -102,11 +102,11 @@
 		
 		if ($email != null){
 			send_tx_email(array('unid' => $message['unid'],
-					'receiver' => $tx[0]->u_email,
-					'sender' => $site_vars['from_email'],
-					'subject' => $email['sb'],
-					'message' => $email['cont'],
-				));
+			'receiver' => $tx[0]->u_email,
+			'sender' => $site_vars['from_email'],
+			'subject' => $email['sb'],
+			'message' => $email['cont'],
+			));
 		}
 		
 	}
@@ -233,6 +233,32 @@
 	
 	function get_time(){
 		return date("YmdHis");
+	}
+	
+	function get_payment_form($payment_details){
+		
+		return
+		'<form id="PaymentForm" name="PaymentForm" method="post" action="'. site_url('pay/card') . '">
+		<input type="hidden" name="amount" value="'. $payment_details['amount'] .'" />
+		<input type="hidden" name="currency" value="'. $payment_details['currency'] .'" />
+		<input type="hidden" name="user_id" value="'. $payment_details['user_id'] .'" />
+		<input type="hidden" name="unid" value="'. $payment_details['unid'] .'" />
+		</form>
+		<script type="text/javascript">
+		window.onload=function(){
+		var auto = setTimeout(function(){ autoRefresh(); }, 10);
+		
+		function submitform(){
+		document.forms["PaymentForm"].submit();
+		}
+		
+		function autoRefresh(){
+		clearTimeout(auto);
+		auto = setTimeout(function(){ submitform(); autoRefresh(); }, 1000);
+		}
+		}
+		</script>
+		';
 	}
 	
 	

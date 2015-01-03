@@ -652,6 +652,7 @@ div.calc-mare div.total-calc {padding-top: 25px;}
 .input-box-sfert	{width: 22%;float: left;}
 .input-box-sfert-space{width: 4%;float: left;}
 .agent-submit{width: 48%;background-color:#b5251d;color:#fff; font-family:DINNextRoundedLTProRegular, Arial;border:none;border-radius:5px;padding: 9px 0px 6px;}
+.agent-submit[disabled]{background-color:#f3f3f3;}
 .err {color:#b5251d !important;background-color:#ffcccc;}
 .eroare {
 	background-color:#b5251d;

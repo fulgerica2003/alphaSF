@@ -3,7 +3,7 @@
 ?>
 
 <div class="input-box ">
-	<div class="explica-cont">Va rugam sa introduceti contul IBAN al beneficiarului</div>
+	<div class="explica-cont">Va rugam sa introduceti contul IBAN al beneficiarului.</div>
 	<div class="agent-lable">iban</div>
 	<div name="test">
 		<input style="width:15%;" class="agent-input first_iban<?php echo (form_error('iban1')) ? ' err' : ''; ?>" type="text" name="iban1" id="iban1" value="<?php echo set_value('iban1'); ?>">

@@ -32,11 +32,17 @@
 			
 			// colectez datele de pe post
 			$pay_details = array();
-			$pay_details['amount'] 		= "100.00"; //$_POST['amount'];
+			/*$pay_details['amount'] 		= "100.00"; //$_POST['amount'];
 			$pay_details['currency'] 	= 'RON'; //$_POST['currency'];
 			$pay_details['unid']		= '#S546e6ef3bf544'; //$_POST['unid'];
 			$pay_details['unid_type'] = substr($pay_details['unid'], 1, 1);
 			$user_id	= 8; //$_POST['user_id'];
+			*/
+			$pay_details['amount'] 		= $_POST['amount'];
+			$pay_details['currency'] 	= $_POST['currency'];
+			$pay_details['unid']		= $_POST['unid'];
+			$pay_details['unid_type'] = substr($pay_details['unid'], 1, 1);
+			$user_id	= $_POST['user_id'];
 			
 			// iau informatiile despre utilizator ca sa le trimite la Libra
 			$user = $this->ion_auth->user($user_id)->row();
