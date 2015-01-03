@@ -96,8 +96,16 @@ $config['modules']['ss_network'] = array(
   'archivable' => TRUE,
   'hidden' => TRUE,
 );
+
 $config['modules']['ss_exchange_rate'] = array(
   'module_name' => 'exchange rate',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+);
+
+$config['modules']['ss_newsletter_list'] = array(
+  'module_name' => 'newsletter list',
   'instructions' => '',
   'archivable' => TRUE,
   'hidden' => TRUE,

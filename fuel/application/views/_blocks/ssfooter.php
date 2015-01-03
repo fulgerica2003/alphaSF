@@ -1,3 +1,22 @@
+<?php 
+	$this->load->helper('form'); 
+?>
+<div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div id="subscribeModalDialog" class="modal-dialog">
+		<div id = "subscribeModalContent" class="modal-content">
+			<div id="subscribe-pop">
+				<div id = "subscribe-modal-header" class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Close</button>
+					<p class="modal-title"><?php echo lang('subscribe_title');?>
+				</div>
+				<div id = "subscribeModalBody" class="modal-body">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <div id="footer">
 	<div class="col-lg-12 col-sm-12">
 		<div class="caseta">
@@ -31,6 +50,15 @@
 					<div class="col-lg-5 col-sm-5">
 						<div class="titlu-lista-footer"><?php echo lang('foo_menu5_title')?></div>
 						<?php echo fuel_nav(array('group_id' => 'foo_menu5', 'depth' => 0, 'container_tag_class' => 'liste-footer', )); ?>
+						<ul class="liste-footer">
+							<li>
+								<form id = "subscribe" action = 'newsletter/subscribe' method = "post">
+									<input class="email-footer" type="text"  name="email" placeholder="E-mail">
+								</form>
+							</li>
+						</ul>
+						
+						
 					</div>
 					
 				</div>
