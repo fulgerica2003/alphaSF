@@ -489,3 +489,77 @@ $lang['profile_swift'] = 'Cod SWIFT';
 $lang['profile_bank'] = 'Banca';
 
 $lang['profile_save'] = 'SALVEAZA';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online payments
+|--------------------------------------------------------------------------
+|
+*/
+$lang['payments_sidenote_trans'] = 'Un sidenote friendly si folositor.<br />Despre campul din dreapta lui.';
+$lang['payments_sidenote_cash'] = 'Alege una din optiunile noastre pentru plata Cash.';
+$lang['payments_sidenote_exch'] = 'Informatii schimb valutar.';
+$lang['payments_sidenote_iban'] = 'Va rugam sa introduceti contul IBAN al beneficiarului.';
+$lang['payments_sidenote_ben'] = 'Completeaza datele beneficiarului.';
+
+$lang['payments_pay'] = 'Transfera online de bani';
+$lang['payments_card'] = 'De pe card';
+$lang['payments_account'] = 'Din cont';
+
+$lang['payments_amount'] = 'Suma transferata';
+$lang['payments_payment_type'] = 'modalitate de plata beneficiar';
+$lang['payments_fee'] = 'Comision de plata';
+$lang['payments_total'] = 'Total de plata';
+$lang['payments_last_name'] = 'nume';
+$lang['payments_first_name'] = 'prenume';
+$lang['payments_phone'] = 'telefon';
+$lang['payments_email'] = 'email';
+$lang['payments_address'] = 'adresa';
+
+$lang['payments_iban'] = 'iban';
+$lang['payments_city'] = 'oras';
+$lang['payments_f_exch'] = 'adresa';
+
+$lang['payments_pick'] = 'alege';
+
+$lang['payments_cmd'] = 'TRANSFERA';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online invoices
+|--------------------------------------------------------------------------
+|
+*/
+$lang['invoices_sidenote_trans'] = 'Un sidenote friendly si folositor.<br />Despre campul din dreapta lui.';
+$lang['invoices_sidenote_cash'] = 'Alege una din optiunile noastre pentru plata Cash.';
+$lang['invoices_sidenote_exch'] = 'Informatii schimb valutar.';
+$lang['invoices_sidenote_iban'] = 'Va rugam sa introduceti contul IBAN al beneficiarului.';
+$lang['invoices_sidenote_ben'] = 'Completeaza datele beneficiarului.';
+
+$lang['invoices_pay'] = 'Plata facturii online';
+$lang['invoices_card'] = 'De pe card';
+$lang['invoices_account'] = 'Din cont';
+
+$lang['invoices_amount'] = 'Valoarea facturii';
+$lang['invoices_payment_type'] = 'modalitate de plata beneficiar';
+$lang['invoices_fee'] = 'Comision de plata';
+$lang['invoices_total'] = 'Total de plata';
+$lang['invoices_last_name'] = 'nume';
+$lang['invoices_first_name'] = 'prenume';
+$lang['invoices_phone'] = 'telefon';
+$lang['invoices_email'] = 'email';
+$lang['invoices_address'] = 'adresa';
+
+$lang['invoices_pick'] = 'alege';
+
+$lang['invoices_cmd'] = 'PLATESTE';
+
+/*
+|--------------------------------------------------------------------------
+| etichete abonare
+|--------------------------------------------------------------------------
+|
+*/
+$lang['subscribe_title'] = 'Abonare newsletter';
+$lang['subscribe_exists'] = 'Adresa de e-mail este deja in lista.';
+$lang['subscribe_success'] = 'Va multumim!';
