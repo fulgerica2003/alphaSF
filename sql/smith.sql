@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2015 at 04:33 PM
+-- Generation Time: Jan 08, 2015 at 12:51 PM
 -- Server version: 5.5.35-33.0
 -- PHP Version: 5.4.23
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=619 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=634 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -571,7 +571,22 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (615, 45, 'ss_network', '{"id":45,"date_added":"2014-12-22 16:10:55","published":"yes","id_city":"45","county":"Tulcea","type":"1","phone":"+40 0213318068","email":"smith.tulcea@smith-smith.ro","address":"Str. Isaccei nr. 57, ( Bloc Pelican - mezanin )","bh_week_start":"08:30:00","bh_week_end":"18:30:00","bh_sat_start":"10:00:00","bh_sat_end":"15:00:00","bh_sun_start":"10:00:00","bh_sun_end":"13:00:00","bh_break_start":"","bh_break_end":"","details":"In cadrul complexului Pelican, la o distanta de cca 100 m de gara si autogara.","coord_lat":"45.179996","coord_long":"28.778129"}', 1, '2014-12-22 14:10:56', 1),
 (616, 22, 'fuel_pages', '{"id":"22","location":"retea\\/bcr","layout":"ssnetworks","published":"yes","cache":"yes","date_added":"2014-12-03 22:43:19","last_modified":"2014-12-30 10:17:24","last_modified_by":"1","variables":[{"id":"1113","page_id":"22","name":"banner_img","scope":"","value":"banners\\/b_retea..1134x184..o.jpg","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"},{"id":"1114","page_id":"22","name":"body","scope":"","value":"Banca Comerciala Romana este agent Smith&Smith din anul 2000.<br \\/><br \\/>\\nCu o retea de peste 500 de locatii raspandite in toata tara, Banca Comerciala Romana  este o alternativa la indemana dumneavoastra de a primi banii din strainatate prin sistemul de transfer de bani Smith&Smith.<br \\/><br \\/>\\nPentru a gasi cea mai apropiata sucursala a Bancii Comerciale Romane  in vederea ridicarii banilor trimisi prin sistemul Smith&Smith prin sistemul Smith&Smith, faceti click <a href=\\"https:\\/\\/www.bcr.ro\\/ro\\/retea-unitati\\/\\" target=\\"_blank\\">aici. <\\/a>","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"},{"id":"1115","page_id":"22","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"},{"id":"1111","page_id":"22","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"},{"id":"1112","page_id":"22","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"},{"id":"1110","page_id":"22","name":"page_title","scope":"","value":"Birouri BCR","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/bcr","page_published":"yes"}]}', 7, '2014-12-30 08:17:24', 1),
 (617, 23, 'fuel_pages', '{"id":"23","location":"retea\\/rib","layout":"ssnetworks","published":"yes","cache":"yes","date_added":"2014-12-03 23:03:30","last_modified":"2014-12-30 10:17:59","last_modified_by":"1","variables":[{"id":"1119","page_id":"23","name":"banner_img","scope":"","value":"banners\\/b_retea..1134x184..o.jpg","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"},{"id":"1120","page_id":"23","name":"body","scope":"","value":"Romanian International Bank este agent Smith&Smith din anul 2010. <br \\/><br \\/>\\nCu o retea extinsa in principalele orase din Romania, Romanian International Bank  este o alternativa la indemana dumneavoastra de a primi bani din strainatate prin sistemul de transfer de bani Smith&Smith.<br \\/><br \\/>\\nPentru a gasi cea mai apropiata sucursala a Romanian International Bank in vederea ridicarii banilor trimisi prin sistemul Smith&Smith, faceti click <a href=\\"https:\\/\\/www.bcr.ro\\/ro\\/retea-unitati\\/\\" target=\\"_blank\\">aici. <\\/a>","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"},{"id":"1121","page_id":"23","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"},{"id":"1117","page_id":"23","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"},{"id":"1118","page_id":"23","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"},{"id":"1116","page_id":"23","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/rib","page_published":"yes"}]}', 2, '2014-12-30 08:17:59', 1),
-(618, 24, 'fuel_pages', '{"id":"24","location":"retea\\/vb","layout":"ssnetworks","published":"yes","cache":"yes","date_added":"2014-12-03 23:06:57","last_modified":"2014-12-30 10:18:42","last_modified_by":"1","variables":[{"id":"1125","page_id":"24","name":"banner_img","scope":"","value":"banners\\/b_retea..1134x184..o.jpg","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1126","page_id":"24","name":"body","scope":"","value":"Victoria Bank este agent Smith&Smith din 11 martie 2003. <br \\/><br \\/>\\nCea mai mare banca privata din Republica Moldova, Victoriabank este o alternativa la indemana dumneavoastra de a primi bani din strainatate in Repubica Moldova prin sistemul de transfer de bani Smith&Smith.<br \\/><br \\/>\\nPentru a gasi cea mai apropiata sucursala Victoriabank in Republica Moldova  in vederea ridicarii banilor trimisi prin sistemul Smith&Smith prin sistemul Smith&Smith, faceti click <a href=\\"https:\\/\\/www.bcr.ro\\/ro\\/retea-unitati\\/\\" target=\\"_blank\\">aici. <\\/a>.","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1127","page_id":"24","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1123","page_id":"24","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1124","page_id":"24","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1122","page_id":"24","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"}]}', 3, '2014-12-30 08:18:42', 1);
+(618, 24, 'fuel_pages', '{"id":"24","location":"retea\\/vb","layout":"ssnetworks","published":"yes","cache":"yes","date_added":"2014-12-03 23:06:57","last_modified":"2014-12-30 10:18:42","last_modified_by":"1","variables":[{"id":"1125","page_id":"24","name":"banner_img","scope":"","value":"banners\\/b_retea..1134x184..o.jpg","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1126","page_id":"24","name":"body","scope":"","value":"Victoria Bank este agent Smith&Smith din 11 martie 2003. <br \\/><br \\/>\\nCea mai mare banca privata din Republica Moldova, Victoriabank este o alternativa la indemana dumneavoastra de a primi bani din strainatate in Repubica Moldova prin sistemul de transfer de bani Smith&Smith.<br \\/><br \\/>\\nPentru a gasi cea mai apropiata sucursala Victoriabank in Republica Moldova  in vederea ridicarii banilor trimisi prin sistemul Smith&Smith prin sistemul Smith&Smith, faceti click <a href=\\"https:\\/\\/www.bcr.ro\\/ro\\/retea-unitati\\/\\" target=\\"_blank\\">aici. <\\/a>.","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1127","page_id":"24","name":"body_class","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1123","page_id":"24","name":"meta_description","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1124","page_id":"24","name":"meta_keywords","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"},{"id":"1122","page_id":"24","name":"page_title","scope":"","value":"","type":"string","language":"ro","active":"yes","layout":"ssnetworks","location":"retea\\/vb","page_published":"yes"}]}', 3, '2014-12-30 08:18:42', 1),
+(619, 74, 'fuel_navigation', '{"id":"74","location":"history","group_id":"9","nav_key":"history","label":"ISTORIC TRANZACTII","parent_id":"0","precedence":"3","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-05 10:36:48', 1),
+(620, 74, 'fuel_navigation', '{"id":"74","location":"online_history","group_id":"9","nav_key":"online_history","label":"ISTORIC TRANZACTII","parent_id":"0","precedence":"3","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2015-01-05 10:38:17', 1),
+(621, 72, 'fuel_navigation', '{"id":"72","location":"online_payments","group_id":"9","nav_key":"online_payments","label":"TRANSFER DE BANI","parent_id":"0","precedence":"1","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 4, '2015-01-05 10:39:07', 1),
+(622, 75, 'fuel_navigation', '{"id":"75","location":"online_messages","group_id":"9","nav_key":"online_messages","label":"MESAJE","parent_id":"0","precedence":"4","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-05 10:40:11', 1),
+(623, 73, 'fuel_navigation', '{"id":"73","location":"online_profile","group_id":"9","nav_key":"online_profile","label":"CONTUL TAU","parent_id":"0","precedence":"2","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 3, '2015-01-05 10:43:22', 1),
+(624, 74, 'fuel_navigation', '{"id":"74","location":"online_history_payments","group_id":"9","nav_key":"online_history_payments","label":"ISTORIC TRANferuri","parent_id":"0","precedence":"3","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 4, '2015-01-06 14:35:22', 1),
+(625, 74, 'fuel_navigation', '{"id":"74","location":"online_history_payments","group_id":"9","nav_key":"online_history_payments","label":"istoric transferuri","parent_id":"0","precedence":"3","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 5, '2015-01-06 14:37:29', 1),
+(626, 81, 'fuel_navigation', '{"id":81,"location":"online_history_invoices","group_id":"9","nav_key":"online_history_invoices","label":"istoric facturi","parent_id":"0","precedence":"3","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2015-01-06 14:37:55', 1),
+(627, 10, 'fuel_navigation_groups', '{"id":10,"name":"foo_menu2","published":"yes"}', 1, '2015-01-08 09:10:22', 1),
+(628, 82, 'fuel_navigation', '{"id":82,"location":"online_payments\\/showLoginop","group_id":"10","nav_key":"online_payments\\/?showLogin=op","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2015-01-08 09:11:10', 1),
+(629, 83, 'fuel_navigation', '{"id":83,"location":"online_invoices\\/showLoginoi","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Plata facturi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2015-01-08 09:11:53', 1),
+(630, 83, 'fuel_navigation', '{"id":"83","location":"online_invoices","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Plata facturi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-08 09:13:59', 1),
+(631, 82, 'fuel_navigation', '{"id":"82","location":"online_payments","group_id":"10","nav_key":"online_payments\\/?showLogin=op","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-08 09:14:14', 1),
+(632, 84, 'fuel_navigation', '{"id":84,"location":"online_payments","group_id":"10","nav_key":"online_payments\\/?showLogin=op","label":"Money transfer","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 09:16:09', 1),
+(633, 85, 'fuel_navigation', '{"id":85,"location":"online_invoices","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Pay invoice","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 09:16:38', 1);
 
 -- --------------------------------------------------------
 
@@ -623,7 +638,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=872 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=895 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -1501,7 +1516,30 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (868, '2014-12-30 10:17:59', 1, 'Pages item <em>retea/rib</em> edited', 'info'),
 (869, '2014-12-30 10:18:42', 1, 'Pages item <em>retea/vb</em> edited', 'info'),
 (870, '2015-01-03 16:26:46', 1, 'Successful login by ''admin'' from ::1', 'debug'),
-(871, '2015-01-03 16:26:56', 1, 'The cache has been cleared.', 'info');
+(871, '2015-01-03 16:26:56', 1, 'The cache has been cleared.', 'info'),
+(872, '2015-01-05 12:36:10', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(873, '2015-01-05 12:36:50', 1, 'Navigation item <em>ISTORIC TRANZACTII</em> edited', 'info'),
+(874, '2015-01-05 12:38:19', 1, 'Navigation item <em>ISTORIC TRANZACTII</em> edited', 'info'),
+(875, '2015-01-05 12:39:09', 1, 'Navigation item <em>TRANSFER DE BANI</em> edited', 'info'),
+(876, '2015-01-05 12:40:13', 1, 'Navigation item <em>MESAJE</em> edited', 'info'),
+(877, '2015-01-05 12:43:23', 1, 'Navigation item <em>CONTUL TAU</em> edited', 'info'),
+(878, '2015-01-06 16:34:41', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(879, '2015-01-06 16:35:22', 1, 'Navigation item <em>ISTORIC TRANferuri</em> edited', 'info'),
+(880, '2015-01-06 16:37:29', 1, 'Navigation item <em>istoric transferuri</em> edited', 'info'),
+(881, '2015-01-06 16:37:56', 1, 'Navigation item <em>istoric facturi</em> edited', 'info'),
+(882, '2015-01-06 18:17:24', 1, 'Successful login by ''admin'' from 84.117.64.218', 'debug'),
+(883, '2015-01-06 18:17:29', 1, 'The cache has been cleared.', 'info'),
+(884, '2015-01-08 11:09:14', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(885, '2015-01-08 11:10:23', 1, 'Navigation Groups item <em>foo_menu2</em> edited', 'info'),
+(886, '2015-01-08 11:11:11', 1, 'Navigation item <em>Transfer de bani</em> edited', 'info'),
+(887, '2015-01-08 11:11:54', 1, 'Navigation item <em>Plata facturi</em> edited', 'info'),
+(888, '2015-01-08 11:14:01', 1, 'Navigation item <em>Plata facturi</em> edited', 'info'),
+(889, '2015-01-08 11:14:15', 1, 'Navigation item <em>Transfer de bani</em> edited', 'info'),
+(890, '2015-01-08 11:15:08', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(891, '2015-01-08 11:16:11', 1, 'Navigation item <em>Money transfer</em> edited', 'info'),
+(892, '2015-01-08 11:16:39', 1, 'Navigation item <em>Pay invoice</em> edited', 'info'),
+(893, '2015-01-08 12:50:33', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(894, '2015-01-08 12:50:42', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -1524,7 +1562,7 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation` (
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Determines whether the item is displayed or not',
   PRIMARY KEY (`id`),
   UNIQUE KEY `group_id_nav_key_language` (`group_id`,`nav_key`,`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=81 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=86 ;
 
 --
 -- Dumping data for table `fuel_navigation`
@@ -1597,15 +1635,20 @@ INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`,
 (67, 'servicii/transfer-bani/ro-ro/numerar', 3, 'servicii/transfer-bani/ro-ro/numerar', 'Cash', 25, 0, '', '', 'no', 'en', 'yes'),
 (70, 'servicii/transfer-bani/ro-str/moneygram', 3, 'servicii/transfer-bani/ro-str/moneygram', 'Moneygram', 26, 0, '', '', 'no', 'ro', 'yes'),
 (71, 'servicii/transfer-bani/ro-str/moneygram', 3, 'servicii/transfer-bani/ro-str/moneygram', 'Moneygram', 21, 0, '', '', 'no', 'en', 'yes'),
-(72, 'sspayments', 9, 'sspayments', 'TRANSFER DE BANI', 0, 1, '', '', 'no', 'ro', 'yes'),
-(73, 'profile', 9, 'profile', 'CONTUL TAU', 0, 2, '', '', 'no', 'ro', 'yes'),
-(74, 'tHistory', 9, 'tHistory', 'ISTORIC TRANZACTII', 0, 3, '', '', 'no', 'ro', 'yes'),
-(75, 'messages', 9, 'messages', 'MESAJE', 0, 4, '', '', 'no', 'ro', 'yes'),
+(72, 'online_payments', 9, 'online_payments', 'TRANSFER DE BANI', 0, 1, '', '', 'no', 'ro', 'yes'),
+(73, 'online_profile', 9, 'online_profile', 'CONTUL TAU', 0, 2, '', '', 'no', 'ro', 'yes'),
+(74, 'online_history_payments', 9, 'online_history_payments', 'istoric transferuri', 0, 3, '', '', 'no', 'ro', 'yes'),
+(75, 'online_messages', 9, 'online_messages', 'MESAJE', 0, 4, '', '', 'no', 'ro', 'yes'),
 (76, '/', 9, '/', 'Prima pagina', 0, 0, '', '', 'no', 'ro', 'yes'),
 (77, 'servicii/transfer-bani/strainatate-romania', 3, 'servicii/transfer-bani/strainatate-romania', 'Străinătate - Rom&acirc;nia', 18, 3, '', '', 'no', 'ro', 'yes'),
 (78, 'servicii/transfer-bani/plata-la-domiciliu', 3, 'servicii/transfer-bani/plata-la-domiciliu', 'Plata la domiciliu', 18, 4, '', '', 'no', 'ro', 'yes'),
 (79, 'servicii/transfer-bani/strainatate-romania', 3, 'servicii/transfer-bani/strainatate-romania', 'Străinătate - Rom&acirc;nia', 18, 3, '', '', 'no', 'en', 'yes'),
-(80, 'servicii/transfer-bani/plata-la-domiciliu', 3, 'servicii/transfer-bani/plata-la-domiciliu', 'Plata la domiciliu', 18, 4, '', '', 'no', 'en', 'yes');
+(80, 'servicii/transfer-bani/plata-la-domiciliu', 3, 'servicii/transfer-bani/plata-la-domiciliu', 'Plata la domiciliu', 18, 4, '', '', 'no', 'en', 'yes'),
+(81, 'online_history_invoices', 9, 'online_history_invoices', 'istoric facturi', 0, 3, '', '', 'no', 'ro', 'yes'),
+(82, 'online_payments', 10, 'online_payments/?showLogin=op', 'Transfer de bani', 0, 1, '', '', 'no', 'ro', 'yes'),
+(83, 'online_invoices', 10, 'online_invoices/?showLogin=oi', 'Plata facturi', 0, 2, '', '', 'no', 'ro', 'yes'),
+(84, 'online_payments', 10, 'online_payments/?showLogin=op', 'Money transfer', 0, 0, '', '', 'no', 'en', 'yes'),
+(85, 'online_invoices', 10, 'online_invoices/?showLogin=oi', 'Pay invoice', 0, 0, '', '', 'no', 'en', 'yes');
 
 -- --------------------------------------------------------
 
@@ -1619,7 +1662,7 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation_groups` (
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `fuel_navigation_groups`
@@ -1634,7 +1677,8 @@ INSERT INTO `fuel_navigation_groups` (`id`, `name`, `published`) VALUES
 (6, 'retea', 'yes'),
 (7, 'foo_menu5', 'yes'),
 (8, 'foo_menu4', 'yes'),
-(9, 'mainauth', 'yes');
+(9, 'mainauth', 'yes'),
+(10, 'foo_menu2', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2096,7 +2140,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'b4040a114ed3c1e5f67d74a4cb3321eb83b49899', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', '7cd6d241e1be8ffa1f0c7974d6b53d5a', 'yes', 'yes');
+(1, 'admin', 'd25141c35d60317ab0db88780324fcf6c2a5bf13', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'a5bcf17a7791dfdc30d48bd2df3a91ab', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2131,7 +2175,14 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(26, '192.168.54.163', ' a.mocioi@gmail.com', 1420706851);
 
 -- --------------------------------------------------------
 
@@ -2416,7 +2467,7 @@ CREATE TABLE IF NOT EXISTS `ss_messages` (
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
 
 --
 -- Dumping data for table `ss_messages`
@@ -2485,7 +2536,8 @@ INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message
 (60, 130, '#S54a7ec8c9568d', 8, 'pay', 'payment #S54a7ec8c9568d successfully added', '2015-01-03 13:20:25'),
 (61, 131, '#S54a7f5193bfdf', 8, 'pay', 'payment #S54a7f5193bfdf successfully added', '2015-01-03 13:56:50'),
 (62, 132, '#S54a7f7cc9fd42', 8, 'pay', 'payment #S54a7f7cc9fd42 successfully added', '2015-01-03 14:08:35'),
-(63, 133, '#S54a7fbe398c4e', 8, 'pay', 'payment #S54a7fbe398c4e successfully added', '2015-01-03 14:25:44');
+(63, 133, '#S54a7fbe398c4e', 8, 'pay', 'payment #S54a7fbe398c4e successfully added', '2015-01-03 14:25:44'),
+(64, 134, '#S54aa87ad9d172', 8, 'pay', 'payment #S54aa87ad9d172 successfully added', '2015-01-05 12:46:41');
 
 -- --------------------------------------------------------
 
@@ -2622,7 +2674,7 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar',
   `pin` varchar(25) DEFAULT NULL COMMENT 'pin-ul tranzactiei primit din server SS',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=134 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
 
 --
 -- Dumping data for table `ss_payments`
@@ -2670,7 +2722,8 @@ INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_i
 (130, '#S54a7ec8c9568d', 8, 'card', '1234.00', 'eur', '5492.41', 'ron', '4.4509', '123.40', '1357.40', '2015-01-03 13:20:25', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
 (131, '#S54a7f5193bfdf', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 13:56:50', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
 (132, '#S54a7f7cc9fd42', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 14:08:35', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(133, '#S54a7fbe398c4e', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 14:25:44', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL);
+(133, '#S54a7fbe398c4e', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 14:25:44', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
+(134, '#S54aa87ad9d172', 8, 'card', '200.00', 'ron', '200.00', 'ron', NULL, '20.00', '220.00', '2015-01-05 12:46:41', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2719,7 +2772,7 @@ CREATE TABLE IF NOT EXISTS `ss_pay_orders` (
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ts adaugarii',
   `resp_ts` timestamp NULL DEFAULT NULL COMMENT 'ts primirii raspunsului',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tabela in care stochez informatiile despre efectuarea platilor' AUTO_INCREMENT=100052 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tabela in care stochez informatiile despre efectuarea platilor' AUTO_INCREMENT=100053 ;
 
 --
 -- Dumping data for table `ss_pay_orders`
@@ -2776,7 +2829,8 @@ INSERT INTO `ss_pay_orders` (`id`, `unid`, `unid_type`, `pay_type`, `status`, `a
 (100048, '#S54a7ec8c9568d', 'S', 'card', 1, '1234.00', 'eur', '17D6010DDA55D8AF6F0A77FDAE2543A014B2CD4B', NULL, NULL, NULL, '2015-01-03 13:20:26', NULL),
 (100049, '#S54a7f5193bfdf', 'S', 'card', 1, '1200.00', 'eur', 'BF2A5B9E4C8F28D257536E2F54CFE9386D008FE2', NULL, NULL, NULL, '2015-01-03 13:56:51', NULL),
 (100050, '#S54a7f7cc9fd42', 'S', 'card', 1, '1200.00', 'eur', 'B7A1C1F4F64F089067DD6793F72F7F4220CEAD27', NULL, NULL, NULL, '2015-01-03 14:08:37', NULL),
-(100051, '#S54a7fbe398c4e', 'S', 'card', 1, '1200.00', 'eur', '6D4B1D7BEF168D973037751CCAA9A9D8B65B98F2', NULL, NULL, NULL, '2015-01-03 14:25:46', NULL);
+(100051, '#S54a7fbe398c4e', 'S', 'card', 1, '1200.00', 'eur', '6D4B1D7BEF168D973037751CCAA9A9D8B65B98F2', NULL, NULL, NULL, '2015-01-03 14:25:46', NULL),
+(100052, '#S54aa87ad9d172', 'S', 'card', 1, '200.00', 'ron', '6816D19B80D70BF74663D37E505D60000926E097', NULL, NULL, NULL, '2015-01-05 12:46:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -2931,8 +2985,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`, `account`, `swift`, `bank`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1418901054, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', ''),
-(8, '::1', 'horia mocioi', '$2y$08$f2TUInf0FyrXGwFe3kVgiu5wYqtt8kClpBXkZxV/xc1ceZho1XYY2', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, '11bMMEBYZ0ujgRUspmeRfe', 1415447144, 1419240463, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276206', '06.12.1962', 'ACCT08', 'SWIFT08', 'Bank Post'),
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1420632811, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', ''),
+(8, '::1', 'horia mocioi', '$2y$08$Sb0wEXHSL64zEl8lWwcF.Oj4iNcOPUNsywLoGlgyJ4f.tSuqu462.', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1420713935, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276207', '06.12.1962', 'ACCT08', 'SWIFT08', 'Bank Post'),
 (9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
 (10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
 (11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981', '', '', ''),
