@@ -298,8 +298,7 @@
 			if ($user)
 			{
 				//if the code is valid then display the password reset form
-				
-				$this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
+				$this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]|regex_match['. check_password_regex($this->config->item('min_password_length', 'ion_auth')) .']');
 				$this->form_validation->set_rules('new_confirm', $this->lang->line('reset_password_validation_new_password_confirm_label'), 'required');
 				
 				if ($this->form_validation->run() == false)
@@ -314,13 +313,15 @@
 					'name' => 'new',
 					'id'   => 'new',
 					'type' => 'password',
-					'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
+					//'pattern' => '^.{'.$this->data['min_password_length'].'}.*$', // mutat verificarea in regula regex
+					'class' => 'agent-input',
 					);
 					$this->data['new_password_confirm'] = array(
 					'name' => 'new_confirm',
 					'id'   => 'new_confirm',
 					'type' => 'password',
-					'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
+					//'pattern' => '^.{'.$this->data['min_password_length'].'}.*$', // mutat verificarea in regula regex
+					'class' => 'agent-input',
 					);
 					$this->data['user_id'] = array(
 					'name'  => 'user_id',
@@ -328,18 +329,22 @@
 					'type'  => 'hidden',
 					'value' => $user->id,
 					);
-					$this->data['csrf'] = $this->_get_csrf_nonce();
+					// $this->data['csrf'] = $this->_get_csrf_nonce();
+					$this->data['csrf'] = $this->_get_session_csrf_nonce();
 					$this->data['code'] = $code;
 					
 					//render
-					$this->_render_page('auth/reset_password', $this->data);
+					//$this->_render_page('auth/reset_password', $this->data);
+					// am trecut randarea prin fuel ca sa am template
+					$this->fuel->pages->render('auth/reset_password', $this->data);
 				}
 				else
 				{
 					// do we have a valid request?
-					if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
-					{
-						
+					//if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
+					// initial era ca mai sus, dar cand am mutat randarea pe fuel nu tinea minte flashdata, asa ca am setat pe sesiune
+					if ($this->_valid_session_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
+					{					
 						//something fishy might be up
 						$this->ion_auth->clear_forgotten_password_code($code);
 						
@@ -548,7 +553,7 @@
 			$this->form_validation->set_rules('last_name', $this->lang->line('register_user_validation_lname_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('email', $this->lang->line('register_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
 			$this->form_validation->set_rules('phone', $this->lang->line('register_user_validation_phone_label'), 'required|xss_clean');
-			$this->form_validation->set_rules('password', $this->lang->line('register_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+			$this->form_validation->set_rules('password', $this->lang->line('register_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]|regex_match['. check_password_regex($this->config->item('min_password_length', 'ion_auth')) .']');
 			$this->form_validation->set_rules('password_confirm', $this->lang->line('register_user_validation_password_confirm_label'), 'required');
 			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('country', $this->lang->line('register_user_validation_country_label'), 'required|xss_clean');
@@ -958,6 +963,7 @@
 		
 		function _valid_csrf_nonce()
 		{
+			
 			if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
 			$this->input->post($this->session->flashdata('csrfkey')) == $this->session->flashdata('csrfvalue'))
 			{
@@ -967,6 +973,35 @@
 			{
 				return FALSE;
 			}
+		}
+		
+		function _valid_session_csrf_nonce()
+		{
+			
+			if ($this->input->post($this->session->userdata('csrfkey')) !== FALSE &&
+			$this->input->post($this->session->userdata('csrfkey')) == $this->session->userdata('csrfvalue'))
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+			
+			$this->session->unset_data('csrfkey');
+			$this->session->unset_data('csrfvalue');
+			
+		}
+		
+		function _get_session_csrf_nonce()
+		{
+			$this->load->helper('string');
+			$key   = random_string('alnum', 8);
+			$value = random_string('alnum', 20);
+			$this->session->set_userdata('csrfkey', $key);
+			$this->session->set_userdata('csrfvalue', $value);
+			
+			return array($key => $value);
 		}
 		
 		function _render_page($view, $data=null, $render=false)
@@ -985,7 +1020,7 @@
 			$this->load->helper('captcha');
 			// we will set all the variables needed to create the captcha image
 			$options = array('img_path'=>'./assets/captcha/','img_url'=>site_url('assets/captcha/'),'img_width'=>'150','img_height'=>'40','expiration'=>7200,
-			'word_length' => 4, 'pool' => '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
+			'word_length' => 4, 'pool' => '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
 			//now we will create the c	aptcha by using the helper function create_captcha()
 			$cap = create_captcha($options);
 			// we will store the image html code in a variable

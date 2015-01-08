@@ -302,6 +302,13 @@
 		return $output;
 	}
 	
+	function check_password_regex($min_length){
+		// cel putin o litera mare, una mica si o cifra
+		// return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
+		// pentru teste folosesc varianta simplificata
+		return "/^.{" . $min_length . "}.*$/";
+	}
+	
 	
 	/* End of file my_helper.php */
 	/* Location: ./application/helpers/my_helper.php */

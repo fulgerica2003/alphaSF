@@ -20,5 +20,5 @@
 	$vars['subfolder'] = 'smith';
 	
 	// page specific variables
-	$pages = array();
+	$pages['auth/reset_password'] = array('layout' => 'sssimple_page');
 ?>

@@ -50,7 +50,7 @@
 				
 				if (isset($_POST) && !empty($_POST)){
 					if ($this->input->post('password')){
-						$this->form_validation->set_rules('password', $this->lang->line('profile_password'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+						$this->form_validation->set_rules('password', $this->lang->line('profile_password'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]|regex_match['. check_password_regex($this->config->item('min_password_length', 'ion_auth')) .']');
 						$this->form_validation->set_rules('password_confirm', $this->lang->line('profile_password_confirm'), 'required');
 					}
 				}
