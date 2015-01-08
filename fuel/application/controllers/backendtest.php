@@ -93,4 +93,5 @@
 			$fee = $this->ss_fees_model->compute_total_fee($values);
 			echo $fee;
 		}
+
 	}		
