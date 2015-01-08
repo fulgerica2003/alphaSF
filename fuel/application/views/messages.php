@@ -1,1 +1,0 @@
-<?php echo 'aici vor fi mesajele'; ?>
