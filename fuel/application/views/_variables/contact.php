@@ -9,10 +9,6 @@
 	$vars['calcCurrency'] = null;
 	$vars['calcModIncasare'] = null;
 	
-	// variabile pentru calculator facturi
-	$vars['calcInvTipPlata'] = 'card';
-	$vars['calcInvAmount'] = null;
-	
 	// util pentru a pastra valorile daca utilizatorul nu e autentificat si inchide fereastra de autentificare
 	$calc_details = $CI->session->userdata('calcPayDetails');
 	if ($calc_details != null){
@@ -26,16 +22,7 @@
 		$vars['calcCurrency'] = $currency;
 		$vars['calcModIncasare'] = $payment_method;
 	}
-	
-	// util pentru a pastra valorile daca utilizatorul nu e autentificat si inchide fereastra de autentificare
-	$calc_inv_details = $CI->session->userdata('calcInvDetails');
-	if ($calc_inv_details != null){
-		$payment_type = $calc_inv_details['tipPlata'];
-		$amount = $calc_inv_details['amount'];
-		
-		$vars['calcInvTipPlata'] = $payment_type;
-		$vars['calcInvAmount'] = $amount;
-	}
+
 	if (isset($currency)){
 		$vars['benOpts'] = get_ben_opts($currency);
 	}else{

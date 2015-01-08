@@ -57,7 +57,7 @@
 			$this->form_validation->set_rules('word', 'Captcha', 'trim|callback_check_captcha|required' );
 			
 			if ($this->form_validation->run() == true)
-			{
+			{	
 				//check to see if the user is logging in
 				//check for "remember me"
 				$remember = (bool) $this->input->post('remember');
@@ -67,6 +67,7 @@
 					//if the login is successful
 					//redirect them back to the home page
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
+
 					redirect('/', 'refresh');
 				}
 				else

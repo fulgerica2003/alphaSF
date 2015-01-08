@@ -323,7 +323,8 @@ div.modal-content .agent-submit {float:right;width:45%;padding:13px 0px 11px;mar
 .page-text ul {margin-top:30px;}
 .page-text ul li{margin-bottom:30px;}
 .page-text ul li:before {content: "â€¢";color: red;padding-right:20px;}
-.page-text ul li span {color:#ff0000;}
+.page-text ul li span {color:#ff0000;background: url('../img/sagetuta_detalii_mesaje.png') no-repeat right 8px;
+padding-right: 20px;}
 .thin-box {min-height: 60px;line-height: 40px;padding: 10px 25px;}
 
 
@@ -752,7 +753,7 @@ background-color:#f3f3f3;
 
 }
 
-/* ------------- Istoric -------------- */
+/*--------Istoric------------*/
 
 #lista-istoric li:before{display:none;}
 #lista-istoric li {
@@ -765,24 +766,20 @@ background-color:#f3f3f3;
 	border-bottom:2px dotted #cac7cc;
 	font:14px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
 	position:relative;
+
 }
-#lista-istoric #cap-lista {background-color:#e1dee3;min-height:30px;border:none;}
-#lista-istoric #cap-lista div {font: 14px/30px MetaSerifBookRegular, Arial, Helvetica, sans-serif !important; color:#6f5f69 !important;margin:0px;}
-#lista-istoric .suma, #lista-istoric .moneda, #lista-istoric .data-istoric, #lista-istoric .beneficiar, #lista-istoric .detalii-istoric {display:table-cell; vertical-align: middle;}
-#lista-istoric li .suma {width:110px;color: #b5251d;font: 18px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
-#lista-istoric li .moneda {width:100px;min-height:5px;font: 18px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;color: #b5251d;}
-#lista-istoric li .data-istoric {width:220px;}
-#lista-istoric li .beneficiar {width:220px;}
-#lista-istoric li .detalii-istoric {width:110px; color:#b5251d;}
+#lista-istoric .cap-lista {background-color:#e1dee3;min-height:30px;border:none;}
+#lista-istoric .cap-lista div {font: 14px/30px MetaSerifBookRegular, Arial, Helvetica, sans-serif !important; color:#6f5f69 !important;margin:0px;padding-right:40px;}
+#lista-istoric .suma, #lista-istoric .beneficiar, #lista-istoric .detalii-istoric {display:inline-block; vertical-align: top;margin-right: -4px !important;}
+#lista-istoric li .suma {width:20%;color: #b5251d;font: 18px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
+#lista-istoric li .beneficiar {width:60%;}
+#lista-istoric li.lista-mesaje .beneficiar {padding-bottom:50px;}
+#lista-istoric li .detalii-istoric {width:20%; color:#b5251d;}
 #lista-istoric li .detalii-istoric:hover {cursor:pointer;}
 #lista-istoric .activ {background-color:#ececec;}
-.box-detalii-istoric {display:none;border-top:2px dotted #fff;}
-.tabel-detaliu-istoric {width:100%;line-height: 20px;margin:20px 0px;}
-.tabel-detaliu-istoric tr td {width:50%;}
-.tabel-detaliu-istoric #platitor td, .tabel-detaliu-istoric #beneficiar td {padding-top:30px;}
 .istoric-minimize {display:none;}
-.print-istoric {height: 40px;border-top: 2px dotted #fff;}
-.link-print {display: block;width: 110px;text-align: left;float: right;color:#b5251d;padding: 10px 0px;line-height: 20px;}
+#lista-istoric .cap-lista div.print-istoric {height: 40px;border-top: 2px dotted #fff;margin:0px -20px;}
+.link-print {display: block;width: 20%;text-align: left;color:#b5251d;padding: 10px 0px 10px 80%;line-height: 20px;margin-left:20px;}
 .link-print:hover {color:#b5251d;text-decoration:none;}
 p.cont-mesaj {color:#fff;}
 p.data-mesaj {color:#e3bdbb;}
@@ -790,25 +787,33 @@ p.data-mesaj {color:#e3bdbb;}
 
 @media (max-width:1199px) {
 #lista-istoric li div {line-height:20px; }
-#lista-istoric li .suma {width:96px;}
-#lista-istoric li .moneda {width:35px;font-size:14px;}
-#lista-istoric li .data-istoric {width:110px;}
-#lista-istoric li .beneficiar {width:210px;}
-#lista-istoric li .detalii-istoric {width:110px;}
+#lista-istoric li .suma {width:20%;}
+#lista-istoric li .beneficiar {width:60%;}
+#lista-istoric li .detalii-istoric {width:20%;}
 .link-print {width:115px;}
 }
 
 @media (max-width:729px) {
 #lista-istoric li {padding:5px 5px; min-height:inherit;line-height:16px;}
-#lista-istoric li .suma {width:100px;font-size:14px; }
-#lista-istoric li .moneda {width:30px;font-size:14px;}
-#lista-istoric li .data-istoric {width:100px;}
-#lista-istoric li .beneficiar {width:130px;}
-#lista-istoric li .detalii-istoric {display:none;}
+#lista-istoric li .suma {width:20%;font-size:14px; }
+#lista-istoric li .beneficiar {width:55%;}
+#lista-istoric li .detalii-istoric {width:20%;}
 .istoric-minimize {display:block; position:absolute;color:#6f5f69 !important;top: 0;right: 0px;font-size: 20px;padding: 10px;cursor: pointer;}
 .print-istoric {display:none;}
 }
 
+.titluri-cont2 {font: 24px/30px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
+color: #4f4553;
+padding-bottom: 25px;}
+#lista-istoric .cap-lista.lista-mesaje {border:none; margin:0px; background-color:#fff;border-bottom: 2px dotted #d8d6d9;height: 40px;overflow:hidden;}
+#lista-istoric .cap-lista.lista-mesaje.active {background-color: #e1dee3;}
+.detalii_mesaje{}
+span .detalii-color{color:#b5251d;}
+.para_mesaje {float: left; width: 220px; color:#ffffff;}
+.caseta-tranzactii-mesaje{border-bottom:1px solid #990000;}
+#mesagerie-mesaje{padding-top:30px; border:none;}
+.text2 ul{margin-top:0px;}
+.text2 ul li span {color:#b5251d;}
 
 /* ------------- Footer --------------- */
 
@@ -1050,4 +1055,22 @@ border-color: #FCC !important;}
 	float: left;
 	margin-top: 15px;
 	margin-right: 20px;
+}
+
+.calcPayLink {
+background-color: transparent;
+text-decoration: none;
+color:#FFF;
+border: none;
+cursor: pointer;
+}
+.calcInvLink {
+	font: 14px/20px DINNextRoundedLTProMedium, Arial, Helvetica, sans-serif;
+	color:#ff0000;
+	text-transform: uppercase;
+	font-weight:bold;
+	background-color: transparent;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
 }

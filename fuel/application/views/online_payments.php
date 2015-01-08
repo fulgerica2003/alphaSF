@@ -43,11 +43,11 @@
 			<?php echo form_error('tipPlata'); ?>
 			<div class="radio-container1" style="width:50%;" name="test">
 				<div class="lable1" id="TABleft"><?php echo lang('payments_card')?></div>
-				<input type="radio" name="tipPlata" id="tipPlataCard"  value="<?php echo $vars['payOpts']['card']; ?>" <?php echo set_radio('tipPlata', 'Card', TRUE); ?>>
+				<input type="radio" name="tipPlata" id="tipPlataCard"  value="<?php echo $vars['payOpts']['card']; ?>" <?php echo set_radio('tipPlata', 'Card', ($vars['calcTipPlata'] && $vars['calcTipPlata'] === 'card' ? TRUE : FALSE)); ?>>
 			</div>								
 			<div class="radio-container1" style="width:50%;" name="test">
 				<div class="lable1" id="TABright"><?php echo lang('payments_account')?></div>
-				<input type="radio" name="tipPlata" id="tipPlataCont"  value="<?php echo $vars['payOpts']['cont']; ?>" <?php echo set_radio('tipPlata', 'Cont'); ?>>
+				<input type="radio" name="tipPlata" id="tipPlataCont"  value="<?php echo $vars['payOpts']['cont']; ?>" <?php echo set_radio('tipPlata', 'Cont', ($vars['calcTipPlata'] && $vars['calcTipPlata'] === 'cont' ? TRUE : FALSE)); ?>>
 			</div>                                
 		</div>
 		<div class="clearfix"></div>
@@ -55,23 +55,22 @@
 		<div class="input-box">
 			<div class="agent-lable"><?php echo lang('payments_amount')?></div>
 			<div name="test">
-				<input name ="amount" id = "amount" style="width:68%;" class="agent-input factura_prim <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount'); ?>">
+				<input name ="amount" id = "amount" style="width:68%;" class="agent-input factura_prim <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
 				<select id = "currency" name ="currency" style="width:31%;" class="agent-input factura_second">
-					<option value="eur" <?php echo set_select('currency', 'eur'); ?>>EUR</option>
-					<option value="ron" <?php echo set_select('currency', 'ron'); ?>>RON</option>
+					<option value="eur" <?php echo set_select('currency', 'eur', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'eur' ? TRUE : FALSE)); ?>>EUR</option>
+					<option value="ron" <?php echo set_select('currency', 'ron', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'ron' ? TRUE : FALSE)); ?>>RON</option>
 				</select> 
 			</div>					
 			<div class="clearfix"></div>
 			<div id="amountERR" class="eroare <?php echo (form_error('amount')) ? 'afiseaza' : ''; ?>"><a name="AamountERR"></a><span id="amountERRTXT"><?php echo form_error('amount'); ?></span><span class="close-eroare">x</span></div>
 		</div>
-		
 		<div class="input-box">
 			<div class="explica-cont"><?php echo lang('payments_sidenote_cash'); ?></div>
 			<div class="agent-lable"><?php echo lang('payments_payment_type'); ?></div>
 			<select id="modIncasare" name="modIncasare" class = "agent-input<?php echo (form_error('modIncasare')) ? ' err' : ''; ?>">
-				<option value="" <?php echo set_select('modIncasare', '', TRUE); ?>><?php echo lang('payments_pick'); ?></option>
+				<option value="" <?php echo set_select('modIncasare', '', ($vars['calcModIncasare'] ? FALSE : TRUE)); ?>><?php echo lang('payments_pick'); ?></option>
 				<?php foreach($vars['benOpts'] as $key => $value):?>
-				<option value="<?php echo $key;?>" <?php echo set_select('modIncasare', $key); ?>><?php echo $value;?></option>
+				<option value="<?php echo $key;?>" <?php echo set_select('modIncasare', $key, ($vars['calcModIncasare'] && $vars['calcModIncasare'] == $key ? TRUE : FALSE)); ?>><?php echo $value;?></option>
 				<?php endforeach?>
 			</select>
 			<div id="modIncasareERR" class="eroare<?php echo (form_error('modIncasare')) ? ' afiseaza' : ''; ?>"><a name="AmodIncasareERR"></a><span id="modIncasareERRTXT"><?php echo (form_error('modIncasare')) ? 'Camp obligatoriu!' : ''; ?></span><span class="close-eroare">x</span></div>

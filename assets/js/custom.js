@@ -77,24 +77,31 @@ $(document).ready(function(){
     });
 	
 	// calc online_payments
+	if ($('#cop_amount').val() && $('#cop_currency').val() && $('#cop_modIncasare').val()){
+		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
+				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+				$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+			}, "json");
+	}
+	
 	$('#cop_currency').change(function() {
 			$('#cop_modIncasare').empty();
 			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
 			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
-			$.get('online_payments/update_ben_opts/'+$(this).val() , function( data ) {
+			$.get('calculator/update_ben_opts/'+$(this).val() , function( data ) {
 				$('#cop_modIncasare').empty().append(data);
 			});
 	});
 	
 	$('#cop_modIncasare').change(function() {
-			$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
-				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + data.fee ? data.fee : '0,0' +'</span> <span class="ron-transfer">RON</span></div>');
+			$.get('calculator/update_total', {payment_method: $(this).val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
+				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 				$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 			}, "json");
 	});
 	
 	$('#cop_amount').change(function() {
-			$.get('online_payments/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $(this).val()}, function(data) {
+			$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $(this).val()}, function(data) {
 				$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 				$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 			}, "json");
@@ -102,8 +109,15 @@ $(document).ready(function(){
 	
 	// calc online_invoices
 	
+	if ($('#cof_amount').val()){
+			$.get('calculator/update_total', {payment_method: 1, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
+				$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
+				$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
+			}, "json");
+	}
+	
 	$('#cof_amount').change(function() {
-			$.get('online_payments/update_total', {payment_method: 1, currency: 'ron', amount: $(this).val()}, function(data) {
+			$.get('calculator/update_total', {payment_method: 1, currency: 'ron', amount: $(this).val()}, function(data) {
 				$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
 				$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
 			}, "json");
@@ -211,8 +225,21 @@ $(document).ready(function(){
    		}
 	 });
 	 
+	 $.urlParam = function(name){
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		if (results==null){
+			return null;
+		}
+		else{
+			return results[1] || 0;
+		}
+	}
+	
+	var showLoginVal = $.urlParam('showLogin');
+	var showLogin = (showLoginVal == null ? false: true);
+	 
 	 $('#pop-up-login').modal({
-        show: false,
+        show: showLogin,
         remote: 'auth/login'
 	 });
 	 
@@ -222,7 +249,6 @@ $(document).ready(function(){
 		$.get( "auth/register", function( data ) {
 			$( '#auth-pop' ).html( data );
 	 });
-		console.log('loaded register');
 		$('#auth-pop').fadeIn(800);
 		$('#id-modal-header').show();
 	 });
@@ -272,6 +298,14 @@ $(document).ready(function(){
 		posting.done(function( data ) {
 			if (data === ""){
 				window.location.replace(document.URL);
+				var newURL = "";
+				if (showLoginVal && showLoginVal == "op"){
+					newURL = "online_payments";
+				}
+				if (showLoginVal && showLoginVal == "oi"){
+					newURL = "online_invoices";
+				}
+				window.location.assign(newURL);
 			}else{
 				$('.modal-content').empty().append( data );
 			}
@@ -300,6 +334,17 @@ $(document).ready(function(){
 		
 	});
 	
+	$('.lista-mesaje').on('click', '.detalii-color', function() {
+	if ($(this).parents('.lista-mesaje').hasClass('active') ){
+		$(this).parents('.lista-mesaje').animate({ "height":40}, 500).removeClass('active');
+		$(this).text('Detalii');
+	} else {
+		var mata = parseInt($(this).parents('.lista-mesaje').find('.beneficiar').outerHeight())+41;
+		$(this).parents('.lista-mesaje').animate({ "height":mata}, 500).addClass('active');
+		$(this).text('Inchide detalii');
+		}
+	});
+	
 });
 
 $( window ).resize(function() {
@@ -314,7 +359,8 @@ $( window ).resize(function() {
            	$('#box-meniu-interior').removeAttr('style');
            	break;
     }
-    
-    
+	$('.lista-mesaje.active').each(function(){
+		$(this).height($(this).find('.beneficiar').outerHeight()+41)
+	}); 
 });
 

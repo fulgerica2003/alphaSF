@@ -20,8 +20,8 @@
 			</div>
 		</div>
 		
-		<?php $this->load->view('_blocks/caseta-online')?>
-		<?php $this->load->view('_blocks/caseta-calculator')?>
+		<?php $this->load->view('_blocks/_caseta-reclama1')?>
+		<?php $this->load->view('_blocks/_caseta-calc-online')?>
 	</div>
 	
 	<?php $this->load->view('_blocks/ssfooter')?>

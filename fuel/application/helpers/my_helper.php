@@ -261,6 +261,47 @@
 		';
 	}
 	
+	function compute_fee($params = array()){
+		$payment_method = $params['payment_method'];
+		$currency = $params['currency'];
+		$amount = $params['amount'];
+		
+		$fee = null;
+		$total = null;
+		
+		if (
+		isset($payment_method) && (strlen($payment_method) > 0)
+		&& isset($currency) && (strlen($currency) > 0)
+		&& isset($amount) && (strlen($amount) > 0)
+		){
+			$fee = 0.1 * $amount;
+			$total = $fee + $amount;
+		}
+		
+		return json_encode( array( "fee" => $fee, "total" => $total ) );
+	}
+	
+	function get_ben_opts($currency){
+		$CI =& get_instance();
+		$CI->load->model('ss_payment_methods_model');
+		if (isset($currency)){
+			$output = $CI->ss_payment_methods_model->options_list();
+			switch(strtolower($currency)){
+				case 'eur':
+				break;
+				case 'ron':
+				unset($output[4]);
+				break;
+				default:
+				break;
+			}
+			}else{
+			$output = array();
+		}
+		
+		return $output;
+	}
+	
 	
 	/* End of file my_helper.php */
 	/* Location: ./application/helpers/my_helper.php */

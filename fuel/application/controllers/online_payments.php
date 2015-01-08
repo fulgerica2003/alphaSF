@@ -1,18 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 	class Online_payments extends CI_Controller {
 		
-		/*
-			dupa validare salvez valorile pe sesiune si dupa asta pot face catre aceeasi pagina, dar cu un parametru (tot pe sesiune) si daca am parametrul ala sa apara modalul;
-			
-			butonul din modal face redirect catre controller si iau valorile de pe sesiune si le salvez
-			
-			
-			session user data
-		*/
-		
-		// TODO aici tb sa fie adresa utilizatorului autentificat, id_user
-		private $user_email = 'a@b.c';
-		private $user_id = '8';
+		private $user_email;
+		private $user_id;
 		
 		private $exchange_rate_eur;
 		
@@ -29,11 +19,20 @@
 			$this->form_validation->set_error_delimiters('', '');
 			
 			$this->load->library('session');
+			$this->load->library('ion_auth');
 			
 			$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
 			$this->exchange_rate_eur = $eur->value;
 			
 			$this->lang->load('ss');
+			
+			if (!$this->ion_auth->logged_in()){
+				//redirect('online_payments/?showLogin=');
+			}else{
+				$user = $this->ion_auth->user()->row();
+				$this->user_id = $user->id;
+				$this->user_email = $user->email;
+			}
 			
 		}
 		
@@ -42,13 +41,27 @@
 		}
 		
 		public function validate(){
+		
 			$vars['payOpts'] = get_payment_types();
 			
-			$amount = $this->input->post('amount');
-			$payment_method = $this->input->post('modIncasare');
-			$currency = $this->input->post('currency');
-			
-			$vars['benOpts'] = $this->get_ben_opts($currency);
+			$calc_details = $this->session->userdata('calcPayDetails');
+			if ($calc_details != null){
+				// datele venite din simulatorul de pe prima pagina
+				$amount = $calc_details['amount'];
+				$payment_method = $calc_details['modIncasare'];
+				$currency = $calc_details['currency'];
+				$vars['calcTipPlata'] = $calc_details['tipPlata'];;
+				$vars['calcAmount'] = $amount;
+				$vars['calcCurrency'] = $currency;
+				$vars['calcModIncasare'] = $payment_method;
+				$this->session->unset_userdata('calcPayDetails');
+			}else{
+				$amount = $this->input->post('amount');
+				$payment_method = $this->input->post('modIncasare');
+				$currency = $this->input->post('currency');
+			}
+					
+			$vars['benOpts'] = get_ben_opts($currency);
 			
 			$this->form_validation->set_rules('amount', 'Suma transferata', 'required|numeric');
 			$this->form_validation->set_rules('currency', 'Moneda', 'required');
@@ -140,8 +153,8 @@
 			if ($this->input->post('confirmCheck') === '1'){
 				// daca a bifat ca e de acord, salvez
 				$payment_details = $this->session->userdata('paymentDetails');
-				if ($payment_details == null){
-					$this->fuel->pages->render('online_payments');
+				if (!$payment_details){
+					redirect('online_payments');
 				}
 				$unid = $this->save($payment_details);
 				$this->session->unset_userdata('paymentDetails');
@@ -269,28 +282,9 @@
 			return $values;
 		}
 		
-		private function get_ben_opts($currency){
-			if (isset($currency)){
-				$output = $this->ss_payment_methods_model->options_list();
-				switch(strtolower($currency)){
-					case 'eur':
-					break;
-					case 'ron':
-					unset($output[4]);
-					break;
-					default:
-					break;
-				}
-				}else{
-				$output = array();
-			}
-			
-			return $output;
-		}
-		
 		public function update_ben_opts($currency){
 			
-			$vars['benOpts'] = $this->get_ben_opts($currency);
+			$vars['benOpts'] = get_ben_opts($currency);
 			
 			$str = '<option value="">alege</option>\n';
 			
@@ -356,23 +350,7 @@
 		
 		public function update_total(){
 			
-			$payment_method = $_GET['payment_method'];
-			$currency = $_GET['currency'];
-			$amount = $_GET['amount'];
-			
-			$fee = null;
-			$total = null;
-			
-			if (
-			isset($payment_method) && (strlen($payment_method) > 0)
-			&& isset($currency) && (strlen($currency) > 0)
-			&& isset($amount) && (strlen($amount) > 0)
-			){
-				$fee = 0.1 * $amount;
-				$total = $fee + $amount;
-			}
-			
-			echo json_encode( array( "fee" => $fee, "total" => $total ) );;
+			echo compute_fee($_GET);
 		}
 		
 	}
