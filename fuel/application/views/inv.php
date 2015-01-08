@@ -1,3 +1,39 @@
+<div class="modal fade" id="displayConfirmModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        	
+        	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Inchide</button>
+				<p class="modal-title">Trasfer de bani online</p>
+			</div>
+
+			<div class="modal-body" id="displayConfirmModalBody">		
+				<p class="eroare_factura">Confirmare tranzactie </p>
+				<p class="eroare_factura_text"> 
+						Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra presupune deducerea din suma transferata a comisionului de rambursare in 
+						valoare de 
+					<span style="color:#b5251d;">15 EURO</span> 
+						la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunti de acord cu termenii si conditiile platformei de plati online Smith&Smith.
+				</p>
+					<form id = "confirmTransfer" method = "post" action = "inv/save">
+						<div class="input-box termeni">
+							<input id = "the-terms" type="checkbox" name="confirmCheck" checked value="1"><span class="lable-radio">Sunt de acord cu <a style="color:#b5251d;" href="#">termenii si conditiile</a> 
+							<br />platformei Smith&Smith online</span>
+						</div>
+						<div class="clearfix"></div>
+					
+						<div class="submit_eroare">
+							<input id = "acceptBtn" class="agent-submit" type="submit" value="ACCEPT">
+						</div>
+						<div class="clearfix"></div>
+					</form>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
 <?php 
 	$this->load->helper('form');
 	$attributes = array('id' => 'form-transfer-calc');
@@ -24,10 +60,14 @@
 							
 							<div class="input-box">
 								<div class="agent-lable">Valoarea facturii</div>
-								
-								<?php echo form_error('valInt'); ?>
-								<?php echo form_error('valFract'); ?>
+																		
 								<div name="test">
+																	
+								<div id="ERR" class="eroare <?php echo (form_error('valInt')) ? 'afiseaza' : ''; ?>">
+									<a name="ERR"></a>
+									<span id="ERRTXT"><?php echo form_error('valInt','<div>', '</div>');?></span>
+									<span class="close-eroare">x</span>
+								</div>
 											<input name ="valInt" 	style="width:50%;" class="agent-input factura_prim" type="text"  value="<?php echo set_value('valInt'); ?>">
 											<input name ="valFract" style="width:25%;" class="agent-input second_iban" type="text"   value="<?php echo set_value('valFract'); ?>">
 											<input name ="currency" style="width:24%;" class="agent-input factura_second" type="text" value="RON" readonly>
@@ -65,11 +105,8 @@
 						</div>
  
 						<div  class="clearfix" ></div>
+						
+						<input id = "displayConfirm" hidden="true" value = "<?php echo $vars['displayConfirm']; ?>">
+
 					</form>				
-								
-								
-
-
-								
-								
 								
