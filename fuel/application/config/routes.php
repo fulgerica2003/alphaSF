@@ -49,10 +49,20 @@ $route['stiri/(:num)'] = 'stiri';
 $route['en/stiri/(:num)'] = 'stiri';
 
 $route['online_messages/(:num)'] = 'online_messages';
+$route['en/online_messages'] = 'online_messages';
+$route['en/online_messages/(:num)'] = 'online_messages';
 
 $route['online_history_payments/(:num)'] = 'online_history_payments';
+$route['en/online_history_payments/'] = 'online_history_payments';
+$route['en/online_history_payments/(:num)'] = 'online_history_payments';
 
 $route['online_history_invoices/(:num)'] = 'online_history_invoices';
+$route['en/online_history_invoices'] = 'online_history_invoices';
+$route['en/online_history_invoices/(:num)'] = 'online_history_invoices';
+
+$route['en/online_profile'] = 'online_profile';
+
+
 
 
 /*	
