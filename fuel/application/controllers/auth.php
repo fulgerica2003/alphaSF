@@ -49,6 +49,10 @@
 		//log the user in
 		function login()
 		{
+			if (!is_ajax()){
+				redirect('/?showLogin=');
+			}
+			
 			$this->data['title'] = "Login";
 			
 			//validate form input
@@ -212,6 +216,10 @@
 		//forgot password
 		function forgot_password()
 		{  
+			if (!is_ajax()){
+				redirect('/?showLogin=');
+			}
+			
 			//setting validation rules by checking wheather identity is username or email
 			if($this->config->item('identity', 'ion_auth') == 'username' )
 			{
@@ -544,6 +552,11 @@
 		//register user
 		function register()
 		{
+			
+			if (!is_ajax()){
+				redirect('/?showLogin=');
+			}
+			
 			$this->data['title'] = "Register User";
 			
 			$tables = $this->config->item('tables','ion_auth');

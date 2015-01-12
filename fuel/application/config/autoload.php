@@ -66,7 +66,7 @@ $autoload['libraries'] = array('fuel/asset', 'fuel/fuel');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('my', 'url', 'string', 'language', 'date', 'html', 'fuel/asset', 'fuel/fuel', 'fuel/utility', 'fuel/validator');
+$autoload['helper'] = array('my', 'url', 'string', 'language', 'date', 'html', 'fuel/asset', 'fuel/fuel', 'fuel/utility', 'fuel/validator', 'ajax');
 
 
 /*
