@@ -8,4 +8,5 @@
 	$vars['messages'] = null;
 	$vars['pagination'] = null;
 	$vars['recent_messages'] = null;
+	$vars['display_back'] = 'style="display:none"';
 ?>
