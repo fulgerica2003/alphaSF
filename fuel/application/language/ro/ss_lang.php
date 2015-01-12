@@ -18,7 +18,7 @@ $lang['login_logout'] = 'IESI DIN CONT';
 $lang['services_title'] = 'Servicii';
 
 /*
-|--------------------------------------------------------------------------
+	|--------------------------------------------------------------------------
 | etichete login; a se vedea documentul de specificatii
 | pentru maparea campurilor
 | TODO de standardizat placeholdere: de ex, ref tx, nume, prenume, link etc
@@ -500,6 +500,7 @@ $lang['payments_sidenote_trans'] = 'Un sidenote friendly si folositor.<br />Desp
 $lang['payments_sidenote_cash'] = 'Alege una din optiunile noastre pentru plata Cash.';
 $lang['payments_sidenote_exch'] = 'Informatii schimb valutar.';
 $lang['payments_sidenote_iban'] = 'Va rugam sa introduceti contul IBAN al beneficiarului.';
+$lang['payments_sidenote_city'] = 'In cazul in care localitatea cautata nu este disponibila, va rugam sa selectati o alta modalitate de plata.';
 $lang['payments_sidenote_ben'] = 'Completeaza datele beneficiarului.';
 
 $lang['payments_pay'] = 'Transfera online de bani';
@@ -517,12 +518,16 @@ $lang['payments_email'] = 'email';
 $lang['payments_address'] = 'adresa';
 
 $lang['payments_iban'] = 'iban';
-$lang['payments_city'] = 'oras';
-$lang['payments_f_exch'] = 'adresa';
+$lang['payments_city'] = 'Localitati disponibile';
+$lang['payments_f_exch'] = 'Curs de schimb valutar:';
+$lang['payments_agree_exch'] = 'De acord cu schimbul valutar';
+$lang['payments_exch_recipient'] = 'Beneficiarul primeste';
 
 $lang['payments_pick'] = 'alege';
 
 $lang['payments_cmd'] = 'TRANSFERA';
+
+// bloc _op_iban
 
 /*
 |--------------------------------------------------------------------------
@@ -563,3 +568,61 @@ $lang['invoices_cmd'] = 'PLATESTE';
 $lang['subscribe_title'] = 'Abonare newsletter';
 $lang['subscribe_exists'] = 'Adresa de e-mail este deja in lista.';
 $lang['subscribe_success'] = 'Va multumim!';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_messages
+|--------------------------------------------------------------------------
+|
+*/
+$lang['om_title'] = 'Mesaje';
+$lang['om_date'] = 'Data';
+$lang['om_message'] = 'Mesaj';
+$lang['om_details'] = 'Detalii';
+$lang['om_close_details'] = 'Inchide detalii';
+$lang['om_print'] = 'Tipareste';
+$lang['om_message_box'] = 'Mesaje';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_history_invoices
+|--------------------------------------------------------------------------
+|
+*/
+$lang['ohi_title'] = 'Istoric facturi';
+$lang['ohi_amount'] = 'Suma';
+$lang['ohi_date'] = 'Data';
+$lang['ohi_supplier'] = 'Furnizor';
+$lang['ohi_details'] = 'Detalii';
+$lang['ohi_close_details'] = 'Inchide detalii';
+$lang['ohi_payment_type'] = 'Modalitatea de plata';
+$lang['ohi_currency'] = 'Moneda';
+$lang['ohi_payer'] = 'Platitor';
+$lang['ohi_supplier_details'] = 'Detalii furnizor';
+$lang['ohi_print'] = 'TIPARESTE';
+$lang['ohi_messages'] = 'MESAJE';
+$lang['ohi_recent_invoices'] = 'Facturi recente';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_history_payments
+|--------------------------------------------------------------------------
+|
+*/
+$lang['ohp_title'] = 'Istoric transferuri';
+$lang['ohp_amount'] = 'Suma';
+$lang['ohp_date'] = 'Data';
+$lang['ohp_recipient'] = 'Beneficiar';
+$lang['ohp_details'] = 'Detalii';
+$lang['ohp_close_details'] = 'Inchide detalii';
+$lang['ohp_payment_type'] = 'Modalitatea de plata';
+$lang['ohp_currency'] = 'Moneda';
+$lang['ohp_payment_method'] = 'Platit';
+$lang['ohp_currency_out'] = 'Moneda finalizare la beneficiar';
+$lang['ohp_amount_cv'] = 'Suma in urma conversiei valutare';
+$lang['ohp_payer'] = 'Platitor';
+$lang['ohp_print'] = 'TIPARESTE';
+$lang['ohp_messages'] = 'MESAJE';
+$lang['ohp_return'] = 'RETUR';
+$lang['ohp_correction'] = 'CORECTIE';
+$lang['ohp_recent_payments'] = 'Transferuri recente';

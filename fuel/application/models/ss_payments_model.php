@@ -123,7 +123,7 @@
 			return $query;
 		}
 		
-		function get_payments($where = array(), $one){
+		function get_payments($where = array(), $one, $order_by = null, $limit = null, $offset = null){
 			
 			// ordinea campurilor este cea din controllers/backend/gettran, ca sa nu mai fie nevoie sa fac mapari acolo
 			$this->db->select('unid, date_added, id_payment_type, status, ss_payment_methods.name as payment_method,
@@ -143,7 +143,9 @@
 			}else{
 				
 			}*/
+			if ($order_by != null) $this->db->order_by($order_by);
 			if ($one) $this->db->limit(1);
+			if (isset($limit) && isset($offset)) $this->db->limit($limit, $offset);
 			
 			$query = $this->db->get();
 			

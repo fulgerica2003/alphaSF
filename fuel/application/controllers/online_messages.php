@@ -26,7 +26,9 @@
 		}
 		
 		public function index(){
-			
+		
+			/*echo $this->fuel->language->selected();
+			die;*/
 			$s1 = uri_segment(1);
 			$s2 = uri_segment(2);
 			
@@ -50,6 +52,16 @@
 			$vars['recent_messages'] = $this->ss_messages_model->find_all_array(array('id_user' => $this->user_id), 'date_added desc', 5);
 			
 			$vars['pagination'] = $this->pagination->create_links();
+			
+			$this->fuel->pages->render('online_messages', $vars);
+		}
+		
+		public function display($param1){
+			$vars['messages'] = $this->ss_messages_model->find_all_array(array('id_user' => $this->user_id, 'unid' => urldecode($param1)), 'date_added desc');
+			
+			$vars['recent_messages'] = $this->ss_messages_model->find_all_array(array('id_user' => $this->user_id), 'date_added desc', 5);
+			
+			$vars['display_back'] = '';
 			
 			$this->fuel->pages->render('online_messages', $vars);
 		}

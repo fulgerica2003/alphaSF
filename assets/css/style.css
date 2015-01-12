@@ -753,7 +753,46 @@ background-color:#f3f3f3;
 
 }
 
-/*--------Istoric------------*/
+/*--------Mesaje------------*/
+
+.titluri-cont2 {font: 24px/30px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
+color: #4f4553;
+padding-bottom: 25px;}
+#lista-istoric .cap-lista.lista-mesaje, .lista-istoric-tranzactii {border:none; margin:0px; background-color:#fff;border-bottom: 2px dotted #d8d6d9;}
+#lista-istoric .cap-lista.lista-mesaje {overflow:hidden;height: 40px;}
+#lista-istoric .cap-lista.lista-mesaje.active, .lista-istoric-tranzactii.active {background-color: #e1dee3;}
+.detalii_mesaje{}
+span .detalii-color, .cont-mesj{color:#b5251d;}
+.para_mesaje {float: left; width: 220px; color:#ffffff;}
+.caseta-tranzactii-mesaje{border-bottom:1px solid #990000;}
+#mesagerie-mesaje{padding-top:30px; border:none;}
+.text2 ul{margin-top:0px;} 
+.text2 ul li span {color:#b5251d;}
+#lista-istoric li .suma.suma-data {width:14%;}
+#lista-istoric li .beneficiar.tranzactii-beneficiar {width:28%}
+#suma-color{color:#6f5f69 !important; font: 14px/20px MetaSerifBookRegular, Arial, Helvetica, sans-serif !important}
+.moneda.moneda-ron {font-size:10px !important}
+#lista-istoric li .suma.data-mesaje {color:#6f5f69 !important; font-size:14px !important; }
+.link-print.msg-print-ret {display:inline;}
+
+.cip-alex {display:none;}
+.contentMesaje {margin:0px -20px;border-top:2px dotted #fff;padding:0 20px;padding-top:40px;padding-bottom:40px;}
+.cipri-mesaj span {width:50%;display:inline-block;margin-right:-4px;vertical-align:top;color:rgb(111, 95, 105) !important;background:none !important;}
+
+.specialMesaj {margin-top:30px;}
+#lista-istoric div.links-istoric {clear:both;margin:0px -20px 40px -20px;border-top:2px dotted #fff;}
+.boxLinkMes {padding-left:50%;margin-left:-4px;}
+.links-istoric a {color:#b5251d;margin-right:20px;font-weight:bold;line-height:40px;letter-spacing: 0.05em;}
+.links-istoric a:hover {text-decoration:none;}
+
+@media (max-width:768px){
+	.cipri-mesaj span {display:initial;}
+	.boxLinkMes {padding-left:30px;}
+	#lista-istoric .suma, #lista-istoric .moneda, #lista-istoric .lista-istoric-tranzactii .data-istoric, #lista-istoric .lista-istoric-tranzactii .beneficiar, #lista-istoric .lista-istoric-tranzactii .detalii-istoric {padding:0px;}
+}
+
+
+/* ------------- Istoric -------------- */
 
 #lista-istoric li:before{display:none;}
 #lista-istoric li {
@@ -764,19 +803,32 @@ background-color:#f3f3f3;
 	min-height:40px;
 	margin-bottom:0px;
 	border-bottom:2px dotted #cac7cc;
-	font:14px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
+	font:14px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
 	position:relative;
 
 }
 #lista-istoric .cap-lista {background-color:#e1dee3;min-height:30px;border:none;}
-#lista-istoric .cap-lista div {font: 14px/30px MetaSerifBookRegular, Arial, Helvetica, sans-serif !important; color:#6f5f69 !important;margin:0px;padding-right:40px;}
-#lista-istoric .suma, #lista-istoric .beneficiar, #lista-istoric .detalii-istoric {display:inline-block; vertical-align: top;margin-right: -4px !important;}
-#lista-istoric li .suma {width:20%;color: #b5251d;font: 18px/40px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
+#lista-istoric .cap-lista div, #lista-istoric .cap-lista .detalii-istoric {font: 14px/36px MetaSerifBookRegular, Arial, Helvetica, sans-serif ; color:#6f5f69 ;margin:0px;padding-right:40px;}
+
+#lista-istoric .suma, 
+#lista-istoric .moneda, 
+#lista-istoric .data-istoric, 
+#lista-istoric .beneficiar, 
+#lista-istoric .detalii-istoric {display:inline-block; vertical-align: top;margin-right: -4px !important;padding:4px 0px 0px 0px;}
+
+#lista-istoric .suma, #lista-istoric .moneda, #lista-istoric .lista-istoric-tranzactii .data-istoric, #lista-istoric .lista-istoric-tranzactii .beneficiar, #lista-istoric .lista-istoric-tranzactii .detalii-istoric {padding:12px 0px 8px 0px;}
+#lista-istoric li .suma {width:20%;color: #ff0000;font: 18px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
+#lista-istoric li .moneda {width:100px;min-height:5px;font: 18px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;color: #ff0000;}
+#lista-istoric li .data-istoric {width:25%;}
 #lista-istoric li .beneficiar {width:60%;}
 #lista-istoric li.lista-mesaje .beneficiar {padding-bottom:50px;}
 #lista-istoric li .detalii-istoric {width:20%; color:#b5251d;}
 #lista-istoric li .detalii-istoric:hover {cursor:pointer;}
 #lista-istoric .activ {background-color:#ececec;}
+.box-detalii-istoric {display:none;border-top:2px dotted #fff;}
+.tabel-detaliu-istoric {width:100%;line-height: 20px;margin:20px 0px;}
+.tabel-detaliu-istoric tr td {width:50%;}
+.tabel-detaliu-istoric #platitor td, .tabel-detaliu-istoric #beneficiar td {padding-top:30px;}
 .istoric-minimize {display:none;}
 #lista-istoric .cap-lista div.print-istoric {height: 40px;border-top: 2px dotted #fff;margin:0px -20px;}
 .link-print {display: block;width: 20%;text-align: left;color:#b5251d;padding: 10px 0px 10px 80%;line-height: 20px;margin-left:20px;}
@@ -788,6 +840,8 @@ p.data-mesaj {color:#e3bdbb;}
 @media (max-width:1199px) {
 #lista-istoric li div {line-height:20px; }
 #lista-istoric li .suma {width:20%;}
+#lista-istoric li .moneda {width:35px;font-size:14px;}
+#lista-istoric li .data-istoric {width:110px;}
 #lista-istoric li .beneficiar {width:60%;}
 #lista-istoric li .detalii-istoric {width:20%;}
 .link-print {width:115px;}
@@ -796,24 +850,14 @@ p.data-mesaj {color:#e3bdbb;}
 @media (max-width:729px) {
 #lista-istoric li {padding:5px 5px; min-height:inherit;line-height:16px;}
 #lista-istoric li .suma {width:20%;font-size:14px; }
+#lista-istoric li .moneda {width:30px;font-size:14px;}
+#lista-istoric li .data-istoric {width:100px;}
 #lista-istoric li .beneficiar {width:55%;}
 #lista-istoric li .detalii-istoric {width:20%;}
 .istoric-minimize {display:block; position:absolute;color:#6f5f69 !important;top: 0;right: 0px;font-size: 20px;padding: 10px;cursor: pointer;}
 .print-istoric {display:none;}
+#lista-istoric .lista-istoric-tranzactii .suma, #lista-istoric .lista-istoric-tranzactii .moneda, #lista-istoric .lista-istoric-tranzactii .data-istoric, #lista-istoric .lista-istoric-tranzactii .beneficiar, #lista-istoric .lista-istoric-tranzactii .detalii-istoric {display:block;}
 }
-
-.titluri-cont2 {font: 24px/30px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;
-color: #4f4553;
-padding-bottom: 25px;}
-#lista-istoric .cap-lista.lista-mesaje {border:none; margin:0px; background-color:#fff;border-bottom: 2px dotted #d8d6d9;height: 40px;overflow:hidden;}
-#lista-istoric .cap-lista.lista-mesaje.active {background-color: #e1dee3;}
-.detalii_mesaje{}
-span .detalii-color{color:#b5251d;}
-.para_mesaje {float: left; width: 220px; color:#ffffff;}
-.caseta-tranzactii-mesaje{border-bottom:1px solid #990000;}
-#mesagerie-mesaje{padding-top:30px; border:none;}
-.text2 ul{margin-top:0px;}
-.text2 ul li span {color:#b5251d;}
 
 /* ------------- Footer --------------- */
 

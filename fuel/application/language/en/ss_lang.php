@@ -500,6 +500,7 @@ $lang['payments_sidenote_trans'] = 'A friendly and useful sidenote.<br />About t
 $lang['payments_sidenote_cash'] = 'Choose one of our payment options.';
 $lang['payments_sidenote_exch'] = 'Foreign exchange information.';
 $lang['payments_sidenote_iban'] = 'Write down the IBAN of the receiver account.';
+$lang['payments_sidenote_city'] = 'Please select another payment method if the city is not available.';
 $lang['payments_sidenote_ben'] = 'Fill in the data for the receiver.';
 
 $lang['payments_pay'] = 'transfer';
@@ -519,6 +520,8 @@ $lang['payments_address'] = 'address';
 $lang['payments_iban'] = 'iban';
 $lang['payments_city'] = 'city';
 $lang['payments_f_exch'] = 'foreign exchange';
+$lang['payments_agree_exch'] = 'I agree with foreign exchange';
+$lang['payments_exch_recipient'] = 'The recipient receives';
 
 $lang['payments_pick'] = 'choose';
 
@@ -563,3 +566,63 @@ $lang['invoices_cmd'] = 'PAY';
 $lang['subscribe_title'] = 'Subscribe to our newsletter';
 $lang['subscribe_exists'] = 'The provided e-mail is already subscribed.';
 $lang['subscribe_success'] = 'Thank you!';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_messages
+|--------------------------------------------------------------------------
+|
+*/
+$lang['om_title'] = 'Messages';
+$lang['om_date'] = 'Date';
+$lang['om_message'] = 'Message';
+$lang['om_details'] = 'Details';
+$lang['om_close_details'] = 'Close details';
+$lang['om_print'] = 'Print';
+$lang['om_message_box'] = 'Messages';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_history_invoices
+|--------------------------------------------------------------------------
+|
+*/
+$lang['ohi_title'] = 'Invoices history';
+$lang['ohi_amount'] = 'Amount';
+$lang['ohi_date'] = 'Date';
+$lang['ohi_supplier'] = 'Supplier';
+$lang['ohi_details'] = 'Details';
+$lang['ohi_close_details'] = 'Close details';
+$lang['ohi_payment_type'] = 'Payment method';
+$lang['ohi_currency'] = 'Currency';
+$lang['ohi_payer'] = 'Payer';
+$lang['ohi_supplier_details'] = 'Supplier details';
+$lang['ohi_print'] = 'PRINT';
+$lang['ohi_messages'] = 'MESSAGES';
+$lang['ohi_recent_invoices'] = 'Recent invoices';
+
+/*
+|--------------------------------------------------------------------------
+| etichete online_history_payments
+|--------------------------------------------------------------------------
+|
+*/
+$lang['ohp_title'] = 'Transfer history';
+$lang['ohp_amount'] = 'Amount';
+$lang['ohp_date'] = 'Date';
+$lang['ohp_recipient'] = 'Recipient';
+$lang['ohp_details'] = 'Details';
+$lang['ohp_close_details'] = 'Close details';
+$lang['ohp_payment_type'] = 'Payment method';
+$lang['ohp_currency'] = 'Currency';
+$lang['ohp_payment_method'] = 'Payed from';
+$lang['ohp_currency_out'] = 'Recipient currency';
+$lang['ohp_amount_cv'] = 'Foreign exchange';
+$lang['ohp_payer'] = 'Payer';
+$lang['ohp_print'] = 'PRINT';
+$lang['ohp_messages'] = 'MESSAGES';
+$lang['ohp_return'] = 'RETURN';
+$lang['ohp_correction'] = 'CORRECTION';
+$lang['ohp_recent_payments'] = 'Recent transfers';
+
+$lang['test111'] = 'Recipient IBAN.';
