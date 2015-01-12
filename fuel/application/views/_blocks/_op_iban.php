@@ -1,10 +1,11 @@
 <?php 
 	$this->load->helper('form');
+	$this->lang->load('ss', $lang);
 ?>
 
 <div class="input-box ">
-	<div class="explica-cont">Va rugam sa introduceti contul IBAN al beneficiarului.</div>
-	<div class="agent-lable">iban</div>
+	<div class="explica-cont"><?php echo lang('payments_sidenote_iban');?></div>
+	<div class="agent-lable"><?php echo lang('payments_iban');?></div>
 	<div name="test">
 		<input style="width:15%;" class="agent-input first_iban<?php echo (form_error('iban1')) ? ' err' : ''; ?>" type="text" name="iban1" id="iban1" value="<?php echo set_value('iban1'); ?>">
 		<input style="width:15%;" class="agent-input second_iban<?php echo (form_error('iban2')) ? ' err' : ''; ?>" type="text" name="iban2" id="iban2" value="<?php echo set_value('iban2'); ?>">

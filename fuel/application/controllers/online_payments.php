@@ -295,7 +295,7 @@
 			echo $str;
 		}
 		
-		private function get_custom_fields($payment_method, $currency, $amount){
+		private function get_custom_fields($payment_method, $currency, $amount, $lang = 'ro'){
 			$output = '';
 			
 			switch(strtolower($payment_method)){
@@ -305,7 +305,7 @@
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
 					$vars['cv'] = $rate->value;
-					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE), TRUE);
+					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE, 'lang' => $lang), TRUE);
 				}
 				break;
 				case '4':
@@ -314,24 +314,24 @@
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
 					$vars['cv'] = $rate->value;
-					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE), TRUE);
+					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE, 'lang' => $lang), TRUE);
 				}
 				$vars['cities'] = $this->ss_cities_model->options_list();
-				$output .= $this->load->view('_blocks/_op_cities', array('cities' => $vars['cities']), TRUE);
+				$output .= $this->load->view('_blocks/_op_cities', array('cities' => $vars['cities'], 'lang' => $lang), TRUE);
 				break;
 				case '6':
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
 					$vars['cv'] = $rate->value;
-					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => FALSE), TRUE);
+					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => FALSE, 'lang' => $lang), TRUE);
 				}
-				$output .= $this->load->view('_blocks/_op_iban', null, TRUE);
+				$output .= $this->load->view('_blocks/_op_iban', array('lang' => $lang), TRUE);
 				break;
 				case '7':
-				$output = $this->load->view('_blocks/_op_iban', null, TRUE);
+				$output = $this->load->view('_blocks/_op_iban', array('lang' => $lang), TRUE);
 				break;
 				case '8':
-				$output = $this->load->view('_blocks/_op_iban', null, TRUE);
+				$output = $this->load->view('_blocks/_op_iban', array('lang' => $lang), TRUE);
 				break;
 				default:
 			}
@@ -344,8 +344,9 @@
 			$payment_method = $_GET['payment_method'];
 			$currency = $_GET['currency'];
 			$amount = $_GET['amount'];
+			$lang = $_GET['lang'];
 			
-			echo $this->get_custom_fields($payment_method, $currency, $amount);
+			echo $this->get_custom_fields($payment_method, $currency, $amount, $lang);
 		}
 		
 		public function update_total(){

@@ -1,12 +1,13 @@
 <?php 
 	$this->load->helper('form');
+	$this->lang->load('ss', $lang);
 ?>
 
 <div class="input-box">
-	<div class="explica-cont">In cazul in care localitatea cautata nu este disponibila, va rugam sa selectati o alta modalitate de plata</div>
-	<div class="agent-lable">Localitati disponibile</div>
+	<div class="explica-cont"><?php echo lang('payments_sidenote_city');?></div>
+	<div class="agent-lable"><?php echo lang('payments_city');?></div>
 	<select id="cities" name="cities" class = "<?php echo (form_error('cities')) ? ' err' : ''; ?>">
-			<option value="">alege</option>
+			<option value=""><?php echo lang('payments_pick');?></option>
 			<?php foreach($cities as $key => $value):?>
 			<option value="<?php echo $key;?>" <?php echo set_select('cities', $key); ?> ><?php echo $value;?></option>
 			<?php endforeach?>
