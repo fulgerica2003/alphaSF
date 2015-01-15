@@ -118,20 +118,24 @@
 		}
 		
 		private function process_status($data, $status, $ipn){
+			// TODO aici tb testat $data['DESC'] sa vad dc e factura sau plata ca sa trimit mesajele corecte
+			
 			if($status === $this->status_succ){
+				$msg_codes = get_message_codes('pay_card_ok');
 				log_ref(
 					$data['DESC'],
-					sprintf($this->lang->line('calc_msg005'), $data['DESC']),
+					sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']),
 					array(
-						'sb' => sprintf($this->lang->line('calc_eml003_sb'), $data['DESC']),
-						'cont' => sprintf($this->lang->line('calc_eml003_cont'), $data['DESC']),
+						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $data['DESC']),
+						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $data['DESC']),
 						)
 				);
 				return $ipn == true ? '1' : 'ok';
 			}else{
+				$msg_codes = get_message_codes('pay_card_fail');
 				log_ref(
 					$data['DESC'],
-					sprintf($this->lang->line('calc_msg006'), $data['DESC']),
+					sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']),
 					null
 				);
 				return 'not ok';
