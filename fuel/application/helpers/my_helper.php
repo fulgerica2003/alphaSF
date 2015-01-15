@@ -6,10 +6,12 @@
 		'init' => 1,   // in curs de procesare
 		'pay'  => 50,  // in curs de plata
 		'err'  => 55,  // eroare plata
-		'corr' => 60,  // corectie
+		'wait' => 57,  // retur/corectie
+		'corr' => 60,  // corectata in curs de procesare
 		'ref'  => 80,  // in curs de retur
 		'rfd'  => 90,  // returnata
 		'pyd'  => 100, // platita
+		'can'  => 110, // anulata
 		);
 		return $status;
 	}
@@ -19,10 +21,12 @@
 		1 	=> 'in curs de procesare', 
 		50  => 'in curs de plata',
 		55  => 'eroare plata',
-		60 	=> 'corectie',
+		57  => 'astept retur/corectie',
+		60 	=> 'corectata in curs de procesare',
 		80  => 'in curs de retur',
 		90  => 'returnata',
 		100 => 'platita',
+		110 => 'anulata',
 		);
 		return $status;
 	}
@@ -34,22 +38,53 @@
 	
 	function get_status_label($status){
 		switch ($status){
-			case 1: return 'in curs de procesare';
+			case 1: return 'init';
 			break;
-			case 50: return 'in curs de plata';
+			case 50: return 'pay';
 			break;
-			case 55: return 'eroare plata';
+			case 55: return 'err';
 			break;
-			case 60: return 'corectie';
+			case 57: return 'wait';
 			break;
-			case 80: return 'in curs de retur';
+			case 60: return 'corr';
 			break;
-			case 90: return 'returnata';
+			case 80: return 'ref';
 			break;
-			case 100: return 'platita';
+			case 90: return 'rfd';
+			break;
+			case 100: return 'pyd';
+			break;
+			case 110: return 'can';
 			break;
 			default: return 'N/A';
 		}
+	}
+	
+	function get_message_codes($operation){
+		$msg_codes = array(
+			'pay_pin' => array('msg009', 'eml005pin'),
+			'pay_tran' => array('msg010', 'eml006'),
+			'pay_benef' => array('msg011', 'eml007'),
+			'pay_recom' => array('msg012', 'eml008'),
+			'pay_retur' => array('msg014', 'eml010'),
+			'pay_ok' => array('msg013', 'eml009'),
+			'pay_cancel' => array('msgcancel', 'emlcancel'),
+			'pay_cont' => array('msg004', 'eml002'),
+			'pay_card_ok' => array('msg005', 'eml003'),
+			'pay_card_fail' => array('msg006', ''),
+			
+			'inv_pin' => array('msg111', 'eml111'),
+			'inv_err' => array('msg020', 'eml013'),
+			'inv_ok' => array('msg013', 'eml009'),
+			'inv_cancel' => array('msg111', 'eml111'),
+			'inv_cont' => array('msg016', 'eml011'),
+			'inv_card_ok' => array('msg017', 'eml012'),
+			'inv_card_fail' => array('msg018', ''),
+			
+
+		);
+		
+		return $msg_codes[$operation];
 	}
 	
 	function get_payment_types(){
@@ -109,6 +144,61 @@
 			));
 		}
 		
+	}
+	
+	function trigger_event($event, $unid, $user = null, $additional_data = null){
+		$msg_codes = get_message_codes($event);
+		
+		$CI =& get_instance();
+		
+		$CI->load->model('ss_payments_model');
+		$CI->load->model('ss_invoices_model');
+		$CI->load->model('ss_messages_model');
+		
+		$site_vars = $CI->fuel->sitevars->get();
+		
+		$message['unid'] = $unid;
+		
+		if (substr($unid, 1, 1) === 'S'){
+			// payment
+			$message['tx_type'] = get_tx_type('pay');
+			$results = $CI->ss_payments_model->payment_by_unid($unid);
+			}else{
+			// invoice
+			$message['tx_type'] = get_tx_type('inv');
+			$results = $CI->ss_invoices_model->payment_by_unid($unid);
+		}
+		
+		$tx = $results->result();
+		
+		$message['id_user'] = $tx[0]->inv_id_user;
+		$message['id_tx'] = $tx[0]->inv_id;
+		
+		$CI->lang->load('ss', $tx[0]->u_lang);
+		$msg = sprintf($CI->lang->line('calc_' . $msg_codes[0]), $unid);
+		
+		if (strlen($msg_codes[1]) > 0){
+			$email = array(
+						'sb' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
+						'cont' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
+						);
+		}else{
+			$email = null;
+		}
+		
+		$message['message'] = $msg;
+		if ($msg != null){
+			$CI->ss_messages_model->insert($message);
+		}
+		
+		if ($email != null){
+			send_tx_email(array('unid' => $message['unid'],
+			'receiver' => $tx[0]->u_email,
+			'sender' => $site_vars['from_email'],
+			'subject' => $email['sb'],
+			'message' => $email['cont'],
+			));
+		}
 	}
 	
 	
@@ -222,13 +312,17 @@
 	}
 	
 	function save_csv($name, $content){
-		$fp = fopen($name . '.csv', 'w');
+		$outputname = 'output/'.$name . '.csv';
+		
+		$fp = fopen($outputname, 'w');
 		
 		foreach ($content as $fields) {
 			fputcsv($fp, $fields, '|');
 		}
 		
 		fclose($fp);
+		
+		return $outputname;
 	}
 	
 	function get_time(){
@@ -307,6 +401,29 @@
 		// return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
 		// pentru teste folosesc varianta simplificata
 		return "/^.{" . $min_length . "}.*$/";
+	}
+	
+	function get_language_options(){
+		return array('ro' => 'RO', 'en' => 'EN', 
+		//'it' => 'IT', 'sp' => 'SP'
+		);
+	}
+	
+	function get_language_name($lang){
+		switch($lang){
+			case 'ro':
+				return 'romana';
+				break;
+			case 'en':
+				return 'engleza';
+				break;
+			case 'it':
+				return 'italiana';
+				break;
+			case 'sp':
+				return 'spaniola';
+				break;
+		}
 	}
 	
 	
