@@ -1,3 +1,7 @@
+<?php
+	$this->load->view('_blocks/_modal_corectie_tranzactie');
+	$this->load->view('_blocks/_modal_retur_tranzactie');
+?>
 <div id="wrapper">
 	<div class="col-lg-9 col-sm-12">
 		<div class="caseta page-text text2">
@@ -11,7 +15,7 @@
 					<div class="beneficiar tranzactii-beneficiar"><?php echo lang('ohp_recipient');?></div>
 					<div class="detalii-istoric"><?php echo lang('ohp_details');?></div>
 				</li>
-							<?php foreach ($vars['payments'] as $payment):?>
+				<?php foreach ($vars['payments'] as $payment):?>
 				<li class="lista-istoric-tranzactii">
 					<div class="suma suma-data"><?php echo $payment->amount_in; ?></div>
 					<div class="moneda"><?php echo (strtolower($payment->currency_in) == 'ron' ? 'RON' : (strtolower($payment->currency_in) == 'eur' ? '&#8364;' : 'N/A'))?></div>
@@ -29,21 +33,20 @@
 							<div class="cipri-mesaj"><span><?php echo lang('ohp_amount_cv');?> </span><span><?php echo $payment->amount_out; ?></span></div>
 							<div class="cipri-mesaj specialMesaj"><span><?php echo lang('ohp_payer');?> </span><span><?php echo $payment->cl_prenume . ' ' . $payment->cl_nume; ?></span></div>
 							<div class="cipri-mesaj specialMesaj"> <span><?php echo lang('ohp_recipient');?> </span><span><?php echo $payment->ben_name . ' ' . $payment->ben_surname; ?><br /><?php echo $payment->ben_email; ?><br /><br /><?php echo $payment->ben_phone; ?><br /><br /><?php echo $payment->ben_address; ?><br /><br /><?php echo $payment->ben_city; ?></span></div>
+							<div class="cipri-mesaj specialMesaj"><span><?php echo lang('ohp_status');?> </span><span><?php echo lang('ohp_status_' . get_status_label($payment->status)); ?></span></div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="links-istoric">
-								<div class="boxLinkMes">
+							<div class="boxLinkMes">
+								<?php if ($payment->status == get_status('wait')):?>
+									<a id = "corectie_link" href="#" data-toggle="modal" data-target="#corectie_tranzactie" data-id = "<?php echo $payment->unid; ?>"><?php echo lang('ohp_correction');?></a>
+									<a id = "retur_link" href="#" data-toggle="modal" data-target="#retur_tranzactie" data-id = "<?php echo $payment->unid; ?>"><?php echo lang('ohp_return');?></a>
+								<?php endif?>
 								<a href="online_messages/display/<?php echo urlencode($payment->unid); ?>"><?php echo lang('ohp_messages');?></a>
 								<a href="#" onclick="window.print();return false;"><?php echo lang('ohp_print');?></a>
-								<a href="#" ><?php echo lang('ohp_return');?></a>
-								<a href="#" ><?php echo lang('ohp_correction');?></a>
-								</div>
 							</div>
+						</div>
 					</div>
-					
-					
-	
-					
 				</li>
 				<?php endforeach;?>
 			</ul>
@@ -61,12 +64,12 @@
 			<ul class="caseta-tranzactii caseta-tranzactii-mesaje">
 				<?php foreach ($vars['recent_payments'] as $recent_payment):?>
 				<li>
-					<div ><?php echo $recent_payment->amount_in . $recent_payment->currency_in; ?></div>
-					<p class="para_mesaje"><?php echo $recent_payment->ben_name . ' ' . $recent_payment->ben_surname; ?></p>
-					<p class="clearfix"></p>
-				</li>
-				<?php endforeach;?>
-				
+			<div ><?php echo $recent_payment->amount_in . $recent_payment->currency_in; ?></div>
+			<p class="para_mesaje"><?php echo $recent_payment->ben_name . ' ' . $recent_payment->ben_surname; ?></p>
+			<p class="clearfix"></p>
+			</li>
+			<?php endforeach;?>
+			
 			</ul>	
 			<div class="caseta-titlu" id="mesagerie-mesaje"><?php echo lang('ohp_recent_payments');?></div>	
 		</div>

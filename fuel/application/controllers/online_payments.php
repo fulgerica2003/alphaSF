@@ -3,6 +3,7 @@
 		
 		private $user_email;
 		private $user_id;
+		private $user_lang = 'en';
 		
 		private $exchange_rate_eur;
 		
@@ -24,15 +25,16 @@
 			$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
 			$this->exchange_rate_eur = $eur->value;
 			
-			$this->lang->load('ss');
-			
 			if (!$this->ion_auth->logged_in()){
-				//redirect('online_payments/?showLogin=');
+				// redirect-ul se face in _variables/online_payments.php, teoretic aici nici nu ar trebui sa ajunga
 			}else{
 				$user = $this->ion_auth->user()->row();
 				$this->user_id = $user->id;
 				$this->user_email = $user->email;
+				$this->user_lang = $user->default_language;
 			}
+			
+			$this->lang->load('ss', $this->user_lang);
 			
 		}
 		
@@ -166,7 +168,22 @@
 					$payment_card_details['user_id'] = $this->user_id;
 					$payment_form = get_payment_form($payment_card_details);
 					echo $payment_form;
+				}else if (strtolower($payment_details['id_payment_type']) === 'cont'){
+					$msg_codes = get_message_codes('pay_cont');
+			
+					log_ref(
+					$unid,
+					sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid),
+					array(
+						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
+						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
+						)
+				);
 				}
+				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
+				$vars['link'] = 'online_payments';
+				$vars['text'] = 'pay';
+				$this->fuel->pages->render('online_thanks', $vars);
 			}else{
 				redirect('online_payments');
 			}
@@ -231,7 +248,7 @@
 			$this->ss_payments_model->save_payment($payment_details);
 			
 			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
-			echo 'payment '.$payment_details['unid']. ' successfully added';
+			/*echo 'payment '.$payment_details['unid']. ' successfully added';
 			
 			$sitevars = $this->fuel->sitevars->get();
 			
@@ -241,15 +258,13 @@
 			// TODO $this->lang->line incarca in acest moment din language/english
 			'subject' => $this->lang->line('fact_eml011_sb'),
 			'message' => $this->lang->line('fact_eml011_cont'),
-			));
+			));*/
 			
 			return $payment_details['unid'];
 		}
 		
 		private function get_payment_details(){
 			$unid = uniqid('#S');
-			
-			echo $unid;
 			
 			$values['unid'] = $unid;
 			$values['id_user'] = $this->user_id;
@@ -352,6 +367,24 @@
 		public function update_total(){
 			
 			echo compute_fee($_GET);
+		}
+		
+		/*
+			pentru detalii privind fluxul de plata, vezi backend.php
+		*/
+		
+		public function refund(){
+			// utilizatorul a fost de acord cu returul si trimit msg014 si eml010
+			// daca a fost de acord cu returul, ce status ii pun: returnata(6) sau ii las in curs de retur(5) si astept sa o actualizeze backend?
+			print_r($_POST);
+			die;
+		}
+		
+		public function correction(){
+			// utilizatorul a fost de acord cu corectia
+			// status devine 2, in curs de plata
+			print_r($_POST);
+			die;
 		}
 		
 	}

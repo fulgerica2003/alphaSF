@@ -45,13 +45,9 @@
 			
 			$this->pagination->initialize($config);
 			
-			// $vars['payments'] = $this->ss_payments_model->find_all_array(array('id_user' => $this->user_id), 'date_added desc', $config['per_page'], ($page - 1) * $config['per_page']);
-			
 			$vars['payments'] = $this->ss_payments_model->get_payments(array('id_user' => $this->user_id), false, 'date_added desc', $config['per_page'], ($page - 1) * $config['per_page'])->result();
 			
-			// $vars['recent_payments'] = $this->ss_payments_model->find_all_array(array('id_user' => $this->user_id), 'date_added desc', 5);
-			
-			$vars['recent_payments'] = $this->ss_payments_model->get_payments(array('id_user' => $this->user_id), false, 'date_added desc', 5, 1)->result();
+			$vars['recent_payments'] = $this->ss_payments_model->get_payments(array('id_user' => $this->user_id), false, 'date_added desc', 5, 0)->result();
 			
 			$vars['pagination'] = $this->pagination->create_links();
 			
