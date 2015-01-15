@@ -1,10 +1,39 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 	class Backend extends CI_Controller
-	{
-		public $main_form;
-		
-		//private $user_email = 'a@b.c';
-		//private $user_id = '8';
+	{		
+		/* Detaliere fluxuri, cf discutie telefonica Adrian Marinescu, 20150113 si 20150114
+		Am folosit urmatoarea codificare pentru stari:
+			1- in curs de procesare
+			2- in curs de plata
+			3- eroare plata
+			4- corectie
+			5- in curs de retur
+			6- returnata
+			7- platita
+			8- anulata
+			
+			OBS: - codificarea de mai sus a fost pentru simplitatea discutiei; codurile utilizate de aplicatie sunt cele din my_helper.status().
+				- mesajele si email-urile care se trimit utilizatorului sunt cele din documentul texte_fluxuri_frontend_smith.com.ro.pdf.
+			
+			Dupa confirmarea datelor din formular, tranzactia e salvata cu starea 1.
+				Daca utilizatorul a selectat plata din cont, dau mesajele aferente
+				Daca utilizatorul a selectat plata cu cardul si aceasta e ok, dau mesajele aferente
+				Daca utilizatorul a selectat plata cu cardul si aceasta nu e ok, dau mesajele aferente si pun status 8, final.
+			
+			In acest moment, am tranzactii cu plata cont si plata card ok cu starea 1. Ele sunt cerute de SS cu gettran(new). In urma procesarii, primesc raspunsuri:
+				pentru platile ok se apeleaza uptran(pin), setez pin, trimit mesaje si status 2
+				pentru diferentele de suma se apeleaza uptran(tran), trimit mesajele aferente si status 2; aceste mesaje merg in continuare spre plata
+				pentru date eronate se apeleaza uptran(benef), trimit mesajele aferente si se trece in status 4, vezi continuarea *.
+				pentru eroare de plata se apeleaza uptran(recom), trimit mesajele aferente si status 3 final
+			Pentru platile care s-au desfasurat fara probleme se apeleaza uptran(ok), se dau mesajele aferente si status 7 final.
+			Pentru platile care stau mai mult de x zile in starea 2, se apeleaza uptran(cancel) si se trec in starea 8 final.
+			
+			* Din starea corectie, utilizatorul poate cere corectie sau retur.
+			Daca a fost de acord cu corectia (online_payments/correction), status corectata in curs de procesare. Tranzactia e disponibila cu gettran(acc). Starea urmatoare posibila e 2.
+			Daca a solicitat retur ((online_payments/refund)), se dau mesajele aferente, status 5 si tranzactia va fi disponibila cu gettran(ret). In urma procesarilor, actualizarea se face cu uptran(retur), se dau mesajele aferente si status 6 final.
+			
+			Analog si pentru facturi (se apeleaza getfact, respectiv upfact), doar ca schema e simplificata. Status-urile posibile sunt 1,2,3,7,8.
+		*/
 		
 		function __construct(){
 			parent::__construct();
@@ -17,76 +46,20 @@
 			
 			$this->load->library('form_validation');
 			$this->load->library('session');
+			
+			$this->lang->load('ss');
+			$this->load->helper('language');
 		}
 		
-		/*public function invoice(){
-			//parametri form 
-			$this->load->library('form_builder', array(
-            'id'=>'addPayment',
-            'form_attrs' => array(
-			'method' => 'post',
-			'action' => '',
-            ),
-            'textarea_rows' => '5',
-            'textarea_cols' => '28',
-			));
-			
-			$this->main_form['fields']['unid'] = array('type' => 'text', 'label' => 'unid', 'value'=> '' );
-			$this->main_form['fields']['status'] = array('type' => 'select', 'label' => 'status', 'options' => status_backend_test(), 'value'=> '' );
-			
-			$this->form_builder->set_fields($this->main_form['fields']);
-			
-			$this->form_builder->submit_value = '<button name="update" type="submit" value="update">update</button>';
-			
-			echo $this->form_builder->render($this->main_form['fields']);
-			
-			$status = $this->input->post('status');
-			$unid = $this->input->post('unid');
-			
-			$values = array('status' => $status);
-			
-			$where['unid'] = $unid;
-			
-			$this->ss_invoices_model->update($values, $where);
-			
-			if ($status == get_status('err')){
-				
-				$results = $this->ss_invoices_model->invoice_by_unid($unid)->result();
-				if ((count($results)) >= 1 ){
-					$invoice = $results[0];
-					$user_id = $invoice->inv_id_user;
-					$id = $invoice->inv_id;
-					$email = $invoice->u_email;
-				}
-				
-				// salvez mesaj eroare
-				$message['unid'] = $unid;
-				$message['id_user'] = $user_id;
-				$message['id_tx'] = $id;
-				$message['tx_type'] = get_tx_type('inv');
-				$message['message'] = 'invoice '.$message['unid']. ' err';
-				$this->ss_messages_model->insert($message);
-				
-				// trimit email
-				send_tx_email(array('unid' => $message['unid'],
-				// TODO $this->lang->line incarca in acest moment din language/english					
-				'receiver' => $email,
-				'sender' => $this->fuel->sitevars->get()['from_email'],
-				// TODO $this->lang->line incarca in acest moment din language/english
-				'subject' => $this->lang->line('fact_eml011_sb'),
-				'message' => $this->lang->line('fact_eml011_cont'),
-				));
-			}
-			
-		}*/
-		
 		public function upcurs(){
+			$msg = 'ok';
+		
 			if ($this->input->post('type')){
 				$values['type'] = strtoupper($this->input->post('type'));
 			}
 			
 			if ($this->input->post('date')){
-				$values['date'] =  date('Y-m-d', strtotime($this->input->post('date')));
+				$values['apply_date'] =  date('Y-m-d', strtotime($this->input->post('date')));
 			}
 			
 			if ($this->input->post('value')){
@@ -99,32 +72,44 @@
 			);
 			
 			if ( array_key_exists('type', $values)
-			&& array_key_exists('date', $values)
+			&& array_key_exists('apply_date', $values)
 			&& array_key_exists('value', $values)
 			){
 				
 				$where['type'] = $values['type'];
-				$where['apply_date'] = $values['date'];
+				$where['apply_date'] = $values['apply_date'];
 				
 				if ($this->ss_exchange_rate_model->record_count($where) != 0){
 					$this->ss_exchange_rate_model->update($values, $where);
 					if ($this->ss_exchange_rate_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_exchange_rate_model->db->_error_message()));
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_exchange_rate_model->db->_error_message()));
 						}else{
-						array_push($list, array('ok', 'update ok'));
+						$msg = 'ok';
+						array_push($list, array($msg, 'update ok'));
 					}
 					}else{
 					$this->ss_exchange_rate_model->insert($values);
 					if ($this->ss_exchange_rate_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_exchange_rate_model->db->_error_message()));
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_exchange_rate_model->db->_error_message()));
 						}else{
-						array_push($list, array('ok', 'insert ok'));
+						$msg = 'ok';
+						array_push($list, array($msg, 'insert ok'));
 					}
 				}
 				}else{
-				array_push($list, array('err', 'campuri obligatorii: type, date, value'));
+				$msg = 'err';
+				array_push($list, array($msg, 'campuri obligatorii: type, date, value'));
 			}
-			save_csv(get_time() . 'upcurs', $list);
+			
+			$filename = get_time() . 'upcurs';
+			
+			$filename = save_csv($filename, $list);
+			
+			$output_result = array('filename' => $filename, 'msg' => $msg);
+			
+			echo json_encode($output_result);
 			
 		}
 		
@@ -132,6 +117,7 @@
 			$type = strtolower($this->input->post('type'));
 			$reference = $this->input->post('referinta');
 			$list = array();
+			$result_count = 0;
 			
 			$header = array(
 			'referinta',
@@ -203,10 +189,12 @@
 						$values['payment_method'] = get_label($values['payment_method'], 'ro');
 						array_push($list, array_values($values));
 					}
+					$result_count = count($txs);
 				}
 				
 				}else{
 				$tx = $this->ss_payments_model->payment(array('unid' => $reference))->result();
+				$result_count = count($tx);
 				if ($tx == null || empty($tx) || count($tx) == 0){
 					array_push($list, array('no payment found, ref: ' . $reference));
 					}else{
@@ -214,10 +202,23 @@
 					$values = (array)$tx[0];
 					$values['payment_method'] = get_label($values['payment_method'], 'ro');
 					array_push($list, array_values($values));
+					$result_count = 1;
 				}
 			}
 			
-			save_csv(get_time() . 'gettran', $list);
+			$filename = get_time() . 'gettran';
+			
+			if ($result_count > 0){
+				$abs_filename = save_csv($filename, $list);
+			
+				$output_result = array('filename' => $abs_filename, 'count' => $result_count);
+			
+				echo json_encode($output_result);
+			}else{
+				$output_result = array('count' => $result_count);
+			
+				echo json_encode($output_result);
+			}
 			
 		}
 		
@@ -225,6 +226,7 @@
 			$type = strtolower($this->input->post('type'));
 			$reference = $this->input->post('referinta');
 			$list = array();
+			$result_count = 0;
 			
 			$custom = array(
 			'spl_field_num_1',
@@ -277,9 +279,7 @@
 					case 'all':{
 						$status = '( ' . 
 						get_status('init') . ', ' .
-						get_status('pay') . ', ' .
-						get_status('corr') . ', ' .
-						get_status('ref') .
+						get_status('pay') .
 						')'
 						;
 						break;
@@ -306,6 +306,7 @@
 						}
 						array_push($list, array_values($values));
 					}
+					$result_count = count($txs);
 				}
 				}else{
 				$tx = $this->ss_invoices_model->get_invoices(array('ss_invoices.unid' => $reference), true)->result();
@@ -319,15 +320,30 @@
 						$values[$field_name] = get_label($values[$field_name], 'ro');
 					}
 					array_push($list, array_values($values));
+					$result_count = 1;
 				}
 				
 			}
 			
-			save_csv(get_time() . 'getfact', $list);
+			$filename = get_time() . 'getfact';
+			
+			if ($result_count > 0){
+				$abs_filename = save_csv($filename, $list);
+			
+				$output_result = array('filename' => $abs_filename, 'count' => $result_count);
+			
+				echo json_encode($output_result);
+			}else{
+				$output_result = array('count' => $result_count);
+			
+				echo json_encode($output_result);
+			}
 			
 		}
 		
 		public function uptran(){
+			$msg = 'ok';
+		
 			$type = strtolower($this->input->post('type'));
 			
 			// header pt jurnalizarea operatiunii in csv
@@ -345,17 +361,28 @@
 			if (!empty($reference) && strlen($reference) > 0){
 				switch ($type) {
 					case 'pin':{
+						// totul a fost ok, am alocat pin, statusul e in curs de plata, trimit msg009 si eml005
 						if ($this->input->post('pin')) $received['pin'] = $this->input->post('pin');
+						
+						$received['status'] = get_status('pay');
+						
 						break;
 					}
 					case 'tran':{
+						// am diferenta de suma, status in curs de plata si trimit msg010 si eml006
+						
 						if ($this->input->post('amount_in')) $received['amount_in'] = $this->input->post('amount_in');
 						if ($this->input->post('amount_out')) $received['amount_out'] = $this->input->post('amount_out');
 						if ($this->input->post('moneda_out')) $received['currency_out'] = $this->input->post('moneda_out');
 						if ($this->input->post('rate')) $received['rate'] = $this->input->post('rate');
+						
+						$received['status'] = get_status('pay');
+						
 						break;
 					}
 					case 'benef':{
+						// datele nu sunt ok, status astept retur/corectie de la utilizator si trimit msg011 si eml007
+						
 						if ($this->input->post('bnf_nume')) $received['ben_name'] = $this->input->post('bnf_nume');
 						if ($this->input->post('bnf_prenume')) $received['ben_surname'] = $this->input->post('bnf_prenume');
 						if ($this->input->post('bnf_telefon')) $received['ben_phone'] = $this->input->post('bnf_telefon');
@@ -363,9 +390,14 @@
 						if ($this->input->post('bnf_iban')) $received['ben_iban'] = $this->input->post('bnf_iban');
 						if ($this->input->post('bnf_adresa')) $received['ben_address'] = $this->input->post('bnf_adresa');
 						if ($this->input->post('bnf_oras_id')) $received['id_ben_city'] = $this->input->post('bnf_oras_id');
+						
+						$received['status'] = get_status('wait');
+						
 						break;
 					}
 					case 'recom':{
+						// probleme la plata, status eroare de plata, trimit msg012 si eml008
+						
 						if ($this->input->post('payout')) $received['id_ben_payment_method'] = $this->input->post('payout');
 						if ($this->input->post('comision')) $received['fee'] = $this->input->post('comision');
 						if ($this->input->post('amount_out')) $received['amount_out'] = $this->input->post('amount_out');
@@ -379,10 +411,100 @@
 						if ($this->input->post('bnf_iban')) $received['ben_iban'] = $this->input->post('bnf_iban');
 						if ($this->input->post('bnf_adresa')) $received['ben_address'] = $this->input->post('bnf_adresa');
 						if ($this->input->post('bnf_oras_id')) $received['id_ben_city'] = $this->input->post('bnf_oras_id');
+						
+						$received['status'] = get_status('err');
+						
 						break;
 					}
 					case 'retur':{
-						$received['status'] = get_status('ref');
+						// pun status returnata si dau msg014 si eml010
+						$received['status'] = get_status('rfd');
+						break;
+					}
+					case 'ok':{
+						// pun status platita si dau msg013 si eml009
+						$received['status'] = get_status('pyd');
+						break;
+					}
+					case 'cancel':{
+						// pun status anulata si dau msg015 si eml011
+						$received['status'] = get_status('can');
+						break;
+					}
+					default: {
+					$msg = 'err';
+					array_push($list, array($msg, 'operatiune necunoscuta, type: ' . $type));
+					}
+				}
+				
+				if (count($received) > 0){
+					$where['unid'] = $reference;
+					$this->ss_payments_model->update($received, $where);
+					// trimit mesajele
+					//$this->send_messages('pay_' . $type, $reference);
+					trigger_event('pay_' . $type, $reference);
+					if ($this->ss_payments_model->db->_error_message()){
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_payments_model->db->_error_message(), $reference));
+						}else{
+						$msg = 'ok';
+						array_push($list, array($msg, 'update ok', $reference));
+					}
+				}
+				
+				}else{
+				$msg = 'err';
+				array_push($list, array($msg, 'referinta gresita: ' . $reference));
+			}
+			
+			$filename = get_time() . 'uptran';
+			
+			$filename = save_csv($filename, $list);
+			
+			$output_result = array('filename' => $filename, 'msg' => $msg);
+			
+			echo json_encode($output_result);
+		}
+		
+		public function upfact(){
+			$msg = 'ok';
+					
+			$type = strtolower($this->input->post('type'));
+			
+			// header pt jurnalizarea operatiunii in csv
+			$list = array (
+			array('message_type', 'message_value', 'reference')
+			);
+			$received = array();
+			
+			$reference = null;
+			
+			if ($this->input->post('referinta')){
+				$reference = $this->input->post('referinta');
+			}
+			
+			if (!empty($reference) && strlen($reference) > 0){
+				switch ($type) {
+					case 'pin':{
+						// totul a fost ok, merg mai departe cu plata, statusul e in curs de plata, trimit msg009 si eml005
+						
+						$received['status'] = get_status('pay');
+						
+						break;
+					}
+					case 'ok':{
+						// pun status platita si dau msg013 si eml009
+						$received['status'] = get_status('pyd');
+						break;
+					}
+					case 'cancel':{
+						// pun status anulata si dau mesaj de anulare (tb definite codurile)
+						$received['status'] = get_status('can');
+						break;
+					}
+					case 'err':{
+						// mentin status in curs de plata si dau msg020 si eml013
+						$received['status'] = get_status('pay');
 						break;
 					}
 					default: array_push($list, array('err', 'operatiune necunoscuta, type: ' . $type));
@@ -390,22 +512,34 @@
 				
 				if (count($received) > 0){
 					$where['unid'] = $reference;
-					$this->ss_payments_model->update($received, $where);
-					if ($this->ss_payments_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_payments_model->db->_error_message(), $reference));
+					$this->ss_invoices_model->update($received, $where);
+					$this->send_messages('inv_' . $type, $reference);
+					if ($this->ss_invoices_model->db->_error_message()){
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_invoices_model->db->_error_message(), $reference));
 						}else{
-						array_push($list, array('ok', 'update ok', $reference));
+						$msg = 'ok';
+						array_push($list, array($msg, 'update ok', $reference));
 					}
 				}
 				
 				}else{
-				array_push($list, array('err', 'referinta gresita: ' . $reference));
+				$msg = 'err';
+				array_push($list, array($msg, 'referinta gresita: ' . $reference));
 			}
 			
-			save_csv(get_time() . 'uptran', $list);
+			$filename = get_time() . 'upfact';
+			
+			$filename = save_csv($filename, $list);
+			
+			$output_result = array('filename' => $filename, 'msg' => $msg);
+			
+			echo json_encode($output_result);
 		}
 		
 		public function upfields(){
+			
+			$msg = 'ok';
 			
 			$type = strtolower($this->input->post('type'));
 			
@@ -487,9 +621,11 @@
 					$where['id'] = $id;
 					$this->ss_suppliers_model->update($values, $where);
 					if ($this->ss_suppliers_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_suppliers_model->db->_error_message(), $id));
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_suppliers_model->db->_error_message(), $id));
 						}else{
-						array_push($list, array('ok', 'update ok', $id));
+						$msg = 'ok';
+						array_push($list, array($msg, 'update ok', $id));
 					}
 					}else{
 					// new
@@ -500,22 +636,34 @@
 					){
 						$this->ss_suppliers_model->insert($values);
 						if ($this->ss_suppliers_model->db->_error_message()){
-							array_push($list, array('err', $this->ss_suppliers_model->db->_error_message(), 'new'));
+							$msg = 'err';
+							array_push($list, array($msg, $this->ss_suppliers_model->db->_error_message(), 'new'));
 							}else{
-							array_push($list, array('ok', 'insert ok', 'new'));
+							$msg = 'ok';
+							array_push($list, array($msg, 'insert ok', 'new'));
 						}
 						}else{
-						array_push($list, array('err', 'campuri obligatorii: name, iban, bank, id_cat'));
+						$msg = 'err';
+						array_push($list, array($msg, 'campuri obligatorii: name, iban, bank, id_cat'));
 					}
 				}
 				}else{
 				array_push($list, array('err', 'operatiune necunoscuta, type: ' . $type));
 			}
-			save_csv(get_time() . 'upfields', $list);
+			
+			$filename = get_time() . 'upfields';
+			
+			$filename = save_csv($filename, $list);
+			
+			$output_result = array('filename' => $filename, 'msg' => $msg);
+			
+			echo json_encode($output_result);
 			
 		}
 		
 		public function upcom(){
+			
+			$msg = 'ok';
 			
 			$type = strtolower($this->input->post('type'));
 			
@@ -626,23 +774,47 @@
 					$where['id'] = $id;
 					$this->ss_fees_model->update($values, $where);
 					if ($this->ss_fees_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_fees_model->db->_error_message(), $id));
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_fees_model->db->_error_message(), $id));
 						}else{
-						array_push($list, array('ok', 'update ok', $id));
+						$msg = 'ok';
+						array_push($list, array($msg, 'update ok', $id));
 					}
 					}else{
 					// new
 					$this->ss_fees_model->insert($values);
 					if ($this->ss_fees_model->db->_error_message()){
-						array_push($list, array('err', $this->ss_fees_model->db->_error_message(), 'new'));
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_fees_model->db->_error_message(), 'new'));
 						}else{
-						array_push($list, array('ok', 'insert ok', 'new'));
+						$msg = 'ok';
+						array_push($list, array($msg, 'insert ok', 'new'));
 					}
 				}
 				}else{
-				array_push($list, array('err', 'operatiune necunoscuta, type: ' . $type));
+				$msg = 'err';
+				array_push($list, array($msg, 'operatiune necunoscuta, type: ' . $type));
 			}
-			save_csv(get_time() . 'upcom', $list);
 			
+			$filename = get_time() . 'upcom';
+			
+			$filename = save_csv($filename, $list);
+			
+			$output_result = array('filename' => $filename, 'msg' => $msg);
+			
+			echo json_encode($output_result);
+		}
+		
+		private function send_messages($type, $reference){
+			$msg_codes = get_message_codes($type);
+			
+			log_ref(
+					$reference,
+					sprintf($this->lang->line('calc_' . $msg_codes[0]), $reference),
+					array(
+						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $reference),
+						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $reference),
+						)
+				);
 		}
 	}																							
