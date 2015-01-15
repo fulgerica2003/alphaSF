@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2015 at 12:51 PM
+-- Generation Time: Jan 15, 2015 at 04:08 PM
 -- Server version: 5.5.35-33.0
 -- PHP Version: 5.4.23
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `fuel_archives` (
   `version_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `archived_user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=634 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=641 ;
 
 --
 -- Dumping data for table `fuel_archives`
@@ -586,7 +586,14 @@ INSERT INTO `fuel_archives` (`id`, `ref_id`, `table_name`, `data`, `version`, `v
 (630, 83, 'fuel_navigation', '{"id":"83","location":"online_invoices","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Plata facturi","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-08 09:13:59', 1),
 (631, 82, 'fuel_navigation', '{"id":"82","location":"online_payments","group_id":"10","nav_key":"online_payments\\/?showLogin=op","label":"Transfer de bani","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 2, '2015-01-08 09:14:14', 1),
 (632, 84, 'fuel_navigation', '{"id":84,"location":"online_payments","group_id":"10","nav_key":"online_payments\\/?showLogin=op","label":"Money transfer","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 09:16:09', 1),
-(633, 85, 'fuel_navigation', '{"id":85,"location":"online_invoices","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Pay invoice","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 09:16:38', 1);
+(633, 85, 'fuel_navigation', '{"id":85,"location":"online_invoices","group_id":"10","nav_key":"online_invoices\\/?showLogin=oi","label":"Pay invoice","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 09:16:38', 1),
+(634, 86, 'fuel_navigation', '{"id":86,"location":"online_invoices","group_id":"9","nav_key":"online_invoices","label":"Plata facturi","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"ro","published":"yes"}', 1, '2015-01-08 20:09:49', 1),
+(635, 87, 'fuel_navigation', '{"id":87,"location":"online_invoices","group_id":"9","nav_key":"online_invoices","label":"Pay invoice","parent_id":"","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:12:07', 1),
+(636, 88, 'fuel_navigation', '{"id":88,"location":"online_payments","group_id":"9","nav_key":"online_payments","label":"Money transfer","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:12:37', 1),
+(637, 89, 'fuel_navigation', '{"id":89,"location":"online_profile","group_id":"9","nav_key":"online_profile","label":"Your profile","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:13:03', 1),
+(638, 90, 'fuel_navigation', '{"id":90,"location":"online_history_invoices","group_id":"9","nav_key":"online_history_invoices","label":"Invoice history","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:13:38', 1),
+(639, 91, 'fuel_navigation', '{"id":91,"location":"online_history_payments","group_id":"9","nav_key":"online_history_payments","label":"Transfer history","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:14:01', 1),
+(640, 92, 'fuel_navigation', '{"id":92,"location":"online_messages","group_id":"9","nav_key":"online_messages","label":"Messages","parent_id":"0","precedence":"0","attributes":"","selected":"","hidden":"no","language":"en","published":"yes"}', 1, '2015-01-08 20:14:30', 1);
 
 -- --------------------------------------------------------
 
@@ -638,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=895 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=924 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -1539,7 +1546,36 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (891, '2015-01-08 11:16:11', 1, 'Navigation item <em>Money transfer</em> edited', 'info'),
 (892, '2015-01-08 11:16:39', 1, 'Navigation item <em>Pay invoice</em> edited', 'info'),
 (893, '2015-01-08 12:50:33', 1, 'Successful login by ''admin'' from ::1', 'debug'),
-(894, '2015-01-08 12:50:42', 1, 'The cache has been cleared.', 'info');
+(894, '2015-01-08 12:50:42', 1, 'The cache has been cleared.', 'info'),
+(895, '2015-01-08 14:05:56', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(896, '2015-01-08 14:10:06', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(897, '2015-01-08 17:24:07', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(898, '2015-01-08 17:24:13', 1, 'The cache has been cleared.', 'info'),
+(899, '2015-01-08 22:08:42', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(900, '2015-01-08 22:09:49', 1, 'Navigation item <em>Plata facturi</em> edited', 'info'),
+(901, '2015-01-08 22:11:21', 1, '1 item for <em>navigation</em> deleted', 'info'),
+(902, '2015-01-08 22:12:08', 1, 'Navigation item <em>Pay invoice</em> edited', 'info'),
+(903, '2015-01-08 22:12:37', 1, 'Navigation item <em>Money transfer</em> edited', 'info'),
+(904, '2015-01-08 22:13:03', 1, 'Navigation item <em>Your profile</em> edited', 'info'),
+(905, '2015-01-08 22:13:39', 1, 'Navigation item <em>Invoice history</em> edited', 'info'),
+(906, '2015-01-08 22:14:02', 1, 'Navigation item <em>Transfer history</em> edited', 'info'),
+(907, '2015-01-08 22:14:31', 1, 'Navigation item <em>Messages</em> edited', 'info'),
+(908, '2015-01-11 16:54:51', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(909, '2015-01-11 16:55:06', 1, 'The cache has been cleared.', 'info'),
+(910, '2015-01-12 14:15:42', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(911, '2015-01-12 14:15:51', 1, 'The cache has been cleared.', 'info'),
+(912, '2015-01-12 14:57:01', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(913, '2015-01-12 14:59:36', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(914, '2015-01-12 15:00:04', 1, 'The cache has been cleared.', 'info'),
+(915, '2015-01-14 17:42:07', 0, 'Failed login by ''admin'' from ::1, login attempts:   1', 'debug'),
+(916, '2015-01-14 17:42:14', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(917, '2015-01-14 17:42:23', 1, 'The cache has been cleared.', 'info'),
+(918, '2015-01-14 17:43:50', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(919, '2015-01-14 17:45:05', 1, 'The cache has been cleared.', 'info'),
+(920, '2015-01-14 17:45:26', 1, 'The cache has been cleared.', 'info'),
+(921, '2015-01-15 16:05:43', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(922, '2015-01-15 16:05:50', 1, 'The cache has been cleared.', 'info'),
+(923, '2015-01-15 16:05:59', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -1562,7 +1598,7 @@ CREATE TABLE IF NOT EXISTS `fuel_navigation` (
   `published` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes' COMMENT 'Determines whether the item is displayed or not',
   PRIMARY KEY (`id`),
   UNIQUE KEY `group_id_nav_key_language` (`group_id`,`nav_key`,`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=93 ;
 
 --
 -- Dumping data for table `fuel_navigation`
@@ -1636,19 +1672,25 @@ INSERT INTO `fuel_navigation` (`id`, `location`, `group_id`, `nav_key`, `label`,
 (70, 'servicii/transfer-bani/ro-str/moneygram', 3, 'servicii/transfer-bani/ro-str/moneygram', 'Moneygram', 26, 0, '', '', 'no', 'ro', 'yes'),
 (71, 'servicii/transfer-bani/ro-str/moneygram', 3, 'servicii/transfer-bani/ro-str/moneygram', 'Moneygram', 21, 0, '', '', 'no', 'en', 'yes'),
 (72, 'online_payments', 9, 'online_payments', 'TRANSFER DE BANI', 0, 1, '', '', 'no', 'ro', 'yes'),
-(73, 'online_profile', 9, 'online_profile', 'CONTUL TAU', 0, 2, '', '', 'no', 'ro', 'yes'),
+(73, 'online_profile', 9, 'online_profile', 'CONTUL TAU', 0, 6, '', '', 'no', 'ro', 'yes'),
 (74, 'online_history_payments', 9, 'online_history_payments', 'istoric transferuri', 0, 3, '', '', 'no', 'ro', 'yes'),
-(75, 'online_messages', 9, 'online_messages', 'MESAJE', 0, 4, '', '', 'no', 'ro', 'yes'),
-(76, '/', 9, '/', 'Prima pagina', 0, 0, '', '', 'no', 'ro', 'yes'),
+(75, 'online_messages', 9, 'online_messages', 'MESAJE', 0, 5, '', '', 'no', 'ro', 'yes'),
 (77, 'servicii/transfer-bani/strainatate-romania', 3, 'servicii/transfer-bani/strainatate-romania', 'Străinătate - Rom&acirc;nia', 18, 3, '', '', 'no', 'ro', 'yes'),
 (78, 'servicii/transfer-bani/plata-la-domiciliu', 3, 'servicii/transfer-bani/plata-la-domiciliu', 'Plata la domiciliu', 18, 4, '', '', 'no', 'ro', 'yes'),
 (79, 'servicii/transfer-bani/strainatate-romania', 3, 'servicii/transfer-bani/strainatate-romania', 'Străinătate - Rom&acirc;nia', 18, 3, '', '', 'no', 'en', 'yes'),
 (80, 'servicii/transfer-bani/plata-la-domiciliu', 3, 'servicii/transfer-bani/plata-la-domiciliu', 'Plata la domiciliu', 18, 4, '', '', 'no', 'en', 'yes'),
-(81, 'online_history_invoices', 9, 'online_history_invoices', 'istoric facturi', 0, 3, '', '', 'no', 'ro', 'yes'),
+(81, 'online_history_invoices', 9, 'online_history_invoices', 'istoric facturi', 0, 4, '', '', 'no', 'ro', 'yes'),
 (82, 'online_payments', 10, 'online_payments/?showLogin=op', 'Transfer de bani', 0, 1, '', '', 'no', 'ro', 'yes'),
 (83, 'online_invoices', 10, 'online_invoices/?showLogin=oi', 'Plata facturi', 0, 2, '', '', 'no', 'ro', 'yes'),
 (84, 'online_payments', 10, 'online_payments/?showLogin=op', 'Money transfer', 0, 0, '', '', 'no', 'en', 'yes'),
-(85, 'online_invoices', 10, 'online_invoices/?showLogin=oi', 'Pay invoice', 0, 0, '', '', 'no', 'en', 'yes');
+(85, 'online_invoices', 10, 'online_invoices/?showLogin=oi', 'Pay invoice', 0, 0, '', '', 'no', 'en', 'yes'),
+(86, 'online_invoices', 9, 'online_invoices', 'Plata facturi', 0, 2, '', '', 'no', 'ro', 'yes'),
+(87, 'online_invoices', 9, 'online_invoices', 'Pay invoice', 0, 2, '', '', 'no', 'en', 'yes'),
+(88, 'online_payments', 9, 'online_payments', 'Money transfer', 0, 1, '', '', 'no', 'en', 'yes'),
+(89, 'online_profile', 9, 'online_profile', 'Your profile', 0, 6, '', '', 'no', 'en', 'yes'),
+(90, 'online_history_invoices', 9, 'online_history_invoices', 'Invoice history', 0, 4, '', '', 'no', 'en', 'yes'),
+(91, 'online_history_payments', 9, 'online_history_payments', 'Transfer history', 0, 3, '', '', 'no', 'en', 'yes'),
+(92, 'online_messages', 9, 'online_messages', 'Messages', 0, 5, '', '', 'no', 'en', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2140,7 +2182,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'd25141c35d60317ab0db88780324fcf6c2a5bf13', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'a5bcf17a7791dfdc30d48bd2df3a91ab', 'yes', 'yes');
+(1, 'admin', 'd8b94e6d8a4f30022fcafe12faa3405b8b956f80', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'e3b8dfc05ac7460bb983fe88ddee814e', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2175,14 +2217,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(26, '192.168.54.163', ' a.mocioi@gmail.com', 1420706851);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
@@ -2322,7 +2357,7 @@ CREATE TABLE IF NOT EXISTS `ss_exchange_rate` (
   `apply_date` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uc_day` (`type`,`apply_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `ss_exchange_rate`
@@ -2337,7 +2372,7 @@ INSERT INTO `ss_exchange_rate` (`id`, `type`, `value`, `apply_date`) VALUES
 (21, 'USD', '3.6590', '2014-12-29'),
 (22, 'EUR', '4.1234', '2014-12-29'),
 (23, 'EUR', '4.1234', '2014-12-15'),
-(24, 'EUR', '4.1235', '2014-12-16');
+(24, 'EUR', '4.5100', '2014-12-16');
 
 -- --------------------------------------------------------
 
@@ -2438,7 +2473,7 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
   `s5` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   `s6` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'camp custom in functie de furnizor',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
 
 --
 -- Dumping data for table `ss_invoices`
@@ -2446,11 +2481,14 @@ CREATE TABLE IF NOT EXISTS `ss_invoices` (
 
 INSERT INTO `ss_invoices` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_in`, `currency_in`, `amount_out`, `currency_out`, `rate`, `id_supplier_cat`, `id_supplier`, `fee`, `total`, `date_added`, `status`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`) VALUES
 (88, '#F546df0152a0fa', 8, 'card', '123.00', 'RON', '0.00', '', NULL, 1, 12, '1.23', '124.23', '2014-11-20 13:43:49', 0, 'asdf', NULL, NULL, NULL, NULL, NULL),
-(89, '#F546df0551aa8a', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:44:53', 1, 'cc 12345', '10-11-2015', NULL, 'ceva text', 'asdf', '10-11-2016'),
+(89, '#F546df0551aa8a', 8, 'card', '3234.00', 'EUR', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:44:53', 1, 'cc 12345', '10-11-2015', NULL, 'ceva text', 'asdf', '10-11-2016'),
 (90, '#F546df186d0c72', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:49:58', 1, 'cc 12345', NULL, NULL, 'ceva text', 'asdf', NULL),
 (91, '#F546df194f1e3b', 8, 'card', '3234.00', 'RON', '0.00', '', NULL, 1, 11, '32.34', '3266.34', '2014-11-20 13:50:12', 1, 'cc 12345', NULL, NULL, NULL, 'asdf', NULL),
 (92, '#F5489a6bf0605b', 8, 'card', '123.00', 'RON', '123.00', 'RON', NULL, 1, 12, '1.23', '124.23', '2014-12-11 14:14:23', 0, '1234', NULL, NULL, NULL, NULL, NULL),
-(93, '#F5489a74890a93', 8, 'card', '432.00', 'RON', '432.00', 'RON', NULL, 1, 12, '4.32', '436.32', '2014-12-11 14:16:40', 0, '121', NULL, NULL, NULL, NULL, NULL);
+(93, '#F5489a74890a93', 8, 'card', '432.00', 'RON', '432.00', 'RON', NULL, 1, 12, '4.32', '436.32', '2014-12-11 14:16:40', 0, '121', NULL, NULL, NULL, NULL, NULL),
+(94, '#F54aecb209f53d', 0, 'Card', '10.10', 'RON', '10.10', 'RON', NULL, 1, 12, '0.00', '0.00', '2015-01-08 18:23:28', 1, 'dd', NULL, NULL, NULL, NULL, NULL),
+(95, '#F54aecb69419b3', 0, 'Card', '10.10', 'RON', '10.10', 'RON', NULL, 1, 12, '0.00', '0.00', '2015-01-08 18:24:41', 1, 'eeee', NULL, NULL, NULL, NULL, NULL),
+(96, '#F54aecbff85796', 0, 'Card', '10.10', 'RON', '10.10', 'RON', NULL, 1, 12, '0.00', '0.00', '2015-01-08 18:27:11', 1, 'd', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2467,77 +2505,21 @@ CREATE TABLE IF NOT EXISTS `ss_messages` (
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
 
 --
 -- Dumping data for table `ss_messages`
 --
 
 INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message`, `date_added`) VALUES
-(1, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 13:20:07'),
-(2, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 13:24:07'),
-(3, 93, '#S546f5ce1b47ae', 8, 'pay', 'payment #S546f5ce1b47ae successfully added', '2014-11-21 15:40:17'),
-(4, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 16:29:15'),
-(5, 92, '#S546e6ef3bf544', 8, 'pay', 'payment #S546e6ef3bf544 successfully refunded', '2014-11-21 16:38:45'),
-(6, 0, '#S546fb20da5cdc', 8, 'pay', 'payment #S546fb20da5cdc successfully added', '2014-11-21 21:43:41'),
-(7, 94, '#S546fb25e8632b', 8, 'pay', 'payment #S546fb25e8632b successfully added', '2014-11-21 21:45:02'),
-(8, 95, '#S547318e357d0e', 8, 'pay', 'payment #S547318e357d0e successfully added', '2014-11-24 11:39:15'),
-(9, 91, '#F546df194f1e3b', 1, 'inv', 'invoice #F546df194f1e3b err', '2014-11-24 13:35:50'),
-(10, 91, '#F546df194f1e3b', 8, 'inv', 'invoice #F546df194f1e3b err', '2014-11-24 13:36:19'),
-(11, 91, '#F546df194f1e3b', 8, 'inv', 'invoice #F546df194f1e3b err', '2014-11-24 14:01:22'),
-(12, 91, '#F546df194f1e3b', 8, 'inv', 'invoice #F546df194f1e3b err', '2014-11-24 14:05:23'),
-(13, 91, '#F546df194f1e3b', 8, 'inv', 'invoice #F546df194f1e3b err', '2014-11-24 14:06:09'),
-(14, 96, '#S54899b2766ddd', 8, 'pay', 'payment #S54899b2766ddd successfully added', '2014-12-11 13:24:55'),
-(15, 97, '#S54899bf91a9c7', 8, 'pay', 'payment #S54899bf91a9c7 successfully added', '2014-12-11 13:28:25'),
-(16, 98, '#S54899e5404144', 8, 'pay', 'payment #S54899e5404144 successfully added', '2014-12-11 13:38:28'),
-(17, 99, '#S5489a09f1b327', 8, 'pay', 'payment #S5489a09f1b327 successfully added', '2014-12-11 13:48:15'),
-(18, 100, '#S5489a229a457f', 8, 'pay', 'payment #S5489a229a457f successfully added', '2014-12-11 13:54:49'),
-(19, 101, '#S5489a41cd6331', 8, 'pay', 'payment #S5489a41cd6331 successfully added', '2014-12-11 14:03:08'),
-(20, 92, '#F5489a6bf0605b', 8, 'invo', 'invoice #F5489a6bf0605b successfully added', '2014-12-11 14:14:23'),
-(21, 93, '#F5489a74890a93', 8, 'invo', 'invoice #F5489a74890a93 successfully added', '2014-12-11 14:16:40'),
-(22, 102, '#S5489a85381bdc', 8, 'pay', 'payment #S5489a85381bdc successfully added', '2014-12-11 14:21:07'),
-(23, 103, '#S5489a8819b655', 8, 'pay', 'payment #S5489a8819b655 successfully added', '2014-12-11 14:21:53'),
-(24, 104, '#S5489a8d7e99be', 8, 'pay', 'payment #S5489a8d7e99be successfully added', '2014-12-11 14:23:20'),
-(25, 105, '#S5489a9fadeda1', 8, 'pay', 'payment #S5489a9fadeda1 successfully added', '2014-12-11 14:28:10'),
-(26, 92, '#S546e6ef3bf544', 8, 'pay', '', '2014-12-21 01:10:18'),
-(27, 92, '#S546e6ef3bf544', 8, 'pay', '0', '2014-12-21 01:15:12'),
-(28, 92, '#S546e6ef3bf544', 8, 'pay', 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei\r\n- dumneavoastra este %s. In cazul in care ati ales plata numerar, va vom\r\ncomunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de\r\ndumneavoastra beneficiarului.', '2014-12-21 01:20:47'),
-(29, 92, '#S546e6ef3bf544', 8, 'pay', 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei\r\n- dumneavoastra este #S546e6ef3bf544. In cazul in care ati ales plata numerar, va vom\r\ncomunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de\r\ndumneavoastra beneficiarului.', '2014-12-21 01:22:15'),
-(30, 92, '#S546e6ef3bf544', 8, 'pay', 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei\r\n- dumneavoastra este #S546e6ef3bf544. In cazul in care ati ales plata numerar, va vom\r\ncomunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de\r\ndumneavoastra beneficiarului.', '2014-12-21 01:25:37'),
-(31, 92, '#S546e6ef3bf544', 8, 'pay', 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei\r\n- dumneavoastra este #S546e6ef3bf544. In cazul in care ati ales plata numerar, va vom\r\ncomunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de\r\ndumneavoastra beneficiarului.', '2014-12-21 01:28:22'),
-(32, 92, '#S546e6ef3bf544', 8, 'pay', 'A intervenit o eroare. Va rugam sa contactati banca la care detineti cardul\r\npentru verificari si/sau sa contactati serviciul Sesizari, Reclamatii Smith & Smith la telefon\r\n+4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!', '2014-12-21 01:39:47'),
-(33, 92, '#S546e6ef3bf544', 8, 'pay', 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei\r\n- dumneavoastra este #S546e6ef3bf544. In cazul in care ati ales plata numerar, va vom\r\ncomunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de\r\ndumneavoastra beneficiarului.', '2014-12-21 01:53:29'),
-(34, 92, '#S546e6ef3bf544', 8, 'pay', 'A intervenit o eroare. Va rugam sa contactati banca la care detineti cardul\r\npentru verificari si/sau sa contactati serviciul Sesizari, Reclamatii Smith & Smith la telefon\r\n+4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!', '2014-12-21 01:53:59'),
-(35, NULL, '#S549d279f1b06b', 8, 'pay', 'payment #S549d279f1b06b successfully added', '2014-12-26 09:17:19'),
-(36, NULL, '#S549d28599db1e', 8, 'pay', 'payment #S549d28599db1e successfully added', '2014-12-26 09:20:25'),
-(37, 107, '#S549d2abd28c59', 8, 'pay', 'payment #S549d2abd28c59 successfully added', '2014-12-26 09:30:37'),
-(38, 108, '#S549d2b45402cc', 8, 'pay', 'payment #S549d2b45402cc successfully added', '2014-12-26 09:32:53'),
-(39, 109, '#S549d2e7ddec15', 8, 'pay', 'payment #S549d2e7ddec15 successfully added', '2014-12-26 09:46:38'),
-(40, 110, '#S549d2fb1e504a', 8, 'pay', 'payment #S549d2fb1e504a successfully added', '2014-12-26 09:51:46'),
-(41, 111, '#S549d2fe86f900', 8, 'pay', 'payment #S549d2fe86f900 successfully added', '2014-12-26 09:52:40'),
-(42, 112, '#S549d30908224c', 8, 'pay', 'payment #S549d30908224c successfully added', '2014-12-26 09:55:28'),
-(43, 113, '#S549d31e1ddcae', 8, 'pay', 'payment #S549d31e1ddcae successfully added', '2014-12-26 10:01:06'),
-(44, 114, '#S549d327067fbb', 8, 'pay', 'payment #S549d327067fbb successfully added', '2014-12-26 10:03:28'),
-(45, 115, '#S54a00a4f4aca3', 8, 'pay', 'payment #S54a00a4f4aca3 successfully added', '2014-12-28 13:49:03'),
-(46, 116, '#S54a00a8641f9c', 8, 'pay', 'payment #S54a00a8641f9c successfully added', '2014-12-28 13:49:58'),
-(47, 117, '#S54a00ab398a77', 8, 'pay', 'payment #S54a00ab398a77 successfully added', '2014-12-28 13:50:43'),
-(48, 118, '#S54a00b4749e00', 8, 'pay', 'payment #S54a00b4749e00 successfully added', '2014-12-28 13:53:11'),
-(49, 119, '#S54a00d4f3818b', 8, 'pay', 'payment #S54a00d4f3818b successfully added', '2014-12-28 14:01:51'),
-(50, 120, '#S54a00ddde44b4', 8, 'pay', 'payment #S54a00ddde44b4 successfully added', '2014-12-28 14:04:13'),
-(51, 121, '#S54a00e0e35b8d', 8, 'pay', 'payment #S54a00e0e35b8d successfully added', '2014-12-28 14:05:02'),
-(52, 122, '#S54a00f1eee8bf', 8, 'pay', 'payment #S54a00f1eee8bf successfully added', '2014-12-28 14:09:35'),
-(53, 123, '#S54a017ff441b9', 8, 'pay', 'payment #S54a017ff441b9 successfully added', '2014-12-28 14:47:27'),
-(54, 124, '#S54a018769aafe', 8, 'pay', 'payment #S54a018769aafe successfully added', '2014-12-28 14:49:26'),
-(55, 125, '#S54a0189a506f5', 8, 'pay', 'payment #S54a0189a506f5 successfully added', '2014-12-28 14:50:02'),
-(56, 126, '#S54a018d8c134b', 8, 'pay', 'payment #S54a018d8c134b successfully added', '2014-12-28 14:51:04'),
-(57, 127, '', 0, 'pay', 'payment  successfully added', '2015-01-03 13:14:09'),
-(58, 128, '', 0, 'pay', 'payment  successfully added', '2015-01-03 13:14:21'),
-(59, 129, '#S54a7eb46be507', 8, 'pay', 'payment #S54a7eb46be507 successfully added', '2015-01-03 13:14:54'),
-(60, 130, '#S54a7ec8c9568d', 8, 'pay', 'payment #S54a7ec8c9568d successfully added', '2015-01-03 13:20:25'),
-(61, 131, '#S54a7f5193bfdf', 8, 'pay', 'payment #S54a7f5193bfdf successfully added', '2015-01-03 13:56:50'),
-(62, 132, '#S54a7f7cc9fd42', 8, 'pay', 'payment #S54a7f7cc9fd42 successfully added', '2015-01-03 14:08:35'),
-(63, 133, '#S54a7fbe398c4e', 8, 'pay', 'payment #S54a7fbe398c4e successfully added', '2015-01-03 14:25:44'),
-(64, 134, '#S54aa87ad9d172', 8, 'pay', 'payment #S54aa87ad9d172 successfully added', '2015-01-05 12:46:41');
+(82, 152, '#S54b7ac98b8348', 8, 'pay', 'Referinta tranzactiei dumneavoastra este #S54b7ac98b8348. Va rugam ca\r\nin maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul\r\nSmith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa fie\r\nreceptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea tranzactiei.\r\nDupa expirarea acestui termen, in cazul in care suma nu este receptionata in contul Smith &\r\nSmith, tranzactia se considera anulata.', '2015-01-15 12:03:47'),
+(85, 152, '#S54b7ac98b8348', 8, 'pay', 'Suma orodonata de dumneavoastra cu referinta #S54b7ac98b8348 a fost\r\nreceptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va rugam\r\ncomunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {nume prenume}.', '2015-01-15 12:58:54'),
+(86, 152, '#S54b7ac98b8348', 8, 'pay', 'Felicitari! Operatiunea de plata cu referinta #S54b7ac98b8348 a fost finalizata cu succes!', '2015-01-15 13:02:17'),
+(87, 152, '#S54b7ac98b8348', 8, 'pay', 'Operatiunea de plata cu referinta #S54b7ac98b8348 a fost anulata!', '2015-01-15 13:06:19'),
+(88, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra cu referinta #S54b7ac98b8348 a fost\r\nreceptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de\r\ndumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith\r\ntranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu\r\ntermenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim\r\npentru intelegere!', '2015-01-15 13:12:59'),
+(89, 152, '#S54b7ac98b8348', 8, 'pay', 'Ne pare rau! Plata cu referinta #S54b7ac98b8348 nu a putut fi efectuata. Va rugam contactati serviciul\r\n- Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea\r\n- situatiei. Va multumin pentru intelegere!', '2015-01-15 13:16:10'),
+(90, 152, '#S54b7ac98b8348', 8, 'pay', 'Ne pare rau! Plata cu referinta #S54b7ac98b8348 nu a putut fi efectuata. Va rugam contactati serviciul\r\nSugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea\r\nsituatiei. Va multumin pentru intelegere!', '2015-01-15 13:19:53'),
+(91, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-15 13:35:17');
 
 -- --------------------------------------------------------
 
@@ -2674,56 +2656,14 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar',
   `pin` varchar(25) DEFAULT NULL COMMENT 'pin-ul tranzactiei primit din server SS',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=153 ;
 
 --
 -- Dumping data for table `ss_payments`
 --
 
 INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_in`, `currency_in`, `amount_out`, `currency_out`, `rate`, `fee`, `total`, `date_added`, `status`, `id_ben_payment_method`, `id_ben_city`, `ben_address`, `ben_name`, `ben_surname`, `ben_phone`, `ben_email`, `ben_iban`, `pin`) VALUES
-(92, '#S546e6ef3bf544', 8, 'card', '50.00', 'ron', '0.00', '', NULL, '1.23', '124.24', '2014-11-20 22:45:07', 80, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', 'RO121', NULL),
-(93, '#S546f5ce1b47ae', 8, 'card', '100.00', 'ron', '0.00', '', NULL, '1.00', '101.00', '2014-11-21 15:40:17', 1, 1, 7, '', '', '', '', '', '', NULL),
-(94, '#S546fb25e8632b', 8, 'card', '123.00', 'ron', '0.00', '', NULL, '1.23', '124.23', '2014-11-21 21:45:02', 1, 1, 7, 'asdf', 'gigel', 'andrei', '43204320', 'a@b.ro', 'asdf', NULL),
-(95, '#S547318e357d0e', 8, 'card', '100.00', 'ron', '0.00', '', NULL, '1.00', '101.00', '2014-11-24 11:39:15', 1, 1, 7, '', '', '', '', '', '', NULL),
-(96, '#S54899b2766ddd', 8, 'card', '1234.00', 'ron', '0.00', '', NULL, '12.34', '1246.34', '2014-12-11 13:24:55', 1, 1, 7, 'asdf', 'asdf', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(97, '#S54899bf91a9c7', 8, 'card', '4321.00', 'ron', '0.00', '', NULL, '43.21', '4364.21', '2014-12-11 13:28:25', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', 'RO121', NULL),
-(98, '#S54899e5404144', 8, 'card', '1234.00', 'ron', '1234.00', 'ron', NULL, '12.34', '1246.34', '2014-12-11 13:38:28', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '', NULL),
-(99, '#S5489a09f1b327', 8, 'card', '1234.00', 'ron', '1234.00', 'ron', NULL, '12.34', '1246.34', '2014-12-11 13:48:15', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(100, '#S5489a229a457f', 8, 'card', '1243.00', 'ron', '1243.00', 'ron', '0.0000', '12.43', '1255.43', '2014-12-11 13:54:49', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(101, '#S5489a41cd6331', 8, 'card', '4321.00', 'ron', '4321.00', 'ron', '4.4509', '43.21', '4364.21', '2014-12-11 14:03:08', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(102, '#S5489a85381bdc', 8, 'card', '543.00', 'ron', '543.00', 'ron', NULL, '5.43', '548.43', '2014-12-11 14:21:07', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(103, '#S5489a8819b655', 8, 'card', '654.00', 'eur', '654.00', 'eur', NULL, '6.54', '660.54', '2014-12-11 14:21:53', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(104, '#S5489a8d7e99be', 8, 'card', '987.00', 'eur', '987.00', 'ron', '4.4509', '9.87', '996.87', '2014-12-11 14:23:19', 1, 1, 7, 'Bucuresti Subcetate 62-70', 'mocioi', 'horia', '0723276206', 'a.mocioi@gmail.com', '1234', NULL),
-(105, '#S5489a9fadeda1', 8, 'card', '543.00', 'ron', '999.00', '999', '9.9999', '999.00', '548.43', '2014-12-11 14:28:10', 1, 5, 7, 'XXXF', 'XXXA', 'XXXB', 'XXXC', 'XXXD', 'XXXE', '231'),
-(106, '#S549d2a75c9df5', 8, 'Card', '1234.00', 'eur', '5492.41', 'ron', '4.4509', '123.40', '1357.40', '2014-12-26 09:29:25', 1, 1, 0, '', 'mihai', 'mihaescu', '', '', NULL, NULL),
-(107, '#S549d2abd28c59', 8, 'Cont', '4321.00', 'eur', '4321.00', 'eur', NULL, '432.10', '4753.10', '2014-12-26 09:30:37', 1, 2, 0, '', 'mihai', 'mihaescu', '', '', NULL, NULL),
-(108, '#S549d2b45402cc', 8, 'Cont', '432.00', 'ron', '432.00', 'ron', NULL, '43.20', '475.20', '2014-12-26 09:32:53', 1, 3, 0, '', 'mihai', 'mihaescu', '', '', NULL, NULL),
-(109, '#S549d2e7ddec15', 8, 'card', '20000.00', 'eur', '20000.00', 'eur', NULL, '2000.00', '22000.00', '2014-12-26 09:46:37', 1, 6, 0, 'BucurestiSubcetate62-70', 'mihai', 'mihaescu', '43204320', 'a.mocioi@gmail.com', 'RO45WBAN0000999900149377', NULL),
-(110, '#S549d2fb1e504a', 8, 'card', '1235.00', 'eur', '5496.86', 'ron', '4.4509', '123.50', '1358.50', '2014-12-26 09:51:45', 1, 6, 0, 'BucurestiSubcetate62-70', 'mihai', 'mihaescu', '0723276206', 'dsfdsf@gmail.com', 'RO45WBAN0000999900149377', NULL),
-(111, '#S549d2fe86f900', 8, 'card', '1200.00', 'eur', '1200.00', 'eur', NULL, '120.00', '1320.00', '2014-12-26 09:52:40', 1, 1, 0, '', 'mihai', 'mihaescu', '', '', NULL, NULL),
-(112, '#S549d30908224c', 8, 'cont', '432.00', 'eur', '432.00', 'eur', NULL, '43.20', '475.20', '2014-12-26 09:55:28', 1, 4, 0, '', 'asdf', 'fdsa', '', '', NULL, NULL),
-(113, '#S549d31e1ddcae', 8, 'cont', '456.00', 'eur', '2029.61', 'ron', '4.4509', '45.60', '501.60', '2014-12-26 10:01:05', 1, 3, 0, '', 'mihai', 'mihaescu', '', '', NULL, NULL),
-(114, '#S549d327067fbb', 8, 'cont', '777.00', 'eur', '3458.35', 'ron', '4.4509', '77.70', '854.70', '2014-12-26 10:03:28', 1, 5, 21, 'Bucuresti Aviatiei', 'mihai', 'mihaescu', '0723276206', 'a.mocioi@gmail.com', NULL, NULL),
-(115, '#S54a00a4f4aca3', 8, 'card', '1200.00', 'ron', '1200.00', 'ron', NULL, '120.00', '1320.00', '2014-12-28 13:49:03', 1, 1, 0, '', 'asdf', 'fdsa', '', '', NULL, NULL),
-(116, '#S54a00a8641f9c', 8, 'card', '1234.00', 'ron', '1234.00', 'ron', NULL, '123.40', '1357.40', '2014-12-28 13:49:58', 1, 1, 0, '', 'andrei', 'andreescu', '', '', NULL, NULL),
-(117, '#S54a00ab398a77', 8, 'card', '1234.00', 'ron', '1234.00', 'ron', NULL, '123.40', '1357.40', '2014-12-28 13:50:43', 1, 1, 0, '', 'mihai', 'fdsa', '', '', NULL, NULL),
-(118, '#S54a00b4749e00', 8, 'card', '1200.00', 'ron', '1200.00', 'ron', NULL, '120.00', '1320.00', '2014-12-28 13:53:11', 1, 5, 25, 'Bucuresti Subcetate 62-70', 'mihaescu', 'mihai', '0723276206', 'a.mocioi@gmail.com', NULL, NULL),
-(119, '#S54a00d4f3818b', 8, 'card', '1500.00', 'ron', '1500.00', 'ron', NULL, '150.00', '1650.00', '2014-12-28 14:01:51', 1, 3, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(120, '#S54a00ddde44b4', 8, 'card', '1200.00', 'ron', '1200.00', 'ron', NULL, '120.00', '1320.00', '2014-12-28 14:04:13', 1, 6, 0, 'Bucuresti Subcetate 62-70', 'mihaescu', 'mihai', '0723276206', 'dsfdsf@gmail.com', 'RO45WBAN0000999900149377', NULL),
-(121, '#S54a00e0e35b8d', 8, 'card', '1500.00', 'ron', '1500.00', 'ron', NULL, '150.00', '1650.00', '2014-12-28 14:05:02', 1, 5, 10, 'Bucuresti Subcetate 62-70', 'mihaescu', 'mihai', '0723276206', 'dsfdsf@gmail.com', NULL, NULL),
-(122, '#S54a00f1eee8bf', 8, 'cont', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2014-12-28 14:09:35', 1, 6, 0, 'Bucuresti Aviatiei', 'mihai', 'mihai', '0723276206', 'dsfdsf@gmail.com', 'RO45WBAN0000999900149377', NULL),
-(123, '#S54a017ff441b9', 8, 'card', '12.00', 'ron', '12.00', 'ron', NULL, '1.20', '13.20', '2014-12-28 14:47:27', 1, 5, 9, 'Bucuresti Subcetate 62-70', 'mihaescu', 'mihai', '0723276206', 'a.mocioi@gmail.com', NULL, NULL),
-(124, '#S54a018769aafe', 8, 'card', '1209.00', 'ron', '1209.00', 'ron', NULL, '120.90', '1329.90', '2014-12-28 14:49:26', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(125, '#S54a0189a506f5', 8, 'card', '12.00', 'ron', '12.00', 'ron', NULL, '1.20', '13.20', '2014-12-28 14:50:02', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(126, '#S54a018d8c134b', 8, 'card', '122.00', 'ron', '122.00', 'ron', NULL, '12.20', '134.20', '2014-12-28 14:51:04', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(127, '', 0, '', '0.00', '', '0.00', '', NULL, '0.00', '0.00', '2015-01-03 13:14:09', 0, 0, 0, NULL, '', '', NULL, NULL, NULL, NULL),
-(128, '', 0, '', '0.00', '', '0.00', '', NULL, '0.00', '0.00', '2015-01-03 13:14:21', 0, 0, 0, NULL, '', '', NULL, NULL, NULL, NULL),
-(129, '#S54a7eb46be507', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 13:14:54', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(130, '#S54a7ec8c9568d', 8, 'card', '1234.00', 'eur', '5492.41', 'ron', '4.4509', '123.40', '1357.40', '2015-01-03 13:20:25', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(131, '#S54a7f5193bfdf', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 13:56:50', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(132, '#S54a7f7cc9fd42', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 14:08:35', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(133, '#S54a7fbe398c4e', 8, 'card', '1200.00', 'eur', '5341.08', 'ron', '4.4509', '120.00', '1320.00', '2015-01-03 14:25:44', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL),
-(134, '#S54aa87ad9d172', 8, 'card', '200.00', 'ron', '200.00', 'ron', NULL, '20.00', '220.00', '2015-01-05 12:46:41', 1, 1, 0, '', 'mihaescu', 'mihai', '', '', NULL, NULL);
+(152, '#S54b7ac98b8348', 8, 'cont', '999.00', 'eur', '999.00', '999', '9.9999', '999.00', '1347.50', '2015-01-15 12:03:48', 100, 5, 5, 'adresa', 'Mihaescu', 'Mihai', '1234567890', 'mm@m.ro', 'IBAN', '1234');
 
 -- --------------------------------------------------------
 
@@ -2772,7 +2712,7 @@ CREATE TABLE IF NOT EXISTS `ss_pay_orders` (
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ts adaugarii',
   `resp_ts` timestamp NULL DEFAULT NULL COMMENT 'ts primirii raspunsului',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tabela in care stochez informatiile despre efectuarea platilor' AUTO_INCREMENT=100053 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tabela in care stochez informatiile despre efectuarea platilor' AUTO_INCREMENT=100056 ;
 
 --
 -- Dumping data for table `ss_pay_orders`
@@ -2830,7 +2770,10 @@ INSERT INTO `ss_pay_orders` (`id`, `unid`, `unid_type`, `pay_type`, `status`, `a
 (100049, '#S54a7f5193bfdf', 'S', 'card', 1, '1200.00', 'eur', 'BF2A5B9E4C8F28D257536E2F54CFE9386D008FE2', NULL, NULL, NULL, '2015-01-03 13:56:51', NULL),
 (100050, '#S54a7f7cc9fd42', 'S', 'card', 1, '1200.00', 'eur', 'B7A1C1F4F64F089067DD6793F72F7F4220CEAD27', NULL, NULL, NULL, '2015-01-03 14:08:37', NULL),
 (100051, '#S54a7fbe398c4e', 'S', 'card', 1, '1200.00', 'eur', '6D4B1D7BEF168D973037751CCAA9A9D8B65B98F2', NULL, NULL, NULL, '2015-01-03 14:25:46', NULL),
-(100052, '#S54aa87ad9d172', 'S', 'card', 1, '200.00', 'ron', '6816D19B80D70BF74663D37E505D60000926E097', NULL, NULL, NULL, '2015-01-05 12:46:43', NULL);
+(100052, '#S54aa87ad9d172', 'S', 'card', 1, '200.00', 'ron', '6816D19B80D70BF74663D37E505D60000926E097', NULL, NULL, NULL, '2015-01-05 12:46:43', NULL),
+(100053, '#S54b782aae7ef0', 'S', 'card', 1, '1200.00', 'eur', '7C23381D044AD29872098E8B3B69FAF6E977692C', NULL, NULL, NULL, '2015-01-15 09:04:46', NULL),
+(100054, '#S54b782aae7ef0', 'S', 'card', 1, '1200.00', 'eur', '66CA0582D10926DA80E0F6BBD5B3469C781D7929', NULL, NULL, NULL, '2015-01-15 09:04:53', NULL),
+(100055, '#S54b782aae7ef0', 'S', 'card', 1, '1200.00', 'eur', 'F77FB24B77EF1FFB74080288084E4743B2BA55D2', NULL, NULL, NULL, '2015-01-15 09:04:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -2977,33 +2920,36 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account` varchar(32) NOT NULL COMMENT 'client bank account',
   `swift` varchar(32) NOT NULL COMMENT 'client bank swift',
   `bank` varchar(32) NOT NULL COMMENT 'client bank',
+  `default_language` varchar(2) NOT NULL DEFAULT 'ro' COMMENT 'client default language for messages',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`, `account`, `swift`, `bank`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1420632811, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', ''),
-(8, '::1', 'horia mocioi', '$2y$08$Sb0wEXHSL64zEl8lWwcF.Oj4iNcOPUNsywLoGlgyJ4f.tSuqu462.', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1420713935, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276207', '06.12.1962', 'ACCT08', 'SWIFT08', 'Bank Post'),
-(9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
-(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981', '', '', ''),
-(11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981', '', '', ''),
-(13, '::1', 'alexandru mocioi', '$2y$08$YAm/jkVXNRfdmNizUbrZkuxqM6Kg5F4HQxpQSofEgCTelzs5Kix6G', NULL, 'hello@bookreader.ro', '0c1177103f6b2df85db1907a303f4041f5937847', NULL, NULL, NULL, 1418138356, NULL, 0, 'Alexandru', 'Mocioi', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(14, '::1', 'alexanru1 mocioi1', '$2y$08$Og2qSAMWmxelRk7ycYzNo.He7EUdGMqfNV.XO0vsbXfKSY7WGPgoK', NULL, 'hello1@bookreader.ro', '3ce350535478cfd0e93cbc48bfe31695e969da86', NULL, NULL, NULL, 1418138520, NULL, 0, 'ALexanru1', 'Mocioi1', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(15, '::1', 'alexanru2 mocioi2', '$2y$08$OUQ5FICiMxHZbA/KjvD.LOBYYy5EictbPEJecw5TEidlZGyPE/nDm', NULL, 'hello2@bokreader.ro', '9688880b4876d02db84a0e5475b7f7739468fa36', NULL, NULL, NULL, 1418138994, NULL, 0, 'ALexanru2', 'Mocioi2', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(16, '::1', 'alexanru3 mocioi3', '$2y$08$yf/xPLb2EWQFiacSt6t20u1w3XFRVH5Noigv7tqg0UIda8tNkgZDm', NULL, 'hello3@bokreader.ro', 'c8c7d8b42dc1ae4c39a46553c906ea52719f2a47', NULL, NULL, NULL, 1418139050, NULL, 0, 'ALexanru3', 'Mocioi3', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(17, '::1', 'alexanru4 mocioi4', '$2y$08$ZYq6itiREszlQDyyV4vzve8MzSCc8yk0B2JJmrUrRempRMXUi5RFO', NULL, 'hello4@bokreader.ro', '1b7b239705ffbeff4b1984532182f67fccea05a3', NULL, NULL, NULL, 1418139095, NULL, 0, 'ALexanru4', 'Mocioi4', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(18, '::1', 'alexanru5 mocioi5', '$2y$08$uEZTQ5YyRYA3wA3ayb/pceAPFyvATto79OWW4gTPVIpevfGs7bJai', NULL, 'hello5@bokreader.ro', '0d4567018b8b26678934989dc1217e6c56571643', NULL, NULL, NULL, 1418139239, NULL, 0, 'ALexanru5', 'Mocioi5', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(19, '::1', 'alexanru6 mocioi6', '$2y$08$I5gnlEVQGwD.RmwDRP/UteqpALQFwezym5Pjwnz1F8qfFGGC/P0N.', NULL, 'hello6@bokreader.ro', '5fb650d1a03711796c03a27081db87e1b791f93b', NULL, NULL, NULL, 1418139269, NULL, 0, 'ALexanru6', 'Mocioi6', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(20, '::1', 'alexanru7 mocioi7', '$2y$08$TnaSATVG/YUhv.MsLg1zIevxQqICF49C3wZVlL1gH6hkGz2RINnqK', NULL, 'hello7@bookreader.ro', 'c1aeca0203eaa7e83dd6a4c2ca0a3e24f57bc339', NULL, NULL, NULL, 1418139353, NULL, 0, 'ALexanru7', 'Mocioi7', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(21, '::1', 'alexandru8 mocioi8', '$2y$08$xApeCotoUVsdbjhernndQOwplCrEdywQE.yHiWMEwGdDSe1knmTHa', NULL, 'hello8@bookreader.ro', '37da1974cf95485ad97236408d4efe434940cd36', NULL, NULL, NULL, 1418139623, NULL, 0, 'Alexandru8', 'Mocioi8', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(22, '::1', 'alexandru9 mocioi9', '$2y$08$FfZni4oQ9vCRIhOnzGEyv.a475eoRZKIWQkahRAJOwT28l0e9qfoq', NULL, 'hello9@bookreader.ro', NULL, NULL, NULL, NULL, 1418158676, 1418299895, 1, 'Alexandru9', 'Mocioi9', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(23, '::1', 'alexandru10 mocioi10', '$2y$08$Zf37lrMpt3M2W1XEeljOz.Rlm3X8q4IKGLw3krWlQM.hYJzWLkqhC', NULL, 'hello10@bookreader.ro', 'efd038439cbcaed7694af869cf2f4f1aad9514da', NULL, NULL, NULL, 1418160110, NULL, 0, 'Alexandru10', 'Mocioi10', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(24, '::1', 'alexandru11 mocioi11', '$2y$08$umaMHOzX4hZEyopGuzXceOoRel.5UOggvOo7iasRAp6hrHIsLDDuu', NULL, 'hello11@bookreader.ro', 'c5216762fa3c47a0216084b96e21403991aaaead', NULL, NULL, NULL, 1418160369, NULL, 0, 'Alexandru11', 'Mocioi11', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(25, '::1', 'alexandru12 mocioi12', '$2y$08$XE13HZIFPSbqEPwXx42Pj.T1BlIclL6W1arQkjQXMQsP7lLwINXje', NULL, 'hello12@bookreader.ro', '63e1807cf47c939784832eeadcdc59ceb4140345', NULL, NULL, NULL, 1418160876, NULL, 0, 'Alexandru12', 'Mocioi12', 'Romania', '0723276206', '15.09.1981', '', '', ''),
-(26, '::1', 'prenume01 nume01', '$2y$08$XBHFj/F7ufDUG78huoG2eOMdAXd5ChlG6t94nmLdyOqNqgYVaBIBq', NULL, 'email01@email.ro', 'eada6ce655cc12810f750393f876955c106927a9', NULL, NULL, NULL, 1418387464, NULL, 0, 'Prenume01', 'Nume01', 'RO', '1234567890', '15.09.1981', 'ACCT01', 'SWIFT01', 'BANK01');
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`, `account`, `swift`, `bank`, `default_language`) VALUES
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1420632811, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', '', 'ro'),
+(8, '::1', 'horia mocioi', '$2y$08$o1p86hxF2hxmNE46HRJ/O.LJuZjaPYMMevyIs8ERrpBygohlGVVje', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1421311859, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276207', '06.12.1962', 'ACCT08', 'SWIFT08', 'Garanti Bank', 'ro'),
+(9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', '', '', '', 'ro'),
+(10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981', '', '', '', 'ro'),
+(11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981', '', '', '', 'ro'),
+(13, '::1', 'alexandru mocioi', '$2y$08$YAm/jkVXNRfdmNizUbrZkuxqM6Kg5F4HQxpQSofEgCTelzs5Kix6G', NULL, 'hello@bookreader.ro', '0c1177103f6b2df85db1907a303f4041f5937847', NULL, NULL, NULL, 1418138356, NULL, 0, 'Alexandru', 'Mocioi', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(14, '::1', 'alexanru1 mocioi1', '$2y$08$Og2qSAMWmxelRk7ycYzNo.He7EUdGMqfNV.XO0vsbXfKSY7WGPgoK', NULL, 'hello1@bookreader.ro', '3ce350535478cfd0e93cbc48bfe31695e969da86', NULL, NULL, NULL, 1418138520, NULL, 0, 'ALexanru1', 'Mocioi1', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(15, '::1', 'alexanru2 mocioi2', '$2y$08$OUQ5FICiMxHZbA/KjvD.LOBYYy5EictbPEJecw5TEidlZGyPE/nDm', NULL, 'hello2@bokreader.ro', '9688880b4876d02db84a0e5475b7f7739468fa36', NULL, NULL, NULL, 1418138994, NULL, 0, 'ALexanru2', 'Mocioi2', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(16, '::1', 'alexanru3 mocioi3', '$2y$08$yf/xPLb2EWQFiacSt6t20u1w3XFRVH5Noigv7tqg0UIda8tNkgZDm', NULL, 'hello3@bokreader.ro', 'c8c7d8b42dc1ae4c39a46553c906ea52719f2a47', NULL, NULL, NULL, 1418139050, NULL, 0, 'ALexanru3', 'Mocioi3', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(17, '::1', 'alexanru4 mocioi4', '$2y$08$ZYq6itiREszlQDyyV4vzve8MzSCc8yk0B2JJmrUrRempRMXUi5RFO', NULL, 'hello4@bokreader.ro', '1b7b239705ffbeff4b1984532182f67fccea05a3', NULL, NULL, NULL, 1418139095, NULL, 0, 'ALexanru4', 'Mocioi4', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(18, '::1', 'alexanru5 mocioi5', '$2y$08$uEZTQ5YyRYA3wA3ayb/pceAPFyvATto79OWW4gTPVIpevfGs7bJai', NULL, 'hello5@bokreader.ro', '0d4567018b8b26678934989dc1217e6c56571643', NULL, NULL, NULL, 1418139239, NULL, 0, 'ALexanru5', 'Mocioi5', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(19, '::1', 'alexanru6 mocioi6', '$2y$08$I5gnlEVQGwD.RmwDRP/UteqpALQFwezym5Pjwnz1F8qfFGGC/P0N.', NULL, 'hello6@bokreader.ro', '5fb650d1a03711796c03a27081db87e1b791f93b', NULL, NULL, NULL, 1418139269, NULL, 0, 'ALexanru6', 'Mocioi6', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(20, '::1', 'alexanru7 mocioi7', '$2y$08$TnaSATVG/YUhv.MsLg1zIevxQqICF49C3wZVlL1gH6hkGz2RINnqK', NULL, 'hello7@bookreader.ro', 'c1aeca0203eaa7e83dd6a4c2ca0a3e24f57bc339', NULL, NULL, NULL, 1418139353, NULL, 0, 'ALexanru7', 'Mocioi7', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(21, '::1', 'alexandru8 mocioi8', '$2y$08$xApeCotoUVsdbjhernndQOwplCrEdywQE.yHiWMEwGdDSe1knmTHa', NULL, 'hello8@bookreader.ro', '37da1974cf95485ad97236408d4efe434940cd36', NULL, NULL, NULL, 1418139623, NULL, 0, 'Alexandru8', 'Mocioi8', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(22, '::1', 'alexandru9 mocioi9', '$2y$08$FfZni4oQ9vCRIhOnzGEyv.a475eoRZKIWQkahRAJOwT28l0e9qfoq', NULL, 'hello9@bookreader.ro', NULL, NULL, NULL, NULL, 1418158676, 1418299895, 1, 'Alexandru9', 'Mocioi9', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(23, '::1', 'alexandru10 mocioi10', '$2y$08$Zf37lrMpt3M2W1XEeljOz.Rlm3X8q4IKGLw3krWlQM.hYJzWLkqhC', NULL, 'hello10@bookreader.ro', 'efd038439cbcaed7694af869cf2f4f1aad9514da', NULL, NULL, NULL, 1418160110, NULL, 0, 'Alexandru10', 'Mocioi10', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(24, '::1', 'alexandru11 mocioi11', '$2y$08$umaMHOzX4hZEyopGuzXceOoRel.5UOggvOo7iasRAp6hrHIsLDDuu', NULL, 'hello11@bookreader.ro', 'c5216762fa3c47a0216084b96e21403991aaaead', NULL, NULL, NULL, 1418160369, NULL, 0, 'Alexandru11', 'Mocioi11', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(25, '::1', 'alexandru12 mocioi12', '$2y$08$XE13HZIFPSbqEPwXx42Pj.T1BlIclL6W1arQkjQXMQsP7lLwINXje', NULL, 'hello12@bookreader.ro', '63e1807cf47c939784832eeadcdc59ceb4140345', NULL, NULL, NULL, 1418160876, NULL, 0, 'Alexandru12', 'Mocioi12', 'Romania', '0723276206', '15.09.1981', '', '', '', 'ro'),
+(26, '::1', 'prenume01 nume01', '$2y$08$XBHFj/F7ufDUG78huoG2eOMdAXd5ChlG6t94nmLdyOqNqgYVaBIBq', NULL, 'email01@email.ro', 'eada6ce655cc12810f750393f876955c106927a9', NULL, NULL, NULL, 1418387464, NULL, 0, 'Prenume01', 'Nume01', 'RO', '1234567890', '15.09.1981', 'ACCT01', 'SWIFT01', 'BANK01', 'ro'),
+(27, '::1', 'ion ionescu', '$2y$08$spiXKZgUfFAjn/uDMpAjI.weGV0fvrwrrHseJCscQ1.eTNEdNOeXy', NULL, 'ion.ionescu@gmail.com', '1cd244240ceb330ec1ae0f80ba6cfd9a4697f078', NULL, NULL, NULL, 1420729216, NULL, 0, 'ion', 'ionescu', 'Romania', '0723276206', '15.09.1981', 'ACCT01', 'SWIFT01', 'ING Bank Romania', 'ro'),
+(28, '::1', 'andrei andreescu1', '$2y$08$OSB8HPNKL4DK/bUUZV6kCOTPvLxvN7tiD9Ly0EWDlUGLYGRzryt1.', NULL, 'hello1950@gmail.com', 'ab1dcd4c0ca5e0a050dc84bf45ccf33b0c2d6745', NULL, NULL, NULL, 1421246509, NULL, 0, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', 'ACCT01', 'SWIFT01', 'Bank Post', 'en');
 
 -- --------------------------------------------------------
 
@@ -3019,7 +2965,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -3045,7 +2991,9 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (24, 23, 2),
 (25, 24, 2),
 (26, 25, 2),
-(27, 26, 2);
+(27, 26, 2),
+(28, 27, 2),
+(29, 28, 2);
 
 --
 -- Constraints for dumped tables
