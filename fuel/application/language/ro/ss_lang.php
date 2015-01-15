@@ -94,8 +94,8 @@ pe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.
 Va rugam sa confirmati modificarile si faptul ca sunteti de acord
 cu termenii si conditiile platformei de plati online Smith&Smith.';
 $lang['calc_txt041'] = 'Transfer de bani online';
-$lang['calc_txt042'] = 'Retur tranzactie %s';
-$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta %s urmeaza sa fie returnata
+$lang['calc_txt042'] = 'Retur tranzactie <span style="color:#b5251d"><span id = "modal_unid"></span></span>';
+$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta <span style="color:#b5251d"><span id = "modal_unid"></span></span> urmeaza sa fie returnata
 in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de rambursare este de 15 euro
 si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni.
 Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
@@ -146,28 +146,23 @@ finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smit
 telefon +4.021.331.8000 pentru clarificarea situatiei.';
 $lang['calc_msg009'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va rugam
-comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
-$lang['calc_msg009'] = 'Tranzactia dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
-dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
-tranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu
-termenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim
-pentru intelegere!';
+comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {nume prenume}.';
 $lang['calc_msg010'] = 'Tranzactia dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
 dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
 tranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu
 termenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim
 pentru intelegere!';
-$lang['calc_msg011'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
+$lang['calc_msg011'] = 'Ne pare rau! Plata cu referinta %s nu a putut fi efectuata. Va rugam contactati serviciul
 Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
 situatiei. Va multumin pentru intelegere!';
-$lang['calc_msg012'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
+$lang['calc_msg012'] = 'Ne pare rau! Plata cu referinta %s nu a putut fi efectuata. Va rugam contactati serviciul
 - Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
 - situatiei. Va multumin pentru intelegere!';
-$lang['calc_msg013'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
+$lang['calc_msg013'] = 'Felicitari! Operatiunea de plata cu referinta %s a fost finalizata cu succes!';
 $lang['calc_msg014'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul!';
+transferul cu referinta %s!';
+$lang['calc_msgcancel'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
 
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
 $lang['calc_eml002_sb'] = '%s : Detalii tranzactie Smith & Smith';
@@ -188,29 +183,31 @@ cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith l
 $lang['calc_eml005pin_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml005pin_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va
-rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
+rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {nume prenume}.';
 $lang['calc_eml005_sb'] = '%s : Detalii tranzactie Smith & Smith';
-$lang['calc_eml005_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
+$lang['calc_eml005_cont'] = 'Suma ordonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith si urmeaza sa fie transferata in contul beneficiarului,
-Dl./D-na. %s.';
+Dl./D-na. {nume prenume}.';
 $lang['calc_eml006_sb'] = '%s: Diferenta suma transmisa';
 $lang['calc_eml006_cont'] = 'Tranzactia dumneavoastra cu referinta %s a fost receptionata
 in contul Smith & Smith, dar suma transferata este diferita de suma ordonata de
 dumneavoastra. Conform termenelor de utilizare a siteului Smith & Smith tranzactia se
 finalizeaza cu noua suma catre destinatar.';
 $lang['calc_eml007_sb'] = '%s : Eroare finalizare plata.';
-$lang['calc_eml007_cont'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
+$lang['calc_eml007_cont'] = 'Ne pare rau! Plata cu referinta %s nu a putut fi efectuata. Va rugam contactati serviciul
 Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
 situatiei. Va multumin pentru intelegere!';
 $lang['calc_eml008_sb'] = '%s : Eroare finalizare plata';
-$lang['calc_eml008_cont'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
+$lang['calc_eml008_cont'] = 'Ne pare rau! Plata cu referinta %s nu a putut fi efectuata. Va rugam contactati serviciul
 Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
 situatiei. Va multumin pentru intelegere!';
 $lang['calc_eml009_sb'] = '%s : Plata efectuata cu succes.';
 $lang['calc_eml009_cont'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
 $lang['calc_eml010_sb'] = '%s : Retur tranzactie.';
 $lang['calc_eml010_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul!';
+transferul cu referinta %s!';
+$lang['calc_emlcancel_sb'] = '%s : anulare operatiune.';
+$lang['calc_emlcancel_cont'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
 
 /*
 |--------------------------------------------------------------------------
@@ -475,6 +472,7 @@ $lang['profile_email_box'] = 'Acesta informatie nu se mai poate modifica';
 $lang['profile_password_box'] = 'Ai grija la schimbarea parolei';
 $lang['profile_personal_box'] = 'Date personale';
 $lang['profile_bank_box'] = 'Date bancare';
+$lang['profile_default_language_box'] = 'Limba implicita utilizata pentru mesaje si email-uri';
 
 $lang['profile_last_name'] = 'Numele de familie';
 $lang['profile_first_name'] = 'Prenume';
@@ -487,6 +485,7 @@ $lang['profile_country'] = 'Tara';
 $lang['profile_account'] = 'Cont';
 $lang['profile_swift'] = 'Cod SWIFT';
 $lang['profile_bank'] = 'Banca';
+$lang['profile_default_language'] = 'Limba implicita';
 
 $lang['profile_save'] = 'SALVEAZA';
 
@@ -526,6 +525,9 @@ $lang['payments_exch_recipient'] = 'Beneficiarul primeste';
 $lang['payments_pick'] = 'alege';
 
 $lang['payments_cmd'] = 'TRANSFERA';
+
+$lang['payments_thanks'] = 'Va multumim!';
+$lang['payments_thanks_cmd'] = 'TRANSFER NOU';
 
 // bloc _op_iban
 
@@ -626,3 +628,24 @@ $lang['ohp_messages'] = 'MESAJE';
 $lang['ohp_return'] = 'RETUR';
 $lang['ohp_correction'] = 'CORECTIE';
 $lang['ohp_recent_payments'] = 'Transferuri recente';
+$lang['ohp_status'] = 'Stare';
+// aceste status-uri tb sa fie corelate cu helpers/my_helper.php/status si get_status_label
+$lang['ohp_status_init'] = 'In curs de procesare';
+$lang['ohp_status_pay'] = 'In curs de plata';
+$lang['ohp_status_err'] = 'Eroare plata (final)';
+$lang['ohp_status_wait'] = 'Corectie sau retur?';
+$lang['ohp_status_corr'] = 'Corectata, in curs de procesare';
+$lang['ohp_status_ref'] = 'In curs de retur';
+$lang['ohp_status_rfd'] = 'Returnata (final)';
+$lang['ohp_status_pyd'] = 'Platita (final)';
+$lang['ohp_status_can'] = 'Anulata (final)';
+
+/*
+|--------------------------------------------------------------------------
+| etichete generale
+|--------------------------------------------------------------------------
+|
+*/
+$lang['general_close'] = 'Inchide';
+$lang['general_agree'] = 'Sunt de acord cu modificarile';
+$lang['general_terms'] = 'Sunt de acord cu <a style="color:#b5251d;" href="conditii-generale">termenii si conditiile</a> <br />platformei Smith&Smith online';

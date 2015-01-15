@@ -475,6 +475,7 @@ $lang['profile_email_box'] = 'These information cannot be changed';
 $lang['profile_password_box'] = 'Pay attention to password change';
 $lang['profile_personal_box'] = 'Personale data';
 $lang['profile_bank_box'] = 'Banking data';
+$lang['profile_default_language_box'] = 'Default language used for messages and emails';
 
 $lang['profile_last_name'] = 'Last name';
 $lang['profile_first_name'] = 'First name';
@@ -487,6 +488,7 @@ $lang['profile_country'] = 'Country';
 $lang['profile_account'] = 'Bank account';
 $lang['profile_swift'] = 'Bank SWIFT code';
 $lang['profile_bank'] = 'Bank';
+$lang['profile_default_language'] = 'Default language';
 
 $lang['profile_save'] = 'SAVE';
 
@@ -526,6 +528,9 @@ $lang['payments_exch_recipient'] = 'The recipient receives';
 $lang['payments_pick'] = 'choose';
 
 $lang['payments_cmd'] = 'SEND';
+
+$lang['payments_thanks'] = 'Thank you!';
+$lang['payments_thanks_cmd'] = 'NEW TRANSFER';
 
 /*
 |--------------------------------------------------------------------------
@@ -624,5 +629,24 @@ $lang['ohp_messages'] = 'MESSAGES';
 $lang['ohp_return'] = 'RETURN';
 $lang['ohp_correction'] = 'CORRECTION';
 $lang['ohp_recent_payments'] = 'Recent transfers';
+$lang['ohp_status'] = 'Status';
+// aceste status-uri tb sa fie corelate cu helpers/my_helper.php/status si get_status_label
+$lang['ohp_status_init'] = 'Processing';
+$lang['ohp_status_pay'] = 'Payment pending';
+$lang['ohp_status_err'] = 'Payment error (final)';
+$lang['ohp_status_wait'] = 'Correction or refund?';
+$lang['ohp_status_corr'] = 'Corrected, processing';
+$lang['ohp_status_ref'] = 'Refund pending';
+$lang['ohp_status_rfd'] = 'Refunded (final)';
+$lang['ohp_status_pyd'] = 'Payed (final)';
+$lang['ohp_status_can'] = 'Cancelled (final)';
 
-$lang['test111'] = 'Recipient IBAN.';
+/*
+|--------------------------------------------------------------------------
+| etichete generale
+|--------------------------------------------------------------------------
+|
+*/
+$lang['general_close'] = 'Close';
+$lang['general_agree'] = 'I agree with changes';
+$lang['general_terms'] = 'I agree with Smith&Smith online <a style="color:#b5251d;" href="conditii-generale">terms and conditions</a>. <br />';
