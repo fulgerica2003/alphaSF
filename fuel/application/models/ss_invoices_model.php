@@ -124,7 +124,7 @@
 		}
 		
 		function invoice_by_unid($unid){
-			$where['select'] = 'ss_invoices.id inv_id, ss_invoices.id_user inv_id_user, users.email u_email';
+			$where['select'] = 'ss_invoices.id inv_id, ss_invoices.id_user inv_id_user, users.email u_email, users.default_language u_lang';
 			$where['join'] = array('users', 'ss_invoices.id_user = users.id');
 			$where['where'] = array('ss_invoices.unid' => $unid);
 			$where['order_by'] = 'date_added desc';
