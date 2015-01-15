@@ -89,6 +89,7 @@ $lang['register_user_country']						     = 'Country of residence';
 $lang['register_user_account']						   	 = 'Bank account';
 $lang['register_user_swift']						   	 = 'Bank SWIFT code';
 $lang['register_user_bank']						  		 = 'Bank';
+$lang['register_user_default_lang']					 	 = 'Default language';
 $lang['register_user_submit_btn']                        = 'Register';
 $lang['register_user_validation_fname_label']            = 'First Name';
 $lang['register_user_validation_lname_label']            = 'Last Name';
@@ -104,6 +105,7 @@ $lang['register_user_validation_country_label']          = 'Country of residence
 $lang['register_user_validation_account_label']			 = 'Bank account';
 $lang['register_user_validation_swift_label']			 = 'Bank SWIFT code';
 $lang['register_user_validation_bank_label']			 = 'Bank';
+$lang['register_user_validation_default_lang_label'] 	 = 'Default language';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Edit User';

@@ -1,5 +1,16 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 	
+	/*
+	adaugare camp nou la inregistrare si la editarea profilului:
+	- se adauga campul in tabela users
+	- se adauga in views/auth/register.php
+	- se adauga in controller auth in function register()
+	- se adauga in language/<limba>/auth_lang.php
+	- se adauga in controller online_profile in function edit()
+	- se adauga in views/online_profile.php
+	- se adauga in language/<limba>/ss_lang.php
+	*/
+	
 	class Auth extends CI_Controller {
 		
 		function __construct()
@@ -573,6 +584,7 @@
 			$this->form_validation->set_rules('account', $this->lang->line('register_user_validation_account_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('swift', $this->lang->line('register_user_validation_swift_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('bank', $this->lang->line('register_user_validation_bank_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('default_language', $this->lang->line('register_user_validation_default_language_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('word', 'Captcha', 'trim|callback_check_captcha|required' );
 			
 			if ($this->form_validation->run() == true)
@@ -590,6 +602,7 @@
 				'account'    => $this->input->post('account'),
 				'swift'    	 => $this->input->post('swift'),
 				'bank'       => $this->input->post('bank'),
+				'default_language'       => $this->input->post('default_language'),
 				);
 			}
 			if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
@@ -684,7 +697,15 @@
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('bank'),
 				'class' => 'agent-input',
-				);				
+				);
+				
+				$this->data['default_language'] = array(
+				'name'  => 'default_language',
+				'id'    => 'default_language',
+				'options' => get_language_options(),
+				'value' => $this->form_validation->set_value('default_language'),
+				'class' => 'class = "agent-input"',
+				);
 				
 				$this->data['word'] = array(
 				'name'  => 'word',

@@ -47,6 +47,7 @@
 				$this->form_validation->set_rules('account', $this->lang->line('profile_account'), 'required|xss_clean');
 				$this->form_validation->set_rules('swift', $this->lang->line('profile_swift'), 'required|xss_clean');
 				$this->form_validation->set_rules('bank', $this->lang->line('profile_bank'), 'required|xss_clean');
+				$this->form_validation->set_rules('default_language', $this->lang->line('profile_default_language'), 'required|xss_clean');
 				
 				if (isset($_POST) && !empty($_POST)){
 					if ($this->input->post('password')){
@@ -58,14 +59,15 @@
 				if ($this->form_validation->run() === TRUE){
 					// am trecut validarea, deci tb sa salvez informatiile
 					$data = array(
-					'first_name' 	=> $this->input->post('first_name'),
-					'last_name' 	=> $this->input->post('last_name'),
-					'phone'    		=> $this->input->post('phone'),
-					'birth_date'    => $this->input->post('birth_date'),
-					'country'      	=> $this->input->post('country'),
-					'account'      	=> $this->input->post('account'),
-					'swift'      	=> $this->input->post('swift'),
-					'bank'      	=> $this->input->post('bank'),
+					'first_name' 		=> $this->input->post('first_name'),
+					'last_name' 		=> $this->input->post('last_name'),
+					'phone'    			=> $this->input->post('phone'),
+					'birth_date'    	=> $this->input->post('birth_date'),
+					'country'      		=> $this->input->post('country'),
+					'account'      		=> $this->input->post('account'),
+					'swift'      		=> $this->input->post('swift'),
+					'bank'      		=> $this->input->post('bank'),
+					'default_language'  => $this->input->post('default_language'),
 					);
 					
 					//update the password if it was posted

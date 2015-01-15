@@ -85,7 +85,14 @@
 				<div class="agent-lable"><?php echo lang('register_user_bank', 'bank');?> <br /></div>
 				<?php echo form_input($bank);?>
 			</p>
-		</div>		
+		</div>
+		
+		<div class="input-box">
+			<p>
+				<div class="agent-lable"><?php echo lang('register_user_default_lang', 'default_language');?> <br /></div>
+				<?php echo form_dropdown($default_language['name'], $default_language['options'], $default_language['value'], $default_language['class']);?>
+			</p>
+		</div>
 		
 		<div class="input-box">
 			<p>

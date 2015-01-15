@@ -47,6 +47,15 @@
 		<input class="agent-input corectie_form" type="text" name="bank" id="bank" value="<?php echo $vars['user']->bank; ?>">
 	</div>
 	
+	<div class="input-box">
+		<div class="explica-cont"><?php echo lang('profile_default_language_box')?></div>
+		<div class="agent-lable"><?php echo lang('profile_default_language')?></div>
+		<select class="agent-input corectie_form" name="default_language" id="default_language">
+		<?php foreach(get_language_options() as $key => $value):?>
+		<option value = "<?php echo $key?>" <?php echo $vars['user']->default_language === $key ? 'selected' : ''?>><?php echo $value?></option>
+		<?php endforeach;?>
+	</div>
+	
 </div>
 
 <div class="col-lg-7 col-lg-offset-5 col-sm-12 last-form">
