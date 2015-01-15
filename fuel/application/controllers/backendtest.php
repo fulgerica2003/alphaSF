@@ -5,11 +5,11 @@
 			* functii de test
 			*
 		*/
-		public function testupdcurs(){
+		public function testupcurs(){
 			$params = array(
 			"type" => "EUR",
 			"date" => "2014-12-16",
-			
+			"value" => "4.51",
 			);
 			
 			echo httpPost("http://localhost/smith/backend/upcurs",$params);
@@ -18,8 +18,17 @@
 		
 		public function testgettran(){
 			$params = array(
+			"type" => "new",
+			//"referinta" => "#S5489a9fadeda1"
+			);
+			
+			echo httpPost("http://localhost/smith/backend/gettran",$params);
+		}
+		
+		public function testgettran_ret(){
+			$params = array(
 			"type" => "ret",
-			"referinta" => "#S5489a9fadeda1"
+			//"referinta" => "#S5489a9fadeda1"
 			);
 			
 			echo httpPost("http://localhost/smith/backend/gettran",$params);
@@ -57,10 +66,50 @@
 			echo httpPost("http://localhost/smith/backend/upcom",$params);
 		}
 		
-		public function testuptran(){
+		public function testuptran_pin(){
+			$params = array(
+			"type" => "pin",
+			"referinta" => "#S54b7ac98b8348",
+			"pin" => "1234",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+		public function testuptran_tran(){
+			$params = array(
+			"type" => "tran",
+			"referinta" => "#S54b7ac98b8348",
+			'amount_in' => '999',
+			'amount_out' => '999',
+			'moneda_out' => '999',
+			'rate' => '9.9999',
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+		public function testuptran_benef(){
+			$params = array(
+			"type" => "benef",
+			"referinta" => "#S54b7ac98b8348",
+			
+			'bnf_nume' => 'Mihaescu',
+			'bnf_prenume' => 'Mihai',
+			'bnf_telefon' => '1234567890',
+			'bnf_email' => 'mm@m.ro',
+			'bnf_iban' => 'IBAN',
+			'bnf_adresa' => 'adresa',
+			'bnf_oras_id' => '5',
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+		public function testuptran_recom(){
 			$params = array(
 			"type" => "recom",
-			"referinta" => "#S5489a9fadeda1",
+			"referinta" => "#S54b7ac98b8348",
 			'payout' => '5',
 			'comision' => '999',
 			'amount_out' => '999',
@@ -79,6 +128,34 @@
 			echo httpPost("http://localhost/smith/backend/uptran",$params);
 		}
 		
+		public function testuptran_retur(){
+			$params = array(
+			"type" => "retur",
+			"referinta" => "#S54b7ac98b8348",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+		public function testuptran_ok(){
+			$params = array(
+			"type" => "ok",
+			"referinta" => "#S54b7ac98b8348",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+		public function testuptran_cancel(){
+			$params = array(
+			"type" => "cancel",
+			"referinta" => "#S54b7ac98b8348",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/uptran",$params);
+		}
+		
+
 		
 		public function total_fee(){
 			$this->load->model('ss_fees_model');
