@@ -1,0 +1,9 @@
+<div class="language-box">
+	<ul id="lista-lang">
+		<li><a href="/<?php echo fuel_var('subfolder'); ?>/<?php echo uri_path(); ?>" class="buton-lang<?php echo  $lang == 'ro' ? ' active-lang' : ''; ?>" id="romana">RO</a></li>
+		<li><a href="/<?php echo fuel_var('subfolder'); ?>/it/<?php echo (is_home() ? '' : uri_path()); ?>" class="buton-lang<?php echo  $lang == 'it' ? ' active-lang' : ''; ?>" id="italiana">IT</a></li>
+		<li><a href="/<?php echo fuel_var('subfolder'); ?>/sp/<?php echo (is_home() ? '' : uri_path()); ?>" class="buton-lang<?php echo  $lang == 'sp' ? ' active-lang' : ''; ?>" id="spaniola">SP</a></li>
+		<li><a href="/<?php echo fuel_var('subfolder'); ?>/en/<?php echo (is_home() ? '' : uri_path()); ?>" class="buton-lang<?php echo  $lang == 'en' ? ' active-lang' : ''; ?>" id="engleza">EN</a></li>
+	</ul>
+	<div id="button-lista-lang"></div>
+</div>
