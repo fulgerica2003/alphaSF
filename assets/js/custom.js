@@ -44,7 +44,7 @@ $(document).ready(function(){
 		$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val(), lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
-		$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val(), lang: theLanguage}, function(data) {
+		$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
 		}, "json");
@@ -54,7 +54,7 @@ $(document).ready(function(){
 		$('#customFields').empty();
 		$('#fee').val('');
 		$('#total').val('');
-		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val()}, function(data) {
+		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val(), lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
 		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val()}, function(data) {
@@ -370,6 +370,17 @@ $(document).ready(function(){
 		}
 		
 		
+	});
+	
+	$(document).on("click", "#retur_link", function () {
+		var unid = $(this).data('id');
+		$(".modal-body #modal_unid").text( unid );
+		$(".modal-body #hidden_modal_unid").val( unid );
+	});
+	
+	$(document).on("click", "#corectie_link", function () {
+		var unid = $(this).data('id');
+		$(".modal-body #hidden_modal_unid").val( unid );
 	});
 	
 });
