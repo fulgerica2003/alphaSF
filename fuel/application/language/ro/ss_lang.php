@@ -84,7 +84,7 @@ $lang['calc_txt034'] = 'IBAN';
 $lang['calc_txt035'] = 'Transfer de bani online';
 $lang['calc_txt036'] = 'Confirmare tranzactie';
 $lang['calc_txt037'] = 'Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra
-presupune deducerea din suma transferata a comisionului de rambursare in valoare de 15 euro
+presupune deducerea din suma transferata a comisionului de rambursare in valoare de <span style="color:#b5251d;">15 EURO</span> euro
 la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunteti de acord
 cu termenii si conditiile platformei de plati online Smith&Smith.';
 $lang['calc_txt038'] = 'Transfer de bani online';
@@ -163,6 +163,8 @@ $lang['calc_msg013'] = 'Felicitari! Operatiunea de plata cu referinta %s a fost 
 $lang['calc_msg014'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
 transferul cu referinta %s!';
 $lang['calc_msgcancel'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
+$lang['calc_msgpayrefund'] = 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat
+transferul cu referinta %s!';
 
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
 $lang['calc_eml002_sb'] = '%s : Detalii tranzactie Smith & Smith';
@@ -529,8 +531,6 @@ $lang['payments_cmd'] = 'TRANSFERA';
 $lang['payments_thanks'] = 'Va multumim!';
 $lang['payments_thanks_cmd'] = 'TRANSFER NOU';
 
-// bloc _op_iban
-
 /*
 |--------------------------------------------------------------------------
 | etichete online invoices
@@ -639,6 +639,15 @@ $lang['ohp_status_ref'] = 'In curs de retur';
 $lang['ohp_status_rfd'] = 'Returnata (final)';
 $lang['ohp_status_pyd'] = 'Platita (final)';
 $lang['ohp_status_can'] = 'Anulata (final)';
+
+$lang['ohp_correction_values'] = 'Noile valori sunt: ';
+$lang['ohp_correction_ben_name'] = 'Nume corectat: ';
+$lang['ohp_correction_ben_surname'] = 'Prenume corectat: ';
+$lang['ohp_correction_ben_phone'] = 'Telefon corectat: ';
+$lang['ohp_correction_ben_email'] = 'Email corectat: ';
+$lang['ohp_correction_ben_iban'] = 'IBAN corectat: ';
+$lang['ohp_correction_ben_address'] = 'Adresa corectata: ';
+$lang['ohp_correction_ben_city'] = 'Oras corectat: ';
 
 /*
 |--------------------------------------------------------------------------

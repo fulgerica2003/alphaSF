@@ -14,6 +14,7 @@
 			$this->load->model('ss_cities_model');			
 			$this->load->model('ss_exchange_rate_model');
 			$this->load->model('ss_payments_model');
+			$this->load->model('ss_corrections_model');
 			$this->load->model('ss_messages_model');
 			
 			$this->load->library('form_validation');
@@ -27,7 +28,7 @@
 			
 			if (!$this->ion_auth->logged_in()){
 				// redirect-ul se face in _variables/online_payments.php, teoretic aici nici nu ar trebui sa ajunga
-			}else{
+				}else{
 				$user = $this->ion_auth->user()->row();
 				$this->user_id = $user->id;
 				$this->user_email = $user->email;
@@ -43,7 +44,7 @@
 		}
 		
 		public function validate(){
-		
+			
 			$vars['payOpts'] = get_payment_types();
 			
 			$calc_details = $this->session->userdata('calcPayDetails');
@@ -57,12 +58,12 @@
 				$vars['calcCurrency'] = $currency;
 				$vars['calcModIncasare'] = $payment_method;
 				$this->session->unset_userdata('calcPayDetails');
-			}else{
+				}else{
 				$amount = $this->input->post('amount');
 				$payment_method = $this->input->post('modIncasare');
 				$currency = $this->input->post('currency');
 			}
-					
+			
 			$vars['benOpts'] = get_ben_opts($currency);
 			
 			$this->form_validation->set_rules('amount', 'Suma transferata', 'required|numeric');
@@ -168,23 +169,24 @@
 					$payment_card_details['user_id'] = $this->user_id;
 					$payment_form = get_payment_form($payment_card_details);
 					echo $payment_form;
-				}else if (strtolower($payment_details['id_payment_type']) === 'cont'){
+					}else if (strtolower($payment_details['id_payment_type']) === 'cont'){
 					$msg_codes = get_message_codes('pay_cont');
-			
+					
 					log_ref(
 					$unid,
 					sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid),
 					array(
-						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
-						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
-						)
-				);
+					'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
+					'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
+					)
+					);
 				}
 				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
 				$vars['link'] = 'online_payments';
-				$vars['text'] = 'pay';
+				$vars['text'] = 'payments_thanks_cmd';
+				$vars['title'] = 'payments_thanks';
 				$this->fuel->pages->render('online_thanks', $vars);
-			}else{
+				}else{
 				redirect('online_payments');
 			}
 		}
@@ -249,15 +251,15 @@
 			
 			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
 			/*echo 'payment '.$payment_details['unid']. ' successfully added';
-			
-			$sitevars = $this->fuel->sitevars->get();
-			
-			send_tx_email(array('unid' => $payment_details['unid'],
-			'receiver' => $this->user_email,
-			'sender' => $sitevars['from_email'],
-			// TODO $this->lang->line incarca in acest moment din language/english
-			'subject' => $this->lang->line('fact_eml011_sb'),
-			'message' => $this->lang->line('fact_eml011_cont'),
+				
+				$sitevars = $this->fuel->sitevars->get();
+				
+				send_tx_email(array('unid' => $payment_details['unid'],
+				'receiver' => $this->user_email,
+				'sender' => $sitevars['from_email'],
+				// TODO $this->lang->line incarca in acest moment din language/english
+				'subject' => $this->lang->line('fact_eml011_sb'),
+				'message' => $this->lang->line('fact_eml011_cont'),
 			));*/
 			
 			return $payment_details['unid'];
@@ -374,17 +376,69 @@
 		*/
 		
 		public function refund(){
-			// utilizatorul a fost de acord cu returul si trimit msg014 si eml010
-			// daca a fost de acord cu returul, ce status ii pun: returnata(6) sau ii las in curs de retur(5) si astept sa o actualizeze backend?
-			print_r($_POST);
-			die;
+			$accept = $this->input->post('accept');
+			
+			$unid = $this->input->post('hidden_modal_unid');
+			
+			if ($accept && $unid){
+				
+				$where['unid'] = $unid;
+				$values['status'] = get_status('ref');
+				
+				$this->ss_payments_model->update($values, $where);
+				
+				$msg_codes = trigger_event('pay_refund', $unid);
+				
+				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
+				$vars['link'] = 'online_history_payments';
+				$vars['text'] = 'news_details_back';
+				$vars['title'] = 'payments_thanks';
+				$this->fuel->pages->render('online_thanks', $vars);
+				}else{
+				redirect('online_history_payments');
+			}
 		}
 		
 		public function correction(){
 			// utilizatorul a fost de acord cu corectia
 			// status devine 2, in curs de plata
-			print_r($_POST);
-			die;
+			
+			$where['unid'] = $this->input->post('hidden_modal_unid');
+			$accept1 = $this->input->post('accept1');
+			$accept2 = $this->input->post('accept2');
+			
+			if ($where['unid'] && $accept1 && $accept2){
+			
+				$values['status'] = get_status('corr');
+				if ($this->input->post('hidden_ben_name')) $values['ben_name'] = $this->input->post('hidden_ben_name');
+				if ($this->input->post('hidden_ben_surname')) $values['ben_surname'] = $this->input->post('hidden_ben_surname');
+				if ($this->input->post('hidden_ben_phone')) $values['ben_phone'] = $this->input->post('hidden_ben_phone');
+				if ($this->input->post('hidden_ben_email')) $values['ben_email'] = $this->input->post('hidden_ben_email');
+				if ($this->input->post('hidden_ben_iban')) $values['ben_iban'] = $this->input->post('hidden_ben_iban');
+				if ($this->input->post('hidden_ben_address')) $values['ben_address'] = $this->input->post('hidden_ben_address');
+				if ($this->input->post('hidden_ben_id_ben_city')) $values['id_ben_city'] = $this->input->post('hidden_ben_id_ben_city');
+				
+				$this->ss_payments_model->update($values, $where);
+				
+				$msg_codes = trigger_event('pay_corr', $where['unid']);
+				
+				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $where['unid']);
+				$vars['link'] = 'online_history_payments';
+				$vars['text'] = 'news_details_back';
+				$vars['title'] = 'payments_thanks';
+				$this->fuel->pages->render('online_thanks', $vars);
+				
+			}else{
+				redirect('online_history_payments');
+			}
+		}
+		
+		public function get_correction(){
+			$unid = $this->input->post('myunid');
+		
+			$correction = $this->ss_corrections_model->find_one_array(array('unid' => $unid));
+			
+			echo json_encode($correction);
 		}
 		
 	}

@@ -14,12 +14,12 @@
 				<form action = "online_payments/refund" method = "post">
 					<input type="hidden" name="hidden_modal_unid" value="" id = "hidden_modal_unid">
 					<div class="input-box termeni">
-						<input type="checkbox" name="accept" checked value="1"><span class="lable-radio"><?php echo lang('general_terms');?></span>
+						<input id = "the-terms-retur" type="checkbox" name="accept" checked value="1"><span class="lable-radio"><?php echo lang('general_terms');?></span>
 					</div>
 					<div class="clearfix"></div>
 					
 					<div class="submit_eroare2">
-						<input class="agent-submit" type="submit" value="ACCEPT">
+						<input id = "acceptBtnRetur" class="agent-submit" type="submit" value="ACCEPT">
 					</div>
 				</form>
 					<div class="clearfix"></div>

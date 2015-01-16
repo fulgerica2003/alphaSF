@@ -72,6 +72,8 @@
 			'pay_cont' => array('msg004', 'eml002'),
 			'pay_card_ok' => array('msg005', 'eml003'),
 			'pay_card_fail' => array('msg006', ''),
+			'pay_refund' => array('msgpayrefund', ''),
+			'pay_corr' => array('txt040', ''),
 			
 			'inv_pin' => array('msg111', 'eml111'),
 			'inv_err' => array('msg020', 'eml013'),
@@ -199,6 +201,8 @@
 			'message' => $email['cont'],
 			));
 		}
+		
+		return $msg_codes;
 	}
 	
 	

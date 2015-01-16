@@ -38,6 +38,7 @@
 		function __construct(){
 			parent::__construct();
 			$this->load->model('ss_payments_model');
+			$this->load->model('ss_corrections_model');
 			$this->load->model('ss_invoices_model');
 			$this->load->model('ss_messages_model');
 			$this->load->model('ss_fees_model');
@@ -351,6 +352,7 @@
 			array('message_type', 'message_value', 'reference')
 			);
 			$received = array();
+			$received_correction = array();
 			
 			$reference = null;
 			
@@ -383,13 +385,15 @@
 					case 'benef':{
 						// datele nu sunt ok, status astept retur/corectie de la utilizator si trimit msg011 si eml007
 						
-						if ($this->input->post('bnf_nume')) $received['ben_name'] = $this->input->post('bnf_nume');
-						if ($this->input->post('bnf_prenume')) $received['ben_surname'] = $this->input->post('bnf_prenume');
-						if ($this->input->post('bnf_telefon')) $received['ben_phone'] = $this->input->post('bnf_telefon');
-						if ($this->input->post('bnf_email')) $received['ben_email'] = $this->input->post('bnf_email');
-						if ($this->input->post('bnf_iban')) $received['ben_iban'] = $this->input->post('bnf_iban');
-						if ($this->input->post('bnf_adresa')) $received['ben_address'] = $this->input->post('bnf_adresa');
-						if ($this->input->post('bnf_oras_id')) $received['id_ben_city'] = $this->input->post('bnf_oras_id');
+						if ($this->input->post('bnf_nume')) $received_correction['ben_name'] = $this->input->post('bnf_nume');
+						if ($this->input->post('bnf_prenume')) $received_correction['ben_surname'] = $this->input->post('bnf_prenume');
+						if ($this->input->post('bnf_telefon')) $received_correction['ben_phone'] = $this->input->post('bnf_telefon');
+						if ($this->input->post('bnf_email')) $received_correction['ben_email'] = $this->input->post('bnf_email');
+						if ($this->input->post('bnf_iban')) $received_correction['ben_iban'] = $this->input->post('bnf_iban');
+						if ($this->input->post('bnf_adresa')) $received_correction['ben_address'] = $this->input->post('bnf_adresa');
+						if ($this->input->post('bnf_oras_id')) $received_correction['id_ben_city'] = $this->input->post('bnf_oras_id');
+						
+						$received_correction['unid'] = $reference;
 						
 						$received['status'] = get_status('wait');
 						
@@ -434,6 +438,23 @@
 					default: {
 					$msg = 'err';
 					array_push($list, array($msg, 'operatiune necunoscuta, type: ' . $type));
+					}
+				}
+				
+				if (count($received_correction) > 0){
+					$where['unid'] = $reference;
+					// intai sterg corectia anterioara
+					$this->ss_corrections_model->delete($where);
+					
+					// inserez noua corectie
+					$this->ss_corrections_model->insert($received_correction);
+					
+					if ($this->ss_corrections_model->db->_error_message()){
+						$msg = 'err';
+						array_push($list, array($msg, $this->ss_corrections_model->db->_error_message(), $reference));
+						}else{
+						$msg = 'ok';
+						array_push($list, array($msg, 'insert correction ok', $reference));
 					}
 				}
 				

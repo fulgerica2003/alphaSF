@@ -641,6 +641,15 @@ $lang['ohp_status_rfd'] = 'Refunded (final)';
 $lang['ohp_status_pyd'] = 'Payed (final)';
 $lang['ohp_status_can'] = 'Cancelled (final)';
 
+$lang['ohp_correction_values'] = 'New values: ';
+$lang['ohp_correction_ben_name'] = 'Name changed: ';
+$lang['ohp_correction_ben_surname'] = 'Surname changed: ';
+$lang['ohp_correction_ben_phone'] = 'Phone changed: ';
+$lang['ohp_correction_ben_email'] = 'Email changed: ';
+$lang['ohp_correction_ben_iban'] = 'IBAN changed: ';
+$lang['ohp_correction_ben_address'] = 'Address changeda: ';
+$lang['ohp_correction_ben_city'] = 'City changed: ';
+
 /*
 |--------------------------------------------------------------------------
 | etichete generale
