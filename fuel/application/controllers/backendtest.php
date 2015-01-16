@@ -94,12 +94,12 @@
 			"type" => "benef",
 			"referinta" => "#S54b7ac98b8348",
 			
-			'bnf_nume' => 'Mihaescu',
-			'bnf_prenume' => 'Mihai',
+			'bnf_nume' => 'Olteanu',
+			'bnf_prenume' => 'George',
 			'bnf_telefon' => '1234567890',
-			'bnf_email' => 'mm@m.ro',
-			'bnf_iban' => 'IBAN',
-			'bnf_adresa' => 'adresa',
+			'bnf_email' => 'og@m.ro',
+			'bnf_iban' => 'WBAN',
+			'bnf_adresa' => 'adressssssssssssa',
 			'bnf_oras_id' => '5',
 			);
 			
