@@ -1,11 +1,11 @@
 <div id="wrapper">
 	<div class="col-lg-9 col-sm-12">
 		<div class="caseta page-text text2">
-			<div class="titluri-cont2"><?php echo $vars['text'] === 'pay' ? lang('payments_thanks') : lang('invoices_thanks')?></div>
+			<div class="titluri-cont2"><?php echo lang($vars['title'])?></div>
 			<?php echo $vars['message'];?>
 			<div class="col-lg-8 col-lg-offset-4 col-sm-12">
 				<div id = "newer-news" >
-					<a href="<?php echo $vars['link']?>"><?php echo $vars['text'] === 'pay' ? lang('payments_thanks_cmd') : lang('invoices_thanks_cmd')?></a>
+					<a href="<?php echo $vars['link']?>"><?php //echo $vars['text'] === 'pay' ? lang('payments_thanks_cmd') : lang('invoices_thanks_cmd')?><?php echo lang($vars['text'])?></a>
 				</div>
 				<div  class="clearfix" ></div>
 			</div>
