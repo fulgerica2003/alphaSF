@@ -77,6 +77,35 @@ $(document).ready(function(){
 		}
 	});
 	
+	var the_terms_retur = $("#the-terms-retur");
+    the_terms_retur.click(function() {
+        if ($(this).is(":checked")) {
+            $("#acceptBtnRetur").removeAttr("disabled");
+			} else {
+            $("#acceptBtnRetur").attr("disabled", "disabled");
+		}
+	});
+	
+	var the_terms_corectie = $("#the-terms-corectie");
+	var the_change_corectie = $("#the-change-corectie");
+    
+	the_terms_corectie.click(function() {
+        if ($(this).is(":checked") && the_change_corectie.is(":checked")) {
+            $("#acceptBtnCorectie").removeAttr("disabled");
+			} else {
+            $("#acceptBtnCorectie").attr("disabled", "disabled");
+		}
+	});
+	
+	
+    the_change_corectie.click(function() {
+        if ($(this).is(":checked") && the_terms_corectie.is(":checked")) {
+            $("#acceptBtnCorectie").removeAttr("disabled");
+			} else {
+            $("#acceptBtnCorectie").attr("disabled", "disabled");
+		}
+	});
+	
 	// calc online_payments
 	if ($('#cop_amount').val() && $('#cop_currency').val() && $('#cop_modIncasare').val()){
 		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
@@ -381,6 +410,54 @@ $(document).ready(function(){
 	$(document).on("click", "#corectie_link", function () {
 		var unid = $(this).data('id');
 		$(".modal-body #hidden_modal_unid").val( unid );
+		//var mydata = $(".modal-body #correction_fields").text();
+		//if (!mydata){
+			$.post('online_payments/get_correction', {myunid: unid}, function(data) {
+			var obj = jQuery.parseJSON( data );
+			
+			if (obj.ben_name){
+				$(".modal-body #ohp_correction_ben_name").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_name #ben_name").html(obj.ben_name);
+				$(".modal-body #hidden_ben_name").val( obj.ben_name );
+			}
+			
+			if (obj.ben_surname){
+				$(".modal-body #ohp_correction_ben_surname").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_surname #ben_surname").html(obj.ben_surname);
+				$(".modal-body #hidden_ben_surname").val( obj.ben_surname );
+			}
+
+			if (obj.ben_phone){
+				$(".modal-body #ohp_correction_ben_phone").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_phone #ben_phone").html(obj.ben_phone);
+				$(".modal-body #hidden_ben_phone").val( obj.ben_phone );
+			}
+			
+			if (obj.ben_email){
+				$(".modal-body #ohp_correction_ben_email").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_email #ben_email").html(obj.ben_email);
+				$(".modal-body #hidden_ben_email").val( obj.ben_email );
+			}
+
+			if (obj.ben_iban){
+				$(".modal-body #ohp_correction_ben_iban").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_iban #ben_iban").html(obj.ben_iban);
+				$(".modal-body #hidden_ben_iban").val( obj.ben_iban );
+			}
+			
+			if (obj.ben_address){
+				$(".modal-body #ohp_correction_ben_address").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_address #ben_address").html(obj.ben_address);
+				$(".modal-body #hidden_ben_address").val( obj.ben_address );
+			}
+			
+			if (obj.ben_city){
+				$(".modal-body #ohp_correction_ben_city").removeAttr("style");
+				$(".modal-body #ohp_correction_ben_city #ben_city").html(obj.ben_city);
+				$(".modal-body #hidden_id_ben_city").val( obj.id_ben_city );
+			}
+		});
+	//}	
 	});
 	
 });
