@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2015 at 04:08 PM
+-- Generation Time: Jan 16, 2015 at 05:19 PM
 -- Server version: 5.5.35-33.0
 -- PHP Version: 5.4.23
 
@@ -645,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `fuel_logs` (
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=924 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=929 ;
 
 --
 -- Dumping data for table `fuel_logs`
@@ -1575,7 +1575,12 @@ INSERT INTO `fuel_logs` (`id`, `entry_date`, `user_id`, `message`, `type`) VALUE
 (920, '2015-01-14 17:45:26', 1, 'The cache has been cleared.', 'info'),
 (921, '2015-01-15 16:05:43', 1, 'Successful login by ''admin'' from ::1', 'debug'),
 (922, '2015-01-15 16:05:50', 1, 'The cache has been cleared.', 'info'),
-(923, '2015-01-15 16:05:59', 1, 'The cache has been cleared.', 'info');
+(923, '2015-01-15 16:05:59', 1, 'The cache has been cleared.', 'info'),
+(924, '2015-01-16 12:56:05', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(925, '2015-01-16 17:17:23', 1, 'Successful login by ''admin'' from ::1', 'debug'),
+(926, '2015-01-16 17:17:44', 1, 'The cache has been cleared.', 'info'),
+(927, '2015-01-16 17:17:47', 1, 'The cache has been cleared.', 'info'),
+(928, '2015-01-16 17:17:50', 1, 'The cache has been cleared.', 'info');
 
 -- --------------------------------------------------------
 
@@ -2182,7 +2187,7 @@ CREATE TABLE IF NOT EXISTS `fuel_users` (
 --
 
 INSERT INTO `fuel_users` (`id`, `user_name`, `password`, `email`, `first_name`, `last_name`, `language`, `reset_key`, `salt`, `super_admin`, `active`) VALUES
-(1, 'admin', 'd8b94e6d8a4f30022fcafe12faa3405b8b956f80', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'e3b8dfc05ac7460bb983fe88ddee814e', 'yes', 'yes');
+(1, 'admin', 'de8fcb6da8d67823d94fea56f9d7b48268350c6e', 'a.mocioi@gmail.com', 'horia', 'mocioi', 'english', '', 'e98f1ce5a00b747b237b365e65161c46', 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2310,6 +2315,32 @@ INSERT INTO `ss_cities` (`id`, `name`) VALUES
 (43, 'TECUCI'),
 (44, 'TIMISOARA'),
 (45, 'TULCEA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ss_corrections`
+--
+
+CREATE TABLE IF NOT EXISTS `ss_corrections` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unid` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ben_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ben_surname` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ben_phone` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ben_email` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ben_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_ben_city` tinyint(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabela pentru stocarea corectiilor' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `ss_corrections`
+--
+
+INSERT INTO `ss_corrections` (`id`, `unid`, `ben_name`, `ben_surname`, `ben_phone`, `ben_email`, `ben_iban`, `ben_address`, `id_ben_city`) VALUES
+(1, '#S54b7ac98b8348', 'Olteanu', 'Oltel', '1234567890', 'og@m.ro', 'WBAN', 'adressssssssssssa', 5);
 
 -- --------------------------------------------------------
 
@@ -2505,7 +2536,7 @@ CREATE TABLE IF NOT EXISTS `ss_messages` (
   `message` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data for table `ss_messages`
@@ -2519,7 +2550,20 @@ INSERT INTO `ss_messages` (`id`, `id_tx`, `unid`, `id_user`, `tx_type`, `message
 (88, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra cu referinta #S54b7ac98b8348 a fost\r\nreceptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de\r\ndumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith\r\ntranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu\r\ntermenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim\r\npentru intelegere!', '2015-01-15 13:12:59'),
 (89, 152, '#S54b7ac98b8348', 8, 'pay', 'Ne pare rau! Plata cu referinta #S54b7ac98b8348 nu a putut fi efectuata. Va rugam contactati serviciul\r\n- Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea\r\n- situatiei. Va multumin pentru intelegere!', '2015-01-15 13:16:10'),
 (90, 152, '#S54b7ac98b8348', 8, 'pay', 'Ne pare rau! Plata cu referinta #S54b7ac98b8348 nu a putut fi efectuata. Va rugam contactati serviciul\r\nSugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea\r\nsituatiei. Va multumin pentru intelegere!', '2015-01-15 13:19:53'),
-(91, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-15 13:35:17');
+(91, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-15 13:35:17'),
+(92, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:13:06'),
+(93, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:15:56'),
+(94, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:19:05'),
+(95, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:25:15'),
+(96, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:29:06'),
+(97, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:29:55'),
+(98, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 10:33:58'),
+(99, 152, '#S54b7ac98b8348', 8, 'pay', 'Ne pare rau! Plata cu referinta #S54b7ac98b8348 nu a putut fi efectuata. Va rugam contactati serviciul\r\nSugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea\r\nsituatiei. Va multumin pentru intelegere!', '2015-01-16 11:10:15'),
+(100, 152, '#S54b7ac98b8348', 8, 'pay', 'Banii dumneavoastra vor fi returnati in contul din care s-a initiat\r\ntransferul cu referinta #S54b7ac98b8348!', '2015-01-16 14:22:50'),
+(101, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra a fost corectata conform instructiunilor\r\npe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.\r\nVa rugam sa confirmati modificarile si faptul ca sunteti de acord\r\ncu termenii si conditiile platformei de plati online Smith&Smith.', '2015-01-16 14:24:55'),
+(102, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra a fost corectata conform instructiunilor\r\npe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.\r\nVa rugam sa confirmati modificarile si faptul ca sunteti de acord\r\ncu termenii si conditiile platformei de plati online Smith&Smith.', '2015-01-16 14:26:20'),
+(103, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra a fost corectata conform instructiunilor\r\npe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.\r\nVa rugam sa confirmati modificarile si faptul ca sunteti de acord\r\ncu termenii si conditiile platformei de plati online Smith&Smith.', '2015-01-16 14:30:21'),
+(104, 152, '#S54b7ac98b8348', 8, 'pay', 'Tranzactia dumneavoastra a fost corectata conform instructiunilor\r\npe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.\r\nVa rugam sa confirmati modificarile si faptul ca sunteti de acord\r\ncu termenii si conditiile platformei de plati online Smith&Smith.', '2015-01-16 15:01:44');
 
 -- --------------------------------------------------------
 
@@ -2656,14 +2700,14 @@ CREATE TABLE IF NOT EXISTS `ss_payments` (
   `ben_iban` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'iban beneficiar',
   `pin` varchar(25) DEFAULT NULL COMMENT 'pin-ul tranzactiei primit din server SS',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=153 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=154 ;
 
 --
 -- Dumping data for table `ss_payments`
 --
 
 INSERT INTO `ss_payments` (`id`, `unid`, `id_user`, `id_payment_type`, `amount_in`, `currency_in`, `amount_out`, `currency_out`, `rate`, `fee`, `total`, `date_added`, `status`, `id_ben_payment_method`, `id_ben_city`, `ben_address`, `ben_name`, `ben_surname`, `ben_phone`, `ben_email`, `ben_iban`, `pin`) VALUES
-(152, '#S54b7ac98b8348', 8, 'cont', '999.00', 'eur', '999.00', '999', '9.9999', '999.00', '1347.50', '2015-01-15 12:03:48', 100, 5, 5, 'adresa', 'Mihaescu', 'Mihai', '1234567890', 'mm@m.ro', 'IBAN', '1234');
+(152, '#S54b7ac98b8348', 8, 'cont', '999.00', 'eur', '999.00', '999', '9.9999', '999.00', '1347.50', '2015-01-15 10:03:48', 57, 5, 5, 'adressssssssssssa', 'Olteanu', 'Oltel', '1234567890', 'og@m.ro', 'WBAN', '1234');
 
 -- --------------------------------------------------------
 
@@ -2930,7 +2974,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `country`, `phone`, `birth_date`, `account`, `swift`, `bank`, `default_language`) VALUES
 (1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1420632811, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', '', '', 'ro'),
-(8, '::1', 'horia mocioi', '$2y$08$o1p86hxF2hxmNE46HRJ/O.LJuZjaPYMMevyIs8ERrpBygohlGVVje', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1421311859, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276207', '06.12.1962', 'ACCT08', 'SWIFT08', 'Garanti Bank', 'ro'),
+(8, '::1', 'horia mocioi', '$2y$08$o1p86hxF2hxmNE46HRJ/O.LJuZjaPYMMevyIs8ERrpBygohlGVVje', NULL, 'a.mocioi@gmail.com', NULL, NULL, NULL, NULL, 1415447144, 1421420842, 1, 'Horia Alexandru', 'Mocioi', 'RO', '0040723276207', '06.12.1962', 'ACCT08', 'SWIFT08', 'Garanti Bank', 'ro'),
 (9, '::1', 'andrei andreescu', '$2y$08$XuDaJ1RZcV91ROMxpYA6X.1Xr.Dv5XXiu89uDS4c3MIxDxa2WiSPi', NULL, 'admin@c.ro', NULL, NULL, NULL, NULL, 1415483462, 1415620435, 1, 'andrei', 'andreescu', 'RO', '+40723276206', '15.09.1981', '', '', '', 'ro'),
 (10, '::1', 'vasile vasilescu', '$2y$08$9DwbP3NJ2qikfQexo.dLvOV7hEmuE0hckUlksR3k8R1T0drt/rxyi', NULL, 'admin@b.ro', '60a2befad3ed0dededcfd6c7aa46db8a2af4e729', NULL, NULL, NULL, 1415483662, NULL, 0, 'vasile', 'vasilescu', 'RO', '+40723276206', '15.09.1981', '', '', '', 'ro'),
 (11, '::1', 'mihai munteanu', '$2y$08$UdPx9XYAWWdo7fyx7ewY9erFVb0tlLuIdCet1S.ewle9z/pqAXNwi', NULL, 'mihai@asdf.ro', NULL, NULL, NULL, NULL, 1415621890, 1415622139, 1, 'mihai', 'munteanu', 'FR', '+40723276206', '15.09.1981', '', '', '', 'ro'),
