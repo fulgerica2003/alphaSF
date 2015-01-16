@@ -1,36 +1,6 @@
-<div class="modal fade" id="displayConfirmModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        	
-        	<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Inchide</button>
-				<p class="modal-title">Trasfer de bani online</p>
-			</div>
-			
-			<div class="modal-body" id="displayConfirmModalBody">
-				
-				<p class="eroare_factura">Confirmare tranzactie </p>
-				<p class="eroare_factura_text">Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra presupune deducerea din suma transferata a comisionului de rambursare in 
-					valoare de <span style="color:#b5251d;">15 EURO</span> la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunti de acord cu termenii si conditiile platformei de plati online Smith&Smith.</p>
-					<form id = "confirmTransfer" method = "post" action = "online_payments/add">
-						<div class="input-box termeni">
-						<input id = "the-terms" type="checkbox" name="confirmCheck" checked value="1"><span class="lable-radio">Sunt de acord cu <a style="color:#b5251d;" href="#">termenii si conditiile</a> <br />platformei
-						Smith&Smith online</span>
-					</div>
-					<div class="clearfix"></div>
-					
-					<div class="submit_eroare">
-						<input id = "acceptBtn" class="agent-submit" type="submit" value="ACCEPT">
-					</div>
-					<div class="clearfix"></div>
-					</form>
-				</div>	
-			</div>
-		</div>
-	</div>
-	
 	<?php 
 		$this->load->helper('form');
+		$this->load->view('_blocks/_modal_confirmare_salvare_tranzactie');
 		$attributes = array('id' => 'form-transfer-calc', 'name' => 'form-transfer-calc');
 		echo form_open('online_payments/validate', $attributes); 
 	?>
