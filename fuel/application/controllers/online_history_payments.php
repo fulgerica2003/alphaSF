@@ -26,18 +26,20 @@
 		}
 		
 		public function index(){
+		
+			$lang = $this->fuel->language->selected();
 			
 			$s1 = uri_segment(1);
 			$s2 = uri_segment(2);
 			
 			$page = intval($s2) ? intval($s2) : 1;
 			
-			//$config['base_url'] = base_url() . ($lang != 'ro' ? $lang . '/' : '') . 'online_history_payments';
-			$config['base_url'] = base_url() . 'online_history_payments';
+			$config['base_url'] = base_url() . ($lang != 'ro' ? $lang . '/' : '') . 'online_history_payments';
+			//$config['base_url'] = base_url() . 'online_history_payments';
 			$config['total_rows'] = $this->ss_payments_model->record_count(array('id_user' => $this->user_id));
 			$config['per_page'] = 10;
-			//$config['uri_segment'] = ($lang == 'ro' ? 2 : 3);
-			$config['uri_segment'] = 2;
+			$config['uri_segment'] = ($lang == 'ro' ? 2 : 3);
+			//$config['uri_segment'] = 2;
 			
 			$config['use_page_numbers'] = true;
 			$config['page_query_string'] = false;
