@@ -86,14 +86,6 @@
 			$payment->status = $values['status'];
 			
 			$payment->save();
-			
-			/*$message = $this->ss_messages_model->create();
-			$message->unid = $values['unid'];
-			$message->id_user = $values['id_user'];
-			$message->id_tx = $payment->id;
-			$message->tx_type = 'pay';
-			$message->message = 'payment '.$values['unid']. ' successfully added';
-			$message->save();*/
 		}
 		
 		function payments($id_user){
@@ -112,7 +104,7 @@
 		}
 		
 		function payment_by_unid($unid){
-			$where['select'] = 'ss_payments.id inv_id, ss_payments.id_user inv_id_user, users.email u_email, users.default_language u_lang';
+			$where['select'] = 'ss_payments.id inv_id, ss_payments.id_user inv_id_user, ss_payments.ben_name, ss_payments.ben_surname, ss_payments.pin, ss_payments.id_ben_payment_method, users.email u_email, users.default_language u_lang';
 			$where['join'] = array('users', 'ss_payments.id_user = users.id');
 			$where['where'] = array('ss_payments.unid' => $unid);
 			$where['order_by'] = 'date_added desc';
