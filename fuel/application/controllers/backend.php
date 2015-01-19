@@ -462,7 +462,6 @@
 					$where['unid'] = $reference;
 					$this->ss_payments_model->update($received, $where);
 					// trimit mesajele
-					//$this->send_messages('pay_' . $type, $reference);
 					trigger_event('pay_' . $type, $reference);
 					if ($this->ss_payments_model->db->_error_message()){
 						$msg = 'err';
@@ -534,7 +533,7 @@
 				if (count($received) > 0){
 					$where['unid'] = $reference;
 					$this->ss_invoices_model->update($received, $where);
-					$this->send_messages('inv_' . $type, $reference);
+					trigger_event('inv_' . $type, $reference);
 					if ($this->ss_invoices_model->db->_error_message()){
 						$msg = 'err';
 						array_push($list, array($msg, $this->ss_invoices_model->db->_error_message(), $reference));
@@ -824,18 +823,5 @@
 			$output_result = array('filename' => $filename, 'msg' => $msg);
 			
 			echo json_encode($output_result);
-		}
-		
-		private function send_messages($type, $reference){
-			$msg_codes = get_message_codes($type);
-			
-			log_ref(
-					$reference,
-					sprintf($this->lang->line('calc_' . $msg_codes[0]), $reference),
-					array(
-						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $reference),
-						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $reference),
-						)
-				);
 		}
 	}																							
