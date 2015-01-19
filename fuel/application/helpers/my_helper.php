@@ -62,7 +62,7 @@
 	
 	function get_message_codes($operation){
 		$msg_codes = array(
-			'pay_pin' => array('msg009', 'eml005pin'),
+			'pay_pin' => array('msg009', 'eml005'),
 			'pay_tran' => array('msg010', 'eml006'),
 			'pay_benef' => array('msg011', 'eml007'),
 			'pay_recom' => array('msg012', 'eml008'),
@@ -107,47 +107,6 @@
 		return $output[$tx_type];
 	}
 	
-	function log_ref($unid, $msg, $email){
-		$CI =& get_instance();
-		
-		$CI->load->model('ss_payments_model');
-		$CI->load->model('ss_invoices_model');
-		$CI->load->model('ss_messages_model');
-		
-		$site_vars = $CI->fuel->sitevars->get();
-		
-		$message['unid'] = $unid;
-		
-		if (substr($unid, 1, 1) === 'S'){
-			// payment
-			$message['tx_type'] = get_tx_type('pay');
-			$results = $CI->ss_payments_model->payment_by_unid($unid);
-			}else{
-			// invoice
-			$message['tx_type'] = get_tx_type('inv');
-			$results = $CI->ss_invoices_model->payment_by_unid($unid);
-		}
-		
-		$tx = $results->result();
-		
-		$message['id_user'] = $tx[0]->inv_id_user;
-		$message['id_tx'] = $tx[0]->inv_id;
-		$message['message'] = $msg;
-		if ($msg != null){
-			$CI->ss_messages_model->insert($message);
-		}
-		
-		if ($email != null){
-			send_tx_email(array('unid' => $message['unid'],
-			'receiver' => $tx[0]->u_email,
-			'sender' => $site_vars['from_email'],
-			'subject' => $email['sb'],
-			'message' => $email['cont'],
-			));
-		}
-		
-	}
-	
 	function trigger_event($event, $unid, $user = null, $additional_data = null){
 		$msg_codes = get_message_codes($event);
 		
@@ -175,17 +134,38 @@
 		
 		$message['id_user'] = $tx[0]->inv_id_user;
 		$message['id_tx'] = $tx[0]->inv_id;
+		$pin = $tx[0]->pin;
+		$ben_name = $tx[0]->ben_name;
+		$ben_surname = $tx[0]->ben_surname;
+		$id_ben_payment_method = $tx[0]->id_ben_payment_method;
 		
 		$CI->lang->load('ss', $tx[0]->u_lang);
-		$msg = sprintf($CI->lang->line('calc_' . $msg_codes[0]), $unid);
 		
-		if (strlen($msg_codes[1]) > 0){
-			$email = array(
+		if ($event == 'pay_pin'){
+			if ($id_ben_payment_method <= 5){
+				$msg = sprintf($CI->lang->line('calc_' . $msg_codes[0]), $unid, $pin, $ben_name . ' ' . $ben_surname);
+				$email = array(
+						'sb' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'pin_sb'), $unid),
+						'cont' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'pin_cont'), $unid, $pin, $ben_name . ' ' . $ben_surname),
+						);
+			}else{
+				$msg = sprintf($CI->lang->line('calc_' . $msg_codes[0]), $unid, $pin, $ben_name . ' ' . $ben_surname);
+				$email = array(
+						'sb' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
+						'cont' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid, $ben_name . ' ' . $ben_surname),
+						);
+			}
+		}else{
+			$msg = sprintf($CI->lang->line('calc_' . $msg_codes[0]), $unid);
+			if (strlen($msg_codes[1]) > 0){
+					$email = array(
 						'sb' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
 						'cont' => sprintf($CI->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
 						);
-		}else{
-			$email = null;
+			
+				}else{
+					$email = null;
+				}
 		}
 		
 		$message['message'] = $msg;
