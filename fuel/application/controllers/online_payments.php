@@ -34,9 +34,8 @@
 				$this->user_email = $user->email;
 				$this->user_lang = $user->default_language;
 			}
-			
-			$this->lang->load('ss', $this->user_lang);
-			
+			$this->fuel->language->detect(true);
+			$this->lang->load('ss', $this->fuel->language->selected());
 		}
 		
 		function index(){
@@ -44,6 +43,8 @@
 		}
 		
 		public function validate(){
+			
+			
 			
 			$vars['payOpts'] = get_payment_types();
 			
@@ -66,12 +67,12 @@
 			
 			$vars['benOpts'] = get_ben_opts($currency);
 			
-			$this->form_validation->set_rules('amount', 'Suma transferata', 'required|numeric');
-			$this->form_validation->set_rules('currency', 'Moneda', 'required');
-			$this->form_validation->set_rules('modIncasare', 'Modalitate de plata beneficiar', 'required');
-			$this->form_validation->set_rules('tipPlata', 'Tip plata', 'required');
-			$this->form_validation->set_rules('fee', 'Comision de plata', 'required');
-			$this->form_validation->set_rules('total', 'Total de plata', 'required');
+			$this->form_validation->set_rules('amount', $this->lang->line('payments_amount'), 'required|numeric');
+			$this->form_validation->set_rules('currency', $this->lang->line('payments_currency'), 'required');
+			$this->form_validation->set_rules('modIncasare', $this->lang->line('payments_payment_type'), 'required');
+			$this->form_validation->set_rules('tipPlata', $this->lang->line('payments_pay'), 'required');
+			$this->form_validation->set_rules('fee', $this->lang->line('payments_fee'), 'required');
+			$this->form_validation->set_rules('total', $this->lang->line('payments_total'), 'required');
 			
 			if (isset($payment_method) && strlen($payment_method > 0)){
 				switch($payment_method){
@@ -90,16 +91,16 @@
 						$phone_validation_rules = 'required|numeric';
 						$email_validation_rules = 'required|valid_email';
 						$address_validation_rules = 'required';
-						$this->form_validation->set_rules('cities', 'Localitati disponibile', 'required');
+						$this->form_validation->set_rules('cities', $this->lang->line('payments_city'), 'required');
 						$this->form_validation->set_rules('acceptcv', 'Accept', '');
 						break;
 					}
 					case '6':
 					case '7':
 					case '8':{
-						$this->form_validation->set_rules('iban1', 'IBAN1', 'required|alpha_numeric|exact_length[4]');
-						$this->form_validation->set_rules('iban2', 'IBAN2', 'required|alpha|exact_length[4]');
-						$this->form_validation->set_rules('iban3', 'IBAN3', 'required|alpha_numeric|exact_length[16]');
+						$this->form_validation->set_rules('iban1', $this->lang->line('payments_iban'), 'required|alpha_numeric|exact_length[4]');
+						$this->form_validation->set_rules('iban2', $this->lang->line('payments_iban'), 'required|alpha|exact_length[4]');
+						$this->form_validation->set_rules('iban3', $this->lang->line('payments_iban'), 'required|alpha_numeric|exact_length[16]');
 						$phone_validation_rules = 'required|numeric';
 						$email_validation_rules = 'required|valid_email';
 						$address_validation_rules = 'required';
@@ -108,14 +109,14 @@
 					default:
 				}
 				
-				$this->form_validation->set_rules('ben_phone', 'Telefon', $phone_validation_rules);
-				$this->form_validation->set_rules('ben_email', 'Email', $email_validation_rules);
-				$this->form_validation->set_rules('ben_address', 'Adresa', $address_validation_rules);
+				$this->form_validation->set_rules('ben_phone', $this->lang->line('payments_phone'), $phone_validation_rules);
+				$this->form_validation->set_rules('ben_email', $this->lang->line('payments_email'), $email_validation_rules);
+				$this->form_validation->set_rules('ben_address', $this->lang->line('payments_address'), $address_validation_rules);
 			}
 			
 			
-			$this->form_validation->set_rules('ben_last_name', 'Nume beneficiar', 'required|alpha');
-			$this->form_validation->set_rules('ben_first_name', 'Prenume beneficiar', 'required|alpha');
+			$this->form_validation->set_rules('ben_last_name', $this->lang->line('payments_last_name'), 'required|alpha');
+			$this->form_validation->set_rules('ben_first_name', $this->lang->line('payments_first_name'), 'required|alpha');
 			
 			
 			
@@ -135,19 +136,6 @@
 				$this->session->set_userdata('paymentDetails', $this->get_payment_details());
 				
 				$this->fuel->pages->render('online_payments', $vars);
-				
-				/*$unid = $this->save();
-					
-					if (strtolower($this->input->post('tipPlata')) === 'card'){
-					$payment_details['amount'] = $amount;
-					$payment_details['currency'] = $currency;
-					$payment_details['unid'] = $unid;
-					$payment_details['user_id'] = $this->user_id;
-					$payment_form = get_payment_form($payment_details);
-					echo $payment_form;
-					
-					}
-				*/
 			}
 		}
 		
@@ -168,99 +156,26 @@
 					$payment_card_details['unid'] = $payment_details['unid'];
 					$payment_card_details['user_id'] = $this->user_id;
 					$payment_form = get_payment_form($payment_card_details);
-					echo $payment_form;
+					echo $payment_form; // redirectarea catre pagina de succes se face din pay/card_response
 					}else if (strtolower($payment_details['id_payment_type']) === 'cont'){
-					$msg_codes = get_message_codes('pay_cont');
 					
-					log_ref(
-					$unid,
-					sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid),
-					array(
-					'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $unid),
-					'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $unid),
-					)
-					);
+					$event = 'pay_cont';
+					
+					$msg_codes = trigger_event($event, $unid);
+					
+					$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
+					$vars['link'] = 'online_payments';
+					$vars['text'] = 'payments_thanks_cmd';
+					$vars['title'] = 'payments_thanks';
+					$this->fuel->pages->render('online_thanks', $vars);
 				}
-				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
-				$vars['link'] = 'online_payments';
-				$vars['text'] = 'payments_thanks_cmd';
-				$vars['title'] = 'payments_thanks';
-				$this->fuel->pages->render('online_thanks', $vars);
 				}else{
 				redirect('online_payments');
 			}
 		}
 		
-		/**** generez unid-ul, afisez mesajul si trimit email
-			*** salvarea mesajului in istoric se face odata cu salvarea platii in model
-		*/
-		/*private function save(){
-			
-			$unid = uniqid('#S');
-			
-			echo $unid;
-			
-			$values['unid'] = $unid;
-			$values['id_user'] = $this->user_id;
-			$values['id_payment_type'] = strtolower($this->input->post('tipPlata'));
-			$values['amount_in'] = $this->input->post('amount');
-			$values['currency_in'] = $this->input->post('currency');
-			
-			if ($this->input->post('acceptcv') && $this->input->post('acceptcv') === 'acceptcv'){
-			$values['rate'] = $this->exchange_rate_eur;
-			$values['currency_out'] = 'ron';
-			$values['amount_out'] = $values['amount_in'] * $values['rate'];
-			}else{
-			$values['rate'] = null;
-			$values['currency_out'] = $values['currency_in'];
-			$values['amount_out'] = $values['amount_in'];
-			}
-			
-			$values['id_payment_method'] = $this->input->post('modIncasare');
-			$values['ben_city'] = ($this->input->post('cities') ? $this->input->post('cities') : null);
-			$values['ben_address'] = $this->input->post('ben_address');
-			$values['ben_name'] = $this->input->post('ben_last_name');
-			$values['ben_surname'] = $this->input->post('ben_first_name');
-			$values['ben_phone'] = $this->input->post('ben_phone');
-			$values['ben_email'] = $this->input->post('ben_email');
-			$values['ben_iban'] = ( $this->input->post('iban1') && $this->input->post('iban2') && $this->input->post('iban3') ? $this->input->post('iban1') . $this->input->post('iban2') . $this->input->post('iban3') : null);
-			$values['fee'] = $this->input->post('fee');
-			$values['total'] = $this->input->post('total');
-			$values['status'] = get_status('init');
-			
-			$this->ss_payments_model->save_payment($values);
-			
-			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
-			echo 'payment '.$unid. ' successfully added';
-			
-			$sitevars = $this->fuel->sitevars->get();
-			
-			send_tx_email(array('unid' => $unid,
-			'receiver' => $this->user_email,
-			'sender' => $sitevars['from_email'],
-			// TODO $this->lang->line incarca in acest moment din language/english
-			'subject' => $this->lang->line('fact_eml011_sb'),
-			'message' => $this->lang->line('fact_eml011_cont'),
-			));
-			
-			return $unid;
-		}*/
-		
 		private function save($payment_details){
 			$this->ss_payments_model->save_payment($payment_details);
-			
-			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
-			/*echo 'payment '.$payment_details['unid']. ' successfully added';
-				
-				$sitevars = $this->fuel->sitevars->get();
-				
-				send_tx_email(array('unid' => $payment_details['unid'],
-				'receiver' => $this->user_email,
-				'sender' => $sitevars['from_email'],
-				// TODO $this->lang->line incarca in acest moment din language/english
-				'subject' => $this->lang->line('fact_eml011_sb'),
-				'message' => $this->lang->line('fact_eml011_cont'),
-			));*/
 			
 			return $payment_details['unid'];
 		}
