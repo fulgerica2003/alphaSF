@@ -95,10 +95,7 @@ Va rugam sa confirmati modificarile si faptul ca sunteti de acord
 cu termenii si conditiile platformei de plati online Smith&Smith.';
 $lang['calc_txt041'] = 'Transfer de bani online';
 $lang['calc_txt042'] = 'Retur tranzactie <span style="color:#b5251d"><span id = "modal_unid"></span></span>';
-$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta <span style="color:#b5251d"><span id = "modal_unid"></span></span> urmeaza sa fie returnata
-in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de rambursare este de 15 euro
-si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni.
-Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
+$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta <span style="color:#b5251d"><span id = "modal_unid"></span></span> urmeaza sa fie returnata in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de rambursare este de 15 euro si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni. Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
 
 // butoane
 $lang['calc_btn004'] = 'de pe card';
@@ -145,8 +142,8 @@ $lang['calc_msg008'] = 'Tranzactia dumneavoastra cu referinta %s nu a fost
 finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
 telefon +4.021.331.8000 pentru clarificarea situatiei.';
 $lang['calc_msg009'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va rugam
-comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {nume prenume}.';
+receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este %s. Va rugam
+comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
 $lang['calc_msg010'] = 'Tranzactia dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
 dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
@@ -184,12 +181,12 @@ cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith l
 +4.021.331.8000 pentru clarificarea situatiei.';
 $lang['calc_eml005pin_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml005pin_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va
-rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. {nume prenume}.';
+receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este %s. Va
+rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
 $lang['calc_eml005_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml005_cont'] = 'Suma ordonata de dumneavoastra cu referinta %s a fost
 receptionata in contul Smith & Smith si urmeaza sa fie transferata in contul beneficiarului,
-Dl./D-na. {nume prenume}.';
+Dl./D-na. %s.';
 $lang['calc_eml006_sb'] = '%s: Diferenta suma transmisa';
 $lang['calc_eml006_cont'] = 'Tranzactia dumneavoastra cu referinta %s a fost receptionata
 in contul Smith & Smith, dar suma transferata este diferita de suma ordonata de
@@ -504,21 +501,22 @@ $lang['payments_sidenote_iban'] = 'Va rugam sa introduceti contul IBAN al benefi
 $lang['payments_sidenote_city'] = 'In cazul in care localitatea cautata nu este disponibila, va rugam sa selectati o alta modalitate de plata.';
 $lang['payments_sidenote_ben'] = 'Completeaza datele beneficiarului.';
 
-$lang['payments_pay'] = 'Transfera online de bani';
+$lang['payments_pay'] = 'Transfer online de bani';
 $lang['payments_card'] = 'De pe card';
 $lang['payments_account'] = 'Din cont';
 
 $lang['payments_amount'] = 'Suma transferata';
-$lang['payments_payment_type'] = 'modalitate de plata beneficiar';
+$lang['payments_currency'] = 'Moneda';
+$lang['payments_payment_type'] = 'Modalitate de plata beneficiar';
 $lang['payments_fee'] = 'Comision de plata';
 $lang['payments_total'] = 'Total de plata';
-$lang['payments_last_name'] = 'nume';
-$lang['payments_first_name'] = 'prenume';
-$lang['payments_phone'] = 'telefon';
-$lang['payments_email'] = 'email';
-$lang['payments_address'] = 'adresa';
+$lang['payments_last_name'] = 'Nume';
+$lang['payments_first_name'] = 'Prenume';
+$lang['payments_phone'] = 'Telefon';
+$lang['payments_email'] = 'Email';
+$lang['payments_address'] = 'Adresa';
 
-$lang['payments_iban'] = 'iban';
+$lang['payments_iban'] = 'IBAN';
 $lang['payments_city'] = 'Localitati disponibile';
 $lang['payments_f_exch'] = 'Curs de schimb valutar:';
 $lang['payments_agree_exch'] = 'De acord cu schimbul valutar';

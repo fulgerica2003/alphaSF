@@ -22,7 +22,7 @@
 			$this->load->helper('url');
 			
 			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-			
+			$this->fuel->language->detect(true);
 			$this->lang->load('auth');
 			$this->load->helper('language');
 		}
@@ -1053,7 +1053,7 @@
 			// we will first load the helper. We will not be using autoload because we only need it here
 			$this->load->helper('captcha');
 			// we will set all the variables needed to create the captcha image
-			$options = array('img_path'=>'./assets/captcha/','img_url'=>site_url('assets/captcha/'),'img_width'=>'150','img_height'=>'40','expiration'=>7200,
+			$options = array('img_path'=>'./assets/captcha/','img_url'=>'assets/captcha/','img_width'=>'150','img_height'=>'40','expiration'=>7200,
 			'word_length' => 4, 'pool' => '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
 			//now we will create the c	aptcha by using the helper function create_captcha()
 			$cap = create_captcha($options);

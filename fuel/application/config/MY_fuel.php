@@ -115,6 +115,7 @@ $config['language_mode'] = 'both';
 $config['add_language_to_site_url'] = TRUE;
 $config['language_use_cookies'] = TRUE;
 $config['language_default_option'] = 'ro';
+$config['language_cookie_name'] = 'ss_lang';
 
 /* End of file MY_fuel.php */
 /* Location: ./application/config/MY_fuel.php */

@@ -82,6 +82,10 @@ $lang['register_user_password_label']                    = 'Parola:';
 $lang['register_user_password_confirm_label']            = 'Confirma parola:';
 $lang['register_user_birth_date']						 = 'Data nasterii';
 $lang['register_user_country']							 = 'Tara de resedinta';
+$lang['register_user_account']						   	 = 'Cont bancar';
+$lang['register_user_swift']						   	 = 'Codul SWIFT al bancii';
+$lang['register_user_bank']						  		 = 'Banca';
+$lang['register_user_default_lang']					 	 = 'Limba implicita';
 $lang['register_user_submit_btn']                        = 'Inregistrare';
 $lang['register_user_validation_fname_label']            = 'Prenume';
 $lang['register_user_validation_lname_label']            = 'Nume';
@@ -92,6 +96,12 @@ $lang['register_user_validation_phone3_label']           = 'A treia parte a numa
 $lang['register_user_validation_company_label']          = 'Companie';
 $lang['register_user_validation_password_label']         = 'Parola';
 $lang['register_user_validation_password_confirm_label'] = 'Confirmarea parolei';
+$lang['register_user_validation_birth_date_label']       = 'Data nasterii';
+$lang['register_user_validation_country_label']          = 'Tara de resedinta';
+$lang['register_user_validation_account_label']			 = 'Cont bancar';
+$lang['register_user_validation_swift_label']			 = 'Codul SWIFT al bancii';
+$lang['register_user_validation_bank_label']			 = 'Banca';
+$lang['register_user_validation_default_lang_label'] 	 = 'Limba implicita';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Editeaza date utilizator';

@@ -99,8 +99,8 @@ pe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.
 Va rugam sa confirmati modificarile si faptul ca sunteti de acord
 cu termenii si conditiile platformei de plati online Smith&Smith.';
 $lang['calc_txt041'] = 'Transfer de bani online';
-$lang['calc_txt042'] = 'Retur tranzactie %s';
-$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta %s urmeaza sa fie returnata
+$lang['calc_txt042'] = 'Retur tranzactie <span style="color:#b5251d"><span id = "modal_unid"></span></span>';
+$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta <span style="color:#b5251d"><span id = "modal_unid"></span></span> urmeaza sa fie returnata
 in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de rambursare este de 15 euro
 si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni.
 Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
@@ -510,7 +510,8 @@ $lang['payments_card'] = 'Debit card';
 $lang['payments_account'] = 'Banking account';
 
 $lang['payments_amount'] = 'Amount';
-$lang['payments_payment_type'] = 'receiver payment type';
+$lang['payments_currency'] = 'Currency';
+$lang['payments_payment_type'] = 'Receiver payment type';
 $lang['payments_fee'] = 'Fee';
 $lang['payments_total'] = 'Total';
 $lang['payments_last_name'] = 'last name';

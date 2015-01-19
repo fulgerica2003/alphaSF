@@ -8,6 +8,18 @@ function casetaAbroad() {
 	}
 }
 
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+  }
+  return "";
+}
+var clang = getCookie('ss_lang');
+
 $(document).ready(function(){
 	casetaAbroad();
 	
@@ -270,13 +282,13 @@ $(document).ready(function(){
 	
 	$('#pop-up-login').modal({
         show: showLogin,
-        remote: 'auth/login'
+        remote: 'auth/login?lang='+clang
 	});
 	
 	$('.modal-content').on('click', '#sign-up-button', function(){ 
 	 	//$('.modal-title').html('Sign up');
 	 	$('#auth-pop').hide();
-		$.get( "auth/register", function( data ) {
+		$.get( "auth/register", { lang: clang }, function( data ) {
 			$( '#auth-pop' ).html( data );
 		});
 		$('#auth-pop').fadeIn(800);
@@ -287,7 +299,7 @@ $(document).ready(function(){
 	  	//$('.modal-title').html('Login');
 		$('#id-modal-header').fadeOut(800);
 	 	$('#auth-pop').hide();
-		$.get( "auth/login", {lang: 'romana'}, function( data ) {
+		$.get( "auth/login", { lang: clang }, function( data ) {
 			$( '#auth-pop' ).html( data );
 		});
 	 	$('#auth-pop').fadeIn(800);
