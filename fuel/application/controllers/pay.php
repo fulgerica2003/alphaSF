@@ -32,25 +32,18 @@
 			
 			// colectez datele de pe post
 			$pay_details = array();
-			/*$pay_details['amount'] 		= "100.00"; //$_POST['amount'];
-			$pay_details['currency'] 	= 'RON'; //$_POST['currency'];
-			$pay_details['unid']		= '#S546e6ef3bf544'; //$_POST['unid'];
-			$pay_details['unid_type'] = substr($pay_details['unid'], 1, 1);
-			$user_id	= 8; //$_POST['user_id'];
-			*/
-			$pay_details['amount'] 		= $_POST['amount'];
-			$pay_details['currency'] 	= $_POST['currency'];
+
+			$pay_details['amount'] 		= (string)number_format((float)$_POST['amount'], 2, '.', '');
+			$pay_details['currency'] 	= strtoupper($_POST['currency']);
 			$pay_details['unid']		= $_POST['unid'];
 			$pay_details['unid_type'] = substr($pay_details['unid'], 1, 1);
 			$user_id	= $_POST['user_id'];
 			
-			// iau informatiile despre utilizator ca sa le trimite la Libra
+			// iau informatiile despre utilizator ca sa le trimit la Libra
 			$user = $this->ion_auth->user($user_id)->row();
-			echo $user->last_name . ' ' . $user->first_name;
 			
 			// salvez informatiile despre plata in db
 			$order_id = $this->insert_order($pay_details);
-			echo $order_id;
 			
 			// calculez data_custom
 			$data_custom = array(
@@ -93,7 +86,6 @@
 			$librapay->generateForm();
 			
 			// actualizez psign in db
-			echo $librapay->psign;
 			$this->ss_pay_orders_model->update(array('p_sign' => $librapay->psign), array('id' => $order_id));
 			
 			echo $librapay->string; // de scos pe LIVE
@@ -118,26 +110,34 @@
 		}
 		
 		private function process_status($data, $status, $ipn){
-			// TODO aici tb testat $data['DESC'] sa vad dc e factura sau plata ca sa trimit mesajele corecte
+			
+			$event = 'N/A';
+			
+			if (substr($data['DESC'], 1, 1) === 'S'){
+				$event = 'pay_card';
+				$vars['link'] = 'online_payments';
+				$vars['text'] = 'payments_thanks_cmd';
+				$vars['title'] = 'payments_thanks';
+			}else if (substr($data['DESC'], 1, 1) === 'F'){
+				$event = 'inv_card';
+				$vars['link'] = 'online_invoices';
+				$vars['text'] = 'invoices_thanks_cmd';
+				$vars['title'] = 'invoices_thanks';
+			}
 			
 			if($status === $this->status_succ){
-				$msg_codes = get_message_codes('pay_card_ok');
-				log_ref(
-					$data['DESC'],
-					sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']),
-					array(
-						'sb' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_sb'), $data['DESC']),
-						'cont' => sprintf($this->lang->line('calc_'. $msg_codes[1] .'_cont'), $data['DESC']),
-						)
-				);
-				return $ipn == true ? '1' : 'ok';
+				$msg_codes = trigger_event($event . '_ok', $data['DESC']);
+				
+				if ($ipn == true){
+					return '1';
+				}else{
+					$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']);
+					$this->fuel->pages->render('online_thanks', $vars);
+				}
+				
+				//return $ipn == true ? '1' : 'ok';
 			}else{
-				$msg_codes = get_message_codes('pay_card_fail');
-				log_ref(
-					$data['DESC'],
-					sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']),
-					null
-				);
+				trigger_event($event . '_fail', $data['DESC']);
 				return 'not ok';
 			}
 		}
