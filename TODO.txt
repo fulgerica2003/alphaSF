@@ -1,11 +1,10 @@
 Probleme Smith
 
-1. ion_auth merge pe english/romana, smith merge pe en/ro; tb unificat
+1. ion_auth merge acum pe en/ro, rezolvat cu afisarea, tb vazut si cu mailurile
 2. prezentarea pe www si online-ul pe online.smith.ro -> cerinta de la Adrian Marinescu; de avut in vedere dupa finalizare
 3. vezi rute stiri pt limbi straine
 4. de facut sa functioneze direct in root, fara folder; AM a instalat pe testul lor direct in root, fara folder smith; cand a incercat sa se conecteze la admin a primit Internal Server Error;
 cand l-a pus in folder smith a functionat
-6. de eliminat view-uri si controllere de care nu mai e nevoie: payments, invoices, sspayments...
 7. profil utilizator la comisionare
 8. de ce dispare buton autentificare cad dau click pe el
 9. date-picker in formularul de inregistrare
@@ -20,4 +19,5 @@ cand l-a pus in folder smith a functionat
 18. de introdus bloc in dreapta la http://localhost/smith/online_payments, http://localhost/smith/online_invoices, http://localhost/smith/online_profile
 19. curatat de codul de care nu mai e nevoie
 20. securizare backend
-21. de introdus nume prenume beneficiar, pin in mesaje
+21. de cautat dupa TODO in tot application
+22. de renuntat la get_language_options si get_language_name si folosit $this->fuel->language->options()
