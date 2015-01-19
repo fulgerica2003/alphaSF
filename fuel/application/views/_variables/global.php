@@ -13,7 +13,7 @@
 	$vars['js'] = array();
 	$vars['css'] = array();
 	//$vars['body_class'] = uri_segment(1).' '.uri_segment(2);
-	$vars['lang'] = $lang = $CI->fuel->language->selected();
+	$vars['lang'] = $lang = $CI->fuel->language->detect(TRUE);
 	$locale = ($lang == 'en' ? 'en_US' : 'ro_RO');
 	setlocale(LC_TIME, $locale);
 	
