@@ -5,14 +5,14 @@
 		<form id="form-calc" action="calculator/pay_transfer" method="post">
 			<div class="radio-container1" style="width:50%;  ">
 				<div class="lable1<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'card' ? ' radioactiv' : '')?>" id="TABleft"><?php echo lang('payments_card')?></div>
-				<input type="radio" name="tipPlata" id="tipPlataCard" value="card"<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'card' ? ' checked' : '')?>>
+				<input class = "cop-update-fee-total" type="radio" name="tipPlata" id="tipPlataCard" value="card"<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'card' ? ' checked' : '')?>>
 			</div>								
 			<div class="radio-container1" style="width:50%; border-left:1px solid #d4cfd2; ">
 				<div class="lable1<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'cont' ? ' radioactiv' : '')?>" id="TABright"><?php echo lang('payments_account')?></div>
-				<input type="radio" name="tipPlata" id="tipPlataCont" value="cont"<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'cont' ? ' checked' : '')?>>
+				<input class = "cop-update-fee-total" type="radio" name="tipPlata" id="tipPlataCont" value="cont"<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'cont' ? ' checked' : '')?>>
 			</div>								
 			
-			<input id = "cop_amount" style="width:70%; border-right: 4px solid #ffcccc;" class="agent-input first-iban transfer-input" type="text"  name="suma" placeholder="<?php echo lang('payments_amount')?>" value = "<?php echo ($vars['calcAmount'] != null ? $vars['calcAmount'] : ''); ?>">
+			<input id = "cop_amount" style="width:70%; border-right: 4px solid #ffcccc;" class="cop-update-fee-total agent-input first-iban transfer-input" type="text"  name="suma" placeholder="<?php echo lang('payments_amount')?>" value = "<?php echo ($vars['calcAmount'] != null ? $vars['calcAmount'] : ''); ?>">
 			<select id="cop_currency" class="ron_transfer2" name="monedaPlata" style="width:31%; height:39px; border-bottom-left-radius:0px;border-top-left-radius:0px;">
 				<option value="eur"<?php echo ($vars['calcCurrency'] != null && $vars['calcCurrency'] == 'eur' ? ' selected = "selected"' : '')?>>EUR</option>
 				<option value="ron"<?php echo ($vars['calcCurrency'] != null && $vars['calcCurrency'] == 'ron' ? ' selected = "selected"' : '')?>>RON</option>
@@ -21,7 +21,7 @@
 			<div class="input-box" style="margin:0px; padding:0px;">
 				
 			</div>
-			<select id="cop_modIncasare" name="modIncasare" style="width:100%">
+			<select id="cop_modIncasare" name="modIncasare" style="width:100%" class = "cop-update-fee-total">
 				<option value=""><?php echo lang('payments_pick'); ?></option>
 				<?php foreach($vars['benOpts'] as $key => $value):?>
 				<option value="<?php echo $key;?>"<?php echo ($vars['calcModIncasare'] != null && $vars['calcModIncasare'] == $key ? 'selected = "selected"' : '')?>><?php echo $value;?></option>

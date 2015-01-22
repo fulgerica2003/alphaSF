@@ -6,7 +6,7 @@
 <div class="input-box">
 	<div class="explica-cont"><?php echo lang('payments_sidenote_city');?></div>
 	<div class="agent-lable"><?php echo lang('payments_city');?></div>
-	<select id="cities" name="cities" class = "<?php echo (form_error('cities')) ? ' err' : ''; ?>">
+	<select id="cities" name="cities" class = "online-update-fee-total<?php echo (form_error('cities')) ? ' err' : ''; ?>">
 			<option value=""><?php echo lang('payments_pick');?></option>
 			<?php foreach($cities as $key => $value):?>
 			<option value="<?php echo $key;?>" <?php echo set_select('cities', $key); ?> ><?php echo $value;?></option>
