@@ -1,6 +1,6 @@
 <div id="auth-pop">
 	<div id = "id-modal-header" class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Close</button>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up"><?php echo lang('general_close'); ?></button>
 		<p class="modal-title"><?php echo lang('register_user_heading');?>
 		<!-- <p><?php //echo lang('register_user_subheading');?></p> --></p>
 	</div>
@@ -127,3 +127,18 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script type="text/javascript">
+		$( "#birth_date" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "dd.mm.yy",
+			yearRange: "-70:-14",
+			defaultDate: "01.01.1990",
+			monthNamesShort: ['01', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12'],
+		});
+});
+
+</script>

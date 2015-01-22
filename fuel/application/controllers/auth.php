@@ -1073,7 +1073,7 @@
 			}
 			else
 			{
-				$this->form_validation->set_message('check_captcha', 'Wrong captcha code');
+				$this->form_validation->set_message('check_captcha', $this->lang->line('wrong_captcha_code'));
 				return FALSE;
 			}
 		}

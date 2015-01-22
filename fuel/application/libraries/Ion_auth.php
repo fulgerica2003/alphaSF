@@ -59,6 +59,8 @@ class Ion_auth
 	 **/
 	public function __construct()
 	{
+		$this->fuel->language->detect(true);
+		
 		$this->load->config('ion_auth', TRUE);
 		$this->load->library('email');
 		$this->lang->load('ion_auth');

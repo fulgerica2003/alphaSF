@@ -102,6 +102,12 @@ $lang['register_user_validation_account_label']			 = 'Cont bancar';
 $lang['register_user_validation_swift_label']			 = 'Codul SWIFT al bancii';
 $lang['register_user_validation_bank_label']			 = 'Banca';
 $lang['register_user_validation_default_lang_label'] 	 = 'Limba implicita';
+$lang['register_user_success_message']                   = 'Accesati contul dumneavoastra de email si validati contul creat pe platforma Smith&Smith';
+$lang['wrong_captcha_code']                   			 = 'Captcha eronat.';
+
+// Blocked user
+$lang['blocked_user_heading']                   = 'Utilizator blocat';
+$lang['blocked_user_message']                   = 'Utilizatorul a fost blocat. Accesati contul dumneavoastra de email si reactivati contul.';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Editeaza date utilizator';

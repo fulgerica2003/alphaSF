@@ -106,6 +106,12 @@ $lang['register_user_validation_account_label']			 = 'Bank account';
 $lang['register_user_validation_swift_label']			 = 'Bank SWIFT code';
 $lang['register_user_validation_bank_label']			 = 'Bank';
 $lang['register_user_validation_default_lang_label'] 	 = 'Default language';
+$lang['register_user_success_message']                   = 'Check your email account and validate the account for Smith&Smith online';
+$lang['wrong_captcha_code']                   			 = 'Wrong captcha code.';
+
+// Blocked user
+$lang['blocked_user_heading']                   = 'Blocked user';
+$lang['blocked_user_message']                   = 'The user has been blocked. Check your email account and reactivate it.';
 
 // Edit User
 $lang['edit_user_heading']                           = 'Edit User';

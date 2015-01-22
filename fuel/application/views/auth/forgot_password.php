@@ -1,6 +1,6 @@
 <div id="auth-pop">
 	<div id = "id-modal-header" class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Close</button>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up"><?php echo lang('general_close'); ?></button>
 		<p class="modal-title"><?php echo lang('forgot_password_heading');?></p>
 		<!-- <p><?php echo sprintf(lang('forgot_password_subheading', $identity_label)); ?></p> -->
 	</div>
