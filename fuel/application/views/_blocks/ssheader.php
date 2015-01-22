@@ -14,7 +14,7 @@
 	
 	<?php echo jquery('1.11.1'); ?>
 	<?php echo js('bootstrap.min, jquery.anythingslider.min, custom'); ?>
-	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+	<script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
 
 	<!--[if lt IE 9 ]> <script src="/js/html5shiv.js?c=943912800" type="text/javascript" charset="utf-8"></script>
