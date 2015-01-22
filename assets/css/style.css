@@ -13,7 +13,10 @@ body { background-color: #e6e6e6;}
 input, select {outline:none;}
 
 .main-container {margin-top:30px;}
-a:focus {text-decoration:none;outline:none;background-color: transparent;}
+a:focus {text-decoration:none;outline:none;}
+/* ----------------- la a.focus mai era background-color: transparent; l-am scos pt ca imi disparea butonul de login;
+	cred ca era pus pt transparenta la meniu, am verificat, dar nu pareau sa fie modificari
+	tb observat daca e ceva aiurea-------------- */
 
 
 /* ----------------- Slider-home -------------- */
@@ -1029,8 +1032,8 @@ border-bottom-left-radius: 0px;}
 
 .factura_prim{border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;}
-.factura_second{margin-left:-4px;border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;
+.factura_second{margin-left:-4px;border-top-left-radius: 0px !important;
+border-bottom-left-radius: 0px !important;
 }
 .last-form{margin-bottom:20px;}
 
@@ -1117,4 +1120,7 @@ cursor: pointer;
 	text-decoration: none;
 	border: none;
 	cursor: pointer;
+}
+.clsDatePicker {
+    z-index: 100000;
 }
