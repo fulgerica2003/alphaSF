@@ -170,4 +170,41 @@
 			$fee = $this->ss_fees_model->compute_total_fee($values);
 			echo $fee;
 		}
+		
+		public function mytest(){
+		
+		/*$this->load->model('ss_payments_model');
+		$this->load->model('ss_invoices_model');
+			$profile_type = 'client';
+			$user_surname = 'geo';
+			$user_birth_date = '10.10.2015';
+			$user_id = 8;
+			$user_country = 'ro';
+			
+			$total_invoices = $this->ss_invoices_model->record_count(array('id_user' => 8, 'status' => get_status('pyd')));
+			$total_payments = $this->ss_payments_model->record_count(array('id_user' => 8, 'status' => get_status('pyd')));
+			$user_trn = $total_invoices + $total_payments;
+			
+			$values = array(
+				'profile_type' => $profile_type,
+				'prenume' => $user_surname,
+				'data_nasterii' => substr($user_birth_date, 0, strrpos($user_birth_date, '.')),
+				'numar_tranzactii' => $user_trn,
+				'resedinta' => $user_country,
+				);
+			$client_profile_list = get_profile_matches_list($values);
+			
+			print_r(array_to_list($client_profile_list, false));
+			*/
+			
+		$params['payment_method'] = '1';
+		$params['currency']	= 'eur';
+		$params['amount'] = '1500';
+		$params['payment_type'] = 'cont';
+		
+		$params['ben_surname'] = 'Oana';
+		$params['ben_city'] = 'Iasi';
+		
+		echo compute_real_fee($params);
+		}
 	}		
