@@ -9,14 +9,14 @@ function casetaAbroad() {
 }
 
 function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0; i<ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0)==' ') c = c.substring(1);
-    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-  }
-  return "";
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1);
+		if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+	}
+	return "";
 }
 var clang = getCookie('ss_lang');
 
@@ -56,10 +56,6 @@ $(document).ready(function(){
 		$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val(), lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
-		$.get('online_payments/update_total', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
-			$('#fee').val(data.fee);
-			$('#total').val(data.total);
-		}, "json");
 	});
 	
 	$('#amount').change(function() {
@@ -69,7 +65,17 @@ $(document).ready(function(){
 		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val(), lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
-		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val()}, function(data) {
+	});
+	
+	$('.online-update-fee-total').change(function() {
+		$('#fee').val('');
+		$('#total').val('');
+		if ($('#tipPlataCont').attr('checked')){
+			payment_type = 'cont';
+		} else if ($('#tipPlataCard').attr('checked')){
+			payment_type = 'card';	
+		}
+		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
 		}, "json");
@@ -120,6 +126,7 @@ $(document).ready(function(){
 	
 	// calc online_payments
 	if ($('#cop_amount').val() && $('#cop_currency').val() && $('#cop_modIncasare').val()){
+		// aici intra daca utilizatorul a dat submit, dar nu era autentificat si inchide fereastra de autentificare, fara a se autentifica
 		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
 			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
@@ -128,24 +135,24 @@ $(document).ready(function(){
 	
 	$('#cop_currency').change(function() {
 		$('#cop_modIncasare').empty();
-		$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
-		$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">RON</span></div>');
+		$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
+		$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">0,0</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
 		$.get('calculator/update_ben_opts/'+$(this).val() , function( data ) {
 			$('#cop_modIncasare').empty().append(data);
 		});
 	});
 	
-	$('#cop_modIncasare').change(function() {
-		$.get('calculator/update_total', {payment_method: $(this).val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
-			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
-			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
-		}, "json");
-	});
-	
-	$('#cop_amount').change(function() {
-		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $(this).val()}, function(data) {
-			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
-			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+	$('.cop-update-fee-total').change(function() {
+		$('#fee').val('');
+		$('#total').val('');
+		if ($('#tipPlataCont').attr('checked')){
+			payment_type = 'cont';
+		} else if ($('#tipPlataCard').attr('checked')){
+			payment_type = 'card';	
+		}
+		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), payment_type: payment_type, currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
+			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
+			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
 		}, "json");
 	});
 	
@@ -172,13 +179,13 @@ $(document).ready(function(){
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: "dd.mm.yy",
-			yearRange: "-70:-14"
+			yearRange: "-70:-14",
+			monthNamesShort: ['01', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12'],
 		});
 	});
 	
-	$('#birth_date').click(function() {			
-		console.log('ceva');
-	});
+	
 	
 	if($('#tipPlataCard').attr('checked')) {
 		$('#TABleft').addClass('lable1 radioactiv');
@@ -282,7 +289,8 @@ $(document).ready(function(){
 	
 	$('#pop-up-login').modal({
         show: showLogin,
-        remote: 'auth/login?lang='+clang
+        remote: 'auth/login?lang='+clang,
+		backdrop: 'static',
 	});
 	
 	$('.modal-content').on('click', '#sign-up-button', function(){ 
@@ -310,7 +318,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		$('#id-modal-header').fadeOut(800);
 	 	$('#auth-pop').hide();
-		$.get( "auth/forgot_password", function( data ) {
+		$.get( "auth/forgot_password", { lang: clang }, function( data ) {
 			$( '#auth-pop' ).html( data );
 		});
 	 	$('#auth-pop').fadeIn(800);
@@ -321,7 +329,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		$('#id-modal-header').fadeOut(800);
 	 	$('#auth-pop').hide();
-		$.get( "auth/login", function( data ) {
+		$.get( "auth/login", { lang: clang }, function( data ) {
 			$( '#auth-pop' ).html( data );
 		});
 	 	$('#auth-pop').fadeIn(800);
@@ -335,7 +343,7 @@ $(document).ready(function(){
 		url = $form.attr( "action" );
 		// Send the data using post
 		//var posting = $.post( url, { identity: term } );
-		var posting = $.post( url, $( "#form-login-pop" ).serialize() );
+		var posting = $.post( url + '?lang='+clang, $( "#form-login-pop" ).serialize() );
 		// Put the results in a div
 		posting.done(function( data ) {
 			if (data === ""){
@@ -424,7 +432,7 @@ $(document).ready(function(){
 		$(".modal-body #hidden_modal_unid").val( unid );
 		//var mydata = $(".modal-body #correction_fields").text();
 		//if (!mydata){
-			$.post('online_payments/get_correction', {myunid: unid}, function(data) {
+		$.post('online_payments/get_correction', {myunid: unid}, function(data) {
 			var obj = jQuery.parseJSON( data );
 			
 			if (obj.ben_name){
@@ -438,7 +446,7 @@ $(document).ready(function(){
 				$(".modal-body #ohp_correction_ben_surname #ben_surname").html(obj.ben_surname);
 				$(".modal-body #hidden_ben_surname").val( obj.ben_surname );
 			}
-
+			
 			if (obj.ben_phone){
 				$(".modal-body #ohp_correction_ben_phone").removeAttr("style");
 				$(".modal-body #ohp_correction_ben_phone #ben_phone").html(obj.ben_phone);
@@ -450,7 +458,7 @@ $(document).ready(function(){
 				$(".modal-body #ohp_correction_ben_email #ben_email").html(obj.ben_email);
 				$(".modal-body #hidden_ben_email").val( obj.ben_email );
 			}
-
+			
 			if (obj.ben_iban){
 				$(".modal-body #ohp_correction_ben_iban").removeAttr("style");
 				$(".modal-body #ohp_correction_ben_iban #ben_iban").html(obj.ben_iban);
@@ -470,8 +478,7 @@ $(document).ready(function(){
 			}
 		});
 	//}	
-	});
-	
+});
 });
 
 $( window ).resize(function() {
