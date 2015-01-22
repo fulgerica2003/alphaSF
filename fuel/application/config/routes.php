@@ -62,7 +62,7 @@ $route['en/online_history_invoices/(:num)'] = 'online_history_invoices';
 
 $route['en/online_profile'] = 'online_profile';
 
-
+$route['en/online_payments'] = 'online_payments';
 
 
 /*	

@@ -62,12 +62,14 @@ class Ss_payment_methods_model extends Base_module_model {
 	}
 	
 	function options_list(){
+		
+	
 		$values = parent::options_list(null, null, null, FALSE);
 		
 		$output = array();
 		
 		foreach ($values as $key => $value){
-			$label = get_label($value);
+			$label = get_label($value, $this->fuel->language->selected());
 			if (!empty($label)){
 				$output[$key] = $label;
 			}

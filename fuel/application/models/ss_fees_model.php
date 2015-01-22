@@ -96,7 +96,7 @@ class Ss_fees_model extends Base_module_model {
 		
 		$fields['fk_currency']['label'] 	= 'Currency'; // 15
 		$fields['fk_currency']['type']		= 'select';
-		$fields['fk_currency']['options']	= array (1 => 'RON', 2 => 'EUR', 3 => 'USD');
+		$fields['fk_currency']['options']	= get_currencies();
 		
 		$fields['fk_network']['label']		= 'Network'; // 16
 		$fields['fk_network']['type'] 		= 'select';
@@ -104,7 +104,7 @@ class Ss_fees_model extends Base_module_model {
 		
 		$fields['fk_partner']['label'] 		= 'Partner'; // 17
 		$fields['fk_partner']['type']		= 'select';
-		$fields['fk_partner']['options']	= array (1 => 'Smith & Smith (plata din cont)', 2 => 'Libra Bank (plata cu cardul)',);		
+		$fields['fk_partner']['options']	= get_payment_partners();		
 		
 		
 		$fields['fk_cl_type']['label'] 		= 'Client type'; // 18
@@ -271,16 +271,16 @@ class Ss_fees_model extends Base_module_model {
 	private function get_fee_values_select($values, $apply_value){
 		return '
 			sum(if(com_type=\'flat\', com_val, com_val * '. $apply_value .'/100)) comision from ss_fees
-			where
-					if (com_int_apply = \'1\', if ('. $apply_value .' >= com_int_min and '. $values['value'] .' <= com_int_max, true, false), true)
-				and if (com_trn_apply = \'1\', if ('. $values['trn'] .' >= com_trn_min and '. $values['trn'] .' <= com_trn_max, true, false), true)
-				and if (com_time_apply, if (timestamp(\''. $values['datatrn'] .'\') > com_time_start and timestamp(\''. $values['datatrn'] .'\') < com_time_stop, true, false), if (timestamp(\''. $values['datatrn'] .'\') > com_time_start, true, false))
-				and if (fk_currency > 0, if ('. $values['currency_key'] .' = fk_currency , true, false), true)
-				and if (fk_network > 0, if ('. $values['network_key'] .' = fk_network , true, false), true)
-				and if (fk_partner > 0, if ('. $values['partner_key'] .' = fk_partner , true, false), true)
-				and if (fk_cl_type > 0, if ('. $values['cl_type_key'] .' = fk_cl_type , true, false), true)
-				and if (fk_ben_type > 0, if ('. $values['bnf_type_key'] .' = fk_ben_type , true, false), true)
-		';
+			where '.
+					'if (com_int_apply = \'1\', if ('. $apply_value .' >= com_int_min and '. $values['value'] .' <= com_int_max, true, false), true) '.
+				(isset($values['trn']) ? 'and if (com_trn_apply = \'1\', if ('. $values['trn'] .' >= com_trn_min and '. $values['trn'] .' <= com_trn_max, true, false), true) ' : '').
+				'and if (com_time_apply = \'1\', if (timestamp(\''. $values['datatrn'] .'\') > com_time_start and timestamp(\''. $values['datatrn'] .'\') < com_time_stop, true, false), if (timestamp(\''. $values['datatrn'] .'\') > com_time_start, true, false)) '.
+				'and if (fk_currency > 0, if ('. $values['currency_key'] .' = fk_currency , true, false), true) '.
+				'and if (fk_network > 0, if ('. $values['network_key'] .' = fk_network , true, false), true) '.
+				'and if (fk_partner > 0, if ('. $values['partner_key'] .' = fk_partner , true, false), true) '.
+				(isset($values['cl_type_key']) ? 'and if (fk_cl_type > 0, if (fk_cl_type in '. array_to_list($values['cl_type_key'], false) .' , true, false), true) ' : '').
+				(isset($values['bnf_type_key']) ? 'and if (fk_ben_type > 0, if (fk_ben_type in '. array_to_list($values['bnf_type_key'], false) .' , true, false), true)' : '')
+		;
 	
 	}
 	

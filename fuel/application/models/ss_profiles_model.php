@@ -31,6 +31,9 @@ class Ss_profiles_model extends Base_module_model {
 
 	function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
 	{
+		$this->db->select('ss_profiles.name, ss_profiles.value, ss_profiles.id, ss_types.name as profile_type', FALSE);
+		$this->db->join('ss_types', 'ss_types.id = ss_profiles.id_profile_type');
+		
 		$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 		return $data;
 	}
@@ -70,18 +73,6 @@ class Ss_profiles_model extends Base_module_model {
 	}
 	
 	function get_client_id_list(){
-	
-		/*$this->load->model('ss_types_model');
-		$profile_ids = $this->ss_types_model->options_list('id', 'name', 'type = \'client\'', null);
-		
-		foreach (array_keys($profile_ids) as $key){
-			$list .= $key . ',';
-		}
-		$list = '(' . substr($list, 0, -1) . ')';
-		
-		$output = $this->options_list('id', 'name', 'id_profile_type in ' . $list, null);
-		
-		return $output;*/
 		
 		return $this->get_profiles_options_list('client');
 	}
@@ -91,19 +82,25 @@ class Ss_profiles_model extends Base_module_model {
 		return $this->get_profiles_options_list('beneficiar');
 	}
 	
-	private function get_profiles_options_list($type){
+	function get_profiles_list($type, $name, $col){
+		return $this->get_profiles_options_list($type, $name, $col);
+	}
+	
+	private function get_profiles_options_list($type, $name = null, $col = null){
 	
 		$this->load->model('ss_types_model');
-		$profile_ids = $this->ss_types_model->options_list('id', 'name', 'type = \''. $type .'\'', null);
 		
-		$list = '';
-		
-		foreach (array_keys($profile_ids) as $key){
-			$list .= $key . ',';
+		if (isset($name)){
+			$where = 'type = \''. $type .'\' and name like \''. $name .'%\'';
+		}else{
+			$where = 'type = \''. $type .'\'';
 		}
-		$list = '(' . substr($list, 0, -1) . ')';
 		
-		$output = $this->options_list('id', 'name', 'id_profile_type in ' . $list, null);
+		$profile_ids = $this->ss_types_model->options_list('id', 'name', $where, null);
+		
+		$list = array_to_list($profile_ids);
+		
+		$output = $this->options_list('id', isset($col) ? $col : 'name', 'id_profile_type in ' . $list, null);
 		
 		return $output;
 	}

@@ -43,11 +43,9 @@
 		}
 		
 		public function validate(){
-			
-			
-			
+
 			$vars['payOpts'] = get_payment_types();
-			
+
 			$calc_details = $this->session->userdata('calcPayDetails');
 			if ($calc_details != null){
 				// datele venite din simulatorul de pe prima pagina

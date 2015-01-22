@@ -90,9 +90,37 @@
 	}
 	
 	function get_payment_types(){
-		$output = array('card' => 'Card', 'cont' => 'Cont');
+		$output = array('card' => 'Card', 'cont' => 'Cont'); //cont e 1, card e 2; vezi get_payment_partners
 		
 		return $output;
+	}
+	
+	function get_payment_partners(){
+		// folosita in cms, la modulul Fees
+		$output = array (1 => 'Smith & Smith (plata din cont)', 2 => 'Libra Bank (plata cu cardul)',);
+		
+		return $output;
+	}
+	
+	function get_payment_partner_id($partner){
+		switch ($partner){
+			case 'cont': return 1;
+			break;
+			case 'card': return 2;
+			break;
+		}
+	}
+	
+	function get_currencies(){
+		$output = array (1 => 'RON', 2 => 'EUR', 3 => 'USD');
+		
+		return $output;
+	}
+	
+	function get_currency_id($currency){
+		$currencies = get_currencies();
+
+		return array_search(strtoupper($currency), $currencies);
 	}
 	
 	function get_tx_types(){
@@ -340,19 +368,106 @@
 	}
 	
 	function compute_fee($params = array()){
+		
+		return compute_mock_fee($params);
+	}
+	
+	function compute_mock_fee($params = array()){
+		
 		$payment_method = $params['payment_method'];
-		$currency = $params['currency'];
+		$currency = get_currency_id($params['currency']);
 		$amount = $params['amount'];
+		$payment_type = get_payment_partner_id($params['payment_type']);
 		
 		$fee = null;
 		$total = null;
 		
 		if (
 		isset($payment_method) && (strlen($payment_method) > 0)
+		&& isset($payment_type) && (strlen($payment_type) > 0)
 		&& isset($currency) && (strlen($currency) > 0)
 		&& isset($amount) && (strlen($amount) > 0)
 		){
 			$fee = 0.1 * $amount;
+			$total = $fee + $amount;
+		}
+		
+		return json_encode( array( "fee" => $fee, "total" => $total ) );
+	}
+	
+	function compute_real_fee($params = array()){
+	
+		/*
+		cand calculez comisionul tb sa tin cont de urmatoarele:
+		suma - value
+		numarul de tranzactii ale utilizatorului - trn - doar pt clientii autentificati
+		data tranzactiei - datatrn
+		moneda - currency_key 
+		modalitatea de plata la beneficiar - network_key
+		modalitatea de plata de catre client - partner_key (din cont, card)
+		profilul clientului - cl_type_key - doar pt clientii autentificati
+		profilul beneficiarului - bnf_type_key - doar pt clientii autentificati
+		*/
+		$CI =& get_instance();
+		$fee_params = array();
+		
+		$CI->load->model('ss_payments_model');
+		$CI->load->model('ss_invoices_model');
+		$CI->load->model('ss_fees_model');
+		$CI->load->library('ion_auth');
+
+		if ($CI->ion_auth->logged_in()){
+			$user = $CI->ion_auth->user()->row();
+			// iau numarul total de tranzactii
+			$total_invoices = $CI->ss_invoices_model->record_count(array('id_user' => $user->id, 'status' => get_status('pyd')));
+			$total_payments = $CI->ss_payments_model->record_count(array('id_user' => $user->id, 'status' => get_status('pyd')));
+			$trn = $total_invoices + $total_payments;
+			$fee_params['trn'] = $trn;
+			
+			// verificari profil client; cl_type_key va fi o lista
+			$values = array(
+				'profile_type' => 'client',
+				'prenume' => $user->first_name,
+				'data_nasterii' => substr($user->birth_date, 0, strrpos($user->birth_date, '.')),
+				'numar_tranzactii' => $trn, // aici ar fi trebuit sa fie numarul de tranzactii, dar dau id-ul; nr de trnazactii se calculeaza doar daca exista profile de tip nr de tranzactii 
+				'resedinta' => $user->country,
+				);
+			$fee_params['cl_type_key'] = get_profile_matches_list($values);
+			
+			// verificari profil beneficiar; bnf_type_key va fi o lista
+			$values = array(
+				'profile_type' => 'beneficiar',
+				'prenume' => $params['ben_surname'],
+				//'data_nasterii' => , // nu am data nasterii beneficiarului
+				//'numar_tranzactii' => , // aici ar fi trebuit sa fie numarul de tranzactii
+				'resedinta' => $params['ben_city'],
+				);
+			$fee_params['bnf_type_key'] = get_profile_matches_list($values);
+		}
+		
+		$payment_method = $params['payment_method'];
+		$currency = get_currency_id($params['currency']);
+		$amount = $params['amount'];
+		$payment_type = get_payment_partner_id($params['payment_type']);
+		
+		$fee = null;
+		$total = null;
+		
+		if (
+		isset($payment_method) && (strlen($payment_method) > 0)
+		&& isset($payment_type) && (strlen($payment_type) > 0)
+		&& isset($currency) && (strlen($currency) > 0)
+		&& isset($amount) && (strlen($amount) > 0)
+		){
+			/*$fee = 0.1 * $amount;
+			$total = $fee + $amount;*/
+			$fee_params['value'] = $amount;
+			$fee_params['datatrn'] = datetime_now();
+			$fee_params['currency_key'] = $currency;
+			$fee_params['network_key'] = $payment_method;
+			$fee_params['partner_key'] = $payment_type;
+			
+			$fee = $CI->ss_fees_model->compute_total_fee($fee_params);
 			$total = $fee + $amount;
 		}
 		
@@ -388,9 +503,12 @@
 	}
 	
 	function get_language_options(){
-		return array('ro' => 'RO', 'en' => 'EN', 
-		//'it' => 'IT', 'sp' => 'SP'
-		);
+		$CI =& get_instance();
+		$languages = $CI->fuel->language->options();
+		foreach ($languages as $key => $value){
+			$languages[$key] = substr(strtoupper($value),0,2);
+		}
+		return $languages;
 	}
 	
 	function get_language_name($lang){
@@ -408,6 +526,82 @@
 				return 'spaniola';
 				break;
 		}
+	}
+	
+	function get_profile_matches_list($values){
+
+		$CI =& get_instance();
+		
+		$output = array();
+		$list = array();
+		$matches = array();
+		
+		$CI->load->model('ss_profiles_model');
+		
+		// exista 4 categorii de tipuri de profile: prenume, data nasterii, numar tranzactii, resedinta
+		// pt fiecare din acestea se definesc profile de tip client sau beneficiar
+		// NOTA: pt beneficiar nu am data nasterii, nr de tranzactii
+		// NOTA: pt client, in loc de nr_tranzactii primesc id_user si calculez nr de tranzactii platite doar daca am profil definit pe nr de tranzactii
+		
+		// pt $values['prenume'] caut in profilele de tip $values['profile_type'] si prenume
+		$list = $CI->ss_profiles_model->get_profiles_list($values['profile_type'], 'prenume', 'value');
+		if ((count($list) > 0) && (array_key_exists('prenume', $values))){
+			$my_value = $values['prenume'];
+			$matches = array_filter($list, function ($element) use ($my_value) { $pos = stripos($element, $my_value); return ($pos !== false); } );
+			$output = array_merge($output, array_keys($matches));
+			$list = array();
+			$matches = null;
+		}
+		
+		// pt $values['data_nasterii'] caut in profilele $values['profile_type'] si data nasterii
+		$list = $CI->ss_profiles_model->get_profiles_list($values['profile_type'], 'data nasterii', 'value');
+		if ((count($list) > 0) && array_key_exists('data_nasterii', $values)){
+			$my_value = $values['data_nasterii'];
+			$matches = array_filter($list, function ($element) use ($my_value) { return ($element == $my_value); } );
+			$output = array_merge($output, array_keys($matches));
+			$list = array();
+			$matches = null;
+		}
+		
+		// pt $values['numar_tranzactii'] caut in profilele $values['profile_type'] si numar tranzactii
+		$list = $CI->ss_profiles_model->get_profiles_list($values['profile_type'], 'numar tranzactii', 'value');
+		if ((count($list) > 0) && array_key_exists('numar_tranzactii', $values)){
+			$my_value = $values['numar_tranzactii'];
+			$matches = array_filter($list, function ($element) use ($my_value) { return (intval($element) <= $my_value); } );
+			$output = array_merge($output, array_keys($matches));
+			$list = array();
+			$matches = null;
+		}
+		
+		
+		// pt $values['resedinta'] caut in profilele $values['profile_type'] si resedinta
+		$list = $CI->ss_profiles_model->get_profiles_list($values['profile_type'], 'resedinta', 'value');
+		if ((count($list) > 0) && array_key_exists('resedinta', $values)){
+			$my_value = $values['resedinta'];
+			$matches = array_filter($list, function ($element) use ($my_value) { return (strtolower($element) == strtolower($my_value)); } );
+			$output = array_merge($output, array_keys($matches));
+			$list = array();
+			$matches = null;
+		}
+		
+		return count($output) > 0 ? $output : null;
+	}
+	
+	function array_to_list($params, $use_keys = true){
+		$output = '';
+		
+		if (!isset($params) || count($params) == 0){
+			return null;
+		}
+		
+		$values = $use_keys ? array_keys($params) : array_values($params);
+		
+		foreach ($values as $key){
+			$output .= $key . ',';
+		}
+		$output = '(' . substr($output, 0, -1) . ')';
+		
+		return $output;
 	}
 	
 	

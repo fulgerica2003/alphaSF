@@ -8,7 +8,7 @@
 	}
 ?>
 
-<div id="message-login"><?php echo !empty($user) ? sprintf(lang('login_hi', 'online_profile', $first_name)) : ''?></div>
+<div id="message-login"><?php echo !empty($user) ? sprintf(lang('login_hi', site_url('online_profile'), $first_name)) : ''?></div>
 <div id="loginSmall" name="loginSmall" style="float:left;"></div>
 <div style="float:left;padding-top:15px; padding-right:11px;"></a></div>
 <a href ="auth/logout" class="login-header">
