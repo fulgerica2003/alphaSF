@@ -185,7 +185,7 @@
 			echo $str;
 		}
 		
-		public function add_custom_fields($query,$clang){
+		public function add_custom_fields($query,$clang='ro'){
 			
 			$this->user_lang=$clang;
 			
