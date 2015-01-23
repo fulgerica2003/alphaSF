@@ -1,5 +1,5 @@
 <?php 
-	$vars['layout']='inv';
+	$vars['layout']='online_invoices';
 	$vars['suppCat']='';
 	$vars['suppliers']='';
 	$vars['payOpts']='';

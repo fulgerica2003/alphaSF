@@ -505,9 +505,12 @@ $lang['payments_sidenote_iban'] = 'Write down the IBAN of the receiver account.'
 $lang['payments_sidenote_city'] = 'Please select another payment method if the city is not available.';
 $lang['payments_sidenote_ben'] = 'Fill in the data for the receiver.';
 
-$lang['payments_pay'] = 'transfer';
+$lang['payments_pay'] = 'Transfer';
 $lang['payments_card'] = 'Debit card';
 $lang['payments_account'] = 'Banking account';
+
+$lang['invoices_providercat'] = 'Services provider category';
+$lang['invoices_provider'] = 'Services provider';
 
 $lang['payments_amount'] = 'Amount';
 $lang['payments_currency'] = 'Currency';

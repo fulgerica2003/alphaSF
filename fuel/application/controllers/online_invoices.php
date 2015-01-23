@@ -1,11 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <?php
-class Inv extends CI_Controller {
+class Online_invoices extends CI_Controller {
 		
 		private $vars=array();
 		private $cFieldsInfo=array();
 		private $user_id;
 		private $user_email;
+		private $user_lang;
 
 
 
@@ -14,11 +15,11 @@ class Inv extends CI_Controller {
 		
 		$this->vars['suppCat'] = $this->optsSupplCat();
 	 	$this->vars['payOpts'] = get_payment_types();
-		$this->fuel->pages->render('inv',$this->vars);
-	
+		$this->fuel->pages->render('online_invoices',$this->vars);
+		
 	}
 	
-	function Inv() {
+	function Online_invoices() {
 		parent::__construct();
 
 		$this->load->helper('form');
@@ -46,6 +47,11 @@ class Inv extends CI_Controller {
 			$this->user_id = $user->id;
 			$this->user_email = $user->email;
 		}
+		
+		$this->fuel->language->detect(true);
+		$this->lang->load('ss', $this->fuel->language->selected());
+		
+		
      }
 	
 	public function save(){
@@ -78,7 +84,7 @@ class Inv extends CI_Controller {
 			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
 			$this->vars['suppCat'] = $this->optsSupplCat();
 			$this->vars['payOpts'] = get_payment_types();
-			$this->fuel->pages->render('inv',$this->vars);
+			$this->fuel->pages->render('online_invoices',$this->vars);
 					
 			send_tx_email(array('unid' => $unid,
 				'receiver' => $this->user_email,
@@ -122,7 +128,7 @@ class Inv extends CI_Controller {
 	 			$this->vars['customFields'] = ob_get_contents();
 	 		ob_end_clean();	
 
-			$this->fuel->pages->render('inv',$this->vars);
+			$this->fuel->pages->render('online_invoices',$this->vars);
 		}
 		else
 		{	
@@ -130,20 +136,19 @@ class Inv extends CI_Controller {
 			
 			$this->vars['suppCat'] = $this->optsSupplCat();
 			$this->vars['payOpts'] = get_payment_types();
-			$this->fuel->pages->render('inv',$this->vars);
+			$this->fuel->pages->render('online_invoices',$this->vars);
 		}
 
 	}
 	
 	private function optsSupplCat(){
 		$suppcat=$this->ss_suppliers_cat_model->list_items();
-		$opts='<option value="">Alege</option>';
+		$opts='<option value="">'.lang('invoices_pick').'</option>';
 		
 		$selectedSuppCat=$this->input->post('supplier_category');
 		
 		foreach ($suppcat as $row)
 				{
-					//	$opts = $opts.'<option value="' . $row['id'] .'">'. $row['name'] .'</option>\n';
 					$opts = $opts. '<option value="'. $row['id'].'"'. ($row['id'] != $selectedSuppCat ? '' : ' selected') .'>'.$row['name'].'</option>';
      			}
      	return $opts;
@@ -153,7 +158,7 @@ class Inv extends CI_Controller {
 	/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
 	*/
 	public function suppliers_by_cat($id_cat){
-		$str = '<option value="" label="Selecteaza...">Selecteaza...</option>';
+		$str = '<option value="" label="'.lang('invoices_pick').'">'.lang('invoices_pick').'</option>';
 		$options = $this->ss_suppliers_model->options_list(NULL, NULL, array('id_cat' => $id_cat));
 		$selectedSupplier = $this->input->post('supplier');
 
@@ -165,8 +170,10 @@ class Inv extends CI_Controller {
 		echo $str;
 	}
 	
-	public function add_custom_fields($query){
+	public function add_custom_fields($query,$clang){
 		
+		$this->user_lang=$clang;
+					
 			$supplier = $this->get_supplier($query);
 			
 			if (!empty($supplier)){
@@ -199,8 +206,9 @@ class Inv extends CI_Controller {
 	private function add_details_field($field_id, $label_vals, $type_val){				
 			$inputField='';
 			if (!empty($label_vals) && strlen($label_vals) > 0 && !empty($type_val) && strlen($type_val) > 0){
-				
-				$label = get_label($label_vals);
+					
+				$label = get_label($label_vals,$this->user_lang);
+
 				$this->cFieldsInfo[]= array('fieldId'=>$field_id,
 										  	'fieldLabel'=>$label);
 

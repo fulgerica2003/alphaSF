@@ -25,14 +25,14 @@ $(document).ready(function(){
 	
 	
 	$('#catSupplier').change(function() {
-		$.get('inv/suppliers_by_cat/'+$(this).val() , function( data ) {
+		$.get('online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
 			$('#supplier').empty().append(data);
 			$('#customFields').empty();	
 		});
 	});
 	
 	$('#supplier').change(function() {			
-		$.get('inv/add_custom_fields/'+$(this).val() , function( data ) {
+		$.get('online_invoices/add_custom_fields/'+$(this).val()+'/'+clang , function( data ) {
 			$('#customFields').empty().append(data);
 		});
 	});

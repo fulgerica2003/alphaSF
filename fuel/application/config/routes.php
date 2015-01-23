@@ -62,7 +62,11 @@ $route['en/online_history_invoices/(:num)'] = 'online_history_invoices';
 
 $route['en/online_profile'] = 'online_profile';
 
+<<<<<<< Updated upstream
 $route['en/online_payments'] = 'online_payments';
+=======
+$route['en/online_invoices'] = 'online_invoices';
+>>>>>>> Stashed changes
 
 
 /*	

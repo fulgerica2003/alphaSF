@@ -546,6 +546,9 @@ $lang['invoices_card'] = 'De pe card';
 $lang['invoices_account'] = 'Din cont';
 
 $lang['invoices_amount'] = 'Valoarea facturii';
+$lang['invoices_providercat'] = 'Categorie furnizor';
+$lang['invoices_provider'] = 'Furnizor';
+
 $lang['invoices_payment_type'] = 'modalitate de plata beneficiar';
 $lang['invoices_fee'] = 'Comision de plata';
 $lang['invoices_total'] = 'Total de plata';
