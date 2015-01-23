@@ -1,74 +1,142 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<?php
-class Online_invoices extends CI_Controller {
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+	class Online_invoices extends CI_Controller {
 		
 		private $vars=array();
 		private $cFieldsInfo=array();
 		private $user_id;
 		private $user_email;
 		private $user_lang;
-
-
-
 		
-	function index(){
-		
-		$this->vars['suppCat'] = $this->optsSupplCat();
-	 	$this->vars['payOpts'] = get_payment_types();
-		$this->fuel->pages->render('online_invoices',$this->vars);
-		
-	}
-	
-	function Online_invoices() {
-		parent::__construct();
+		function Online_invoices() {
+			parent::__construct();
+			
+			$this->load->helper('form');
+			$this->load->helper(array('form', 'url'));
 
-		$this->load->helper('form');
-		$this->load->helper(array('form', 'url'));
+			$this->load->model('ss_suppliers_cat_model');
+			$this->load->model('ss_suppliers_model');
+			$this->load->model('ss_suppliers_model');
+			$this->load->model('ss_invoices_model');
 
+			$this->load->library('form_validation');
+			$this->load->library('session');
+			$this->load->library('ion_auth');
 
-		$this->load->model('ss_suppliers_cat_model');
-		$this->load->model('ss_suppliers_model');
-		$this->load->model('ss_suppliers_model');
-		$this->load->model('ss_invoices_model');
-		
+			if (!$this->ion_auth->logged_in()){
+				// redirect-ul se face in _variables/online_invoices.php, teoretic aici nici nu ar trebui sa ajunga
+				} else {
+				$user = $this->ion_auth->user()->row();
+				$this->user_id = $user->id;
+				$this->user_email = $user->email;
+			}
+			
+			$this->fuel->language->detect(true);
+			$this->lang->load('ss', $this->fuel->language->selected());
+		}
 
+		function index(){
 
-
-		$this->load->library('form_validation');
-		$this->load->library('session');
-		$this->load->library('ion_auth');
-
-		
-		
-		if (!$this->ion_auth->logged_in()){
-				//redirect('online_payments/?showLogin=');
-		} else {
-			$user = $this->ion_auth->user()->row();
-			$this->user_id = $user->id;
-			$this->user_email = $user->email;
+			$this->vars['suppCat'] = $this->optsSupplCat();
+			$this->vars['payOpts'] = get_payment_types();
+			$this->fuel->pages->render('online_invoices',$this->vars);
 		}
 		
-		$this->fuel->language->detect(true);
-		$this->lang->load('ss', $this->fuel->language->selected());
-		
-		
-     }
-	
-	public function save(){
+				
+		public function validate(){ 
 			
+			$this->vars['suppCat'] = $this->optsSupplCat();
+			$this->vars['payOpts'] = get_payment_types();
+			
+			ob_start();
+	 		$this->suppliers_by_cat($this->input->post('supplier_category'));
+	 		$this->vars['suppliers'] = ob_get_contents();
+			ob_end_clean();
+			
+			ob_start();
+	 		$this->add_custom_fields($this->input->post('supplier'));
+	 		$this->vars['customFields'] = ob_get_contents();
+			ob_end_clean();	
+			
+			$this->form_validation->set_rules('valInt', 'Valoare factura', 'required');
+			$this->form_validation->set_rules('valFract', 'Valoare factura', 'required');
+			$this->form_validation->set_rules('tipPlata', 'Tip plata', 'required');
+			
+			foreach ($this->cFieldsInfo as $cfield){
+				$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required');
+			}
+			
+			
+			if ($this->form_validation->run() == FALSE)
+			{
+				ob_start();
+	 			$this->add_custom_fields($this->input->post('supplier'));
+	 			$this->vars['customFields'] = ob_get_contents();
+				ob_end_clean();	
+				
+				$this->fuel->pages->render('online_invoices',$this->vars);
+			}
+			else
+			{	
+				$this->vars['displayConfirm'] = 'true';
+				
+				$this->session->unset_userdata('invoiceDetails');
+				$this->session->set_userdata('invoiceDetails', $this->get_invoice_details());
+				
+				$this->vars['suppCat'] = $this->optsSupplCat();
+				$this->vars['payOpts'] = get_payment_types();
+				$this->fuel->pages->render('online_invoices',$this->vars);
+			}
+		}
+		
+		public function add(){
+			
+			if ($this->input->post('confirmCheck') === '1'){
+				// daca a bifat ca e de acord, salvez
+				$invoice_details = $this->session->userdata('invoiceDetails');
+				if (!$invoice_details){
+					redirect('online_invoices');
+				}
+				$unid = $this->save($invoice_details);
+				$this->session->unset_userdata('invoiceDetails');
+				
+				if (strtolower($invoice_details['id_payment_type']) === 'card'){
+					$invoice_card_details['amount'] = $invoice_details['total'];
+					$invoice_card_details['currency'] = $invoice_details['currency'];
+					$invoice_card_details['unid'] = $invoice_details['unid'];
+					$invoice_card_details['user_id'] = $this->user_id;
+					$payment_form = get_payment_form($invoice_card_details);
+					echo $payment_form; // redirectarea catre pagina de succes se face din pay/card_response
+					}else if (strtolower($invoice_details['id_payment_type']) === 'cont'){
+					
+					$event = 'inv_cont';
+					
+					$msg_codes = trigger_event($event, $unid);
+					
+					$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $unid);
+					$vars['link'] = 'online_invoices';
+					$vars['text'] = 'invoices_thanks_cmd';
+					$vars['title'] = 'invoices_thanks';
+					$this->fuel->pages->render('online_thanks', $vars);
+				}
+				}else{
+				redirect('online_invoices');
+			}
+		}
+		
+		private function get_invoice_details(){
 			$unid = uniqid('#F');
 			
 			$values['unid'] = $unid;
 			$values['id_user'] = $this->user_id;
-			$values['id_payment_type'] = $this->input->post('tipPlata');
-			$values['amount'] = $this->input->post('valInt').'.'.$this->input->post('valFract');
-			$values['currency'] = 'RON';
+			$values['id_payment_type'] = strtolower($this->input->post('tipPlata'));
+			$values['amount'] = $this->input->post('valInt') . '.' . $this->input->post('valFract');
+			$values['currency'] = strtolower($this->input->post('currency'));
+			
 			$values['id_supplier_cat'] = $this->input->post('supplier_category');
 			$values['id_supplier'] = $this->input->post('supplier');
-			//$values['fee'] = $this->input->post('fee');
-			//$values['total'] = $this->input->post('total');
-			$values['fee'] = '0';
-			$values['total'] = '0';
+			
+			$values['fee'] = $this->input->post('fee');
+			$values['total'] = $this->input->post('total');
 			$values['status'] = get_status('init');
 			
 			$custom_fields = array('s1', 's2', 's3', 's4', 's5', 's6');
@@ -79,101 +147,48 @@ class Online_invoices extends CI_Controller {
 				}
 			}
 			
-			$this->ss_invoices_model->save_invoice($values);
-						
-			// TODO mesajul care se afiseaza utilizatorului este cel care se salveaza in db
-			$this->vars['suppCat'] = $this->optsSupplCat();
-			$this->vars['payOpts'] = get_payment_types();
-			$this->fuel->pages->render('online_invoices',$this->vars);
-					
-			send_tx_email(array('unid' => $unid,
-				'receiver' => $this->user_email,
-				'sender' => $this->fuel->sitevars->get()['from_email'],
-				// TODO $this->lang->line incarca in acest moment din language/english
-				'subject' => $this->lang->line('fact_eml011_sb'),
-				'message' => $this->lang->line('fact_eml011_cont'),
-			));
+			return $values;
 		}
-	
-	
-	
-	public function add(){ 
 		
-		$this->vars['suppCat'] = $this->optsSupplCat();
-	 	$this->vars['payOpts'] = get_payment_types();
-		
-	 	ob_start();
-	 		$this->suppliers_by_cat($this->input->post('supplier_category'));
-	 		$this->vars['suppliers'] = ob_get_contents();
-	 	ob_end_clean();
-	 	
-	 	ob_start();
-	 		$this->add_custom_fields($this->input->post('supplier'));
-	 		$this->vars['customFields'] = ob_get_contents();
-	 	ob_end_clean();	
-	 	
-	 	$this->form_validation->set_rules('valInt', 'Valoare factura', 'required');
-		$this->form_validation->set_rules('valFract', 'Valoare factura', 'required');
-		$this->form_validation->set_rules('tipPlata', 'Tip plata', 'required');
-
-		foreach ($this->cFieldsInfo as $cfield){
-			$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required');
-     	}
-
-		
-		if ($this->form_validation->run() == FALSE)
-		{
-			ob_start();
-	 			$this->add_custom_fields($this->input->post('supplier'));
-	 			$this->vars['customFields'] = ob_get_contents();
-	 		ob_end_clean();	
-
-			$this->fuel->pages->render('online_invoices',$this->vars);
-		}
-		else
-		{	
-			$this->vars['displayConfirm'] = 'true';
+		private function save($invoice_details){
+			$this->ss_invoices_model->save_invoice($invoice_details);
 			
-			$this->vars['suppCat'] = $this->optsSupplCat();
-			$this->vars['payOpts'] = get_payment_types();
-			$this->fuel->pages->render('online_invoices',$this->vars);
+			return $invoice_details['unid'];
 		}
-
-	}
-	
-	private function optsSupplCat(){
-		$suppcat=$this->ss_suppliers_cat_model->list_items();
-		$opts='<option value="">'.lang('invoices_pick').'</option>';
+				
+		private function optsSupplCat(){
+			$suppcat=$this->ss_suppliers_cat_model->list_items();
+			$opts='<option value="">'.lang('invoices_pick').'</option>';
+			
+			$selectedSuppCat=$this->input->post('supplier_category');
+			
+			foreach ($suppcat as $row)
+			{
+				$opts = $opts. '<option value="'. $row['id'].'"'. ($row['id'] != $selectedSuppCat ? '' : ' selected') .'>'.$row['name'].'</option>';
+			}
+			return $opts;
+			
+		}
 		
-		$selectedSuppCat=$this->input->post('supplier_category');
-		
-		foreach ($suppcat as $row)
-				{
-					$opts = $opts. '<option value="'. $row['id'].'"'. ($row['id'] != $selectedSuppCat ? '' : ' selected') .'>'.$row['name'].'</option>';
-     			}
-     	return $opts;
-		
-	}
-	
-	/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
-	*/
-	public function suppliers_by_cat($id_cat){
-		$str = '<option value="" label="'.lang('invoices_pick').'">'.lang('invoices_pick').'</option>';
-		$options = $this->ss_suppliers_model->options_list(NULL, NULL, array('id_cat' => $id_cat));
-		$selectedSupplier = $this->input->post('supplier');
-
-		foreach($options as $key => $val)
+		/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
+		*/
+		public function suppliers_by_cat($id_cat){
+			$str = '<option value="" label="'.lang('invoices_pick').'">'.lang('invoices_pick').'</option>';
+			$options = $this->ss_suppliers_model->options_list(NULL, NULL, array('id_cat' => $id_cat));
+			$selectedSupplier = $this->input->post('supplier');
+			
+			foreach($options as $key => $val)
 			{
 				$str = $str. '<option value="'. $key .'"'. ($key != $selectedSupplier ? '' : ' selected') .'>'.$val.'</option>';
 			}
 			
-		echo $str;
-	}
-	
-	public function add_custom_fields($query,$clang){
+			echo $str;
+		}
 		
-		$this->user_lang=$clang;
-					
+		public function add_custom_fields($query,$clang){
+			
+			$this->user_lang=$clang;
+			
 			$supplier = $this->get_supplier($query);
 			
 			if (!empty($supplier)){
@@ -188,7 +203,7 @@ class Online_invoices extends CI_Controller {
 			}
 		}
 		
-	private function get_supplier($id_supplier){
+		private function get_supplier($id_supplier){
 			$where['select'] = 's1, t1, s2, t2, s3, t3, s4, t4, s5, t5, s6, t6, name';
 			$where['where'] = array('id' => $id_supplier);
 			$where['limit'] = 1;
@@ -198,31 +213,31 @@ class Online_invoices extends CI_Controller {
 			if (!empty($query->result())){
 				$supplier = $query->result()[0];
 				return $supplier;
-			} else {
+				} else {
 				return null;
 			}
-	}
-	
-	private function add_details_field($field_id, $label_vals, $type_val){				
+		}
+		
+		private function add_details_field($field_id, $label_vals, $type_val){				
 			$inputField='';
 			if (!empty($label_vals) && strlen($label_vals) > 0 && !empty($type_val) && strlen($type_val) > 0){
-					
+				
 				$label = get_label($label_vals,$this->user_lang);
-
+				
 				$this->cFieldsInfo[]= array('fieldId'=>$field_id,
-										  	'fieldLabel'=>$label);
-
+				'fieldLabel'=>$label);
+				
 				if ($type_val=='text' or $type_val=='date' or $type_val=='number') {	
-										
+					
 					$fdata = array(
-						'name'        => $field_id,
- 						'id'          => $field_id,
-						'value'       => $this->input->post($field_id),
-						'maxlength'   => '100',
-						'size'        => '50',
-						'type'		  => 'text',
-						'class'       => 'agent-input',
-						'style'       => 'width:100%',
+					'name'        => $field_id,
+					'id'          => $field_id,
+					'value'       => $this->input->post($field_id),
+					'maxlength'   => '100',
+					'size'        => '50',
+					'type'		  => 'text',
+					'class'       => 'agent-input',
+					'style'       => 'width:100%',
 					);
 					
 					$inputField = 
@@ -240,13 +255,13 @@ class Online_invoices extends CI_Controller {
 				}
 				if ($type_val=='textarea') {								
 					$fdata = array(
-						'name'        => $field_id,
-						'id'          => $field_id,
-						'value'       => $this->input->post($field_id),
-						'rows'        => '3',
-						'type'		  => 'textarea',
-						'class'       => 'agent-input',
-						'style'       => 'width:100%',
+					'name'        => $field_id,
+					'id'          => $field_id,
+					'value'       => $this->input->post($field_id),
+					'rows'        => '3',
+					'type'		  => 'textarea',
+					'class'       => 'agent-input',
+					'style'       => 'width:100%',
 					);	
 					$inputField =
 					'<div class="input-box">'.form_error( $field_id,
@@ -261,14 +276,15 @@ class Online_invoices extends CI_Controller {
 					<div class="clearfix"></div>
 					</div>';					
 				}
-			
+				
 				return $inputField;
 			}
-	}
+		}
 		
-
+		public function update_total(){
+			
+			echo compute_fee($_GET);
+		}
 	
-}
-
-
+	}
 ?>

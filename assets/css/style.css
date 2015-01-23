@@ -1027,8 +1027,8 @@ border-bottom-right-radius: 0px;}
 border-top-left-radius: 0px;
 border-bottom-left-radius: 0px;
 border-bottom-right-radius: 0px;}
-.third_iban{margin-left:-4px;border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;}
+.third_iban{margin-left:-4px;border-top-left-radius: 0px !important;
+border-bottom-left-radius: 0px !important;}
 
 .factura_prim{border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;}

@@ -58,7 +58,7 @@
 				$vars['calcModIncasare'] = $payment_method;
 				$this->session->unset_userdata('calcPayDetails');
 				}else{
-				$amount = $this->input->post('amount');
+				$amount = $this->get_amount($this->input->post('amount'), $this->input->post('valFract'));
 				$payment_method = $this->input->post('modIncasare');
 				$currency = $this->input->post('currency');
 			}
@@ -161,7 +161,7 @@
 					
 					$msg_codes = trigger_event($event, $unid);
 					
-					$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
+					$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $unid);
 					$vars['link'] = 'online_payments';
 					$vars['text'] = 'payments_thanks_cmd';
 					$vars['title'] = 'payments_thanks';
@@ -184,7 +184,7 @@
 			$values['unid'] = $unid;
 			$values['id_user'] = $this->user_id;
 			$values['id_payment_type'] = strtolower($this->input->post('tipPlata'));
-			$values['amount_in'] = $this->input->post('amount');
+			$values['amount_in'] = $this->get_amount($this->input->post('amount'), $this->input->post('valFract'));
 			$values['currency_in'] = $this->input->post('currency');
 			
 			if ($this->input->post('acceptcv') && $this->input->post('acceptcv') === 'acceptcv'){
@@ -302,7 +302,7 @@
 				
 				$msg_codes = trigger_event('pay_refund', $unid);
 				
-				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $unid);
+				$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $unid);
 				$vars['link'] = 'online_history_payments';
 				$vars['text'] = 'news_details_back';
 				$vars['title'] = 'payments_thanks';
@@ -335,7 +335,7 @@
 				
 				$msg_codes = trigger_event('pay_corr', $where['unid']);
 				
-				$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $where['unid']);
+				$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $where['unid']);
 				$vars['link'] = 'online_history_payments';
 				$vars['text'] = 'news_details_back';
 				$vars['title'] = 'payments_thanks';
@@ -352,6 +352,11 @@
 			$correction = $this->ss_corrections_model->find_one_array(array('unid' => $unid));
 			
 			echo json_encode($correction);
+		}
+		
+		private function get_amount($intVal, $fractVal){
+			$decimal_part = (isset($fractVal)) ? $fractVal : 0;
+			return $intVal + $decimal_part/100;
 		}
 		
 	}

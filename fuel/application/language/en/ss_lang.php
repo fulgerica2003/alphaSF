@@ -105,6 +105,10 @@ in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de r
 si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni.
 Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
 
+$lang['calc_txt074'] = 'Plata facturi online';
+$lang['calc_txt075'] = 'Confirmare tranzactie';
+$lang['calc_txt076'] = 'Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra presupune deducerea din suma transferata a comisionului de rambursare in valoare de <span style="color:#b5251d;">15 EURO</span> euro la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
+
 // butoane
 $lang['calc_btn004'] = 'de pe card';
 $lang['calc_btn005'] = 'din cont bancar';
@@ -170,6 +174,18 @@ $lang['calc_msg013'] = 'Felicitari! Operatiunea de plata a fost finalizata cu su
 $lang['calc_msg014'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
 transferul!';
 
+$lang['calc_msg015'] = 'calc_msg015';
+$lang['calc_msg016'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
+maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
+Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa
+fie receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea
+tranzactiei. Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in
+contul Smith & Smith, tranzactia se considera anulata.';
+$lang['calc_msg017'] = 'calc_msg017 %s';
+$lang['calc_msg018'] = 'calc_msg018';
+$lang['calc_msg019'] = 'calc_msg019';
+$lang['calc_msg020'] = 'calc_msg020';
+
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
 $lang['calc_eml002_sb'] = '%s : Detalii tranzactie Smith & Smith';
 $lang['calc_eml002_cont'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
@@ -212,6 +228,20 @@ $lang['calc_eml009_cont'] = 'Felicitari! Operatiunea de plata a fost finalizata 
 $lang['calc_eml010_sb'] = '%s : Retur tranzactie.';
 $lang['calc_eml010_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
 transferul!';
+
+$lang['calc_eml011_sb'] = '%s : Initiere plata facturi prin Smith & Smith.';
+$lang['calc_eml011_cont'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
+maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
+Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa
+fie receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea
+tranzactiei. Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in
+contul Smith & Smith, tranzactia se considera anulata.';
+$lang['calc_eml012_sb'] = '%s : Retur tranzactie.';
+$lang['calc_eml012_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
+transferul cu referinta %s!';
+$lang['calc_eml013_sb'] = '%s : Retur tranzactie.';
+$lang['calc_eml013_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
+transferul cu referinta %s!';
 
 /*
 |--------------------------------------------------------------------------
@@ -284,8 +314,12 @@ pentru verificari si/sau sa contactati serviciul Sesizari, Reclamatii Smith & Sm
 $lang['fact_err_msg019'] = 'Ne pare rau! Plata dumneavoastra cu referinta %s nu a fost
 finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
 telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
+$lang['fact_err_msg020'] = 'Ne pare rau! Plata dumneavoastra cu referinta %s nu a fost
+finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
+telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
 
 // mesaje
+$lang['fact_msg013'] = 'Felicitari! Operatiunea de plata cu referinta %s a fost finalizata cu succes!';
 $lang['fact_msg016'] = 'Referinta platii dumneavoastra este %s. Va rugam ca in
 maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
 Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa fie
@@ -296,8 +330,11 @@ $lang['fact_msg017'] = 'Felicitari! Operatiunea de plata a fost incheiata cu suc
 dumneavoastra este %s';
 $lang['fact_msg018'] = 'Felicitari! Plata dumneavoastra cu referinta %s s-a incheiat
 cu succes.';
+$lang['fact_msgcancel'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
 
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
+$lang['fact_eml009_sb'] = '%s : Plata efectuata cu succes.';
+$lang['fact_eml009_cont'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
 $lang['fact_eml011_sb'] = '%s : Initiere plata facturi prin Smith&Smith';
 $lang['fact_eml011_cont'] = 'Referinta platii dumneavoastra este %s. Va rugam ca in
 maxim 2 zile lucratoare de la initierea platii sa transferati suma ordonata catre contul Smith
@@ -317,6 +354,8 @@ $lang['fact_eml014_sb'] = '%s: S-a efectuat plata facturii dumneavoastra prin
 Smith&Smith';
 $lang['fact_eml014_cont'] = 'Felicitari ! Operatiunea de plata a fost incheiata cu succes. Referinta platii
 dumneavoastra este %s';
+$lang['fact_emlcancel_sb'] = '%s : anulare operatiune.';
+$lang['fact_emlcancel_cont'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
 
 /*
 |--------------------------------------------------------------------------
@@ -498,19 +537,16 @@ $lang['profile_save'] = 'SAVE';
 |--------------------------------------------------------------------------
 |
 */
-$lang['payments_sidenote_trans'] = 'A friendly and useful sidenote.<br />About the field on its right.';
-$lang['payments_sidenote_cash'] = 'Choose one of our payment options.';
-$lang['payments_sidenote_exch'] = 'Foreign exchange information.';
-$lang['payments_sidenote_iban'] = 'Write down the IBAN of the receiver account.';
-$lang['payments_sidenote_city'] = 'Please select another payment method if the city is not available.';
-$lang['payments_sidenote_ben'] = 'Fill in the data for the receiver.';
+$lang['invoices_sidenote_trans'] = 'A friendly and useful sidenote.<br />About the field on its right.';
+$lang['invoices_sidenote_supplier_cat'] = 'Choose supplier\'s category.';
+$lang['invoices_sidenote_supplier_info'] = 'Choose a supplier and fill in the data.';
 
 $lang['payments_pay'] = 'Transfer';
 $lang['payments_card'] = 'Debit card';
 $lang['payments_account'] = 'Banking account';
 
-$lang['invoices_providercat'] = 'Services provider category';
-$lang['invoices_provider'] = 'Services provider';
+$lang['invoices_providercat'] = 'Supplier category';
+$lang['invoices_provider'] = 'Supplier';
 
 $lang['payments_amount'] = 'Amount';
 $lang['payments_currency'] = 'Currency';
@@ -565,6 +601,9 @@ $lang['invoices_address'] = 'adresa';
 $lang['invoices_pick'] = 'choose';
 
 $lang['invoices_cmd'] = 'PAY';
+
+$lang['invoices_thanks'] = 'Thank you!';
+$lang['invoices_thanks_cmd'] = 'NEW INVOICE';
 
 /*
 |--------------------------------------------------------------------------

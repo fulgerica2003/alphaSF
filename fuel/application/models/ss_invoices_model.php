@@ -88,14 +88,6 @@
 			array_key_exists('s6', $values) ? $invoice->s6 = $values['s6'] : $invoice->s6 = null;
 			
 			$invoice->save();
-			
-			$message = $this->ss_messages_model->create();
-			$message->unid = $values['unid'];
-			$message->id_user = $values['id_user'];
-			$message->id_tx = $invoice->id;
-			$message->tx_type = 'invo';
-			$message->message = 'invoice '.$values['unid']. ' successfully added';
-			$message->save();		
 		}
 		
 		function invoices($id_user){

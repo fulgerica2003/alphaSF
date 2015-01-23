@@ -1,6 +1,6 @@
 	<?php 
 		$this->load->helper('form');
-		$this->load->view('_blocks/_modal_confirmare_salvare_tranzactie');
+		$this->load->view('_blocks/_modal_confirmare_salvare_tranzactie', array('page' => 'online_payments'));
 		$attributes = array('id' => 'form-transfer-calc', 'name' => 'form-transfer-calc');
 		echo form_open('online_payments/validate', $attributes); 
 	?>
@@ -8,8 +8,8 @@
 	<div class="col-lg-7 col-lg-offset-5 col-sm-12">
 		
 		<div class="input-box">
-			<div class="explica-cont"><?php echo lang('payments_sidenote_trans')?></div>
-			<div class="agent-lable"><?php echo lang('payments_pay')?></div>
+			<div class="explica-cont"><?php echo lang('payments_sidenote_trans');?></div>
+			<div class="agent-lable"><?php echo lang('payments_pay');?></div>
 			<?php echo form_error('tipPlata'); ?>
 			<div class="radio-container1" style="width:50%;" name="test">
 				<div class="lable1" id="TABleft"><?php echo lang('payments_card')?></div>
@@ -25,8 +25,9 @@
 		<div class="input-box">
 			<div class="agent-lable"><?php echo lang('payments_amount')?></div>
 			<div name="test">
-				<input name ="amount" id = "amount" style="width:68%;" class="online-update-fee-total agent-input factura_prim <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
-				<select id = "currency" name ="currency" style="width:31%;" class="agent-input factura_second">
+				<input name ="amount" id = "amount" style="width:50%;" class="online-update-custom-fields online-update-fee-total agent-input first_iban <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
+				<input id = "valFract" name ="valFract" style="width:25%;" class="online-update-custom-fields online-update-fee-total agent-input second_iban" type="text" value="<?php echo set_value('valFract'); ?>">
+				<select id = "currency" name ="currency" style="width:25%;" class="agent-input third_iban">
 					<option value="eur" <?php echo set_select('currency', 'eur', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'eur' ? TRUE : FALSE)); ?>>EUR</option>
 					<option value="ron" <?php echo set_select('currency', 'ron', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'ron' ? TRUE : FALSE)); ?>>RON</option>
 				</select> 
@@ -37,7 +38,7 @@
 		<div class="input-box">
 			<div class="explica-cont"><?php echo lang('payments_sidenote_cash'); ?></div>
 			<div class="agent-lable"><?php echo lang('payments_payment_type'); ?></div>
-			<select id="modIncasare" name="modIncasare" class = "online-update-fee-total agent-input<?php echo (form_error('modIncasare')) ? ' err' : ''; ?>">
+			<select id="modIncasare" name="modIncasare" class = "online-update-custom-fields online-update-fee-total agent-input<?php echo (form_error('modIncasare')) ? ' err' : ''; ?>">
 				<option value="" <?php echo set_select('modIncasare', '', ($vars['calcModIncasare'] ? FALSE : TRUE)); ?>><?php echo lang('payments_pick'); ?></option>
 				<?php foreach($vars['benOpts'] as $key => $value):?>
 				<option value="<?php echo $key;?>" <?php echo set_select('modIncasare', $key, ($vars['calcModIncasare'] && $vars['calcModIncasare'] == $key ? TRUE : FALSE)); ?>><?php echo $value;?></option>

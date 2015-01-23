@@ -155,7 +155,32 @@
 			echo httpPost("http://localhost/smith/backend/uptran",$params);
 		}
 		
-
+		public function testupfact_ok(){
+			$params = array(
+			"type" => "ok",
+			"referinta" => "#F54c259340a0bf",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/upfact",$params);
+		}
+		
+		public function testupfact_err(){
+			$params = array(
+			"type" => "err",
+			"referinta" => "#F54c259340a0bf",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/upfact",$params);
+		}
+		
+		public function testupfact_cancel(){
+			$params = array(
+			"type" => "cancel",
+			"referinta" => "#F54c259340a0bf",
+			);
+			
+			echo httpPost("http://localhost/smith/backend/upfact",$params);
+		}		
 		
 		public function total_fee(){
 			$this->load->model('ss_fees_model');

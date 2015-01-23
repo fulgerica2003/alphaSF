@@ -505,13 +505,6 @@
 			
 			if (!empty($reference) && strlen($reference) > 0){
 				switch ($type) {
-					case 'pin':{
-						// totul a fost ok, merg mai departe cu plata, statusul e in curs de plata, trimit msg009 si eml005
-						
-						$received['status'] = get_status('pay');
-						
-						break;
-					}
 					case 'ok':{
 						// pun status platita si dau msg013 si eml009
 						$received['status'] = get_status('pyd');

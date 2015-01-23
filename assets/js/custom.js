@@ -49,11 +49,12 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#modIncasare').change(function() {
+	/*$('#modIncasare').change(function() {
 		$('#customFields').empty();
 		$('#fee').val('');
 		$('#total').val('');
-		$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: $('#amount').val(), lang: theLanguage}, function(data) {
+		amount = parseInt($('#amount').val()) + (parseInt($('#valFract').val())/100);
+		$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
 	});
@@ -62,7 +63,23 @@ $(document).ready(function(){
 		$('#customFields').empty();
 		$('#fee').val('');
 		$('#total').val('');
-		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: $(this).val(), lang: theLanguage}, function(data) {
+		amount = parseInt($('#amount').val()) + (parseInt($('#valFract').val())/100);
+		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
+			$('#customFields').empty().append(data);
+		});
+	});*/
+	
+	$('.online-update-custom-fields').change(function() {
+		$('#customFields').empty();
+		$('#fee').val('');
+		$('#total').val('');
+		if ($('#valFract').val().length === 0){
+			valFract = 0;
+		}else{
+			valFract = $('#valFract').val();
+		}
+		amount = parseInt($('#amount').val()) + (parseInt(valFract)/100);
+		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
 			$('#customFields').empty().append(data);
 		});
 	});
@@ -75,7 +92,13 @@ $(document).ready(function(){
 		} else if ($('#tipPlataCard').attr('checked')){
 			payment_type = 'card';	
 		}
-		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: $('#amount').val()}, function(data) {
+		if ($('#valFract').val().length === 0){
+			valFract = 0;
+		}else{
+			valFract = $('#valFract').val();
+		}
+		amount = parseInt($('#amount').val()) + (parseInt(valFract)/100);
+		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: amount}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
 		}, "json");
@@ -124,6 +147,26 @@ $(document).ready(function(){
 		}
 	});
 	
+	// online invoices
+		
+	$('.invoice-update-fee-total').change(function() {
+		$('#fee').val('');
+		$('#total').val('');
+		if ($('#tipPlataCont').attr('checked')){
+			payment_type = 'cont';
+		} else if ($('#tipPlataCard').attr('checked')){
+			payment_type = 'card';	
+		}
+		amount = parseInt($('#valInt').val()) + (parseInt($('#valFract').val())/100);
+		if (payment_type && amount){
+			$.get('online_invoices/update_total', {payment_method: 6, payment_type: payment_type, currency: $('#currency').val().toLowerCase(), amount: amount}, function(data) {
+			$('#fee').val(data.fee);
+			$('#total').val(data.total);
+		}, "json");
+		}
+		
+	});
+	
 	// calc online_payments
 	if ($('#cop_amount').val() && $('#cop_currency').val() && $('#cop_modIncasare').val()){
 		// aici intra daca utilizatorul a dat submit, dar nu era autentificat si inchide fereastra de autentificare, fara a se autentifica
@@ -159,14 +202,24 @@ $(document).ready(function(){
 	// calc online_invoices
 	
 	if ($('#cof_amount').val()){
-		$.get('calculator/update_total', {payment_method: 1, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
+		if ($('.cof_plata_cont').attr('checked')){
+			payment_type = 'cont';
+		} else if ($('.cof_plata_card').attr('checked')){
+			payment_type = 'card';	
+		}
+		$.get('calculator/update_total', {payment_method: 6, payment_type: payment_type, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
 			$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
 			$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
 		}, "json");
 	}
 	
-	$('#cof_amount').change(function() {
-		$.get('calculator/update_total', {payment_method: 1, currency: 'ron', amount: $(this).val()}, function(data) {
+	$('.cof-update-fee-total').change(function() {
+		if ($('.cof_plata_cont').attr('checked')){
+			payment_type = 'cont';
+		} else if ($('.cof_plata_card').attr('checked')){
+			payment_type = 'card';	
+		}
+		$.get('calculator/update_total', {payment_method: 6, payment_type: payment_type, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
 			$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
 			$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
 		}, "json");

@@ -131,7 +131,7 @@
 				if ($ipn == true){
 					return '1';
 				}else{
-					$vars['message'] = sprintf($this->lang->line('calc_' . $msg_codes[0]), $data['DESC']);
+					$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $data['DESC']);
 					$this->fuel->pages->render('online_thanks', $vars);
 				}
 				
