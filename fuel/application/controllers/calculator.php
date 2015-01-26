@@ -37,6 +37,8 @@
 		public function pay_transfer(){
 			$calc_details = array ('tipPlata' => $this->input->post('tipPlata'),
 			'amount' => $this->input->post('suma'),
+			'fee' => $this->input->post('cop_hidden_fee'),
+			'total' => $this->input->post('cop_hidden_total'),
 			'currency' => $this->input->post('monedaPlata'),
 			'modIncasare' => $this->input->post('modIncasare'),);
 			
@@ -57,8 +59,11 @@
 			// fac apoi redirect catre login, iar in custom.js, in fc de valoarea lui showLogin redirectez catre online_invoices
 			// in online_payments citesc datele de pe sesiune si le pun in form
 			$calc_details = array ('tipPlata' => $this->input->post('tipPlata'),
-			'amount' => $this->input->post('suma'),);
-			$this->session->set_flashdata('calcInvDetails', $calc_details);
+			'amount' => $this->input->post('suma'),
+			'fee' => $this->input->post('cof_hidden_fee'),
+			'total' => $this->input->post('cof_hidden_total'),
+			);
+			$this->session->set_userdata('calcInvDetails', $calc_details);
 			
 			if (!$this->ion_auth->logged_in()){
 				redirect('/?showLogin=oi');

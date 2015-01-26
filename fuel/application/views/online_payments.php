@@ -50,13 +50,13 @@
 		<div class="input-box ">
 			<div class="explica-cont"></div>
 			<div class="agent-lable"><?php echo lang('payments_fee'); ?></div>
-			<input class="agent-input" type="text" name="fee" id="fee" value="<?php echo set_value('fee'); ?>" readonly>	
+			<input class="agent-input" type="text" name="fee" id="fee" value="<?php echo set_value('fee', ($vars['calcFee'] ? $vars['calcFee'] : '')); ?>" readonly>	
 		</div>	
 		
 		<div class="input-box ">
 			<div class="explica-cont"></div>
 			<div class="agent-lable"><?php echo lang('payments_total'); ?></div>
-			<input class="agent-input" type="text" name="total" id="total" value="<?php echo set_value('total'); ?>" readonly>	
+			<input class="agent-input" type="text" name="total" id="total" value="<?php echo set_value('total', ($vars['calcTotal'] ? $vars['calcTotal'] : '')); ?>" readonly>	
 		</div>
 		
 		<div id='customFields'>

@@ -38,6 +38,26 @@
 
 			$this->vars['suppCat'] = $this->optsSupplCat();
 			$this->vars['payOpts'] = get_payment_types();
+			
+			$calc_details = $this->session->userdata('calcInvDetails');
+			if (isset($calc_details) && $calc_details != null){
+				// datele venite din simulatorul de pe prima pagina
+				$amount = $calc_details['amount'];
+				$payment_method = 6;
+				$currency = get_currency_id('ron');
+				$this->vars['calcTipPlata'] = $calc_details['tipPlata'];
+				$this->vars['calcAmount'] = $amount;
+				$this->vars['calcCurrency'] = $currency;
+				$this->vars['calcModIncasare'] = $payment_method;
+				$this->vars['calcFee'] = $calc_details['fee'];
+				$this->vars['calcTotal'] = $calc_details['total'];
+				$this->session->unset_userdata('calcInvDetails');
+				}else{
+				// $amount = $this->get_amount($this->input->post('amount'), $this->input->post('valFract'));
+				// $payment_method = $this->input->post('modIncasare');
+				// $currency = $this->input->post('currency');
+			}
+			
 			$this->fuel->pages->render('online_invoices',$this->vars);
 		}
 		
@@ -142,7 +162,8 @@
 			$custom_fields = array('s1', 's2', 's3', 's4', 's5', 's6');
 			foreach($custom_fields as $field){
 				
-				if (!empty($this->input->post($field))){
+				//nu merge pe php < 5.5 if (!empty($this->input->post($field))){
+				if ($this->input->post($field)){
 					$values[$field] = $this->input->post($field);
 				}
 			}
@@ -191,7 +212,8 @@
 			
 			$supplier = $this->get_supplier($query);
 			
-			if (!empty($supplier)){
+			//nu merge pe php < 5.5 if (!empty($supplier)){
+			if ($supplier){
 				// parcurg lista de campuri ca sa vad pe care trebuie sa le randez
 				// tin cont de campurile care au setat si, ti, unde i = 1...6
 				echo $this->add_details_field('s1', $supplier->s1, $supplier->t1);
@@ -210,8 +232,10 @@
 			
 			$query = $this->ss_suppliers_model->query($where);
 			
-			if (!empty($query->result())){
-				$supplier = $query->result()[0];
+			//nu merge pe php < 5.5 if (!empty($query->result())){
+			if ($query->result()){
+				$results = $query->result();
+				$supplier = $results[0];
 				return $supplier;
 				} else {
 				return null;
@@ -220,7 +244,8 @@
 		
 		private function add_details_field($field_id, $label_vals, $type_val){				
 			$inputField='';
-			if (!empty($label_vals) && strlen($label_vals) > 0 && !empty($type_val) && strlen($type_val) > 0){
+			//nu merge pe php < 5.5 if (!empty($label_vals) && strlen($label_vals) > 0 && !empty($type_val) && strlen($type_val) > 0){
+			if ($label_vals && strlen($label_vals) > 0 && $type_val && strlen($type_val) > 0){
 				
 				$label = get_label($label_vals,$this->user_lang);
 				

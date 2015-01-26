@@ -13,11 +13,11 @@
 		<?php echo form_error('tipPlata'); ?>
 		<div class="radio-container1" style="width:50%;" name="test">
 			<div class="lable1" id="TABleft"><?php echo lang('invoices_card'); ?></div>
-			<input class = "invoice-update-fee-total" type="radio" name="tipPlata" id="tipPlataCard"  value="<?php echo $vars['payOpts']['card']; ?>" <?php echo set_radio('tipPlata', 'Card', TRUE); ?>>
+			<input class = "invoice-update-fee-total" type="radio" name="tipPlata" id="tipPlataCard"  value="<?php echo $vars['payOpts']['card']; ?>" <?php echo set_radio('tipPlata', 'Card', (isset($vars['calcTipPlata']) && $vars['calcTipPlata'] === 'card' ? TRUE : FALSE)); ?>>
 		</div>								
 		<div class="radio-container1" style="width:50%;" name="test">
 			<div class="lable1" id="TABright"><?php echo lang('invoices_account'); ?></div>
-			<input class = "invoice-update-fee-total" type="radio" name="tipPlata" id="tipPlataCont"  value="<?php echo $vars['payOpts']['cont']; ?>" <?php echo set_radio('tipPlata', 'Cont'); ?>>
+			<input class = "invoice-update-fee-total" type="radio" name="tipPlata" id="tipPlataCont"  value="<?php echo $vars['payOpts']['cont']; ?>" <?php echo set_radio('tipPlata', 'Cont', (isset($vars['calcTipPlata']) && $vars['calcTipPlata'] === 'cont' ? TRUE : FALSE)); ?>>
 		</div>								
 		<div id="tipPlataERR" class="eroare"><a name="AtipPlataERR"></a><span id="tipPlataERRTXT"></span><span class="close-eroare">x</span></div>                                
 	</div>
@@ -33,7 +33,7 @@
 				<span id="ERRTXT"><?php echo form_error('valInt','<div>', '</div>');?></span>
 				<span class="close-eroare">x</span>
 			</div>
-			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total" type="text" value="<?php echo set_value('valInt'); ?>">
+			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total" type="text" value="<?php echo set_value('valInt', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
 			<input id = "valFract" name ="valFract" style="width:25%;" class="agent-input second_iban invoice-update-fee-total" type="text" value="<?php echo set_value('valFract'); ?>">
 			<input id= "currency" name ="currency" style="width:24%;" class="agent-input factura_second" type="text" value="RON" readonly>
 		</div>					
@@ -43,20 +43,20 @@
 	<div class="input-box ">
 		<div class="explica-cont"></div>
 		<div class="agent-lable"><?php echo lang('invoices_fee'); ?></div>
-		<input class="agent-input" type="text" name="fee" id="fee" value="<?php echo set_value('fee'); ?>" readonly>	
+		<input class="agent-input" type="text" name="fee" id="fee" value="<?php echo set_value('fee', ($vars['calcFee'] ? $vars['calcFee'] : '')); ?>" readonly>	
 	</div>	
 	
 	<div class="input-box ">
 		<div class="explica-cont"></div>
 		<div class="agent-lable"><?php echo lang('invoices_total'); ?></div>
-		<input class="agent-input" type="text" name="total" id="total" value="<?php echo set_value('total'); ?>" readonly>	
+		<input class="agent-input" type="text" name="total" id="total" value="<?php echo set_value('total', ($vars['calcTotal'] ? $vars['calcTotal'] : '')); ?>" readonly>	
 	</div>
 	
 	<div class="input-box">
 		<div class="explica-cont"><?php echo lang('invoices_sidenote_supplier_cat'); ?></div>
 		<div class="agent-lable"><?php echo lang('invoices_providercat'); ?></div>
 		<?php echo form_error('catSupplier'); ?>
-		<select id="catSupplier" name="supplier_category">
+		<select id="catSupplier" name="supplier_category" class = "invoice-update-fee-total">
 			<?php echo $vars['suppCat']; ?>
 		</select>
 	</div>

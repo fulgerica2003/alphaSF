@@ -6,9 +6,10 @@
 		<div id = "subscribeModalContent" class="modal-content">
 			<div id="subscribe-pop">
 				<div id = "subscribe-modal-header" class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up">Close</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close-pop-up"><?php echo lang('general_close');?></button>
 					<p class="modal-title"><?php echo lang('subscribe_title');?>
 					</div>
+					<!-- body-ul modalului e completat din custom.js-->
 					<div id = "subscribeModalBody" class="modal-body">
 					</div>
 				</div>
@@ -46,7 +47,7 @@
 						<ul class="liste-footer">
 							<li>
 								<form id = "subscribe" action = 'newsletter/subscribe' method = "post">
-									<input class="email-footer" type="text"  name="email" placeholder="E-mail">
+									<input id = "email" class="email-footer" type="text"  name="email" placeholder="E-mail">
 								</form>
 							</li>
 						</ul>	

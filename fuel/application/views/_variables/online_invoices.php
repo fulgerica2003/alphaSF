@@ -11,5 +11,12 @@
 	$vars['customFields']='';
 	$vars['s1']='';
 	$vars['displayConfirm']='false';
+	
+	$vars['calcTipPlata'] = 'card';
+	$vars['calcAmount'] = null;
+	$vars['calcCurrency'] = null;
+	$vars['calcModIncasare'] = null;
+	$vars['calcFee'] = null;
+	$vars['calcTotal'] = null;
 
 ?>

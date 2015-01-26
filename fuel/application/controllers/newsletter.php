@@ -11,7 +11,8 @@
 			
 			$this->form_validation->set_error_delimiters('', '');
 			
-			$this->lang->load('ss');
+			$this->fuel->language->detect(true);
+			$this->lang->load('ss', $this->fuel->language->selected());
 			$this->load->helper('language');
 			
 		}
@@ -31,17 +32,17 @@
 				$email_address = $this->input->post('email');
 				$values = array('email' => $email_address);
 				if ($this->ss_newsletter_list_model->record_exists($values)){
-					//$result = $this->lang->line('subscribe_exists');
-					$result = 'record exists';
+					$result = $this->lang->line('subscribe_exists');
+					//$result = 'subscribe_exists';
 					$error = true;
 				}else{
 					$this->ss_newsletter_list_model->insert($values);
-					//$result = $this->lang->line('subscribe_success');
-					$result = 'thank you';
+					$result = $this->lang->line('subscribe_success');
+					//$result = 'subscribe_success';
 					$error = false;
 				}
 			}
-			
+
 			echo json_encode(array("error" => $error, "result" => $result));
 		}
 	}														

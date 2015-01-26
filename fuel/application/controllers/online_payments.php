@@ -47,7 +47,7 @@
 			$vars['payOpts'] = get_payment_types();
 
 			$calc_details = $this->session->userdata('calcPayDetails');
-			if ($calc_details != null){
+			if (isset($calc_details) && $calc_details != null){
 				// datele venite din simulatorul de pe prima pagina
 				$amount = $calc_details['amount'];
 				$payment_method = $calc_details['modIncasare'];
@@ -56,6 +56,8 @@
 				$vars['calcAmount'] = $amount;
 				$vars['calcCurrency'] = $currency;
 				$vars['calcModIncasare'] = $payment_method;
+				$vars['calcFee'] = $calc_details['fee'];
+				$vars['calcTotal'] = $calc_details['total'];
 				$this->session->unset_userdata('calcPayDetails');
 				}else{
 				$amount = $this->get_amount($this->input->post('amount'), $this->input->post('valFract'));

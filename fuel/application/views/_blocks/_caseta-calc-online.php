@@ -43,6 +43,8 @@
 			</ul>
 		</div>	
 		<div class="total-calc" style="margin-top:20px;" ;="">
+			<input type = "hidden" id = "cop_hidden_fee" name = "cop_hidden_fee" value = "">
+			<input type = "hidden" id = "cop_hidden_total" name = "cop_hidden_total" value = "">
 			<input type = "submit" value = "<?php echo lang('payments_cmd'); ?>" class = "calcPayLink">
 		</div>		
 		<br><br>

@@ -87,10 +87,10 @@ $(document).ready(function(){
 	$('.online-update-fee-total').change(function() {
 		$('#fee').val('');
 		$('#total').val('');
-		if ($('#tipPlataCont').attr('checked')){
+		if ($(this).attr('id') == 'tipPlataCont' || $('#tipPlataCont').attr('checked')){
 			payment_type = 'cont';
-		} else if ($('#tipPlataCard').attr('checked')){
-			payment_type = 'card';	
+		}else if ($(this).attr('id') == 'tipPlataCard' || $('#tipPlataCard').attr('checked')){
+			payment_type = 'card';
 		}
 		if ($('#valFract').val().length === 0){
 			valFract = 0;
@@ -152,12 +152,18 @@ $(document).ready(function(){
 	$('.invoice-update-fee-total').change(function() {
 		$('#fee').val('');
 		$('#total').val('');
-		if ($('#tipPlataCont').attr('checked')){
+		if ($(this).attr('id') == 'tipPlataCont' || $('#tipPlataCont').attr('checked')){
 			payment_type = 'cont';
-		} else if ($('#tipPlataCard').attr('checked')){
-			payment_type = 'card';	
+		}else if ($(this).attr('id') == 'tipPlataCard' || $('#tipPlataCard').attr('checked')){
+			payment_type = 'card';
 		}
-		amount = parseInt($('#valInt').val()) + (parseInt($('#valFract').val())/100);
+		
+		if (!$('#valFract').val()){
+			valFract = 0;
+		}else{
+			valFract = $('#valFract').val();
+		}
+		amount = parseInt($('#valInt').val()) + (parseInt(valFract)/100);
 		if (payment_type && amount){
 			$.get('online_invoices/update_total', {payment_method: 6, payment_type: payment_type, currency: $('#currency').val().toLowerCase(), amount: amount}, function(data) {
 			$('#fee').val(data.fee);
@@ -173,6 +179,8 @@ $(document).ready(function(){
 		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
 			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
 			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">RON</span></div>');
+			$('#cop_hidden_fee').val(data.fee);
+			$('#cop_hidden_total').val(data.total);
 		}, "json");
 	}
 	
@@ -188,43 +196,50 @@ $(document).ready(function(){
 	$('.cop-update-fee-total').change(function() {
 		$('#fee').val('');
 		$('#total').val('');
-		if ($('#tipPlataCont').attr('checked')){
+		if ($(this).attr('id') == 'tipPlataCont'){
 			payment_type = 'cont';
-		} else if ($('#tipPlataCard').attr('checked')){
-			payment_type = 'card';	
+		} else if ($(this).attr('id') == 'tipPlataCard'){
+			payment_type = 'card';
 		}
 		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), payment_type: payment_type, currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
 			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
 			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
+			$('#cop_hidden_fee').val(data.fee);
+			$('#cop_hidden_total').val(data.total);
 		}, "json");
 	});
 	
 	// calc online_invoices
 	
 	if ($('#cof_amount').val()){
-		if ($('.cof_plata_cont').attr('checked')){
+		if ($(this).attr('id') == 'tipPlataCont'){
 			payment_type = 'cont';
-		} else if ($('.cof_plata_card').attr('checked')){
-			payment_type = 'card';	
+		}else if ($(this).attr('id') == 'tipPlataCard'){
+			payment_type = 'card';
 		}
 		$.get('calculator/update_total', {payment_method: 6, payment_type: payment_type, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
 			$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
 			$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
+			$('#cof_hidden_fee').val(data.fee);
+			$('#cof_hidden_total').val(data.total);
 		}, "json");
 	}
 	
 	$('.cof-update-fee-total').change(function() {
-		if ($('.cof_plata_cont').attr('checked')){
+		if ($(this).attr('id') == 'tipPlataCont'){
 			payment_type = 'cont';
-		} else if ($('.cof_plata_card').attr('checked')){
-			payment_type = 'card';	
+		}else if ($(this).attr('id') == 'tipPlataCard'){
+			payment_type = 'card';
 		}
 		$.get('calculator/update_total', {payment_method: 6, payment_type: payment_type, currency: 'ron', amount: $('#cof_amount').val()}, function(data) {
 			$('#cof_fee').replaceWith('<div id = "cof_fee"><span class="suma-factura-online">' + (data.fee ? data.fee : '0,0') +'</span> RON</div>');
 			$('#cof_total').replaceWith('<div id = "cof_total"><span class="suma-factura-online">' + (data.total ? data.total : '0,0') +'</span> RON</div>');
+			$('#cof_hidden_fee').val(data.fee);
+			$('#cof_hidden_total').val(data.total);
 		}, "json");
 	});
-	
+		
+
 	
 	// register + login
 	$(function() {
@@ -422,7 +437,7 @@ $(document).ready(function(){
 		var $form = $( this ),
 		url = $form.attr( "action" );
 		// Send the data using post
-		var posting = $.post( url, $( this ).serialize(), function( data ) {
+		var posting = $.post( url + '?lang='+clang, $( this ).serialize(), function( data ) {
 			if (data === ""){
 				window.location.replace(document.URL);
 				}else{
