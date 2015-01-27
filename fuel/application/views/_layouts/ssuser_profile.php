@@ -18,10 +18,12 @@
 				<?php echo fuel_var('body');?>
 
 				</div>
+				
 				<div class="clearfix" ></div>
 				<br /><br /><br /><br /><br /><br />
             </div>
 		</div>
+		<?php $this->load->view('_blocks/_caseta_mesaje_recente'); ?>
 	</div>
 	<?php $this->load->view('_blocks/ssfooter')?>
 

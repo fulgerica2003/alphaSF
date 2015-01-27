@@ -47,6 +47,7 @@ $(document).ready(function(){
 		$.get('online_payments/update_ben_opts/'+$(this).val() , function( data ) {
 			$('#modIncasare').empty().append(data);
 		});
+		$('.moneda-cas-tranz').text($(this).val().toUpperCase());
 	});
 	
 	/*$('#modIncasare').change(function() {
@@ -101,6 +102,10 @@ $(document).ready(function(){
 		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: amount}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
+			$('#valTransferSummary').text(amount ? amount : 0);
+			$('#valComisionSummary').text(data.fee ? data.fee : 0);
+			$('#valTotalSummary').text(data.total ? data.total : 0);
+			$('.moneda-cas-tranz').text($('#currency').val().toUpperCase());
 		}, "json");
 	});
 	

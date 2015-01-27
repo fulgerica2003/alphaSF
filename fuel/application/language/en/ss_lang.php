@@ -8,6 +8,7 @@
 $lang['login_label'] = 'LOGIN';
 $lang['login_hi'] = 'Hi, <a href = \'%s\'><span class="name-login">%s</span></a>!';
 $lang['login_logout'] = 'LOGOUT';
+$lang['login_text'] = 'Press to button for authentication.';
 
 /*
 |--------------------------------------------------------------------------
@@ -537,9 +538,12 @@ $lang['profile_save'] = 'SAVE';
 |--------------------------------------------------------------------------
 |
 */
-$lang['invoices_sidenote_trans'] = 'A friendly and useful sidenote.<br />About the field on its right.';
-$lang['invoices_sidenote_supplier_cat'] = 'Choose supplier\'s category.';
-$lang['invoices_sidenote_supplier_info'] = 'Choose a supplier and fill in the data.';
+$lang['payments_sidenote_trans'] = 'A friendly sidenote.<br />About the field on its right.';
+$lang['payments_sidenote_cash'] = 'Choose one of our cash payments.';
+$lang['payments_sidenote_exch'] = 'Foreign exchange info.';
+$lang['payments_sidenote_iban'] = 'Please fill in recipient\'s IBAN.';
+$lang['payments_sidenote_city'] = 'If the city is not available, please select another payment method.';
+$lang['payments_sidenote_ben'] = 'Fill in recipeint\'s info.';
 
 $lang['payments_pay'] = 'Transfer';
 $lang['payments_card'] = 'Debit card';
@@ -571,6 +575,11 @@ $lang['payments_cmd'] = 'SEND';
 
 $lang['payments_thanks'] = 'Thank you!';
 $lang['payments_thanks_cmd'] = 'NEW TRANSFER';
+
+$lang['payments_summary_title'] = 'Summary';
+$lang['payments_summary_value'] = 'Transfer value';
+$lang['payments_summary_fee'] = 'Fee';
+$lang['payments_summary_total'] = 'Total';
 
 /*
 |--------------------------------------------------------------------------

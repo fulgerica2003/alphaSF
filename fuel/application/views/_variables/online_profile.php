@@ -7,4 +7,6 @@
 	$vars['page_title']='User profile';
 	$vars['user']=null;
 	$vars['message']=null;
+	
+	$vars['recent_messages'] = null;
 ?>

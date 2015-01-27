@@ -8,6 +8,7 @@
 $lang['login_label'] = 'AUTENTIFICARE';
 $lang['login_hi'] = 'Salut, <a href = \'%s\'><span class="name-login">%s</span></a>!';
 $lang['login_logout'] = 'IESI DIN CONT';
+$lang['login_text'] = 'Apasa butonul pentru autentificare.';
 
 /*
 |--------------------------------------------------------------------------
@@ -560,6 +561,11 @@ $lang['payments_cmd'] = 'TRANSFERA';
 
 $lang['payments_thanks'] = 'Va multumim!';
 $lang['payments_thanks_cmd'] = 'TRANSFER NOU';
+
+$lang['payments_summary_title'] = 'Sumar';
+$lang['payments_summary_value'] = 'Valoarea transferului';
+$lang['payments_summary_fee'] = 'Comision de plata';
+$lang['payments_summary_total'] = 'Suma totala de plata';
 
 /*
 |--------------------------------------------------------------------------

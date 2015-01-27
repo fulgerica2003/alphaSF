@@ -427,6 +427,7 @@ input#tipPlataCard:checked {background-color:#FCC; color:#fff;}
 }
 
 .box-rezultate {margin-top:15px; color:#fff; font: 14px/14px MetaSerifBookRegular, Arial, Helvetica, sans-serif;}
+.box-rezultate-online {margin-top:1px; color:#fff; font: 14px/14px MetaSerifBookRegular, Arial, Helvetica, sans-serif;}
 .box-rezultate input {margin-right:5px;}
 .box-rezultate .rezulatate {float:right; font: 18px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif; color:#ff9999;}
 .total-calc {
@@ -449,7 +450,7 @@ div.calc-mare .box-rezultate {clear:both;padding-right: 3px;border-bottom:1px so
 div.calc-mare div.total-calc {padding-top:60px;border:none;margin-top:0px;}
 #login-box {background-color:#781111;padding:25px;margin-top:60px;}
 #login-titlu, #form-login #login-submit {color:#fff;font: 14px/20px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
-#text-login {color:#ff9999;font: 14px/20px MetaSerifBookRegular, Arial, Helvetica, sans-serif;margin-top:20px;padding-right: 15px;}
+#text-login {color:#ff9999;font: 14px/20px MetaSerifBookRegular, Arial, Helvetica, sans-serif;margin-top:5px;padding-right: 15px;}
 #form-login input {color:#6f5f69;width:100%; border:none;border-radius:5px;margin-bottom:10px;padding: 5px 5px 4px 10px;font: 14px/20px MetaSerifBookRegular, Arial, Helvetica, sans-serif;}
 #form-login input::-webkit-input-placeholder { color:#6f5f69;}
 #form-login input:-moz-placeholder {color:#6f5f69;opacity:  1;}
@@ -1110,6 +1111,7 @@ text-decoration: none;
 color:#FFF;
 border: none;
 cursor: pointer;
+padding-left: 0px;
 }
 .calcInvLink {
 	font: 14px/20px DINNextRoundedLTProMedium, Arial, Helvetica, sans-serif;

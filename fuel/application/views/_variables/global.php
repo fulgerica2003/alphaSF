@@ -21,4 +21,5 @@
 	
 	// page specific variables
 	$pages['auth/reset_password'] = array('layout' => 'sssimple_page');
+	
 ?>
