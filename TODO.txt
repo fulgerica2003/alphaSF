@@ -6,8 +6,7 @@ Probleme Smith
 cand l-a pus in folder smith a functionat
 11. de sincronizat ro/ss_lang cu en/ss_lang
 12. activat italiana, spaniola + rute in config/routes.php
-17. de modificat calculator si login ca sa functioneze corect in http://localhost/smith/servicii/conturi-plati; de vazut daca mai apare si in alte parti
-18. de introdus bloc in dreapta la http://localhost/smith/online_payments, http://localhost/smith/online_invoices, http://localhost/smith/online_profile
+18. de introdus bloc in dreapta la http://localhost/smith/online_invoices
 19. curatat de codul de care nu mai e nevoie
 20. securizare backend
 21. de cautat dupa TODO in tot application
