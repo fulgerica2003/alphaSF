@@ -20,6 +20,11 @@ Daca ai nevoie de exemple de apel, gasesti in fisierul smith/application/control
 
 Fisierele rezultat se vor gasi in subdirectorul output.
 
+Autorizare backend
+Toate apelurile catre backend trebuie sa contina parametrul auth_code. Acesta se calculeaza cu strtoupper(hash_hmac('sha1', <type> . date('YmdHi'), <key>));
+unde type reprezinta valoarea parametrului type din apelul respectiv, iar key = pack('H*', <encryption_key>); unde <encryption_key> este parametrul $config['encryption_key'] din config/config.php.
+auth_code se calculeaza folosind data curenta (pana la minut). In cazul in care auth_code primit e diferit de cel calculat, se face redirect catre prima pagina si se jurnalizeaza eroarea in tabela fuel_logs.
+
 Alte setari
 Plata cu cardul
 Fisierul de configurare se gaseste in fuel/application/config/librapay.php. E necesara modificarea campului $config['backref']
