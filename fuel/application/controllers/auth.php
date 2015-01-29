@@ -99,6 +99,7 @@
 							$this->ion_auth->deactivate($user->id);
 							$this->ion_auth->send_activation_email($user->id);
 							$blocked = TRUE;
+							$this->fuel->logs->write('Utilizatorul ' . $identity . ', id ' . $user->id . ' a fost blocat', 'info');
 						}
 					}
 					//redirect them back to the login page
