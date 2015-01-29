@@ -22,6 +22,7 @@
 				<br /><br /><br /><br /><br /><br />
             </div>
 		</div>
+		<?php $this->load->view('_blocks/_caseta_sumar_factura');?>
 	</div>
 	<?php $this->load->view('_blocks/ssfooter')?>
 

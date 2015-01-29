@@ -22,7 +22,7 @@
 						<div class="contentMesaje">
 							<div class="cipri-mesaj"><span><?php echo lang('ohi_date');?> </span><span><?php echo $invoice->date_added; ?></span></div>
 							<div class="cipri-mesaj"><span><?php echo lang('ohi_payment_type');?> </span><span><?php echo $invoice->id_payment_type; ?></span></div>
-							<div class="cipri-mesaj"><span><?php echo lang('ohi_currency');?> </span><span><?php echo ($invoice->currency_in == 'RON' ? 'RON' : ($invoice->currency_in == 'EUR' ? 'Euro' : 'N/A'))?></span></div>
+							<div class="cipri-mesaj"><span><?php echo lang('ohi_currency');?> </span><span><?php echo (strtolower($invoice->currency_in) == 'ron' ? 'RON' : (strtolower($invoice->currency_in) == 'eur' ? '&#8364;' : 'N/A'))?></span></div>
 							<div class="cipri-mesaj"><span><?php echo lang('ohi_amount');?> </span><span><?php echo $invoice->amount_in; ?></span></div>
 							<div class="cipri-mesaj specialMesaj"><span><?php echo lang('ohi_payer');?> </span><span><?php echo $invoice->cl_prenume . ' ' . $invoice->cl_nume; ?></span></div>
 							<div class="cipri-mesaj specialMesaj"> <span><?php echo lang('ohi_supplier_details');?> </span><span><?php echo $invoice->frnz_iban; ?><br /><?php echo $invoice->frnz_bank; ?><br />

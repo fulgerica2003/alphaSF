@@ -23,20 +23,6 @@ var clang = getCookie('ss_lang');
 $(document).ready(function(){
 	casetaAbroad();
 	
-	
-	$('#catSupplier').change(function() {
-		$.get('online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
-			$('#supplier').empty().append(data);
-			$('#customFields').empty();	
-		});
-	});
-	
-	$('#supplier').change(function() {			
-		$.get('online_invoices/add_custom_fields/'+$(this).val()+'/'+clang , function( data ) {
-			$('#customFields').empty().append(data);
-		});
-	});
-	
 	// online_payments
 	var theLanguage = $('html').attr('lang');
 	$('#currency').change(function() {
@@ -153,6 +139,35 @@ $(document).ready(function(){
 	});
 	
 	// online invoices
+	
+	$('#catSupplier').change(function() {
+		$.get('online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
+			$('#supplier').empty().append(data);
+			$('#customFields').empty();
+			$('#numeFurnizorSummary').empty();
+			$('#customFieldsSummary').empty();
+		});
+	});
+	
+	$('#supplier').change(function() {			
+		$.get('online_invoices/add_custom_fields/'+$(this).val()+'/'+clang , function( data ) {
+			$('#customFields').empty().append(data);
+			$('#numeFurnizorSummary').text($('#supplier option:selected').text());
+			$('#customFieldsSummary').empty();
+		});
+	});
+	
+	// actualizez campurile din summary
+	$('#customFields').on('change', '.invoice-custom-field', function() {
+		var values = "";
+		$( '#customFields .input-box' ).each(function( index ) {
+				values += '<li>';
+				values += $( this ).children('.agent-lable').text() + ": ";
+				values += $( this ).children("div[name = 'test']").children('.invoice-custom-field').val();
+				values += '</li>';
+			});
+		$('#customFieldsSummary').empty().append(values);
+	});
 		
 	$('.invoice-update-fee-total').change(function() {
 		$('#fee').val('');
@@ -173,6 +188,9 @@ $(document).ready(function(){
 			$.get('online_invoices/update_total', {payment_method: 6, payment_type: payment_type, currency: $('#currency').val().toLowerCase(), amount: amount}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
+			$('#valFacturaSummary').text(amount ? amount : 0);
+			$('#valComisionSummary').text(data.fee ? data.fee : 0);
+			$('#valTotalSummary').text(data.total ? data.total : 0);
 		}, "json");
 		}
 		

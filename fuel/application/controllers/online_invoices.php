@@ -206,7 +206,7 @@
 			echo $str;
 		}
 		
-		public function add_custom_fields($query,$clang='ro'){
+		public function add_custom_fields($query, $clang='ro'){
 			
 			$this->user_lang=$clang;
 			
@@ -261,7 +261,7 @@
 					'maxlength'   => '100',
 					'size'        => '50',
 					'type'		  => 'text',
-					'class'       => 'agent-input',
+					'class'       => 'agent-input invoice-custom-field',
 					'style'       => 'width:100%',
 					);
 					
@@ -285,7 +285,7 @@
 					'value'       => $this->input->post($field_id),
 					'rows'        => '3',
 					'type'		  => 'textarea',
-					'class'       => 'agent-input',
+					'class'       => 'agent-input invoice-custom-field',
 					'style'       => 'width:100%',
 					);	
 					$inputField =
