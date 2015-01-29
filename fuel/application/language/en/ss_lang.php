@@ -12,6 +12,16 @@ $lang['login_text'] = 'Press to button for authentication.';
 
 /*
 |--------------------------------------------------------------------------
+| etichete 404
+|--------------------------------------------------------------------------
+|
+*/
+$lang['404_heading'] = '404 Page Not Found.';
+$lang['404_message'] = 'The page you requested was not found.';
+$lang['404_title'] = '404 Error : Page Cannot Be Found';
+
+/*
+|--------------------------------------------------------------------------
 | etichete servicii
 |--------------------------------------------------------------------------
 |
@@ -613,6 +623,13 @@ $lang['invoices_cmd'] = 'PAY';
 
 $lang['invoices_thanks'] = 'Thank you!';
 $lang['invoices_thanks_cmd'] = 'NEW INVOICE';
+
+$lang['invoices_summary_title'] = 'Summary';
+$lang['invoices_summary_value'] = 'Invoices value';
+$lang['invoices_summary_fee'] = 'Fee';
+$lang['invoices_summary_total'] = 'Total';
+$lang['invoices_summary_supplier'] = 'Supplier';
+$lang['invoices_summary_supplier_name'] = 'Supplier name: ';
 
 /*
 |--------------------------------------------------------------------------

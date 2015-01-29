@@ -12,6 +12,16 @@ $lang['login_text'] = 'Apasa butonul pentru autentificare.';
 
 /*
 |--------------------------------------------------------------------------
+| etichete 404
+|--------------------------------------------------------------------------
+|
+*/
+$lang['404_heading'] = '404 Pagina nu exista.';
+$lang['404_message'] = 'Pagina nu exista.';
+$lang['404_title'] = 'Eroare 404 : Pagina nu exista';
+
+/*
+|--------------------------------------------------------------------------
 | etichete servicii
 |--------------------------------------------------------------------------
 |
@@ -600,6 +610,13 @@ $lang['invoices_cmd'] = 'PLATESTE';
 
 $lang['invoices_thanks'] = 'Va multumim!';
 $lang['invoices_thanks_cmd'] = 'FACTURA NOUA';
+
+$lang['invoices_summary_title'] = 'Sumar';
+$lang['invoices_summary_value'] = 'Valoarea facturii';
+$lang['invoices_summary_fee'] = 'Comision de plata';
+$lang['invoices_summary_total'] = 'Suma totala de plata';
+$lang['invoices_summary_supplier'] = 'Furnizor';
+$lang['invoices_summary_supplier_name'] = 'Nume furnizor: ';
 
 /*
 |--------------------------------------------------------------------------
