@@ -4,6 +4,19 @@ require_once(FUEL_PATH.'models/base_module_model.php');
 
 class Ss_fees_model extends Base_module_model {
 	
+	/* Detaliere fluxuri, cf discutie mail 20141208 trimis catre Gabi Dumitru si raspuns de catre Adrian Marinescu
+	in 20141209 discutie telefonica
+	
+	Modalitatea de calcul a comisioanelor este varianta 1 din mail: intai se calculeaza comisionul la suma, apoi comisionul la comision, apoi comisioanele rezultate din promotii (pe suma si comision), apoi comisioanele rezultate din spot (pe suma si comision). Toate aceste valori se insumeaza si rezulta comisionul total, dupa formula de la pg 8
+	
+	In documentul comision_smith.com.ro.pdf s-au strecurat niste erori, vezi pct 2 din mail. Rectificarea e cea de mai jos, pg 8.
+	comision: and not com_promo and not com_spot
+	promo: and com_promo and not com_spot
+	spot: and not com_promo and com_spot
+	
+	Pt facturi tb sa existe comision fix.
+	*/
+	
 	private $err = array(
 		'com_amount' 	=> 'FA1',
 		'com_com' 		=> 'FA2',
