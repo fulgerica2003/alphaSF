@@ -366,6 +366,16 @@
 		';
 	}
 	
+		function js_redirect_to_home_page(){
+		
+		return
+		'
+			<script type="text/javascript">
+				window.location.replace("' . site_url() .'");
+			</script>
+		';
+	}
+	
 	function compute_fee($params = array()){
 		
 		return compute_mock_fee($params);
@@ -601,6 +611,26 @@
 		$output = '(' . substr($output, 0, -1) . ')';
 		
 		return $output;
+	}
+	
+	function get_auth_code($message){
+		$CI =& get_instance();
+		// calculez hash_hmac
+		$hex_key = pack('H*', $CI->config->item('encryption_key'));
+		$auth_code = strtoupper(hash_hmac('sha1', $message . date('YmdHi'), $hex_key));
+		
+		return $auth_code;
+	}
+	
+	function check_auth_code($message, $auth_code){
+		$CI =& get_instance();
+		$my_auth_code = get_auth_code($message);
+		
+		if ($my_auth_code != $auth_code){
+			$msg = __FUNCTION__  . ' : auth_code eronat: primit ' . $auth_code . ':calculat ' . $my_auth_code . ':mesaj ' . $message . ':data ' . date('YmdHi');
+			$CI->fuel->logs->write($msg, 'error');
+		}
+		return $my_auth_code == $auth_code;
 	}
 	
 	

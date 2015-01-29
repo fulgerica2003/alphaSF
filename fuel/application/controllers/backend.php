@@ -33,6 +33,16 @@
 			Daca a solicitat retur ((online_payments/refund)), se dau mesajele aferente, status 5 si tranzactia va fi disponibila cu gettran(ret). In urma procesarilor, actualizarea se face cu uptran(retur), se dau mesajele aferente si status 6 final.
 			
 			Analog si pentru facturi (se apeleaza getfact, respectiv upfact), doar ca schema e simplificata. Status-urile posibile sunt 1,2,3,7,8.
+			
+			Salvarea fisierelor csv pe disc, conform cerinta pe mail Adrian Marinescu 20150115
+			1. la apelarea functiilor returnezi numele fisierului si path, daca si numai daca numarul de linii returnate este >0 (excludem header)
+			2. se creeaza fisierul doar daca numarul de linii de insert este >0 (exclusiv header)
+			3. te rog sa le localizezi in subfolder /output/{functionname}/ - pentru a evita in root un numar de nspe mii de fisiere!
+			
+			Autentificare
+			Fiecare apel trebuie sa contina pe post auth_code. Acesta e calculat astfel: strtoupper(hash_hmac('sha1', <value>, <hex_key>)),
+			unde <value> = type si <hex_key> = valoarea pack('H*', $config['encryption_key']); $config['encryption_key'] se gaseste in config/config.php
+			
 		*/
 		
 		function __construct(){
@@ -54,6 +64,10 @@
 		
 		public function upcurs(){
 			$msg = 'ok';
+			
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
 		
 			if ($this->input->post('type')){
 				$values['type'] = strtoupper($this->input->post('type'));
@@ -115,6 +129,10 @@
 		}
 		
 		public function gettran(){
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
+			
 			$type = strtolower($this->input->post('type'));
 			$reference = $this->input->post('referinta');
 			$list = array();
@@ -224,6 +242,10 @@
 		}
 		
 		public function getfact(){
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
+		
 			$type = strtolower($this->input->post('type'));
 			$reference = $this->input->post('referinta');
 			$list = array();
@@ -344,6 +366,10 @@
 		
 		public function uptran(){
 			$msg = 'ok';
+			
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
 		
 			$type = strtolower($this->input->post('type'));
 			
@@ -488,7 +514,11 @@
 		
 		public function upfact(){
 			$msg = 'ok';
-					
+			
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
+			
 			$type = strtolower($this->input->post('type'));
 			
 			// header pt jurnalizarea operatiunii in csv
@@ -553,6 +583,10 @@
 		public function upfields(){
 			
 			$msg = 'ok';
+			
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
 			
 			$type = strtolower($this->input->post('type'));
 			
@@ -677,6 +711,10 @@
 		public function upcom(){
 			
 			$msg = 'ok';
+			
+			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
+				echo js_redirect_to_home_page();
+			}
 			
 			$type = strtolower($this->input->post('type'));
 			
