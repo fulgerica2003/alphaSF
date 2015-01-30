@@ -67,6 +67,7 @@
 			
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 		
 			if ($this->input->post('type')){
@@ -131,6 +132,7 @@
 		public function gettran(){
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 			
 			$type = strtolower($this->input->post('type'));
@@ -244,6 +246,7 @@
 		public function getfact(){
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 		
 			$type = strtolower($this->input->post('type'));
@@ -369,6 +372,7 @@
 			
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 		
 			$type = strtolower($this->input->post('type'));
@@ -517,6 +521,7 @@
 			
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 			
 			$type = strtolower($this->input->post('type'));
@@ -586,6 +591,7 @@
 			
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 			
 			$type = strtolower($this->input->post('type'));
@@ -714,6 +720,7 @@
 			
 			if (!check_auth_code($this->input->post('type'), $this->input->post('auth_code'))){
 				echo js_redirect_to_home_page();
+				exit();
 			}
 			
 			$type = strtolower($this->input->post('type'));
