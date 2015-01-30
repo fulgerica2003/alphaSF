@@ -1,24 +1,25 @@
 Instalare:
 	- creezi o baza de date si un utilizator
 	- importi smith.sql
-	- copiezi directorul smith pe server http
+	- copiezi directorul smith in root server http
+	- se copiaza .htaccess si index.php in root server http
 	- setezi variabilele necesare in smith/fuel/application/config/database.php.
 
-Daca rulezi pe un *NIX, utilizatorul sub care ruleaza server-ul web tb sa aiba drepturi de scriere pe folder-ul smith/fuel/application/cache.
+Daca rulezi pe un *NIX, utilizatorul sub care ruleaza server-ul web tb sa aiba drepturi de scriere pe folder-ul smith/fuel/application/cache si pe folder-ul smith/assets/captcha.
 
-Interfata de administrare se acceseaza la http://<domeniu>/smith/fuel/login cu admin/abc1234.
+Interfata de administrare se acceseaza la http://<domeniu>/fuel/login cu admin/abc1234.
 
 Pentru testare schimb de date:
-	- gettran e disponibil la http://<domeniu>/smith/backend/gettran
-	- getfact e disponibil la http://<domeniu>/smith/backend/getfact
-	- uptran e disponibil la http://<domeniu>/smith/backend/uptran
-	- upcurs e disponibil la http://<domeniu>/smith/backend/upcurs
-	- upcom e disponibil la http://<domeniu>/smith/backend/upcom
-	- upfields e disponibil la http://<domeniu>/smith/backend/upfields.
+	- gettran e disponibil la http://<domeniu>/backend/gettran
+	- getfact e disponibil la http://<domeniu>/backend/getfact
+	- uptran e disponibil la http://<domeniu>/backend/uptran
+	- upcurs e disponibil la http://<domeniu>/backend/upcurs
+	- upcom e disponibil la http://<domeniu>/backend/upcom
+	- upfields e disponibil la http://<domeniu>/backend/upfields.
 
-Daca ai nevoie de exemple de apel, gasesti in fisierul smith/application/controllers/backendtest.php si se pot apela cu http://<domeniu>/smith/backendtest/<nume_functie>.
+Daca ai nevoie de exemple de apel, gasesti in fisierul smith/application/controllers/backendtest.php si se pot apela cu http://<domeniu>/backendtest/<nume_functie>.
 
-Fisierele rezultat se vor gasi in subdirectorul output.
+Fisierele rezultat se vor gasi in subdirectorul smith/output.
 
 Autorizare backend
 Toate apelurile catre backend trebuie sa contina parametrul auth_code. Acesta se calculeaza cu strtoupper(hash_hmac('sha1', <type> . date('YmdHi'), <key>));
