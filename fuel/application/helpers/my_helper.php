@@ -323,7 +323,7 @@
 	}
 	
 	function save_csv($name, $content){
-		$outputname = 'output/'.$name . '.csv';
+		$outputname = 'smith/output/'.$name . '.csv';
 		
 		$fp = fopen($outputname, 'w');
 		

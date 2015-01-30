@@ -9,12 +9,12 @@
 			$params = array(
 			"type" => "EUR",
 			"date" => "2014-12-16",
-			"value" => "4.51",
-			//"auth_code" => get_auth_code("EU"),
+			"value" => "4.55",
+			"auth_code" => get_auth_code("EUR"),
 			);
 			
 			
-			echo httpPost("http://localhost/smith/backend/upcurs",$params);
+			echo httpPost("http://localhost/backend/upcurs",$params);
 		}
 		
 		
@@ -24,7 +24,7 @@
 			//"referinta" => "#S5489a9fadeda1"
 			);
 			
-			echo httpPost("http://localhost/smith/backend/gettran",$params);
+			echo httpPost("http://localhost/backend/gettran",$params);
 		}
 		
 		public function testgettran_ret(){
@@ -33,7 +33,7 @@
 			//"referinta" => "#S5489a9fadeda1"
 			);
 			
-			echo httpPost("http://localhost/smith/backend/gettran",$params);
+			echo httpPost("http://localhost/backend/gettran",$params);
 		}
 		
 		public function testgetfact(){
@@ -42,7 +42,7 @@
 			"referinta" => "0"
 			);
 			
-			echo httpPost("http://localhost/smith/backend/getfact",$params);
+			echo httpPost("http://localhost/backend/getfact",$params);
 		}
 		
 		public function testupfields(){
@@ -54,7 +54,7 @@
 			't1' => 'text',
 			);
 			
-			echo httpPost("http://localhost/smith/backend/upfields",$params);
+			echo httpPost("http://localhost/backend/upfields",$params);
 		}
 		
 		public function testupcom(){
@@ -65,7 +65,7 @@
 			"com_int_max" => "20",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/upcom",$params);
+			echo httpPost("http://localhost/backend/upcom",$params);
 		}
 		
 		public function testuptran_pin(){
@@ -75,7 +75,7 @@
 			"pin" => "1234",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_tran(){
@@ -88,7 +88,7 @@
 			'rate' => '9.9999',
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_benef(){
@@ -105,7 +105,7 @@
 			'bnf_oras_id' => '5',
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_recom(){
@@ -127,7 +127,7 @@
 			'bnf_oras_id' => '10',
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_retur(){
@@ -136,7 +136,7 @@
 			"referinta" => "#S54b7ac98b8348",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_ok(){
@@ -145,7 +145,7 @@
 			"referinta" => "#S54b7ac98b8348",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testuptran_cancel(){
@@ -154,7 +154,7 @@
 			"referinta" => "#S54b7ac98b8348",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/uptran",$params);
+			echo httpPost("http://localhost/backend/uptran",$params);
 		}
 		
 		public function testupfact_ok(){
@@ -163,7 +163,7 @@
 			"referinta" => "#F54c259340a0bf",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/upfact",$params);
+			echo httpPost("http://localhost/backend/upfact",$params);
 		}
 		
 		public function testupfact_err(){
@@ -172,7 +172,7 @@
 			"referinta" => "#F54c259340a0bf",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/upfact",$params);
+			echo httpPost("http://localhost/backend/upfact",$params);
 		}
 		
 		public function testupfact_cancel(){
@@ -181,7 +181,7 @@
 			"referinta" => "#F54c259340a0bf",
 			);
 			
-			echo httpPost("http://localhost/smith/backend/upfact",$params);
+			echo httpPost("http://localhost/backend/upfact",$params);
 		}		
 		
 		public function total_fee(){
