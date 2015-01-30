@@ -28,345 +28,86 @@ $lang['404_title'] = '404 Error : Page Cannot Be Found';
 */
 $lang['services_title'] = 'Services';
 
-/*
-|--------------------------------------------------------------------------
-| etichete login; a se vedea documentul de specificatii
-| pentru maparea campurilo
-| TODO de standardizat placeholdere: de ex, ref tx, nume, prenume, link etc
-|--------------------------------------------------------------------------
-|
-*/
-// mesaje
-$lang['lgn_msg001'] = 'Accesati contul dumneavoastra de email si
-validati contul creat pe platforma Smith & Smith.';
-$lang['lgn_msg002'] = 'Felicitari! Ati creat un cont pe platforma Smith
-& Smith.';
-
-// emailuri; ; sunt de forma _sb pt subiect si _cont pt continut
-$lang['lgn_eml001_sb'] = 'Validare cont Smith & Smith';
-$lang['lgn_eml001_cont'] = 'Va rugam acesati {linkul} pentru a valida contul
-creatpe platforma Smith & Smith';
-
-/*
-|--------------------------------------------------------------------------
-| etichete calculator; a se vedea documentul de specificatii
-| pentru maparea campurilor
-| TODO de standardizat placeholdere: de ex, ref tx, nume, prenume etc
-|--------------------------------------------------------------------------
-|
-*/
-
-
-
-
-
-
 // campuri text
-$lang['calc_txt001'] = 'Transfer de bani online';
-$lang['calc_txt002'] = 'Transfera';
-$lang['calc_txt003'] = 'Suma transferata';
-$lang['calc_txt004'] = 'Modalitate de plata la beneficiar';
-$lang['calc_txt005'] = '';
-$lang['calc_txt006'] = '';
-$lang['calc_txt007'] = '';
-$lang['calc_txt008'] = '';
-$lang['calc_txt009'] = '';
-$lang['calc_txt010'] = '';
-$lang['calc_txt011'] = '';
-$lang['calc_txt012'] = 'Comision de transfer';
-$lang['calc_txt013'] = '';
-$lang['calc_txt014'] = '';
-$lang['calc_txt015'] = 'Total de transferat';
-$lang['calc_txt016'] = '';
-$lang['calc_txt017'] = '';
-$lang['calc_txt018'] = 'Localitati disponibile';
-$lang['calc_txt019'] = 'In cazul in care localitatea cautata nu este disponibila la
-plata va rugam sa selectati alta modalitate de plata';
-$lang['calc_txt020'] = 'Puteti efectua un schimb valutar la cursul';
-$lang['calc_txt021'] = '';
-$lang['calc_txt022'] = 'Beneficiarul primeste';
-$lang['calc_txt023'] = '';
-$lang['calc_txt024'] = 'RON';
-$lang['calc_txt025'] = 'De acord cu schimbul valutar';
-$lang['calc_txt026'] = 'Beneficiarul primeste';
-$lang['calc_txt027'] = '';
-$lang['calc_txt028'] = 'RON la curs';
-$lang['calc_txt029'] = 'Beneficiar';
-$lang['calc_txt030'] = 'Nume';
-$lang['calc_txt031'] = 'Prenume';
-$lang['calc_txt032'] = 'Telefon';
-$lang['calc_txt033'] = 'Email';
-$lang['calc_txt034'] = 'IBAN';
-$lang['calc_txt035'] = 'Transfer de bani online';
-$lang['calc_txt036'] = 'Confirmare tranzactie';
-$lang['calc_txt037'] = 'Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra
-presupune deducerea din suma transferata a comisionului de rambursare in valoare de 15 euro
-la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunteti de acord
-cu termenii si conditiile platformei de plati online Smith&Smith.';
+$lang['calc_txt036'] = 'Transaction confirmation';
+$lang['calc_txt037'] = 'Attention! Payment cancel will incur a 15 EURO charge from transferred amount, plus interbanking fees. Please confirm that youu agree with Smith & Smith Terms and Conditions.';
 $lang['calc_txt038'] = 'Transfer de bani online';
-$lang['calc_txt039'] = 'Corectie tranzactie';
-$lang['calc_txt040'] = 'Tranzactia dumneavoastra a fost corectata conform instructiunilor
-pe care le-ati transmis pe email sau la telefon reprezentantului Smith & Smith.
-Va rugam sa confirmati modificarile si faptul ca sunteti de acord
-cu termenii si conditiile platformei de plati online Smith&Smith.';
-$lang['calc_txt041'] = 'Transfer de bani online';
-$lang['calc_txt042'] = 'Retur tranzactie <span style="color:#b5251d"><span id = "modal_unid"></span></span>';
-$lang['calc_txt043'] = 'Tranzactia dumneavoastra cu referinta <span style="color:#b5251d"><span id = "modal_unid"></span></span> urmeaza sa fie returnata
-in contul din care operatiunea a fost initiata de dumneavoastra. Comisionul de rambursare este de 15 euro
-si se deduce din suma disponibila la care se adauga comisioanele interbancare ce pot interveni.
-Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
+$lang['calc_txt039'] = 'Transaction correction';
+$lang['calc_txt040'] = 'Your transaction has been corected according to instructions sent via email or phone to Smith & Smith representative. Please confirm that youu agree with Smith & Smith Terms and Conditions.';
+$lang['calc_txt041'] = 'Online money transfer';
+$lang['calc_txt042'] = 'Transaction refund <span style="color:#b5251d"><span id = "modal_unid"></span></span>';
+$lang['calc_txt043'] = 'Your transaction with reference <span style="color:#b5251d"><span id = "modal_unid"></span></span> will be refunded in the account used for payment initiation. The reimbursment fee is 15 euro and will be deducted from the available amount, plus interbanking fees. Please confirm that youu agree with Smith & Smith Terms and Conditions.';
 
-$lang['calc_txt074'] = 'Plata facturi online';
-$lang['calc_txt075'] = 'Confirmare tranzactie';
-$lang['calc_txt076'] = 'Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra presupune deducerea din suma transferata a comisionului de rambursare in valoare de <span style="color:#b5251d;">15 EURO</span> euro la care se adauga comisioanele interbancare. Va rugam sa confirmati ca sunteti de acord cu termenii si conditiile platformei de plati online Smith&Smith.';
-
-// butoane
-$lang['calc_btn004'] = 'de pe card';
-$lang['calc_btn005'] = 'din cont bancar';
-$lang['calc_btn006'] = 'TRANSFERA';
-$lang['calc_btn007'] = 'ACCEPT';
-$lang['calc_btn008'] = 'ACCEPT';
-$lang['calc_btn009'] = 'ACCEPT';
-
-// campuri select
-$lang['calc_slct031'] = 'EUR';
-$lang['calc_slct032'] = 'RON';
-
-// mesaje eroare
-$lang['calc_err_msg003'] = 'Toate campurile marcate cu rosu sunt obligatorii, va rugam
-sa rectificati/completati toate datele solicitate inainte de finalizare.';
-$lang['calc_err_msg006'] = 'A intervenit o eroare. Va rugam sa contactati banca
-la care detineti cardul pentru verificari si/sau sa contactati serviciul
-Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea situatiei.
-Va multumin pentru intelegere!';
-$lang['calc_err_msg007'] = 'Tranzactia dumneavoastra cu referinta %s
-nu a fost finalizata cu succes. Va rugam sa contactati serviciul
-Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea situatiei.
-Va multumin pentru intelegere!';
+$lang['calc_txt074'] = 'Online invoice payment';
+$lang['calc_txt075'] = 'Transaction confirmation';
+$lang['calc_txt076'] = 'Attention! Payment cancel will incur a <span style="color:#b5251d;">15 EURO</span> charge from transferred amount, plus interbanking fees. Please confirm that youu agree with Smith & Smith Terms and Conditions.';
 
 // mesaje
-$lang['calc_msg004'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca
-in maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
-Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa fie
-receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea tranzactiei.
-Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in contul Smith &
-Smith, tranzactia se considera anulata.';
-$lang['calc_msg005'] = 'Operatiunea de plata a fost finalizata cu succes. Referinta tranzactiei
-- dumneavoastra este %s. In cazul in care ati ales plata numerar, va vom
-comunica in cel mai scurt timp posibil codul tranzactiei pentru a fi comunicat de
-dumneavoastra beneficiarului.';
-$lang['calc_msg006'] = '';
-$lang['calc_msg007'] = '';
-$lang['calc_msg008'] = 'Tranzactia dumneavoastra cu referinta %s nu a fost
-finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
-telefon +4.021.331.8000 pentru clarificarea situatiei.';
-$lang['calc_msg009'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va rugam
-comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
-$lang['calc_msg009'] = 'Tranzactia dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
-dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
-tranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu
-termenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim
-pentru intelegere!';
-$lang['calc_msg010'] = 'Tranzactia dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith, dar suma receptionata este diferita de suma ordonata de
-dumneavoastra. Conform termenelor de utilizare ele platformei online Smith & Smith
-tranzactia se finalizeaza cu noua suma pe care ati ordonat-o catre destinatar in conformitate cu
-termenii si conditiile de utilizare a platformei de plati online Smith & Smith. Va multumim
-pentru intelegere!';
-$lang['calc_msg011'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
-Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
-situatiei. Va multumin pentru intelegere!';
-$lang['calc_msg012'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
-- Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
-- situatiei. Va multumin pentru intelegere!';
-$lang['calc_msg013'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
-$lang['calc_msg014'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul!';
-
-$lang['calc_msg015'] = 'calc_msg015';
-$lang['calc_msg016'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
-maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
-Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa
-fie receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea
-tranzactiei. Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in
-contul Smith & Smith, tranzactia se considera anulata.';
-$lang['calc_msg017'] = 'calc_msg017 %s';
-$lang['calc_msg018'] = 'calc_msg018';
-$lang['calc_msg019'] = 'calc_msg019';
-$lang['calc_msg020'] = 'calc_msg020';
+$lang['calc_msg004'] = 'Your payment reference is %s. Within 2 business days since payment initiation, please transfer the amount to Smith & Smith account identified by IBAN / SWIFT / BANK so we can receive the amount in maximum 5 business days since payment initiation. After this time limit, if the amount is not received in Smith & Smith account, the payment is canceled.';
+$lang['calc_msg005'] = 'The payment operation has been finalized. Transaction reference is %s. If you have chosen cash payment, as soon as available we will send you transaction code that you need to send to recipient.';
+$lang['calc_msg006'] = 'There has been an error. Please contact the bank issuer of your card in order to check the transaction and/or ontact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_msg007'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_msg008'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_msg009'] = 'The ordered amount with reference %s has been received in Smith & Smith account. Transaction PIN is %s. Please send this PIN to  Mr./Mrs. %s.';
+$lang['calc_msg010'] = 'Your transaction with reference %s has been received in Smith & Smith accounts, but the amount it is different from the amount in transaction. According to Smith & Smith Terms and Conditions the transaction will be payed to the recipient with the new amount. Thank you for understanding!';
+$lang['calc_msg011'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_msg012'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_msg013'] = 'Congratulations! Payment operation has been successful!';
+$lang['calc_msg014'] = 'The paid amount has been refunded in your account!';
+$lang['calc_msgcancel'] = 'Payment operation with reference %s has been canceled!';
+$lang['calc_msgpayrefund'] = 'Your amount will be refunded in the account used for transfer reference %s!';
 
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
-$lang['calc_eml002_sb'] = '%s : Detalii tranzactie Smith & Smith';
-$lang['calc_eml002_cont'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
-maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
-Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa
-fie receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea
-tranzactiei. Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in
-contul Smith & Smith, tranzactia se considera anulata.';
-$lang['calc_eml003_sb'] = '%s : Detalii tranzactie Smith & Smith';
-$lang['calc_eml003_cont'] = 'Operatiunea de plata a fost incheiata cu succes. Referinta tranzactiei
-dumneavoastra este %s. In cazul in care ati ales plata numerar, in cel mai
-scurt va vom comunica codul tranzactiei ce trebuie sa-l comunicati beneficiarului.';
-$lang['calc_eml004_sb'] = '%s : Eroare tranzactie Smith & Smith';
-$lang['calc_eml004_cont'] = 'Tranzactia dumneavoastra cu referinta %s nu a fost finalizata
-cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la telefon
-+4.021.331.8000 pentru clarificarea situatiei.';
-$lang['calc_eml005pin_sb'] = '%s : Detalii tranzactie Smith & Smith';
-$lang['calc_eml005pin_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith. PIN-ul tranzactiei dumneavoastra este [PIN]. Va
-rugam comunicati PIN-ul tranzactiei beneficiarului, Dl./D-na. %s.';
-$lang['calc_eml005_sb'] = '%s : Detalii tranzactie Smith & Smith';
-$lang['calc_eml005_cont'] = 'Suma orodonata de dumneavoastra cu referinta %s a fost
-receptionata in contul Smith & Smith si urmeaza sa fie transferata in contul beneficiarului,
-Dl./D-na. %s.';
-$lang['calc_eml006_sb'] = '%s: Diferenta suma transmisa';
-$lang['calc_eml006_cont'] = 'Tranzactia dumneavoastra cu referinta %s a fost receptionata
-in contul Smith & Smith, dar suma transferata este diferita de suma ordonata de
-dumneavoastra. Conform termenelor de utilizare a siteului Smith & Smith tranzactia se
-finalizeaza cu noua suma catre destinatar.';
-$lang['calc_eml007_sb'] = '%s : Eroare finalizare plata.';
-$lang['calc_eml007_cont'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
-Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
-situatiei. Va multumin pentru intelegere!';
-$lang['calc_eml008_sb'] = '%s : Eroare finalizare plata';
-$lang['calc_eml008_cont'] = 'Ne pare rau! Plata nu a putut fi efectuata. Va rugam contactati serviciul
-Sugestii, Sesizari, Reclamatii Smith & Smith la telefon +4.021.331.8000 pentru clarificarea
-situatiei. Va multumin pentru intelegere!';
-$lang['calc_eml009_sb'] = '%s : Plata efectuata cu succes.';
-$lang['calc_eml009_cont'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
-$lang['calc_eml010_sb'] = '%s : Retur tranzactie.';
-$lang['calc_eml010_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul!';
-
-$lang['calc_eml011_sb'] = '%s : Initiere plata facturi prin Smith & Smith.';
-$lang['calc_eml011_cont'] = 'Referinta tranzactiei dumneavoastra este %s. Va rugam ca in
-maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
-Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa
-fie receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea
-tranzactiei. Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in
-contul Smith & Smith, tranzactia se considera anulata.';
-$lang['calc_eml012_sb'] = '%s : Retur tranzactie.';
-$lang['calc_eml012_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul cu referinta %s!';
-$lang['calc_eml013_sb'] = '%s : Retur tranzactie.';
-$lang['calc_eml013_cont'] = 'Banii dumneavoastra au fost returnati cu succes in contul din care s-a initiat
-transferul cu referinta %s!';
+$lang['calc_eml002_sb'] = '%s : Smith & Smith transaction details';
+$lang['calc_eml002_cont'] = 'Your payment reference is %s. Within 2 business days since payment initiation, please transfer the amount to Smith & Smith account identified by IBAN / SWIFT / BANK so we can receive the amount in maximum 5 business days since payment initiation. After this time limit, if the amount is not received in Smith & Smith account, the payment is canceled.';
+$lang['calc_eml003_sb'] = '%s : Smith & Smith transaction details';
+$lang['calc_eml003_cont'] = 'The payment operation has been finalized. Transaction reference is %s. If you have chosen cash payment, as soon as available we will send you transaction code that you need to send to recipient.';
+$lang['calc_eml004_sb'] = '%s : Smith & Smith payment error.';
+$lang['calc_eml004_cont'] = 'Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_eml005pin_sb'] = '%s : Smith & Smith transaction details';
+$lang['calc_eml005pin_cont'] = 'The ordered amount with reference %s has been received in Smith & Smith account. Transaction PIN is %s. Please send this PIN to  Mr./Mrs. %s.';
+$lang['calc_eml005_sb'] = '%s : Smith & Smith transaction details';
+$lang['calc_eml005_cont'] = 'The ordered amount with reference %s has been received in Smith & Smith account and will be send to recipient account, Mr./Mrs. %s.';
+$lang['calc_eml006_sb'] = '%s: Different amounts';
+$lang['calc_eml006_cont'] = 'Your transaction with reference %s has been received in Smith & Smith accounts, but the amount it is different from the amount in transaction. According to Smith & Smith Terms and Conditions the transaction will be payed to the recipient with the new amount.';
+$lang['calc_eml007_sb'] = '%s : Payment error.';
+$lang['calc_eml007_cont'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_eml008_sb'] = '%s : Payment error';
+$lang['calc_eml008_cont'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['calc_eml009_sb'] = '%s : Success payment.';
+$lang['calc_eml009_cont'] = 'Congratulations! Payment operation has been successful!';
+$lang['calc_eml010_sb'] = '%s : Transaction refund.';
+$lang['calc_eml010_cont'] = 'The paid amount has been refunded in your account!';
+$lang['calc_emlcancel_sb'] = '%s : operation cancel.';
+$lang['calc_emlcancel_cont'] = 'Payment operation with reference %s has been canceled!';
 
 /*
 |--------------------------------------------------------------------------
-| etichete facturi; a se vedea documentul de specificatii
-| pentru maparea campurilor
-| TODO de standardizat placeholdere: de ex, ref tx, nume, prenume etc
+| etichete facturi
 |--------------------------------------------------------------------------
 |
 */
 
-// campuri text
-$lang['fact_txt043'] = 'Facturi online';
-$lang['fact_txt044'] = 'Plateste';
-$lang['fact_txt045'] = 'Valoarea facturii';
-$lang['fact_txt046'] = ',';
-$lang['fact_txt047'] = 'RON';
-$lang['fact_txt048'] = 'Comision de plata';
-$lang['fact_txt049'] = 'N/A';
-$lang['fact_txt050'] = 'RON';
-$lang['fact_txt051'] = 'Total de plata';
-$lang['fact_txt052'] = 'N/A';
-$lang['fact_txt053'] = 'Curs valutar 1 EUR =';
-$lang['fact_txt055'] = 'RON';
-$lang['fact_txt056'] = 'Plata Facturi Online';
-$lang['fact_txt057'] = 'Plateste';
-$lang['fact_txt058'] = 'Valoarea facturii';
-$lang['fact_txt059'] = ',';
-$lang['fact_txt060'] = 'RON';
-$lang['fact_txt061'] = 'Categorie';
-$lang['fact_txt062'] = 'Furnizor';
-$lang['fact_txt063'] = 'Camp suplimentar 1';
-$lang['fact_txt064'] = 'Camp suplimentar 2';
-$lang['fact_txt065'] = 'Camp suplimentar 3';
-$lang['fact_txt066'] = 'Comision de plata';
-$lang['fact_txt067'] = 'N/A';
-$lang['fact_txt068'] = 'RON';
-$lang['fact_txt069'] = 'Total de plata';
-$lang['fact_txt070'] = 'N/A';
-$lang['fact_txt071'] = 'Curs valutar 1 EUR =';
-$lang['fact_txt072'] = 'N/A';
-$lang['fact_txt073'] = 'RON';
-$lang['fact_txt074'] = 'Plata Facturi Online';
-$lang['fact_txt075'] = 'Confirmare tranzactie';
-$lang['fact_txt076'] = 'Atentie! Anularea ulterioara a tranzactiei de catre dumneavoastra presupune
-deducerea din suma transferata a comisionului de rambursare in valoare de 15 euro la care se
-adauga comisioanele interbancare. Acordul dumneavoastra este necesar pentru continuarea
-transferului bancar. Va rugam sa confirmati ca suneteti de acord cu termenii si conditiile
-platformei de plati online Smith&Smith.';
-$lang['fact_txt077'] = 'Camp suplimentar 4';
-$lang['fact_txt078'] = 'Camp suplimentar 5';
-$lang['fact_txt079'] = 'Camp suplimentar 6';
-
-// butoane
-$lang['fact_btn010'] = 'de pe card';
-$lang['fact_btn011'] = 'din cont bancar';
-$lang['fact_btn012'] = 'Plateste';
-$lang['fact_btn013'] = 'de pe card';
-$lang['fact_btn014'] = 'din cont bancar';
-$lang['fact_btn015'] = 'Plateste';
-$lang['fact_btn016'] = 'ACCEPT';
-
-// campuri select
-
-// mesaje eroare
-$lang['fact_err_msg015'] = 'Toate campurile marcate cu rosu sunt obligatorii, va rugam sa
-completati toate datele solicitate inainte ca tranzactia dumneavoastra sa fie procesata.';
-$lang['fact_err_msg018'] = 'A aparut o eroare. Va rugam sa contactati banca la care detineti cardul
-pentru verificari si/sau sa contactati serviciul Sesizari, Reclamatii Smith & Smith la telefon
-+4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
-$lang['fact_err_msg019'] = 'Ne pare rau! Plata dumneavoastra cu referinta %s nu a fost
-finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
-telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
-$lang['fact_err_msg020'] = 'Ne pare rau! Plata dumneavoastra cu referinta %s nu a fost
-finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
-telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumin pentru intelegere!';
-
 // mesaje
-$lang['fact_msg013'] = 'Felicitari! Operatiunea de plata cu referinta %s a fost finalizata cu succes!';
-$lang['fact_msg016'] = 'Referinta platii dumneavoastra este %s. Va rugam ca in
-maxim 2 zile lucratoare de la initierea tranzactiei sa transferati suma ordonata catre contul
-Smith & Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa fie
-receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea platii. Dupa
-expirarea acestui termen, in cazul in care suma nu este receptionata in contul Smith & Smith,
-plata se considera anulata.';
-$lang['fact_msg017'] = 'Felicitari! Operatiunea de plata a fost incheiata cu succes. Referinta platii
-dumneavoastra este %s';
-$lang['fact_msg018'] = 'Felicitari! Plata dumneavoastra cu referinta %s s-a incheiat
-cu succes.';
-$lang['fact_msgcancel'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
+$lang['fact_msg013'] = 'Congratulations! Payment operation has been successful. Your payment reference is %s!';
+$lang['fact_msg016'] = 'Your payment reference is %s. Within 2 business days since payment initiation, please transfer the amount to Smith & Smith account identified by IBAN / SWIFT / BANK so we can receive the amount in maximum 5 business days since payment initiation. After this time limit, if the amount is not received in Smith & Smith account, the payment is canceled.';
+$lang['fact_msg017'] = 'Congratulations! Payment operation has been successful. Your payment reference is %s';
+$lang['fact_msg018'] = 'Congratulations! Payment operation has been successful. Your payment reference is %s';
+$lang['fact_msgcancel'] = 'Payment operation with reference %s has been canceled!';
 
 // emailuri; sunt de forma _sb pt subiect si _cont pt continut
-$lang['fact_eml009_sb'] = '%s : Plata efectuata cu succes.';
-$lang['fact_eml009_cont'] = 'Felicitari! Operatiunea de plata a fost finalizata cu succes!';
-$lang['fact_eml011_sb'] = '%s : Initiere plata facturi prin Smith&Smith';
-$lang['fact_eml011_cont'] = 'Referinta platii dumneavoastra este %s. Va rugam ca in
-maxim 2 zile lucratoare de la initierea platii sa transferati suma ordonata catre contul Smith
-& Smith identificat prin cod IBAN / SWIFT / Banca, astfel incat suma orodonata sa fie
-receptionata in contul Smith & Smith in decurs de 5 zile lucratoare de la initierea tranzactiei.
-Dupa expirarea acestui termen, in cazul in care suma nu este receptionata in contul Smith &
-Smith, plata se considera anulata.';
-$lang['fact_eml012_sb'] = '%s : S-a efectuat plata facturii dumneavoastra de utilitati prin
-Smith&Smith';
-$lang['fact_eml012_cont'] = 'Felicitari ! Operatiunea de plata a fost incheiata cu succes. Referinta platii
-dumneavoastra este %s';
-$lang['fact_eml013_sb'] = '%s : Eroare tranzactie Smith & Smith';
-$lang['fact_eml013_cont'] = 'Ne pare rau! Plata dumneavoastra cu referinta %s nu a fost
-finalizata cu succes. Va rugam sa contactati serviciul Sesizari, Reclamatii Smith & Smith la
-telefon +4.021.331.8000 pentru clarificarea situatiei. Va multumim pentru intelegere!';
-$lang['fact_eml014_sb'] = '%s: S-a efectuat plata facturii dumneavoastra prin
-Smith&Smith';
-$lang['fact_eml014_cont'] = 'Felicitari ! Operatiunea de plata a fost incheiata cu succes. Referinta platii
-dumneavoastra este %s';
-$lang['fact_emlcancel_sb'] = '%s : anulare operatiune.';
-$lang['fact_emlcancel_cont'] = 'Operatiunea de plata cu referinta %s a fost anulata!';
+$lang['fact_eml009_sb'] = '%s : Success payment.';
+$lang['fact_eml009_cont'] = 'Congratulations! Payment operation has been successful!';
+$lang['fact_eml011_sb'] = '%s : Smith & Smith invoice payment initiation';
+$lang['fact_eml011_cont'] = 'Your payment reference is %s. In 2 business days since payment initiation, please transfer the amount to Smith & Smith account identified by IBAN / SWIFT / BANK so we can receive the amount in maximum 5 business days since payment initiation. After this time limit, if the amount is not received in Smith & Smith account, the payment is canceled.';
+$lang['fact_eml012_sb'] = '%s: Your invoice has been paid via Smith & Smith';
+$lang['fact_eml012_cont'] = 'Congratulations! Payment operation has been successful. Your payment reference is %s';
+$lang['fact_eml013_sb'] = '%s : Smith & Smith Transaction error';
+$lang['fact_eml013_cont'] = 'Sorry! Your payment with reference %s has not been successful. Please contact Inquiries, Complaints Smith & Smith department via phone +4.021.331.8000. Thank you for your understanding!';
+$lang['fact_eml014_sb'] = '%s: Your invoice has been paid via Smith & Smith';
+$lang['fact_eml014_cont'] = 'Congratulations! Payment operation has been successful. Your payment reference is %s';
+$lang['fact_emlcancel_sb'] = '%s : operation cancel.';
+$lang['fact_emlcancel_cont'] = 'Payment operation with reference %s has been canceled!';
 
 /*
 |--------------------------------------------------------------------------
@@ -559,9 +300,6 @@ $lang['payments_pay'] = 'Transfer';
 $lang['payments_card'] = 'Debit card';
 $lang['payments_account'] = 'Banking account';
 
-$lang['invoices_providercat'] = 'Supplier category';
-$lang['invoices_provider'] = 'Supplier';
-
 $lang['payments_amount'] = 'Amount';
 $lang['payments_currency'] = 'Currency';
 $lang['payments_payment_type'] = 'Receiver payment type';
@@ -598,17 +336,17 @@ $lang['payments_summary_total'] = 'Total';
 |
 */
 $lang['invoices_sidenote_trans'] = 'Un sidenote friendly si folositor.<br />Despre campul din dreapta lui.';
-$lang['invoices_sidenote_cash'] = 'Alege una din optiunile noastre pentru plata Cash.';
-$lang['invoices_sidenote_exch'] = 'Informatii schimb valutar.';
-$lang['invoices_sidenote_iban'] = 'Va rugam sa introduceti contul IBAN al beneficiarului.';
-$lang['invoices_sidenote_ben'] = 'Completeaza datele beneficiarului.';
+$lang['invoices_sidenote_supplier_cat'] = 'Selecteaza o categorie furnizor.';
+$lang['invoices_sidenote_supplier_info'] = 'Selecteaza furnizorul si completeaza informatiile.';
 
 $lang['invoices_pay'] = 'Online invoice payment';
 $lang['invoices_card'] = 'Debit card';
 $lang['invoices_account'] = 'Bank account';
 
 $lang['invoices_amount'] = 'Billing amount';
-$lang['invoices_payment_type'] = 'modalitate de plata beneficiar';
+$lang['invoices_providercat'] = 'Supplier category';
+$lang['invoices_provider'] = 'Supplier';
+
 $lang['invoices_fee'] = 'Fee';
 $lang['invoices_total'] = 'Total';
 $lang['invoices_last_name'] = 'nume';
