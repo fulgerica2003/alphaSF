@@ -4,10 +4,6 @@
 		
 		private $user_id;
 		
-		/*
-		TODO de rezolvat cu afisare multilanguage
-		*/
-		
 		function __construct()
 		{
 			parent::__construct();

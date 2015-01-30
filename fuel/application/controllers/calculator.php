@@ -13,24 +13,6 @@
 			$this->load->library('session');
 			
 			$this->load->model('ss_payment_methods_model');
-			/*$this->load->model('ss_cities_model');			
-				$this->load->model('ss_exchange_rate_model');
-				$this->load->model('ss_payments_model');
-				$this->load->model('ss_messages_model');
-				
-				$this->load->library('form_validation');
-				$this->form_validation->set_error_delimiters('', '');
-				
-				
-				
-				
-				$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
-				$this->exchange_rate_eur = $eur->value;
-				
-				$this->lang->load('ss');
-				
-				
-			*/
 			
 		}
 		
