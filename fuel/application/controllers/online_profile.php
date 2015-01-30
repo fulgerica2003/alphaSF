@@ -14,6 +14,7 @@
 			
 			$this->lang->load('ss');
 			$this->load->helper('language');
+			$this->load->model('ss_messages_model');
 		}
 		
 		public function index(){
@@ -24,6 +25,8 @@
 				$user = $this->ion_auth->user()->row();
 				
 				$vars['user'] = $user;
+				
+				$vars['recent_messages'] = $this->ss_messages_model->find_all_array(array('id_user' => $user->id), 'date_added desc', 5);
 				
 				$this->fuel->pages->render('online_profile', $vars);
 			}
@@ -83,6 +86,8 @@
 				}
 				
 				$vars['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+				
+				$vars['recent_messages'] = $this->ss_messages_model->find_all_array(array('id_user' => $user->id), 'date_added desc', 5);
 				
 				$this->fuel->pages->render('online_profile', $vars);
 			}
