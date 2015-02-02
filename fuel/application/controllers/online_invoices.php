@@ -77,12 +77,25 @@
 	 		$this->vars['customFields'] = ob_get_contents();
 			ob_end_clean();	
 			
-			$this->form_validation->set_rules('valInt', 'Valoare factura', 'required');
-			$this->form_validation->set_rules('valFract', 'Valoare factura', 'required');
-			$this->form_validation->set_rules('tipPlata', 'Tip plata', 'required');
+			$this->form_validation->set_rules('valInt', $this->lang->line('invoices_amount'), 'required|is_natural_no_zero|min_length[1]');
+			$this->form_validation->set_rules('valFract', $this->lang->line('invoices_amount'), 'required|is_natural_no_zero|min_length[1]|max_length[2]');
+			$this->form_validation->set_rules('tipPlata', $this->lang->line('invoices_pay'), 'required');
+			$this->form_validation->set_rules('fee', $this->lang->line('invoices_fee'), 'required');
+			$this->form_validation->set_rules('total', $this->lang->line('invoices_total'), 'required');
 			
 			foreach ($this->cFieldsInfo as $cfield){
-				$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required');
+				var_dump($cfield['fieldType']);
+				if ($cfield['fieldType']='text'){
+					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|alpha_numeric');	
+				}
+				elseif ($cfield['fieldType']='number'){
+					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|numeric');	
+				} elseif ($cfield['fieldType']='textarea'){
+					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|alpha_numeric|max_length[150]');	
+				} else {
+					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required');	
+				}
+				
 			}
 			
 			
@@ -251,9 +264,9 @@
 				$label = get_label($label_vals,$this->user_lang);
 				
 				$this->cFieldsInfo[]= array('fieldId'=>$field_id,
-				'fieldLabel'=>$label);
+				'fieldLabel'=>$label, 'fieldType'=>$type_val);
 				
-				if ($type_val=='text' or $type_val=='date' or $type_val=='number') {	
+				if ($type_val=='text' or $type_val=='number') {	
 					
 					$fdata = array(
 					'name'        => $field_id,
@@ -263,6 +276,33 @@
 					'size'        => '50',
 					'type'		  => 'text',
 					'class'       => 'agent-input invoice-custom-field',
+					'style'       => 'width:100%',
+					);
+					
+					$inputField = 
+					'<div class="input-box">'.form_error( $field_id,
+					'<div id="ERR" class="eroare afiseaza">
+					<a name="ERR"></a>
+					<span id="ERRTXT">',
+					'</span>
+					<span class="close-eroare">x</span>
+					</div>').
+					'<div class="agent-lable">'.$label.'</div>
+					<div name="test">'. form_input($fdata).'</div>					
+					<div class="clearfix"></div>
+					</div>';
+				}
+				
+				if ($type_val=='date') {	
+					
+					$fdata = array(
+					'name'        => $field_id,
+					'id'          => $field_id,
+					'value'       => $this->input->post($field_id),
+					'maxlength'   => '100',
+					'size'        => '50',
+					'type'		  => 'text',
+					'class'       => 'agent-input invoice-custom-field datefield',
 					'style'       => 'width:100%',
 					);
 					

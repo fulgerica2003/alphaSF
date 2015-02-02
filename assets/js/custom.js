@@ -254,7 +254,7 @@ $(document).ready(function(){
 	
 	// register + login
 	$(function() {
-		$( "#birth_date" ).datepicker({
+		$( "#birth_date").datepicker({
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: "dd.mm.yy",
@@ -263,6 +263,16 @@ $(document).ready(function(){
             '07', '08', '09', '10', '11', '12'],
 		});
 	});
+	
+	$('body').on('focus',"input.datefield", function(){
+    	$(this).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "dd.mm.yy",
+			monthNamesShort: ['01', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12'],
+		});
+	})
 	
 	
 	
