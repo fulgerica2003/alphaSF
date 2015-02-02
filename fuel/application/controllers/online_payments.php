@@ -151,7 +151,7 @@
 				$this->session->unset_userdata('paymentDetails');
 				
 				if (strtolower($payment_details['id_payment_type']) === 'card'){
-					$payment_card_details['amount'] = $payment_details['amount_in'];
+					$payment_card_details['amount'] = $payment_details['total'];
 					$payment_card_details['currency'] = $payment_details['currency_in'];
 					$payment_card_details['unid'] = $payment_details['unid'];
 					$payment_card_details['user_id'] = $this->user_id;
