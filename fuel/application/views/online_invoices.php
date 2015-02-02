@@ -2,7 +2,8 @@
 	$this->load->helper('form');
 	$this->load->view('_blocks/_modal_confirmare_salvare_tranzactie', array('page' => 'online_invoices'));
 	$attributes = array('id' => 'form-transfer-calc');
-	echo form_open('online_invoices/validate', $attributes); 
+	$front_lang = $this->fuel->language->selected();
+	echo form_open(($front_lang == 'ro' ? '' : $front_lang . '/') . 'online_invoices/validate', $attributes); 
 ?>
 <input name="cmd" value="submit" type="hidden" />
 <div class="col-lg-7 col-lg-offset-5 col-sm-12">

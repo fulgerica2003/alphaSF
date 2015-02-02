@@ -335,9 +335,9 @@ $lang['payments_summary_total'] = 'Total';
 |--------------------------------------------------------------------------
 |
 */
-$lang['invoices_sidenote_trans'] = 'Un sidenote friendly si folositor.<br />Despre campul din dreapta lui.';
-$lang['invoices_sidenote_supplier_cat'] = 'Selecteaza o categorie furnizor.';
-$lang['invoices_sidenote_supplier_info'] = 'Selecteaza furnizorul si completeaza informatiile.';
+$lang['invoices_sidenote_trans'] = 'Friendly sidenote.<br />About field to the right.';
+$lang['invoices_sidenote_supplier_cat'] = 'Choose a supplier category.';
+$lang['invoices_sidenote_supplier_info'] = 'Choose supplier and fill in info.';
 
 $lang['invoices_pay'] = 'Online invoice payment';
 $lang['invoices_card'] = 'Debit card';
@@ -465,4 +465,4 @@ $lang['ohp_correction_ben_city'] = 'City changed: ';
 */
 $lang['general_close'] = 'Close';
 $lang['general_agree'] = 'I agree with changes';
-$lang['general_terms'] = 'I agree with Smith&Smith online <a style="color:#b5251d;" href="conditii-generale">terms and conditions</a>. <br />';
+$lang['general_terms'] = 'I agree with Smith&Smith online <br /> <a style="color:#b5251d;" href="conditii-generale">terms and conditions</a>.';

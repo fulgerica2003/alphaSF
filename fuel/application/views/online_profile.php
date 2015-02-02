@@ -2,7 +2,8 @@
 <?php 
 	$this->load->helper('form');
 	$attributes = array('id' => '');
-	echo form_open('online_profile/edit', $attributes); 
+	$front_lang = $this->fuel->language->selected();
+	echo form_open(($front_lang == 'ro' ? '' : $front_lang . '/') . 'online_profile/edit', $attributes); 
 ?>
 <div class="col-lg-7 col-lg-offset-5 col-sm-12">
 	<div class="input-box">

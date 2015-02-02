@@ -1,15 +1,16 @@
 <?php
+	$front_lang = $this->fuel->language->selected();
+	$action = ($front_lang == 'ro' ? '' : $front_lang . '/');
 	if ($page == 'online_invoices'){
 		$mytitle = 'calc_txt074';
 		$bodytitle = 'calc_txt075';
 		$message = 'calc_txt076';
-		$action = 'online_invoices/add';
-		
+		$action .= 'online_invoices/add';
 	} else if ($page == 'online_payments'){
 		$mytitle = 'calc_txt075';
 		$bodytitle = 'calc_txt036';
 		$message = 'calc_txt037';
-		$action = 'online_payments/add';
+		$action .= 'online_payments/add';
 	}
 	?>
 
