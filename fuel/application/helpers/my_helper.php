@@ -323,7 +323,7 @@
 	}
 	
 	function save_csv($name, $content){
-		$outputname = 'smith/output/'.$name . '.csv';
+		$outputname = 'output/'.$name . '.csv';
 		
 		$fp = fopen($outputname, 'w');
 		
@@ -405,7 +405,7 @@
 	}
 	
 	function compute_real_fee($params = array()){
-	
+		
 		/*
 		cand calculez comisionul tb sa tin cont de urmatoarele:
 		suma - value
@@ -415,7 +415,7 @@
 		modalitatea de plata la beneficiar - network_key
 		modalitatea de plata de catre client - partner_key (din cont, card)
 		profilul clientului - cl_type_key - doar pt clientii autentificati
-		profilul beneficiarului - bnf_type_key - doar pt clientii autentificati
+		profilul beneficiarului - bnf_type_key - doar pt clientii autentificati si sa nu fie calculata din simulator (unde nu am detalii despre beneificar)
 		*/
 		$CI =& get_instance();
 		$fee_params = array();
@@ -444,13 +444,20 @@
 			$fee_params['cl_type_key'] = get_profile_matches_list($values);
 			
 			// verificari profil beneficiar; bnf_type_key va fi o lista
+			// tb sa verific daca am beneficiar (e posibil sa fiu in simulatoarele de pe prima pagina unde nu am info despre beneficiar)
 			$values = array(
 				'profile_type' => 'beneficiar',
-				'prenume' => $params['ben_surname'],
+				//'prenume' => $params['ben_surname'],
 				//'data_nasterii' => , // nu am data nasterii beneficiarului
 				//'numar_tranzactii' => , // aici ar fi trebuit sa fie numarul de tranzactii
-				'resedinta' => $params['ben_city'],
+				//'resedinta' => $params['ben_city'],
 				);
+			if (array_key_exists('ben_surname', $params) && strlen($params['ben_surname']) > 0){
+				$values['prenume'] = $params['ben_surname'];
+			}
+			if (array_key_exists('ben_city', $params) && strlen($params['ben_city']) > 0){
+				$values['resedinta'] = $params['ben_city'];
+			}
 			$fee_params['bnf_type_key'] = get_profile_matches_list($values);
 		}
 		
@@ -468,8 +475,6 @@
 		&& isset($currency) && (strlen($currency) > 0)
 		&& isset($amount) && (strlen($amount) > 0)
 		){
-			/*$fee = 0.1 * $amount;
-			$total = $fee + $amount;*/
 			$fee_params['value'] = $amount;
 			$fee_params['datatrn'] = datetime_now();
 			$fee_params['currency_key'] = $currency;
