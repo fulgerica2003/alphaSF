@@ -97,6 +97,7 @@
 			}
 			else
 			{	
+				
 				$this->vars['displayConfirm'] = 'true';
 				
 				$this->session->unset_userdata('invoiceDetails');
@@ -131,7 +132,6 @@
 					$event = 'inv_cont';
 					
 					$msg_codes = trigger_event($event, $unid);
-					
 					$vars['message'] = sprintf($this->lang->line($msg_codes[0]), $unid);
 					$vars['link'] = 'online_invoices';
 					$vars['text'] = 'invoices_thanks_cmd';
@@ -193,14 +193,15 @@
 		
 		/**** afisez lista de furnizori in functie de categoria selectata; e apelata prin jquery
 		*/
-		public function suppliers_by_cat($id_cat){
-			$str = '<option value="" label="'.lang('invoices_pick').'">'.lang('invoices_pick').'</option>';
+		public function suppliers_by_cat($id_cat, $clang = 'ro'){
+		
+			$str = '<option value="" label="' . lang('invoices_pick') . '">' . lang('invoices_pick') . '</option>';
 			$options = $this->ss_suppliers_model->options_list(NULL, NULL, array('id_cat' => $id_cat));
 			$selectedSupplier = $this->input->post('supplier');
 			
 			foreach($options as $key => $val)
 			{
-				$str = $str. '<option value="'. $key .'"'. ($key != $selectedSupplier ? '' : ' selected') .'>'.$val.'</option>';
+				$str = $str . '<option value="'. $key .'"'. ($key != $selectedSupplier ? '' : ' selected') .'>'.$val.'</option>';
 			}
 			
 			echo $str;
