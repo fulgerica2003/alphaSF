@@ -88,8 +88,8 @@
 			// actualizez psign in db
 			$this->ss_pay_orders_model->update(array('p_sign' => $librapay->psign), array('id' => $order_id));
 			
-			echo $librapay->string; // de scos pe LIVE
-			echo '<hr>';
+			//echo $librapay->string; // de scos pe LIVE
+			//echo '<hr>';
 			echo $librapay->form;
 		}
 		
@@ -231,6 +231,12 @@
 			$output = array();
 			foreach ($member_vars as $key){
 				$output[$key] = $this->config->item($key, 'librapay');
+				if ($key == 'backref'){
+					// tb sa modific backref (pagina de intoarcere) ca sa pastrez limba
+					if ($this->fuel->language->selected() != 'ro'){
+						$output[$key] = substr_replace($output[$key], $this->fuel->language->selected() . '/', strpos($output[$key], 'pay/card_response'), 0);
+					}
+				}
 			}
 			return $output;
 		}

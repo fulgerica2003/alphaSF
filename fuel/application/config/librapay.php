@@ -17,7 +17,7 @@ $config['email']			= 'stela.dimofte@smith-smith.ro';
 $config['key']				= 'cd75289065d00bd3558c187ba2242645';
 $config['merchant']			= '000000088001307';
 $config['terminal']			= '88001307';
-$config['backref']			= 'http://ss.anagrama.ro/smith/pay/card_response';
+$config['backref']			= 'http://ss.anagrama.ro/pay/card_response';
 
 // ---------- TEST INTERFACE ----- cele doua randuri de mai jos se comenteaza la trecerea in live
 $config['postAction']		= 'https://merchant.librapay.ro/pay_auth.php'; 		
