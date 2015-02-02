@@ -17,8 +17,6 @@
 	$locale = ($lang == 'en' ? 'en_US' : 'ro_RO');
 	setlocale(LC_TIME, $locale);
 	
-	$vars['subfolder'] = 'smith';
-	
 	// page specific variables
 	$pages['auth/reset_password'] = array('layout' => 'sssimple_page');
 	

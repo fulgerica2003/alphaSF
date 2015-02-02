@@ -3,11 +3,6 @@ Options +FollowSymLinks
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
-	
-	RewriteRule ^$ smith/
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)$ smith/$1
 
 	<Files .*>
 		Order Deny,Allow
