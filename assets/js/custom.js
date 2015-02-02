@@ -20,6 +20,8 @@ function getCookie(cname) {
 }
 var clang = getCookie('ss_lang');
 
+
+
 $(document).ready(function(){
 	casetaAbroad();
 	
@@ -36,26 +38,6 @@ $(document).ready(function(){
 		$('.moneda-cas-tranz').text($(this).val().toUpperCase());
 	});
 	
-	/*$('#modIncasare').change(function() {
-		$('#customFields').empty();
-		$('#fee').val('');
-		$('#total').val('');
-		amount = parseInt($('#amount').val()) + (parseInt($('#valFract').val())/100);
-		$.get('online_payments/update_custom_fields', {payment_method: $(this).val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
-			$('#customFields').empty().append(data);
-		});
-	});
-	
-	$('#amount').change(function() {
-		$('#customFields').empty();
-		$('#fee').val('');
-		$('#total').val('');
-		amount = parseInt($('#amount').val()) + (parseInt($('#valFract').val())/100);
-		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
-			$('#customFields').empty().append(data);
-		});
-	});*/
-	
 	$('.online-update-custom-fields').change(function() {
 		$('#customFields').empty();
 		$('#fee').val('');
@@ -71,7 +53,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('.online-update-fee-total').change(function() {
+	function compute_fee_total() {
 		$('#fee').val('');
 		$('#total').val('');
 		if ($(this).attr('id') == 'tipPlataCont' || $('#tipPlataCont').attr('checked')){
@@ -85,7 +67,7 @@ $(document).ready(function(){
 			valFract = $('#valFract').val();
 		}
 		amount = parseInt($('#amount').val()) + (parseInt(valFract)/100);
-		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: amount}, function(data) {
+		$.get('online_payments/update_total', {payment_method: $('#modIncasare').val(), payment_type: payment_type, currency: $('#currency').val(), amount: amount, ben_surname: $('#ben_first_name').val(), ben_city: $('#cities option:selected').text(),}, function(data) {
 			$('#fee').val(data.fee);
 			$('#total').val(data.total);
 			$('#valTransferSummary').text(amount ? amount : 0);
@@ -93,12 +75,10 @@ $(document).ready(function(){
 			$('#valTotalSummary').text(data.total ? data.total : 0);
 			$('.moneda-cas-tranz').text($('#currency').val().toUpperCase());
 		}, "json");
-	});
+	};
 	
-	var displayConfirm = $('input#displayConfirm').val();
-	if (displayConfirm == 'true'){
-		$('#displayConfirmModal').modal('show');
-	}
+	$('.online-update-fee-total').change(compute_fee_total);
+	$('#form-transfer-calc').on('change', '#cities', compute_fee_total);
 	
 	var the_terms = $("#the-terms");
     the_terms.click(function() {
@@ -141,7 +121,7 @@ $(document).ready(function(){
 	// online invoices
 	
 	$('#catSupplier').change(function() {
-		$.get('online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
+		$.get( (clang == 'ro' ? '' : clang + '/') + 'online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
 			$('#supplier').empty().append(data);
 			$('#customFields').empty();
 			$('#numeFurnizorSummary').empty();
@@ -150,14 +130,14 @@ $(document).ready(function(){
 	});
 	
 	$('#supplier').change(function() {			
-		$.get('online_invoices/add_custom_fields/'+$(this).val()+'/'+clang , function( data ) {
+		$.get('online_invoices/add_custom_fields/'+$(this).val() + '/' + clang , function( data ) {
 			$('#customFields').empty().append(data);
 			$('#numeFurnizorSummary').text($('#supplier option:selected').text());
 			$('#customFieldsSummary').empty();
 		});
 	});
 	
-	// actualizez campurile din summary
+	// actualizez campurile din summary; e facut asa pt ca foloseste info randate cu jquery si daca nu apelez asa, nu tine cont de onchange
 	$('#customFields').on('change', '.invoice-custom-field', function() {
 		var values = "";
 		$( '#customFields .input-box' ).each(function( index ) {
@@ -195,6 +175,14 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	var displayConfirm = $('input#displayConfirm').val();
+	if (displayConfirm == 'true'){
+		$('#displayConfirmModal').modal('show');
+		$( ".online-update-fee-total" ).change();
+		$( ".invoice-update-fee-total" ).change();
+		$('#customFields').change();
+	}
 	
 	// calc online_payments
 	if ($('#cop_amount').val() && $('#cop_currency').val() && $('#cop_modIncasare').val()){
