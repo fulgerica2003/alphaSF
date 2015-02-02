@@ -61,10 +61,16 @@ $route['en/online_history_invoices'] = 'online_history_invoices';
 $route['en/online_history_invoices/(:num)'] = 'online_history_invoices';
 
 $route['en/online_profile'] = 'online_profile';
+$route['en/online_profile/(:any)'] = 'online_profile/$1';
 
 $route['en/online_payments'] = 'online_payments';
+$route['en/online_payments/(:any)'] = 'online_payments/$1';
 
 $route['en/online_invoices'] = 'online_invoices';
+$route['en/online_invoices/(:any)'] = 'online_invoices/$1';
+$route['en/online_invoices/suppliers_by_cat/(:num)'] = 'online_invoices/suppliers_by_cat/$1';
+
+$route['en/pay/(:any)'] = 'pay/$1';
 
 /*	
 | Uncomment this line if you want to use the automatically generated sitemap based on your navigation.
