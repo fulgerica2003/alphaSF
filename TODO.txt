@@ -4,8 +4,8 @@ Probleme Smith
 3. vezi rute stiri pt limbi straine
 12. activat italiana, spaniola + rute in config/routes.php
 31. de vazut daca e ok cu empty in online_invoices
-34. online_invoices: cand inchide confirmarea dispare furnizorul
-37. de vazut de ce nu imi salveaza daca nu sunt toate campurile completate (ex: zecimalele, adresa etc), desi aceste campuri nu sunt obligatorii
+32. fontul la comisioane
+33. doua sageti la stiri
 
 
 
