@@ -2,7 +2,7 @@
 	class Online_invoices extends CI_Controller {
 		
 		private $vars=array();
-		private $cFieldsInfo=array();
+		private $cFieldsInfo = array();
 		private $user_id;
 		private $user_email;
 		private $user_lang;
@@ -77,20 +77,21 @@
 	 		$this->vars['customFields'] = ob_get_contents();
 			ob_end_clean();	
 			
-			$this->form_validation->set_rules('valInt', $this->lang->line('invoices_amount'), 'required|is_natural_no_zero|min_length[1]');
-			$this->form_validation->set_rules('valFract', $this->lang->line('invoices_amount'), 'required|is_natural_no_zero|min_length[1]|max_length[2]');
+			$this->form_validation->set_rules('valInt', $this->lang->line('invoices_amount'), 'required|is_natural|min_length[1]');
+			$this->form_validation->set_rules('valFract', $this->lang->line('invoices_amount'), 'required|is_natural|min_length[1]|max_length[2]');
 			$this->form_validation->set_rules('tipPlata', $this->lang->line('invoices_pay'), 'required');
 			$this->form_validation->set_rules('fee', $this->lang->line('invoices_fee'), 'required');
 			$this->form_validation->set_rules('total', $this->lang->line('invoices_total'), 'required');
+			//$this->form_validation->set_rules('catSupplier', $this->lang->line('invoices_providercat'), 'required');
+			$this->form_validation->set_rules('supplier', $this->lang->line('invoices_provider'), 'required');
 			
 			foreach ($this->cFieldsInfo as $cfield){
-				var_dump($cfield['fieldType']);
-				if ($cfield['fieldType']='text'){
+				if ($cfield['fieldType'] == 'text'){
 					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|alpha_numeric');	
 				}
-				elseif ($cfield['fieldType']='number'){
+				elseif ($cfield['fieldType'] == 'number'){
 					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|numeric');	
-				} elseif ($cfield['fieldType']='textarea'){
+				} elseif ($cfield['fieldType'] == 'textarea'){
 					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required|alpha_numeric|max_length[150]');	
 				} else {
 					$this->form_validation->set_rules($cfield['fieldId'], $cfield['fieldLabel'], 'required');	
@@ -118,6 +119,7 @@
 				
 				$this->vars['suppCat'] = $this->optsSupplCat();
 				$this->vars['payOpts'] = get_payment_types();
+				
 				$this->fuel->pages->render('online_invoices',$this->vars);
 			}
 		}
@@ -275,7 +277,7 @@
 					'maxlength'   => '100',
 					'size'        => '50',
 					'type'		  => 'text',
-					'class'       => 'agent-input invoice-custom-field',
+					'class'       => 'agent-input invoice-custom-field' . (form_error($field_id) ? ' err' : ''),
 					'style'       => 'width:100%',
 					);
 					
@@ -302,7 +304,7 @@
 					'maxlength'   => '100',
 					'size'        => '50',
 					'type'		  => 'text',
-					'class'       => 'agent-input invoice-custom-field datefield',
+					'class'       => 'agent-input invoice-custom-field datefield' . (form_error($field_id) ? ' err' : ''),
 					'style'       => 'width:100%',
 					);
 					
@@ -326,7 +328,7 @@
 					'value'       => $this->input->post($field_id),
 					'rows'        => '3',
 					'type'		  => 'textarea',
-					'class'       => 'agent-input invoice-custom-field',
+					'class'       => 'agent-input invoice-custom-field' . (form_error($field_id) ? ' err' : ''),
 					'style'       => 'width:100%',
 					);	
 					$inputField =

@@ -28,15 +28,11 @@
 		<div class="agent-lable"><?php echo lang('invoices_amount'); ?></div>
 		
 		<div name="test">
-			
-			<div id="ERR" class="eroare <?php echo (form_error('valInt')) ? 'afiseaza' : ''; ?>">
-				<a name="ERR"></a>
-				<span id="ERRTXT"><?php echo form_error('valInt','<div>', '</div>');?></span>
-				<span class="close-eroare">x</span>
-			</div>
-			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total" type="text" value="<?php echo set_value('valInt', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
-			<input id = "valFract" name ="valFract" style="width:25%;" class="agent-input second_iban invoice-update-fee-total" type="text" value="<?php echo set_value('valFract'); ?>">
+			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total <?php echo (form_error('valInt')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valInt', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
+			<input id = "valFract" name ="valFract" style="width:25%;" class="agent-input second_iban invoice-update-fee-total <?php echo (form_error('valFract')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valFract'); ?>">
 			<input id= "currency" name ="currency" style="width:24%;" class="agent-input factura_second" type="text" value="RON" readonly>
+			<div id="valIntERR" class="eroare <?php echo (form_error('valInt')) ? 'afiseaza' : ''; ?>"><a name="AvalIntERR"></a><span id="valIntERRTXT"><?php echo form_error('valInt'); ?></span><span class="close-eroare">x</span></div>
+			<div id="valFractERR" class="eroare <?php echo (form_error('valFract')) ? 'afiseaza' : ''; ?>"><a name="AvalFractERR"></a><span id="valFractERRTXT"><?php echo form_error('valFract'); ?></span><span class="close-eroare">x</span></div>
 		</div>					
 		<div class="clearfix"></div>
 	</div>
@@ -56,17 +52,18 @@
 	<div class="input-box">
 		<div class="explica-cont"><?php echo lang('invoices_sidenote_supplier_cat'); ?></div>
 		<div class="agent-lable"><?php echo lang('invoices_providercat'); ?></div>
-		<?php echo form_error('catSupplier'); ?>
-		<select id="catSupplier" name="supplier_category" class = "invoice-update-fee-total">
+		<select id="catSupplier" name="supplier_category" class = "invoice-update-fee-total <?php echo (form_error('catSupplier')) ? 'err' : ''; ?>">
 			<?php echo $vars['suppCat']; ?>
 		</select>
+		<div id="catSupplierERR" class="eroare <?php echo (form_error('catSupplier')) ? 'afiseaza' : ''; ?>"><a name="AcatSupplierERR"></a><span id="catSupplierERRTXT"><?php echo form_error('catSupplier'); ?></span><span class="close-eroare">x</span></div>
 	</div>
 	<div class="input-box">
 		<div class="explica-cont"><?php echo lang('invoices_sidenote_supplier_info'); ?></div>
 		<div class="agent-lable"><?php echo lang('invoices_provider'); ?></div>
-		<select id="supplier" name="supplier">
+		<select id="supplier" name="supplier" class = "<?php echo (form_error('supplier')) ? 'err' : ''; ?>">
 			<?php echo $vars['suppliers'];?>
 		</select>
+		<div id="supplierERR" class="eroare <?php echo (form_error('supplier')) ? 'afiseaza' : ''; ?>"><a name="AsupplierERR"></a><span id="supplierERRTXT"><?php echo form_error('supplier'); ?></span><span class="close-eroare">x</span></div>
 	</div>
 	<div id='customFields'>
 		<?php echo $vars['customFields']; ?>	

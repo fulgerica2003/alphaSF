@@ -12,5 +12,5 @@
 		<input style="width:40%;" class="agent-input third_iban<?php echo (form_error('iban3')) ? ' err' : ''; ?>" type="text" name="iban3" id="iban3" value="<?php echo set_value('iban3'); ?>">
 	</div>
 	<div class="clearfix"></div>
-	<div id="ibanERR" class="eroare <?php echo (form_error('iban1') || form_error('iban2') || form_error('iban3')) ? 'afiseaza' : ''; ?>"><a name="AibanERR"></a><span id="amountERRTXT"><?php echo form_error('iban1') ? form_error('iban1') : (form_error('iban2') ? form_error('iban2') : (form_error('iban3') ? form_error('iban3') : '')); ?></span><span class="close-eroare">x</span></div>		
+	<div id="ibanERR" class="eroare <?php echo (form_error('iban1') || form_error('iban2') || form_error('iban3')) ? 'afiseaza' : ''; ?>"><a name="AibanERR"></a><span id="ibanERRTXT"><?php echo form_error('iban1') ? form_error('iban1') : (form_error('iban2') ? form_error('iban2') : (form_error('iban3') ? form_error('iban3') : '')); ?></span><span class="close-eroare">x</span></div>		
 </div>

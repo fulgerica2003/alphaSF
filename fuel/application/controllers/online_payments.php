@@ -59,7 +59,7 @@
 				$vars['calcFee'] = $calc_details['fee'];
 				$vars['calcTotal'] = $calc_details['total'];
 				$this->session->unset_userdata('calcPayDetails');
-				}else{
+			}else{
 				$amount = $this->get_amount($this->input->post('amount'), $this->input->post('valFract'));
 				$payment_method = $this->input->post('modIncasare');
 				$currency = $this->input->post('currency');
@@ -67,12 +67,17 @@
 			
 			$vars['benOpts'] = get_ben_opts($currency);
 			
-			$this->form_validation->set_rules('amount', $this->lang->line('payments_amount'), 'required|numeric');
+			$this->form_validation->set_rules('amount', $this->lang->line('payments_amount'), 'required|is_natural|min_length[1]');
+			$this->form_validation->set_rules('valFract', $this->lang->line('payments_amount'), 'required|is_natural|min_length[1]|max_length[2]');
 			$this->form_validation->set_rules('currency', $this->lang->line('payments_currency'), 'required');
 			$this->form_validation->set_rules('modIncasare', $this->lang->line('payments_payment_type'), 'required');
 			$this->form_validation->set_rules('tipPlata', $this->lang->line('payments_pay'), 'required');
 			$this->form_validation->set_rules('fee', $this->lang->line('payments_fee'), 'required');
 			$this->form_validation->set_rules('total', $this->lang->line('payments_total'), 'required');
+			
+			$phone_validation_rules = '';
+			$email_validation_rules = '';
+			$address_validation_rules = '';
 			
 			if (isset($payment_method) && strlen($payment_method > 0)){
 				switch($payment_method){
@@ -126,9 +131,9 @@
 				$vars['customFields'] = $this->get_custom_fields($payment_method, $currency, $amount);
 				
 				$this->fuel->pages->render('online_payments', $vars);
-				}else{
+			}else{
 				
-				// apelul se face cand pic validarea ca sa pot folosi form_error si set_value in blocuri
+				// ca sa pot folosi form_error si set_value in blocuri
 				$vars['customFields'] = $this->get_custom_fields($payment_method, $currency, $amount);
 				$vars['displayConfirm'] = 'true';
 				

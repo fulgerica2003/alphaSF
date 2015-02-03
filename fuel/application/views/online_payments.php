@@ -27,7 +27,7 @@
 			<div class="agent-lable"><?php echo lang('payments_amount')?></div>
 			<div name="test">
 				<input name ="amount" id = "amount" style="width:50%;" class="online-update-custom-fields online-update-fee-total agent-input first_iban <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
-				<input id = "valFract" name ="valFract" style="width:25%;" class="online-update-custom-fields online-update-fee-total agent-input second_iban" type="text" value="<?php echo set_value('valFract'); ?>">
+				<input id = "valFract" name ="valFract" style="width:25%;" class="online-update-custom-fields online-update-fee-total agent-input second_iban <?php echo (form_error('valFract')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valFract'); ?>">
 				<select id = "currency" name ="currency" style="width:25%;" class="agent-input third_iban">
 					<option value="eur" <?php echo set_select('currency', 'eur', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'eur' ? TRUE : FALSE)); ?>>EUR</option>
 					<option value="ron" <?php echo set_select('currency', 'ron', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'ron' ? TRUE : FALSE)); ?>>RON</option>
@@ -35,6 +35,7 @@
 			</div>					
 			<div class="clearfix"></div>
 			<div id="amountERR" class="eroare <?php echo (form_error('amount')) ? 'afiseaza' : ''; ?>"><a name="AamountERR"></a><span id="amountERRTXT"><?php echo form_error('amount'); ?></span><span class="close-eroare">x</span></div>
+			<div id="valFractERR" class="eroare <?php echo (form_error('valFract')) ? 'afiseaza' : ''; ?>"><a name="AvalFractERR"></a><span id="valFractERRTXT"><?php echo form_error('valFract'); ?></span><span class="close-eroare">x</span></div>
 		</div>
 		<div class="input-box">
 			<div class="explica-cont"><?php echo lang('payments_sidenote_cash'); ?></div>
@@ -45,7 +46,7 @@
 				<option value="<?php echo $key;?>" <?php echo set_select('modIncasare', $key, ($vars['calcModIncasare'] && $vars['calcModIncasare'] == $key ? TRUE : FALSE)); ?>><?php echo $value;?></option>
 				<?php endforeach?>
 			</select>
-			<div id="modIncasareERR" class="eroare<?php echo (form_error('modIncasare')) ? ' afiseaza' : ''; ?>"><a name="AmodIncasareERR"></a><span id="modIncasareERRTXT"><?php echo (form_error('modIncasare')) ? 'Camp obligatoriu!' : ''; ?></span><span class="close-eroare">x</span></div>
+			<div id="modIncasareERR" class="eroare<?php echo (form_error('modIncasare')) ? ' afiseaza' : ''; ?>"><a name="AmodIncasareERR"></a><span id="modIncasareERRTXT"><?php echo form_error('modIncasare'); ?></span><span class="close-eroare">x</span></div>
 		</div>
 		
 		<div class="input-box ">

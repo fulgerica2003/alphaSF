@@ -39,7 +39,7 @@ $(document).ready(function(){
 	});
 	
 	$('.online-update-custom-fields').change(function() {
-		$('#customFields').empty();
+		//$('#customFields').empty();
 		$('#fee').val('');
 		$('#total').val('');
 		if ($('#valFract').val().length === 0){
@@ -48,9 +48,12 @@ $(document).ready(function(){
 			valFract = $('#valFract').val();
 		}
 		amount = parseInt($('#amount').val()) + (parseInt(valFract)/100);
-		$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: amount, lang: theLanguage}, function(data) {
-			$('#customFields').empty().append(data);
-		});
+		// testez daca modalul e afisat ca sa nu imi mai stearga valorile din campurile custom
+		if (!($("#displayConfirmModal").data('bs.modal') && $("#displayConfirmModal").data('bs.modal').isShown)){
+			$.get('online_payments/update_custom_fields', {payment_method: $('#modIncasare').val(), currency: $('#currency').val(), amount: amount, lang: theLanguage }, function(data) {
+				$('#customFields').empty().append(data);
+			});
+		}
 	});
 	
 	function compute_fee_total() {
@@ -121,19 +124,24 @@ $(document).ready(function(){
 	// online invoices
 	
 	$('#catSupplier').change(function() {
-		$.get( (clang == 'ro' ? '' : clang + '/') + 'online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
-			$('#supplier').empty().append(data);
-			$('#customFields').empty();
-			$('#numeFurnizorSummary').empty();
-			$('#customFieldsSummary').empty();
-		});
+		// testez daca modalul e afisat ca sa nu imi mai stearga valorile din campurile custom
+		if (!($("#displayConfirmModal").data('bs.modal') && $("#displayConfirmModal").data('bs.modal').isShown)){
+			$.get( (clang == 'ro' ? '' : clang + '/') + 'online_invoices/suppliers_by_cat/'+$(this).val() , function( data ) {
+				$('#supplier').empty().append(data);
+				$('#customFields').empty();
+				$('#numeFurnizorSummary').empty();
+				$('#customFieldsSummary').empty();
+			});
+		}
 	});
 	
 	$('#supplier').change(function() {			
 		$.get('online_invoices/add_custom_fields/'+$(this).val() + '/' + clang , function( data ) {
-			$('#customFields').empty().append(data);
-			$('#numeFurnizorSummary').text($('#supplier option:selected').text());
-			$('#customFieldsSummary').empty();
+			if (!($("#displayConfirmModal").data('bs.modal') && $("#displayConfirmModal").data('bs.modal').isShown)){
+				$('#customFields').empty().append(data);
+				$('#numeFurnizorSummary').text($('#supplier option:selected').text());
+				$('#customFieldsSummary').empty();
+			}
 		});
 	});
 	
