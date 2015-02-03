@@ -582,6 +582,7 @@
 			$this->form_validation->set_rules('password_confirm', $this->lang->line('register_user_validation_password_confirm_label'), 'required');
 			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('country', $this->lang->line('register_user_validation_country_label'), 'required|xss_clean');
+			// fata de cerinte a fost nevoie sa adaug 4 campuri: contul bancar, banca si codul swift ca sa stie SS unde sa returneze banii si default_language ca sa stiu in ce limba sa trimit mesajele din backend
 			$this->form_validation->set_rules('account', $this->lang->line('register_user_validation_account_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('swift', $this->lang->line('register_user_validation_swift_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('bank', $this->lang->line('register_user_validation_bank_label'), 'required|xss_clean');
