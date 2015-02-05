@@ -351,7 +351,7 @@ padding-right: 20px;}
 .caseta-titlu a:hover {color:#ff0000; text-decoration: none;}
 
 .padding-fix {padding-right:25px;}
-#table-ammount td {padding-left: 10px;}
+#table-ammount td {padding-left: 10px; font: 14px/30px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
 #table-ammount tr {height:37px;line-height: 37px;border-bottom:1px dotted #cac7cc;}
 #table-ammount tr:first-child {background-color:#e1dee3;border:none;height:30px;line-height: 30px;}
 #table-ammount tr td:first-child {width:62%;color:#ff0000;font: 18px/37px DINNextRoundedLTProRegular, Arial, Helvetica, sans-serif;}
