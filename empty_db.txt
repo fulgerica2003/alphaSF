@@ -1,0 +1,12 @@
+TRUNCATE TABLE ss_pay_orders;
+TRUNCATE TABLE ss_payments;
+TRUNCATE TABLE ss_newsletter_list;
+TRUNCATE TABLE news;
+TRUNCATE TABLE ss_messages;
+TRUNCATE TABLE ss_invoices;
+TRUNCATE TABLE ss_fees;
+TRUNCATE TABLE ss_exchange_rate;
+TRUNCATE TABLE login_attempts;
+DELETE FROM users_groups where id > 2;
+DELETE FROM users where id > 1;
+TRUNCATE TABLE fuel_logs;
