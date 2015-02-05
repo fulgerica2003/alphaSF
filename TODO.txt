@@ -1,11 +1,6 @@
 Probleme Smith
 
 2. prezentarea pe www si online-ul pe https://online.smith.ro -> cerinta de la Adrian Marinescu; de avut in vedere dupa finalizare
-3. vezi rute stiri pt limbi straine
-12. activat italiana, spaniola + rute in config/routes.php
-31. de vazut daca e ok cu empty in online_invoices
-32. fontul la comisioane
-33. doua sageti la stiri
 
 
 
@@ -14,6 +9,7 @@ pt build SS
 1. de introdus comisionarea corecta in my_helper/compute_fee
 2. de introdus sablonul de parola in my_helper/check_password_regex
 3. de scos TODO
+4. de scos empty_db
 --------------------------------------------------
 1. nu functioneaza plata cu card in eur
 5555555555554444
@@ -39,3 +35,22 @@ adaug subfolder-ul in my_helper in save_csv
 $outputname = 'smith/output/'.$name . '.csv';
 si in auth, la generare captcha
 $options = array('img_path'=>'./smith/assets/captcha/','img_url'=>'assets/captcha/','img_width'=>'150','img_height'=>'40','expiration'=>7200,
+
+-----------------------------------------------------------------
+varianta mea de submit automat
+</form>
+				<script type="text/javascript">
+				window.onload=function(){
+				var auto = setTimeout(function(){ autoRefresh(); }, 10);
+				
+				function submitform(){
+				document.forms["PaymentForm"].submit();
+				}
+				
+				function autoRefresh(){
+				clearTimeout(auto);
+				auto = setTimeout(function(){ submitform(); autoRefresh(); }, 1000);
+				}
+				}
+				</script>
+				';
