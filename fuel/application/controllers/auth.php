@@ -134,7 +134,7 @@
 				'id'    => 'word',
 				'type'  => 'text',
 				'value' => '',
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('word') ? ' err' : ''),
 				);
 				
 				$this->data['image']= $this->_create_captcha();
@@ -577,7 +577,7 @@
 			$this->form_validation->set_rules('first_name', $this->lang->line('register_user_validation_fname_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('last_name', $this->lang->line('register_user_validation_lname_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('email', $this->lang->line('register_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
-			$this->form_validation->set_rules('phone', $this->lang->line('register_user_validation_phone_label'), 'required|xss_clean');
+			$this->form_validation->set_rules('phone', $this->lang->line('register_user_phone_label'), 'required|xss_clean');
 			$this->form_validation->set_rules('password', $this->lang->line('register_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]|regex_match['. check_password_regex($this->config->item('min_password_length', 'ion_auth')) .']');
 			$this->form_validation->set_rules('password_confirm', $this->lang->line('register_user_validation_password_confirm_label'), 'required');
 			$this->form_validation->set_rules('birth_date', $this->lang->line('register_user_validation_birth_date_label'), 'required|xss_clean');
@@ -625,56 +625,56 @@
 				'id'    => 'first_name',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('first_name'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('first_name') ? ' err' : ''),
 				);
 				$this->data['last_name'] = array(
 				'name'  => 'last_name',
 				'id'    => 'last_name',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('last_name'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('last_name') ? ' err' : ''),
 				);
 				$this->data['email'] = array(
 				'name'  => 'email',
 				'id'    => 'email',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('email'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('email') ? ' err' : ''),
 				);
 				$this->data['phone'] = array(
 				'name'  => 'phone',
 				'id'    => 'phone',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('phone'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('phone') ? ' err' : ''),
 				);
 				$this->data['password'] = array(
 				'name'  => 'password',
 				'id'    => 'password',
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('password') ? ' err' : ''),
 				);
 				$this->data['password_confirm'] = array(
 				'name'  => 'password_confirm',
 				'id'    => 'password_confirm',
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('password_confirm') ? ' err' : ''),
 				);
 				$this->data['birth_date'] = array(
 				'name'  => 'birth_date',
 				'id'    => 'birth_date',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('birth_date'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('birth_date') ? ' err' : ''),
 				);
 				$this->data['country'] = array(
 				'name'  => 'country',
 				'id'    => 'country',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('country'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('country') ? ' err' : ''),
 				);
 				
 				$this->data['account'] = array(
@@ -682,7 +682,7 @@
 				'id'    => 'account',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('account'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('account') ? ' err' : ''),
 				);
 				
 				$this->data['swift'] = array(
@@ -690,7 +690,7 @@
 				'id'    => 'swift',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('swift'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('swift') ? ' err' : ''),
 				);
 				
 				$this->data['bank'] = array(
@@ -698,7 +698,7 @@
 				'id'    => 'bank',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('bank'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('bank') ? ' err' : ''),
 				);
 				
 				$this->data['default_language'] = array(
@@ -714,7 +714,7 @@
 				'id'    => 'word',
 				'type'  => 'text',
 				'value' => '',
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('word') ? ' err' : ''),
 				);
 				
 				$this->data['image']= $this->_create_captcha();

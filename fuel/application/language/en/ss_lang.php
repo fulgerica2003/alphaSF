@@ -164,7 +164,7 @@ $lang['caseta_reclama2_content'] = 'Lorem ipsum dolor sit amet, <span style="col
 |
 */
 $lang['news_title'] = 'News';
-$lang['news_read'] = 'Read→';
+$lang['news_read'] = 'Read';
 $lang['news_older'] = 'Older';
 $lang['news_newer'] = 'Newer';
 $lang['news_details_back'] = 'Back';

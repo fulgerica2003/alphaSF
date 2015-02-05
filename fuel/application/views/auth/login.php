@@ -5,7 +5,7 @@
 		<!-- <p><?php //echo lang('login_subheading');?></p> --></p>
 	</div>
 	<div class="modal-body">
-		<div id="infoMessage"><?php echo $message;?></div>
+		<div id="infoMessage"><?php //echo $message;?></div>
 		
 		<?php $attributes = array('id' => 'form-login-pop'); echo form_open("auth/login", $attributes);?>
 		
@@ -29,6 +29,7 @@
 				<?php echo $image; // this will show the captcha image?><br />
 				<?php echo form_input($word);?>
 			</p>
+			<div id="wordERR" class="eroare <?php echo (form_error('word')) ? 'afiseaza' : ''; ?>"><a name="AwordERR"></a><span id="wordERRTXT"><?php echo form_error('word'); ?></span><span class="close-eroare">x</span></div>
 		</div>
 		
 		<div class="input-box">
