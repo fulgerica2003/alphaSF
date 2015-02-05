@@ -32,7 +32,7 @@
 			
 			// colectez datele de pe post
 			$pay_details = array();
-
+			
 			$pay_details['amount'] 		= (string)number_format((float)$_POST['amount'], 2, '.', '');
 			$pay_details['currency'] 	= strtoupper($_POST['currency']);
 			$pay_details['unid']		= $_POST['unid'];
@@ -49,27 +49,27 @@
 			$data_custom = array(
 			"ProductsData" => array(
 			0 => array(
-			"ItemName" 	=> $pay_details['unid_type'] == 'S' ? 'Plata ' : 'Factura', 			// varchar(255)		- OBLIGATORIU - aceasta valoare apare in mail-ul de confirmare receptie/incasare/anulare
-			"Quantity" 	=> "1", 				// int				- OBLIGATORIU
-			"Price"	   	=> $pay_details['amount'], 				// money			- OBLIGATORIU
-			"ProductId" => $pay_details['unid'] 			// varchar(19)
+			"ItemName" 	=> $pay_details['unid_type'] == 'S' ? 'Plata ' : 'Factura', 		// varchar(255)		- OBLIGATORIU - aceasta valoare apare in mail-ul de confirmare receptie/incasare/anulare
+			"Quantity" 	=> "1", 															// int				- OBLIGATORIU
+			"Price"	   	=> $pay_details['amount'], 											// money			- OBLIGATORIU
+			"ProductId" => $pay_details['unid'] 											// varchar(19)
 			),
 			),
 			"UserData" => array(
 			
 			// Date de Client
 			
-			"Email"     	=> $user->email, 		// varchar(50)		- OBLIGATORIU
-			"Name"	    	=> $user->last_name . ' ' . $user->first_name, 				// varchar(255)		- OBLIGATORIU
-			"Phone"			=> $user->phone, 				// varchar(50)		- OBLIGATORIU	
+			"Email"     	=> $user->email, 												// varchar(50)		- OBLIGATORIU
+			"Name"	    	=> $user->last_name . ' ' . $user->first_name, 					// varchar(255)		- OBLIGATORIU
+			"Phone"			=> $user->phone, 												// varchar(50)		- OBLIGATORIU	
 			
 			// Date de Facturare
 			
 			"BillingName"		=> $user->last_name . ' ' . $user->first_name, 				// varchar(100) - ->Denumire companie pentru PJ, Nume pentru PF		- OBLIGATORIU
-			"BillingEmail"		=> $user->email, 	// varchar(100)			- OBLIGATORIU
-			"BillingPhone"		=> $user->phone, 				// varchar(50)			- OBLIGATORIU
-			"BillingCity"		=> $user->country, 					// varchar(50)			- OBLIGATORIU
-			"BillingCountry"	=> $user->country 					// varchar(50)			- OBLIGATORIU
+			"BillingEmail"		=> $user->email, 											// varchar(100)			- OBLIGATORIU
+			"BillingPhone"		=> $user->phone, 											// varchar(50)			- OBLIGATORIU
+			"BillingCity"		=> $user->country, 											// varchar(50)			- OBLIGATORIU
+			"BillingCountry"	=> $user->country 											// varchar(50)			- OBLIGATORIU
 			
 			)
 			);
@@ -78,9 +78,9 @@
 			
 			$librapay = new Librapay($this->lpy_config);
 			
-			$librapay->amount = $pay_details['amount'];					// suma totala a tranzactiei
-			$librapay->order  = $order_id; 				// ID-ul comenzii 
-			$librapay->desc   = $pay_details['unid'];// aceasta valoarea apare in dreptul comenzii din internetbanking -> LibraPay pentru identificare
+			$librapay->amount = $pay_details['amount'];										// suma totala a tranzactiei
+			$librapay->order  = $order_id; 													// ID-ul comenzii 
+			$librapay->desc   = $pay_details['unid'];										// aceasta valoarea apare in dreptul comenzii din internetbanking -> LibraPay pentru identificare
 			
 			$librapay->dataProducts = base64_encode(serialize($data_custom));
 			$librapay->generateForm();

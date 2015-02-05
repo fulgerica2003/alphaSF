@@ -348,21 +348,8 @@
 		<input type="hidden" name="currency" value="'. $payment_details['currency'] .'" />
 		<input type="hidden" name="user_id" value="'. $payment_details['user_id'] .'" />
 		<input type="hidden" name="unid" value="'. $payment_details['unid'] .'" />
-		</form>
-		<script type="text/javascript">
-		window.onload=function(){
-		var auto = setTimeout(function(){ autoRefresh(); }, 10);
-		
-		function submitform(){
-		document.forms["PaymentForm"].submit();
-		}
-		
-		function autoRefresh(){
-		clearTimeout(auto);
-		auto = setTimeout(function(){ submitform(); autoRefresh(); }, 1000);
-		}
-		}
-		</script>
+		'. '<script type="text/javascript">document.getElementById("PaymentForm").submit();</script>' .'
+		</form>		
 		';
 	}
 	
@@ -378,7 +365,7 @@
 	
 	function compute_fee($params = array()){
 		
-		return compute_mock_fee($params);
+		return compute_real_fee($params);
 	}
 	
 	function compute_mock_fee($params = array()){
@@ -511,9 +498,9 @@
 	
 	function check_password_regex($min_length){
 		// cel putin o litera mare, una mica si o cifra
-		// return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
+		return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
 		// pentru teste folosesc varianta simplificata
-		return "/^.{" . $min_length . "}.*$/";
+		// return "/^.{" . $min_length . "}.*$/";
 	}
 	
 	function get_language_options(){

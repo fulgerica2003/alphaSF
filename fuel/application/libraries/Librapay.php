@@ -131,23 +131,9 @@
 				<input type="hidden" name="DATA_CUSTOM" value="'. $this->dataProducts .'" />	
 				<input type="hidden" name="STRING" value="'. $this->string .'" />		
 				<input type="hidden" name="P_SIGN" value="'. $this->psign .'" />
-				
-				</form>
-				<script type="text/javascript">
-				window.onload=function(){
-				var auto = setTimeout(function(){ autoRefresh(); }, 10);
-				
-				function submitform(){
-				document.forms["PaymentForm"].submit();
-				}
-				
-				function autoRefresh(){
-				clearTimeout(auto);
-				auto = setTimeout(function(){ submitform(); autoRefresh(); }, 1000);
-				}
-				}
-				</script>
-				';
+				'. $this->trimite .'
+				</form>		
+				';				
 				break;
 			}
 		}
