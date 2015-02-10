@@ -111,6 +111,42 @@ $config['modules']['ss_newsletter_list'] = array(
   'hidden' => TRUE,
 );
 
+$config['modules']['ss_payments'] = array(
+  'module_name' => 'payments',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+  'table_actions' => array(),
+  'preview_path' => 'fuel/ss_payments/edit/{id}',
+  'rows_selectable' => FALSE,
+  'displayonly' => TRUE,
+  'item_actions' => array(),
+);
+
+$config['modules']['ss_invoices'] = array(
+  'module_name' => 'invoices',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+  'table_actions' => array(),
+  'preview_path' => 'fuel/ss_invoices/edit/{id}',
+  'rows_selectable' => FALSE,
+  'displayonly' => TRUE,
+  'item_actions' => array(),
+);
+
+$config['modules']['ss_messages'] = array(
+  'module_name' => 'Payments/invoices messages',
+  'instructions' => '',
+  'archivable' => TRUE,
+  'hidden' => TRUE,
+  'table_actions' => array(),
+  'preview_path' => 'fuel/ss_messages/edit/{id}',
+  'rows_selectable' => FALSE,
+  'displayonly' => TRUE,
+  'item_actions' => array(),
+);
+
 
 
 /*********************** OVERWRITES ************************************/

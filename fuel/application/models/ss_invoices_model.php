@@ -28,11 +28,37 @@
 		{
 			parent::__construct('ss_invoices'); // table name
 			$this->load->model('ss_messages_model');
+			$this->load->model('ss_suppliers_model');
 		}
 		
 		function list_items($limit = NULL, $offset = NULL, $col = 'date_added', $order = 'desc', $just_count = FALSE)
 		{
+			$this->db->join('users', 'users.id = ss_invoices.id_user', 'left');
+			$this->db->join('ss_suppliers', 'ss_suppliers.id = ss_invoices.id_supplier', 'left');
+			$this->db->select('ss_invoices.id, unid, concat(amount_in, \' \', currency_in) as amount_in,
+			fee, total, date_added,
+			status, rate,
+			ss_suppliers.name as supplier_name,
+			ss_suppliers.s1 as name_s1, ss_invoices.s1 as val_s1,
+			ss_suppliers.s2 as name_s2, ss_invoices.s2 as val_s2,
+			ss_suppliers.s3 as name_s3, ss_invoices.s3 as val_s3,
+			ss_suppliers.s4 as name_s4, ss_invoices.s4 as val_s4,
+			ss_suppliers.s5 as name_s5, ss_invoices.s5 as val_s5,
+			ss_suppliers.s6 as name_s6, ss_invoices.s6 as val_s6,
+			users.id as user_id, users.email AS user_email, concat(users.first_name, \' \', users.last_name) as user_name
+			', FALSE);
 			$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
+					
+			foreach($data as $key => $value){
+				$data[$key]['status'] = get_status_label($data[$key]['status']);
+				if ($data[$key]['name_s1'] != null) $data[$key]['name_s1'] = get_label($data[$key]['name_s1']);
+				if ($data[$key]['name_s2'] != null) $data[$key]['name_s2'] = get_label($data[$key]['name_s2']);
+				if ($data[$key]['name_s3'] != null) $data[$key]['name_s3'] = get_label($data[$key]['name_s3']);
+				if ($data[$key]['name_s4'] != null) $data[$key]['name_s4'] = get_label($data[$key]['name_s4']);
+				if ($data[$key]['name_s5'] != null) $data[$key]['name_s5'] = get_label($data[$key]['name_s5']);
+				if ($data[$key]['name_s6'] != null) $data[$key]['name_s6'] = get_label($data[$key]['name_s6']);
+			}
+			
 			return $data;
 		}
 		

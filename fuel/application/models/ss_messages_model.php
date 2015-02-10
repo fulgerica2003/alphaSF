@@ -31,6 +31,8 @@ class Ss_messages_model extends Base_module_model {
 
 	function list_items($limit = NULL, $offset = NULL, $col = 'date_added', $order = 'desc', $just_count = FALSE)
 	{
+		$this->db->join('users', 'users.id = ss_messages.id_user', 'left');
+		$this->db->select('ss_messages.id, unid, message, users.id as user_id, users.email AS user_email, concat(users.first_name, \' \', users.last_name) as user_name ', FALSE);
 		$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 		return $data;
 	}
@@ -38,6 +40,8 @@ class Ss_messages_model extends Base_module_model {
 	function form_fields($values = array(), $related = array())
 	{	
 		$fields = parent::form_fields($values, $related);
+		
+		$fields['id_tx']['type'] = 'hidden';
 		return $fields;
 	}
 	

@@ -104,6 +104,9 @@ $config['nav']['site'] += array(
 'ss_network' => 'Offices',
 'ss_exchange_rate' => 'Exchange rate',
 'ss_newsletter_list' => 'Newsletter list',
+'ss_payments' => 'Payments',
+'ss_invoices' => 'Invoices',
+'ss_messages' => 'Messages',
 );
 
 $config['languages'] = array(

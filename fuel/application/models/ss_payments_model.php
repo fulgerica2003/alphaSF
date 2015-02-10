@@ -27,17 +27,39 @@
 		function __construct()
 		{
 			parent::__construct('ss_payments'); // table name
+			$this->load->model('ss_payment_methods_model');
+			$this->load->model('ss_cities_model');
 		}
 		
 		function list_items($limit = NULL, $offset = NULL, $col = 'precedence', $order = 'desc', $just_count = FALSE)
 		{
+			
+			$this->db->join('users', 'users.id = ss_payments.id_user', 'left');
+			$this->db->select('ss_payments.id, unid, concat(amount_in, \' \', currency_in) as amount_in, concat(amount_out, \' \', currency_out) as amount_out,
+			rate, fee, total, date_added,
+			status,
+			id_ben_payment_method,
+			id_ben_city as city,
+			ben_address, ben_name, ben_surname, ben_phone, ben_email, ben_iban,
+			pin,
+			users.id as user_id, users.email AS user_email, concat(users.first_name, \' \', users.last_name) as user_name ', FALSE);
 			$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
+			foreach($data as $key => $value){
+				$data[$key]['status'] = get_status_label($data[$key]['status']);
+				$payment_method = $this->ss_payment_methods_model->find_by_key($data[$key]['id_ben_payment_method'], 'array');
+				$city_name =  $this->ss_cities_model->find_by_key($data[$key]['city'], 'array');
+				$data[$key]['id_ben_payment_method'] = get_label($payment_method['name']);
+				$data[$key]['city'] = $city_name != null ? $city_name['name'] : '';
+				
+			}
 			return $data;
 		}
 		
 		function form_fields($values = array(), $related = array())
 		{	
+			
 			$fields = parent::form_fields($values, $related);
+			
 			return $fields;
 		}
 		
