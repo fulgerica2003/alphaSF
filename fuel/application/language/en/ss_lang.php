@@ -144,6 +144,7 @@ $lang['caseta_slider_news_titlu'] = 'News';
 $lang['caseta_curs_valutar_titlu'] = 'Foreign Exchange';
 $lang['caseta_curs_valutar_currency'] = 'Currency';
 $lang['caseta_curs_valutar_quote'] = 'RON Quote';
+$lang['caseta_curs_valutar_NA'] = 'Not available';
 $lang['caseta_curs_valutar_eur'] = 'Eur';
 $lang['caseta_curs_valutar_usd'] = 'US Dollar';
 

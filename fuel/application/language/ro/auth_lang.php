@@ -20,9 +20,9 @@ $lang['error_csrf'] = 'Acest formular nu a trecut de verificarile de securitate.
 // Login
 $lang['login_heading']         = 'Logare';
 $lang['login_subheading']      = 'Logati-va cu email-ul/numele de utilizator si parola.';
-$lang['login_identity_label']  = 'Email/Nume utilizator:';
-$lang['login_password_label']  = 'Parola:';
-$lang['login_remember_label']  = 'Tine-ma minte:';
+$lang['login_identity_label']  = 'Email';
+$lang['login_password_label']  = 'Parola';
+$lang['login_remember_label']  = 'Tine-ma minte';
 $lang['login_submit_btn']      = 'Logare';
 $lang['login_forgot_password'] = 'Ati uitat parola?';
 
@@ -43,8 +43,8 @@ $lang['index_create_group_link'] = 'Creeaza un nou grup';
 // Deactivate User
 $lang['deactivate_heading']                  = 'Dezactiveaza utilizator';
 $lang['deactivate_subheading']               = 'Sunteti sigur ca vreti sa dezactivam utilizatorul \'%s\'';
-$lang['deactivate_confirm_y_label']          = 'Da:';
-$lang['deactivate_confirm_n_label']          = 'Nu:';
+$lang['deactivate_confirm_y_label']          = 'Da';
+$lang['deactivate_confirm_n_label']          = 'Nu';
 $lang['deactivate_submit_btn']               = 'Aproba';
 $lang['deactivate_validation_confirm_label'] = 'confirmare';
 $lang['deactivate_validation_user_id_label'] = 'ID utilizator';
@@ -52,13 +52,13 @@ $lang['deactivate_validation_user_id_label'] = 'ID utilizator';
 // Create User
 $lang['create_user_heading']                           = 'Creeaza utilizator';
 $lang['create_user_subheading']                        = 'Va rugam sa introduceri informatiile de mai jos.';
-$lang['create_user_fname_label']                       = 'Prenume:';
-$lang['create_user_lname_label']                       = 'Nume:';
-$lang['create_user_company_label']                     = 'Companie:';
-$lang['create_user_email_label']                       = 'Email:';
-$lang['create_user_phone_label']                       = 'Telefon:';
-$lang['create_user_password_label']                    = 'Parola:';
-$lang['create_user_password_confirm_label']            = 'Confirma parola:';
+$lang['create_user_fname_label']                       = 'Prenume';
+$lang['create_user_lname_label']                       = 'Nume';
+$lang['create_user_company_label']                     = 'Companie';
+$lang['create_user_email_label']                       = 'Email';
+$lang['create_user_phone_label']                       = 'Telefon';
+$lang['create_user_password_label']                    = 'Parola';
+$lang['create_user_password_confirm_label']            = 'Confirma parola';
 $lang['create_user_submit_btn']                        = 'Creeaza utilizator';
 $lang['create_user_validation_fname_label']            = 'Prenume';
 $lang['create_user_validation_lname_label']            = 'Nume';
@@ -73,13 +73,13 @@ $lang['create_user_validation_password_confirm_label'] = 'Confirmarea parolei';
 // Register User
 $lang['register_user_heading']                           = 'Inregistrare utilizator';
 $lang['register_user_subheading']                        = 'Va rugam sa completati informatiile de mai jos.';
-$lang['register_user_fname_label']                       = 'Prenume:';
-$lang['register_user_lname_label']                       = 'Nume:';
-//$lang['register_user_company_label']                     = 'Companie:';
-$lang['register_user_email_label']                       = 'Email:';
+$lang['register_user_fname_label']                       = 'Prenume';
+$lang['register_user_lname_label']                       = 'Nume';
+//$lang['register_user_company_label']                     = 'Companie';
+$lang['register_user_email_label']                       = 'Email';
 $lang['register_user_phone_label']                       = 'Telefon';
-$lang['register_user_password_label']                    = 'Parola:';
-$lang['register_user_password_confirm_label']            = 'Confirma parola:';
+$lang['register_user_password_label']                    = 'Parola';
+$lang['register_user_password_confirm_label']            = 'Confirma parola';
 $lang['register_user_birth_date']						 = 'Data nasterii';
 $lang['register_user_country']							 = 'Tara de resedinta';
 $lang['register_user_account']						   	 = 'Cont bancar';
@@ -104,21 +104,26 @@ $lang['register_user_validation_bank_label']			 = 'Banca';
 $lang['register_user_validation_default_lang_label'] 	 = 'Limba implicita';
 $lang['register_user_success_message']                   = 'Accesati contul dumneavoastra de email si validati contul creat pe platforma Smith&Smith';
 $lang['wrong_captcha_code']                   			 = 'Captcha eronat.';
+$lang['register_user_password_pattern_label']          	 = '(cel putin 8 caractere, o litera mica, o litera mare, o cifra)';
 
 // Blocked user
 $lang['blocked_user_heading']                   = 'Utilizator blocat';
 $lang['blocked_user_message']                   = 'Utilizatorul a fost blocat. Accesati contul dumneavoastra de email si reactivati contul.';
 
+// Inactive user
+$lang['inactive_user_heading']                   = 'Utilizator inactiv';
+$lang['inactive_user_message']                   = 'Utilizatorul este inactiv. Va rugam sa verificati casuta de email si sa (re)activati contul.';
+
 // Edit User
 $lang['edit_user_heading']                           = 'Editeaza date utilizator';
 $lang['edit_user_subheading']                        = 'Va rugam sa introduceri informatiile utilizatorului de mai jos.';
-$lang['edit_user_fname_label']                       = 'Prenume:';
-$lang['edit_user_lname_label']                       = 'Nume:';
-$lang['edit_user_company_label']                     = 'Companie:';
-$lang['edit_user_email_label']                       = 'Email:';
-$lang['edit_user_phone_label']                       = 'Telefon:';
-$lang['edit_user_password_label']                    = 'Parola: (daca schimbati parola)';
-$lang['edit_user_password_confirm_label']            = 'Confirma parola: (daca schimbati parola)';
+$lang['edit_user_fname_label']                       = 'Prenume';
+$lang['edit_user_lname_label']                       = 'Nume';
+$lang['edit_user_company_label']                     = 'Companie';
+$lang['edit_user_email_label']                       = 'Email';
+$lang['edit_user_phone_label']                       = 'Telefon';
+$lang['edit_user_password_label']                    = 'Parola (daca schimbati parola)';
+$lang['edit_user_password_confirm_label']            = 'Confirma parola (daca schimbati parola)';
 $lang['edit_user_groups_heading']                    = 'Membru al grupurilor';
 $lang['edit_user_submit_btn']                        = 'Salveaza utilizator';
 $lang['edit_user_validation_fname_label']            = 'Prenume';
@@ -136,8 +141,8 @@ $lang['edit_user_validation_password_confirm_label'] = 'Confirmarea parolei';
 $lang['create_group_title']                  = 'Creeaza grup';
 $lang['create_group_heading']                = 'Creeaza grup';
 $lang['create_group_subheading']             = 'Va rugam sa introduceti informatiile grupului mai jos.';
-$lang['create_group_name_label']             = 'Numele grupului:';
-$lang['create_group_desc_label']             = 'Descriere:';
+$lang['create_group_name_label']             = 'Numele grupului';
+$lang['create_group_desc_label']             = 'Descriere';
 $lang['create_group_submit_btn']             = 'Creeaza grupul';
 $lang['create_group_validation_name_label']  = 'Numele Grupului';
 $lang['create_group_validation_desc_label']  = 'Descriere';
@@ -147,17 +152,17 @@ $lang['edit_group_title']                  = 'Editeaza datele grupului';
 $lang['edit_group_saved']                  = 'Grup salvat';
 $lang['edit_group_heading']                = 'Editeaza grupul';
 $lang['edit_group_subheading']             = 'Va rugam sa introduceti informatiile grupului mai jos.';
-$lang['edit_group_name_label']             = 'Numele grupului:';
-$lang['edit_group_desc_label']             = 'Descriere:';
+$lang['edit_group_name_label']             = 'Numele grupului';
+$lang['edit_group_desc_label']             = 'Descriere';
 $lang['edit_group_submit_btn']             = 'Salveaza grupul';
 $lang['edit_group_validation_name_label']  = 'Numele grupului';
 $lang['edit_group_validation_desc_label']  = 'Descriere';
 
 // Change Password
 $lang['change_password_heading']                               = 'Schimba parola';
-$lang['change_password_old_password_label']                    = 'Parola veche:';
-$lang['change_password_new_password_label']                    = 'Noua parola (cel putin %s caractere):';
-$lang['change_password_new_password_confirm_label']            = 'Confirma noua parola:';
+$lang['change_password_old_password_label']                    = 'Parola veche';
+$lang['change_password_new_password_label']                    = 'Noua parola (cel putin %s caractere)';
+$lang['change_password_new_password_confirm_label']            = 'Confirma noua parola';
 $lang['change_password_submit_btn']                            = 'Schimba';
 $lang['change_password_validation_old_password_label']         = 'Parola veche';
 $lang['change_password_validation_new_password_label']         = 'Parola noua';
@@ -166,7 +171,7 @@ $lang['change_password_validation_new_password_confirm_label'] = 'Confirma noua 
 // Forgot Password
 $lang['forgot_password_heading']                 = 'Parola uitata';
 $lang['forgot_password_subheading']              = 'Va rugam sa introduceti %s pentru a va putea trimite un email de resetare a parolei.';
-$lang['forgot_password_email_label']             = '%s:';
+$lang['forgot_password_email_label']             = '%s';
 $lang['forgot_password_submit_btn']              = 'Trimite';
 $lang['forgot_password_validation_email_label']  = 'Adresa de email';
 $lang['forgot_password_username_identity_label'] = 'Utilizator';
@@ -175,8 +180,8 @@ $lang['forgot_password_email_not_found']         = 'Nu exista nicio inregistrare
 
 // Reset Password
 $lang['reset_password_heading']                               = 'Schimbare parola';
-$lang['reset_password_new_password_label']                    = 'Parola noua (cel putin %s caractere):';
-$lang['reset_password_new_password_confirm_label']            = 'Confirma noua parola:';
+$lang['reset_password_new_password_label']                    = 'Parola noua (cel putin %s caractere)';
+$lang['reset_password_new_password_confirm_label']            = 'Confirma noua parola';
 $lang['reset_password_submit_btn']                            = 'Schimba';
 $lang['reset_password_validation_new_password_label']         = 'Parola noua';
 $lang['reset_password_validation_new_password_confirm_label'] = 'Confirma noua parola';
@@ -193,5 +198,5 @@ $lang['email_forgot_password_link']       = 'Resetarea parolei';
 
 // New Password Email
 $lang['email_new_password_heading']    = 'Noua parola pentru %s';
-$lang['email_new_password_subheading'] = 'Parola a fost resetata pentru: %s';
+$lang['email_new_password_subheading'] = 'Parola a fost resetata pentru %s';
 

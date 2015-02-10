@@ -144,6 +144,7 @@ $lang['caseta_slider_news_titlu'] = 'Stiri';
 $lang['caseta_curs_valutar_titlu'] = 'Curs Valutar';
 $lang['caseta_curs_valutar_currency'] = 'Valuta';
 $lang['caseta_curs_valutar_quote'] = 'Cotatie RON';
+$lang['caseta_curs_valutar_NA'] = 'Indisponibil';
 $lang['caseta_curs_valutar_eur'] = 'Euro';
 $lang['caseta_curs_valutar_usd'] = 'Dolar american';
 
