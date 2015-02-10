@@ -3,13 +3,10 @@ Probleme Smith
 2. prezentarea pe www si online-ul pe https://online.smith.ro -> cerinta de la Adrian Marinescu; de avut in vedere dupa finalizare
 
 
-
 --------------------------------------------------
 pt build SS
-1. de introdus comisionarea corecta in my_helper/compute_fee
-2. de introdus sablonul de parola in my_helper/check_password_regex
-3. de scos TODO
-4. de scos empty_db
+1. de scos TODO
+2. de scos empty_db
 --------------------------------------------------
 1. nu functioneaza plata cu card in eur
 5555555555554444
