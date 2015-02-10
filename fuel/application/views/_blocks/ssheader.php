@@ -17,10 +17,8 @@
 	<script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
 
-	<!--[if lt IE 9 ]> <script src="/js/html5shiv.js?c=943912800" type="text/javascript" charset="utf-8"></script>
-	<script src="/js/respond.js?c=943912800" type="text/javascript" charset="utf-8"></script>
-	 <![endif]-->
-	<base href="<?php echo site_url(); ?>" />
+	<!--[if lt IE 9 ]> <?php echo js('html5shiv,respond'); ?></script> <![endif]-->
+	<base href="<?php echo '/'; ?>" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 	<meta name="robots" content="noindex" />
 </head>
