@@ -62,6 +62,12 @@ Exchange rate- modul curs de schimb valutar. Se afiseaza pe prima pagina si e fo
 
 Newsletter list - lista de adrese de email introduse in caseta de abonare; Tabela corespondenta este ss_newsletter_list
 
+Payments - lista cu transferurile efectuate de utilizatori
+
+Invoices - lista cu platile facturilor utilizatorilor
+
+Messages - lista cu mesajele pentru transferuri si facturi
+
 Alte tabele:
 users, groups, login_attempts, users_groups - tabele pentru autentificare
 ss_corrections - tabela in care se tin corectiile primite prin backend; actualizarea pe transfer se face cand utilizatorul aproba corectia
