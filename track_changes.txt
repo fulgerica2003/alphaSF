@@ -1,0 +1,46 @@
+adaugat eticheta sablon parola
+register.php, linia 39 si in auth_lang.php linia 107
+-----------------------------------------------
+
+3. Nu se efectueaza validare pe campuri (exemlul campul suma permite caractere alfanumerice)
+introdus clasa only-numbers si adaugat in custom.js linia 28
+-----------------------------------------------
+
+6. la inregistrare cont, mesajele de eroare nu dispar la editare si dau senzatie de continua eroare
+custom.js linia 391
+pt login -> auth.php linia 124, 129 si login.php, adaugat div-uri
+la invoices nu dispare la campurile custom
+-----------------------------------------------
+7. lipsa cursului de schimb pentru ziua curenta genereaza o eroare vizibila in site
+_caseta-curs-valutar.php
+ss_lang.php linia 147
+
+-----------------------------------------------
+9. la login apare textul 'email/nume utilizator' ce inseamna nume utilizator (la register Nume = nume de familie, dar nu merge login cu nume, nu merge nici cu nume prenume)
+
+modificat auth_lang.php
+eliminat :
+
+-----------------------------------------------
+11 in pagina de transfer (fara utilizare calculator) suma ar trebui sa fie predefinita cu val 0. Nu se intelege ce reprezinta a doua caseta (cea de subdiviziune monetara -> zecimale) ca utilizator normal nu-mi da prin cap ca acolo trec 50 (de bani de exemplu).
+
+online_payments linia 30
+online_invoices linia 32
+value="<?php echo set_value('valFract', '00'); ?>"
+
+-----------------------------------------------
+12. capcha nu este lizibil, este foarte mic si foarte sters!
+auth.php private function _create_captcha()
+
+-----------------------------------------------
+13. unde se pot vedea in admin tranzactiile in curs? un istoric de operatiuni ceva?
+MY_fuel.php si MY_fuel_modules.php
+
+-----------------------------------------------
+
+verificat parola, e ok regex
+bad gateway, ionut a testat, pare a fi de la ei
+
+
+
+
