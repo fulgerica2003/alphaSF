@@ -365,7 +365,13 @@
 	
 	function compute_fee($params = array()){
 		
-		return compute_real_fee($params);
+		if (is_dev_mode()){
+			return compute_mock_fee($params);
+		}else{
+			return compute_real_fee($params);
+		}
+		
+		
 	}
 	
 	function compute_mock_fee($params = array()){
@@ -498,9 +504,12 @@
 	
 	function check_password_regex($min_length){
 		// cel putin o litera mare, una mica si o cifra
-		return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
-		// pentru teste folosesc varianta simplificata
-		// return "/^.{" . $min_length . "}.*$/";
+		// pentru dev folosesc varianta simplificata
+		if (is_dev_mode()){
+			return "/^.{" . $min_length . "}.*$/";
+		}else{
+			return "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{" . $min_length . "}.*$/";
+		}
 	}
 	
 	function get_language_options(){

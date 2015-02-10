@@ -4,14 +4,14 @@
 		<div class="caseta-titlu"><?php echo lang('invoices_pay'); ?></div>
 		<form id="form-calc2" action="calculator/pay_invoice" method="post">
 			<div class="radio-container1 depeCard" style="width:50%;  ">
-				<div class="lable1 depeCard1<?php echo ($vars['calcInvTipPlata'] != null && $vars['calcInvTipPlata'] == 'card' ? ' radioactiv' : '')?>"" id="TABleft"><?php echo lang('invoices_card'); ?></div>
+				<div class="lable1 depeCard1<?php echo ($vars['calcInvTipPlata'] != null && $vars['calcInvTipPlata'] == 'card' ? ' radioactiv' : '')?>" id="TABleft"><?php echo lang('invoices_card'); ?></div>
 				<input type="radio" name="tipPlata" id="tipPlataCard" value="card" class = "cof-update-fee-total">
 			</div>								
 			<div class="radio-container1 radioactiv" style="width:50%;">
 				<div class="lable1 dinCont1<?php echo ($vars['calcInvTipPlata'] != null && $vars['calcInvTipPlata'] == 'cont' ? ' radioactiv' : '')?>"  id="TABright"><?php echo lang('invoices_account'); ?></div>
 				<input type="radio" name="tipPlata" id="tipPlataCont" value="cont" class = "cof-update-fee-total">
 			</div>								
-			<input class="agent-input corectie_form val-factura cof-update-fee-total" type="text" name="suma" id="cof_amount" placeholder="<?php echo lang('invoices_amount'); ?>" value = "<?php echo ($vars['calcInvAmount'] != null ? $vars['calcInvAmount'] : ''); ?>">
+			<input class="agent-input corectie_form val-factura cof-update-fee-total only-numbers" type="text" name="suma" id="cof_amount" placeholder="<?php echo lang('invoices_amount'); ?>" value = "<?php echo ($vars['calcInvAmount'] != null ? $vars['calcInvAmount'] : ''); ?>">
 			
 			<div class="input-box" style="margin:0px; padding:0px;">
 				

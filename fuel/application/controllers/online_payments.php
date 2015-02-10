@@ -24,7 +24,11 @@
 			$this->load->library('ion_auth');
 			
 			$eur = $this->ss_exchange_rate_model->find_one(array('type' => 'EUR', 'apply_date <= ' => date('Y-m-d', time())));
-			$this->exchange_rate_eur = $eur->value;
+			if ($eur != null){
+				$this->exchange_rate_eur = $eur->value;
+			}else{
+				$this->fuel->logs->write('Nu am gasit curs valutar eur');
+			}
 			
 			if (!$this->ion_auth->logged_in()){
 				// redirect-ul se face in _variables/online_payments.php, teoretic aici nici nu ar trebui sa ajunga
@@ -241,7 +245,12 @@
 				case '3':
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
-					$vars['cv'] = $rate->value;
+					if ($rate != null){
+						$vars['cv'] = $rate->value;
+					}else{
+						$vars['cv'] = $this->lang->line('caseta_curs_valutar_NA');
+						$this->fuel->logs->write('Nu am gasit curs valutar eur');
+					}
 					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE, 'lang' => $lang), TRUE);
 				}
 				break;
@@ -250,7 +259,12 @@
 				case '5':
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
-					$vars['cv'] = $rate->value;
+					if ($rate != null){
+						$vars['cv'] = $rate->value;
+					}else{
+						$vars['cv'] = $this->lang->line('caseta_curs_valutar_NA');
+						$this->fuel->logs->write('Nu am gasit curs valutar eur');
+					}
 					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => TRUE, 'lang' => $lang), TRUE);
 				}
 				$vars['cities'] = $this->ss_cities_model->options_list();
@@ -259,7 +273,12 @@
 				case '6':
 				if (strtolower($currency) == 'eur'){
 					$rate = $this->ss_exchange_rate_model->find_one(array('type' => strtoupper($currency), 'apply_date <= ' => date('Y-m-d', time())));
-					$vars['cv'] = $rate->value;
+					if ($rate != null){
+						$vars['cv'] = $rate->value;
+					}else{
+						$vars['cv'] = $this->lang->line('caseta_curs_valutar_NA');
+						$this->fuel->logs->write('Nu am gasit curs valutar eur');
+					}
 					$output = $this->load->view('_blocks/_op_cv_info', array('cv' => $vars['cv'], 'amount' => $amount, 'accept' => FALSE, 'lang' => $lang), TRUE);
 				}
 				$output .= $this->load->view('_blocks/_op_iban', array('lang' => $lang), TRUE);

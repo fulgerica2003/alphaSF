@@ -12,7 +12,7 @@
 				<input class = "cop-update-fee-total" type="radio" name="tipPlata" id="tipPlataCont" value="cont"<?php echo ($vars['calcTipPlata'] != null && $vars['calcTipPlata'] == 'cont' ? ' checked' : '')?>>
 			</div>								
 			
-			<input id = "cop_amount" style="width:70%; border-right: 4px solid #ffcccc;" class="cop-update-fee-total agent-input first-iban transfer-input" type="text"  name="suma" placeholder="<?php echo lang('payments_amount')?>" value = "<?php echo ($vars['calcAmount'] != null ? $vars['calcAmount'] : ''); ?>">
+			<input id = "cop_amount" style="width:70%; border-right: 4px solid #ffcccc;" class="cop-update-fee-total agent-input first-iban transfer-input only-numbers" type="text"  name="suma" placeholder="<?php echo lang('payments_amount')?>" value = "<?php echo ($vars['calcAmount'] != null ? $vars['calcAmount'] : ''); ?>">
 			<select id="cop_currency" class="ron_transfer2" name="monedaPlata" style="width:30%; height:39px; border-bottom-left-radius:0px;border-top-left-radius:0px;">
 				<option value="eur"<?php echo ($vars['calcCurrency'] != null && $vars['calcCurrency'] == 'eur' ? ' selected = "selected"' : '')?>>EUR</option>
 				<option value="ron"<?php echo ($vars['calcCurrency'] != null && $vars['calcCurrency'] == 'ron' ? ' selected = "selected"' : '')?>>RON</option>

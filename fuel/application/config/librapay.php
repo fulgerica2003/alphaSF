@@ -26,7 +26,7 @@ $config['key']				= '3ad09957e18a3ac8658303122490e17a';
 $config['merchant']			= '000000088001351';
 $config['terminal']			= '88001351';
 // backref se modifica in controllers/pay/load_config - se adauga limba intre domeniu si controller ca sa stiu ce limba sa afisez cand ma intorc de la plata
-$config['backref']			= 'http://ss.anagrama.ro/pay/card_response';
+$config['backref']			= 'http://<domeniu>/pay/card_response';
 
 // ---------- TEST INTERFACE ----- cele doua randuri de mai jos se comenteaza la trecerea in live
 $config['postAction']		= 'https://merchant.librapay.ro/pay_auth.php'; 		

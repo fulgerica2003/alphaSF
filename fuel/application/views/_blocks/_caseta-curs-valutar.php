@@ -15,10 +15,10 @@ $usd = $CI->ss_exchange_rate_model->find_one(array('type' => 'USD', 'apply_date 
 					<td><?php echo lang('caseta_curs_valutar_currency')?></td><td><?php echo lang('caseta_curs_valutar_quote')?></td>
 				</tr>
 				<tr>
-					<td><?php echo lang('caseta_curs_valutar_eur')?></td><td><p><?php echo $eur->value;?></p></td>
+					<td><?php echo lang('caseta_curs_valutar_eur')?></td><td><p><?php echo ($eur != null ? $eur->value : lang('caseta_curs_valutar_NA'));?></p></td>
 				</tr>
 				<tr>
-					<td><?php echo lang('caseta_curs_valutar_usd')?></td><td><?php echo $usd->value;?></td>
+					<td><?php echo lang('caseta_curs_valutar_usd')?></td><td><?php echo ($usd != null ? $usd->value : lang('caseta_curs_valutar_NA'));?></td>
 				</tr>
 			</table>
 		</div>
