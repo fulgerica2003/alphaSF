@@ -26,8 +26,8 @@
 		<div class="input-box">
 			<div class="agent-lable"><?php echo lang('payments_amount')?></div>
 			<div name="test">
-				<input name ="amount" id = "amount" style="width:50%;" class="online-update-custom-fields online-update-fee-total agent-input first_iban <?php echo (form_error('amount')) ? 'err' : ''; ?>" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
-				<input id = "valFract" name ="valFract" style="width:25%;" class="online-update-custom-fields online-update-fee-total agent-input second_iban <?php echo (form_error('valFract')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valFract'); ?>">
+				<input name ="amount" id = "amount" style="width:50%;" class="online-update-custom-fields online-update-fee-total agent-input first_iban <?php echo (form_error('amount')) ? 'err' : ''; ?> only-numbers" type="text"  maxlength="5" size="5" value="<?php echo set_value('amount', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
+				<input id = "valFract" name ="valFract" style="width:25%;" class="online-update-custom-fields online-update-fee-total agent-input second_iban <?php echo (form_error('valFract')) ? 'err' : ''; ?> only-numbers" type="text" value="<?php echo set_value('valFract', '00'); ?>" maxlength = "2">
 				<select id = "currency" name ="currency" style="width:25%;" class="agent-input third_iban">
 					<option value="eur" <?php echo set_select('currency', 'eur', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'eur' ? TRUE : FALSE)); ?>>EUR</option>
 					<option value="ron" <?php echo set_select('currency', 'ron', ($vars['calcCurrency'] && $vars['calcCurrency'] === 'ron' ? TRUE : FALSE)); ?>>RON</option>

@@ -25,6 +25,22 @@ var clang = getCookie('ss_lang');
 $(document).ready(function(){
 	casetaAbroad();
 	
+	$("body").on('keydown', '.only-numbers', function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+	
 	// online_payments
 	var theLanguage = $('html').attr('lang');
 	$('#currency').change(function() {
@@ -80,6 +96,7 @@ $(document).ready(function(){
 		}, "json");
 	};
 	
+	$('.online-update-fee-total').keyup(compute_fee_total);
 	$('.online-update-fee-total').change(compute_fee_total);
 	$('#form-transfer-calc').on('change', '#cities', compute_fee_total);
 	
@@ -156,8 +173,8 @@ $(document).ready(function(){
 			});
 		$('#customFieldsSummary').empty().append(values);
 	});
-		
-	$('.invoice-update-fee-total').change(function() {
+	
+	function fact_update_fee_total() {
 		$('#fee').val('');
 		$('#total').val('');
 		if ($(this).attr('id') == 'tipPlataCont' || $('#tipPlataCont').attr('checked')){
@@ -182,7 +199,10 @@ $(document).ready(function(){
 		}, "json");
 		}
 		
-	});
+	}
+	
+	$('.invoice-update-fee-total').keyup(fact_update_fee_total);
+	$('.invoice-update-fee-total').change(fact_update_fee_total);
 	
 	var displayConfirm = $('input#displayConfirm').val();
 	if (displayConfirm == 'true'){
@@ -212,21 +232,28 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('.cop-update-fee-total').change(function() {
+	function calc_online_update_fee_total() {
 		$('#fee').val('');
 		$('#total').val('');
+		// modalitatea implicita de plata e cu cardul
+		payment_type = 'card';
 		if ($(this).attr('id') == 'tipPlataCont'){
 			payment_type = 'cont';
 		} else if ($(this).attr('id') == 'tipPlataCard'){
 			payment_type = 'card';
 		}
+
 		$.get('calculator/update_total', {payment_method: $('#cop_modIncasare').val(), payment_type: payment_type, currency: $('#cop_currency').val(), amount: $('#cop_amount').val()}, function(data) {
 			$('#cop_fee').replaceWith('<div id = "cop_fee"><span class="suma-transfer-bani">' + (data.fee ? data.fee : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
 			$('#cop_total').replaceWith('<div id = "cop_total"><span class="suma-transfer-bani">' + (data.total ? data.total : '0,0') +'</span> <span class="ron-transfer">' + $('#cop_currency').val().toUpperCase() + '</span></div>');
 			$('#cop_hidden_fee').val(data.fee);
 			$('#cop_hidden_total').val(data.total);
 		}, "json");
-	});
+	}
+	
+	$('.cop-update-fee-total').change(calc_online_update_fee_total);
+	
+	$('.cop-update-fee-total').keyup(calc_online_update_fee_total);
 	
 	// calc online_invoices
 	
@@ -244,7 +271,9 @@ $(document).ready(function(){
 		}, "json");
 	}
 	
-	$('.cof-update-fee-total').change(function() {
+	function calc_fact_update_fee_total() {
+		// modalitatea implicita de plata e cu cardul
+		payment_type = 'card';
 		if ($(this).attr('id') == 'tipPlataCont'){
 			payment_type = 'cont';
 		}else if ($(this).attr('id') == 'tipPlataCard'){
@@ -256,7 +285,10 @@ $(document).ready(function(){
 			$('#cof_hidden_fee').val(data.fee);
 			$('#cof_hidden_total').val(data.total);
 		}, "json");
-	});
+	}
+	
+	$('.cof-update-fee-total').change(calc_fact_update_fee_total);
+	$('.cof-update-fee-total').keyup(calc_fact_update_fee_total);
 		
 
 	
@@ -281,8 +313,6 @@ $(document).ready(function(){
             '07', '08', '09', '10', '11', '12'],
 		});
 	})
-	
-	
 	
 	if($('#tipPlataCard').attr('checked')) {
 		$('#TABleft').addClass('lable1 radioactiv');
@@ -388,6 +418,12 @@ $(document).ready(function(){
         show: showLogin,
         remote: 'auth/login?lang='+clang,
 		backdrop: 'static',
+	});
+	
+	$('body').on('click', '.err', function(){
+		$(this).removeClass('err');
+		divID = '#' + $(this).attr('id') + 'ERR';
+		$(divID).removeClass('afiseaza');
 	});
 	
 	$('.modal-content').on('click', '#sign-up-button', function(){ 

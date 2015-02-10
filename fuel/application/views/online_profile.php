@@ -34,7 +34,7 @@
 	<div class="input-box">
 		<div class="explica-cont"><?php echo lang('profile_personal_box')?></div>
 		<div class="agent-lable"><?php echo lang('profile_phone')?></div>
-		<input class="agent-input corectie_form<?php echo (form_error('phone')) ? ' err' : ''; ?>" type="text" name="phone" id="phone" value="<?php echo $vars['user']->phone; ?>">
+		<input class="only-numbers agent-input corectie_form<?php echo (form_error('phone')) ? ' err' : ''; ?>" type="text" name="phone" id="phone" value="<?php echo $vars['user']->phone; ?>">
 		<div class="agent-lable"><?php echo lang('profile_birth_date')?></div>
 		<input class="agent-input corectie_form date<?php echo (form_error('birth_date')) ? ' err' : ''; ?>" type="text" name="birth_date" id="birth_date" value="<?php echo $vars['user']->birth_date; ?>" date_format = "dd.mm.yyyy">
 		<div class="agent-lable"><?php echo lang('profile_country')?></div>

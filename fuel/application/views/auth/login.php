@@ -14,6 +14,7 @@
 				<div class="agent-lable"><?php echo lang('login_identity_label', 'identity');?></div>
 				<?php echo form_input($identity);?>
 			</p>
+			<div id="identityERR" class="eroare <?php echo (form_error('identity')) ? 'afiseaza' : ''; ?>"><a name="AidentityERR"></a><span id="identityERRTXT"><?php echo form_error('identity'); ?></span><span class="close-eroare"></span></div>
 		</div>
 		
 		<div class="input-box">
@@ -21,6 +22,7 @@
 				<div class="agent-lable"><?php echo lang('login_password_label', 'password');?></div>
 				<?php echo form_input($password);?>
 			</p>
+			<div id="passwordERR" class="eroare <?php echo (form_error('password')) ? 'afiseaza' : ''; ?>"><a name="ApasswordERR"></a><span id="passwordERRTXT"><?php echo form_error('password'); ?></span><span class="close-eroare"></span></div>
 		</div>
 		
 		<div class="input-box">
@@ -29,7 +31,7 @@
 				<?php echo $image; // this will show the captcha image?><br />
 				<?php echo form_input($word);?>
 			</p>
-			<div id="wordERR" class="eroare <?php echo (form_error('word')) ? 'afiseaza' : ''; ?>"><a name="AwordERR"></a><span id="wordERRTXT"><?php echo form_error('word'); ?></span><span class="close-eroare">x</span></div>
+			<div id="wordERR" class="eroare <?php echo (form_error('word')) ? 'afiseaza' : ''; ?>"><a name="AwordERR"></a><span id="wordERRTXT"><?php echo form_error('word'); ?></span><span class="close-eroare"></span></div>
 		</div>
 		
 		<div class="input-box">

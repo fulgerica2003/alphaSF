@@ -88,6 +88,7 @@
 				else
 				{
 					$blocked = FALSE;
+					$inactive = FALSE;
 					//if the login was un-successful
 					// verific daca pentru utilizator s-a atins nr maxim de autentificari nereusite si utilizatorul sa fie activ;
 					// daca a fost atins si e inca activ, dezactivez utilizatorul si trimit mail de reactivare
@@ -100,12 +101,17 @@
 							$this->ion_auth->send_activation_email($user->id);
 							$blocked = TRUE;
 							$this->fuel->logs->write('Utilizatorul ' . $identity . ', id ' . $user->id . ' a fost blocat', 'info');
+						} else if ($user->active != 1){
+							// utilizatorul e inactiv
+							$inactive = TRUE;
 						}
 					}
 					//redirect them back to the login page
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 					if ($blocked){
 						$this->_render_page("auth/_login-blocked");
+					}else if ($inactive){
+						$this->_render_page("auth/_login-inactive");
 					}else{
 						redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 					}
@@ -121,12 +127,12 @@
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('identity') ? ' err' : ''),
 				);
 				$this->data['password'] = array('name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
-				'class' => 'agent-input',
+				'class' => 'agent-input' . (form_error('password') ? ' err' : ''),
 				);
 				
 				$this->data['word'] = array(
@@ -646,7 +652,7 @@
 				'id'    => 'phone',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('phone'),
-				'class' => 'agent-input' . (form_error('phone') ? ' err' : ''),
+				'class' => 'only-numbers agent-input' . (form_error('phone') ? ' err' : ''),
 				);
 				$this->data['password'] = array(
 				'name'  => 'password',
@@ -1055,8 +1061,16 @@
 			// we will first load the helper. We will not be using autoload because we only need it here
 			$this->load->helper('captcha');
 			// we will set all the variables needed to create the captcha image
-			$options = array('img_path'=>'./assets/captcha/','img_url'=>'assets/captcha/','img_width'=>'150','img_height'=>'40','expiration'=>7200,
-			'word_length' => 4, 'pool' => '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ', 'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(204,153,153), 'grid' => array(255,182,182)));
+			$options = array(
+				'img_path'=>'./assets/captcha/',
+				'img_url'=>'assets/captcha/',
+				'font_path' => './assets/fonts/dinnextroundedltpro-regular.ttf',
+				'img_width'=>'150',
+				'img_height'=>'40',
+				'expiration'=>7200,
+				'word_length' => 4,
+				'pool' => '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ', 
+				'colors' => array( 'background' => array(255,255,255), 'border' => array(153,102,102), 'text' => array(181, 37, 29), 'grid' => array(255,182,182)));
 			//now we will create the captcha by using the helper function create_captcha()
 			$cap = create_captcha($options);
 			// we will store the image html code in a variable

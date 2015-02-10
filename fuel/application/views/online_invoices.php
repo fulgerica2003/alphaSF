@@ -28,8 +28,8 @@
 		<div class="agent-lable"><?php echo lang('invoices_amount'); ?></div>
 		
 		<div name="test">
-			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total <?php echo (form_error('valInt')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valInt', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
-			<input id = "valFract" name ="valFract" style="width:25%;" class="agent-input second_iban invoice-update-fee-total <?php echo (form_error('valFract')) ? 'err' : ''; ?>" type="text" value="<?php echo set_value('valFract'); ?>">
+			<input id = "valInt" name ="valInt" style="width:50%;" class="agent-input factura_prim invoice-update-fee-total <?php echo (form_error('valInt')) ? 'err' : ''; ?> only-numbers" type="text" value="<?php echo set_value('valInt', ($vars['calcAmount'] ? $vars['calcAmount'] : '')); ?>">
+			<input id = "valFract" name ="valFract" style="width:25%;" class="agent-input second_iban invoice-update-fee-total <?php echo (form_error('valFract')) ? 'err' : ''; ?> only-numbers" type="text" value="<?php echo set_value('valFract', '00'); ?>" maxlength = "2">
 			<input id= "currency" name ="currency" style="width:24%;" class="agent-input factura_second" type="text" value="RON" readonly>
 			<div id="valIntERR" class="eroare <?php echo (form_error('valInt')) ? 'afiseaza' : ''; ?>"><a name="AvalIntERR"></a><span id="valIntERRTXT"><?php echo form_error('valInt'); ?></span><span class="close-eroare">x</span></div>
 			<div id="valFractERR" class="eroare <?php echo (form_error('valFract')) ? 'afiseaza' : ''; ?>"><a name="AvalFractERR"></a><span id="valFractERRTXT"><?php echo form_error('valFract'); ?></span><span class="close-eroare">x</span></div>

@@ -36,7 +36,7 @@
 		
 		<div class="input-box">
 			<p>
-				<div class="agent-lable"><?php echo lang('register_user_password_label', 'password');?> <br /></div>
+				<div class="agent-lable"><?php echo lang('register_user_password_label', 'password');?> <?php echo lang('register_user_password_pattern_label');?><br /></div>
 				<?php echo form_input($password);?>
 				<div id="passwordERR" class="eroare <?php echo (form_error('password')) ? 'afiseaza' : ''; ?>"><a name="ApasswordERR"></a><span id="passwordERRTXT"><?php echo form_error('password'); ?></span><span class="close-eroare"></span></div>
 			</p>
